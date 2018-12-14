@@ -2,7 +2,10 @@
   "name": "hms-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://Dihubcom.github.io/hms-new",
+  "engines": {
+    "npm": "6.4.1",
+    "node": "10.13.0"
+  },
   "dependencies": {
     "@trendmicro/react-validation": "^0.1.0",
     "bootstrap": "^4.0.0",
