@@ -1,0 +1,165 @@
+/* * {
+  box-sizing: border-box;
+}
+
+h1, h2, p, ul, li{
+  font-family: sans-serif;
+}
+h1{
+  text-align: center;
+  padding: 3px;
+}
+
+ul.header li{
+  display: inline-block;
+  list-style-type: none;
+  margin-right: 15px;
+
+}
+
+ul.header{
+  background-color: gray;
+  padding: 0px;
+
+}
+
+ul.header li a{
+  color: #fff;
+  text-decoration: none;
+  padding: 20px;
+  display: inline-block;
+
+
+}
+
+.content{
+  
+  background: #ffffff url("../images//Hospital\ 2.png") no-repeat center;
+  height: 700px;
+}
+
+.content li{
+  
+  margin-bottom: 0.2em;
+}
+
+.active{
+  background-color: #0099ff;
+}
+
+
+.patientId:hover {
+  cursor: pointer;
+  color: blue;
+}
+.PatModal{
+margin: 300px;
+margin-top: 50px;
+margin-left:200px;
+width: 750px;
+height: 800px;
+
+}
+
+.patClarking{
+
+margin-left: 0px;
+font-size: 15px;
+
+}
+
+.prvVisit{
+  font-size: 15px;
+align-items: right; 
+color:green;
+}
+
+.otherPresentingComplaints {
+  margin: 50px;
+}
+
+
+.imageFig{
+  border: 2px solid;
+  font-size: 15px;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+}
+
+.dropdown {
+  background-color: #5c526e9a;
+  border: 0 solid rgb(23, 38, 170);
+  width: 200px;
+  cursor: pointer;
+  padding:5px;
+  margin: 0;
+}
+
+.btnS {
+  float: right;
+}
+
+.EditModal{
+  margin: 300px;
+  margin-top: 50px;
+  margin-left:200px;
+  width: 750px;
+  height: 800px;
+
+}
+
+div label {
+  text-align: right;
+} */
+
+ /* assign patient to doctor table  */
+ /* .assignPatTable{
+margin-left: 50px;
+margin-top: 10px;
+ }
+
+ .moveToCenter {
+   text-align: center
+ } 
+
+ .searchInput {
+   /* font-size: 20px;
+   padding: 10px;
+   border: none;
+   border-bottom: 2px solid black;
+   border-radius: 4px; */
+   /* width: 685px; 
+ }
+/* 
+#btn {
+  margin-left: 620px
+ }
+
+ .patientlist-container {
+   padding: 30px;
+ }
+
+ .doctor-left {
+   position: fixed;
+ }
+
+ /* .middle {
+   position: absolute;
+   margin-left: 25%;
+ }
+
+ .doctor-right{
+   position: absolute;
+   left: 75%;
+ } */
+/* 
+ .moduleItemsContainer {
+  background: #ffffff url("../images//phamarcy.jpg") no-repeat right top;
+} */
+
+/* @media screen and (min-width: 1000px) {
+  .render-patient-list {
+    height: 70vh;
+  }
+} */

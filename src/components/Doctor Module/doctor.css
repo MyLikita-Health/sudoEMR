@@ -1,0 +1,139 @@
+/* .btn {
+  border-radius: 0px;
+}
+
+table {
+  border: '2px solid red';
+}
+
+label.value {
+  text-align: left;
+  font-weight: bold;
+}
+
+.btn-glass {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  text-align: center;
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+  padding: 1em 2em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.98pt;
+  text-transform: uppercase;
+  -webkit-transition: background-position 2s cubic-bezier(0, 1, 0, 1),
+    border-color 500ms, background-color 500ms;
+  transition: background-position 2s cubic-bezier(0, 1, 0, 1),
+    border-color 500ms, background-color 500ms;
+  position: relative;
+  border-radius: 10rem;
+  background: transparent;
+}
+
+fieldset {
+  border: 1px solid #ddd !important;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+}
+
+legend {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 0px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px 5px 5px 10px;
+  background-color: #ffffff;
+}
+
+.scroll {
+  overflow: scroll;
+}
+
+.middle {
+  overflow: scroll;
+}
+
+.jumbotron {
+  padding: 25px;
+  margin: 15px;
+  padding-top: 2px;
+  margin-top: 0px;
+}
+
+#doctor-image {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+.patient-clarking {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-side {
+  width: 100%;
+}
+
+.patient-info {
+  width: 100%;
+}
+
+.last-diagnosis-container {
+  width: 100%;
+}
+
+.patient-form {
+  padding-bottom: 2em;
+} */
+
+/* @media screen and (min-width: 700px) and (max-width: 1000px) {
+  .left-side {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .doctor-guide-container {
+    width: 40%;
+  }
+
+  .assigned-list-collapse {
+    width: 58%;
+  }
+} */
+/* 
+@media screen and (min-width: 1000px) {
+  .patient-clarking {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .left-side {
+    width: 25%;
+  }
+
+  .patient-info {
+    width: 50%;
+  }
+
+  .last-diagnosis-container {
+    width: 23%;
+  }
+
+  .label {
+    display: flex;
+  }
+
+  span {
+    margin-left: 5px;
+  }
+} */
