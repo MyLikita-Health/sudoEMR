@@ -58,9 +58,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -71,8 +69,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "https://localhost:4000",
-  "devDependencies": {
-    "gh-pages": "^2.0.1"
-  }
+  "proxy": "https://localhost:4000"
 }
