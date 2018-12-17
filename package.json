@@ -68,6 +68,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "proxy": "https://localhost:4000"
+  ]
 }

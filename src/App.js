@@ -190,13 +190,7 @@ class App extends Component {
                         </NavLink>
                       </NavItem>
                     )}
-                    {this.state.account && (
-                      <NavItem>
-                        <NavLink to="/account" className="nav">
-                          Account Module
-                        </NavLink>
-                      </NavItem>
-                    )}
+                    
                     {this.state.lab && (
                       <NavItem>
                         <NavLink to="/lab" className="nav">
@@ -208,6 +202,13 @@ class App extends Component {
                       <NavItem>
                         <NavLink to="/admin" className="nav">
                           Admin
+                        </NavLink>
+                      </NavItem>
+                    )}
+                    {this.state.account && (
+                      <NavItem>
+                        <NavLink to="/account" className="nav">
+                          Account Module
                         </NavLink>
                       </NavItem>
                     )}
