@@ -8,9 +8,7 @@ import {
   ModalHeader,
   ModalBody,
 } from 'reactstrap';
-import FaPlus from 'react-icons/lib/fa/plus';
-import FaEdit from 'react-icons/lib/fa/edit';
-import FaRemove from 'react-icons/lib/io/trash-a';
+import {FaPlus,FaEdit, FaTrash} from 'react-icons/fa';
 import { _postData, _convertArrOfObjToArr } from '../helpers';
 
 class AddDrugForm extends React.Component {
@@ -302,7 +300,7 @@ const ListTable = ({ list, onEditClick, onRemoveClick }) => (
                 <button
                   className="btn btn-danger col-xs-12 col-sm-12 col-md-12 col-lg-12"
                   onClick={() => onRemoveClick(item)}>
-                  <FaRemove />
+                  <FaTrash/>
                 </button>
               </td>
             </tr>

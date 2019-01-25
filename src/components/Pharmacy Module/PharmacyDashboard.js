@@ -9,6 +9,7 @@ const AddDrug = lazy(() => import('./AddDrug'));
 const PrescriptionProcessingForm = lazy(() =>
   import('./PrescriptionProcessingForm')
 );
+
 const Tabs = ({ hideCarousel }) => {
   return (
     <div style={{ width: '100%' }}>

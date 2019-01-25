@@ -2,14 +2,10 @@
   text-decoration: none;
   border: none;
   text-align: center;
-  padding: 1em 1em;
+  padding: 0.1em 1em;
   color: white;
   list-style-type: none;
 }
-
-/* body {
-  font-size: 12px !important;
-} */
 
 .nav:hover {
   text-decoration: none;

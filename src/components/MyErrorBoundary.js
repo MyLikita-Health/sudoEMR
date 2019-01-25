@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 // import Spinner from 'react-icons/lib/fa/spinner'
-// import Refresh from 'react-icons/lib/fa/refresh'
+// import {FaRefresh} from 'react-icons/fa'
+import { MdRefresh } from 'react-icons/md';
 // import Refresh2 from 'react-icons/lib/io/android-refresh'
-import Refresh from 'react-icons/lib/io/ios-refresh'
+// import {Iofres} from 'react-icons/lib/io'
 // import Refresh4 from 'react-icons/lib/io/refresh'
 // import Refresh5 from 'react-icons/lib/md/refresh'
 // import Refresh6 from 'react-icons/lib/ti/refresh'
@@ -36,7 +37,8 @@ export default class MyErrorBoundary extends Component {
           <h1 className="text-cneter">Something went wrong.</h1>
           <button className="btn btn-outline-primary" title="Refresh" onClick={
             () => window.location.reload()
-          }><Refresh size={200}  /></button>
+          }><MdRefresh size={200}  /></button>
+          
         </section>
       )
     }

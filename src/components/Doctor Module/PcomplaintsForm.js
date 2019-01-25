@@ -2,9 +2,8 @@ import React from 'react';
 import { Form, FormGroup, Table } from 'reactstrap';
 import { _warningNotify } from '../helpers';
 import Notifications from 'react-notify-toast';
-import FaArrowRight from 'react-icons/lib/fa/arrow-right';
-import FaArrowLeft from 'react-icons/lib/fa/arrow-left';
-import MdSave from 'react-icons/lib/md/save';
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+import {MdSave} from 'react-icons/md'
 import { Link} from 'react-router-dom';
 
 export class PcomplaintsForm extends React.Component {

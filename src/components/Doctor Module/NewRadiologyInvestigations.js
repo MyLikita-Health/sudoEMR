@@ -3,8 +3,8 @@ import { Form, FormGroup, Table, Badge } from 'reactstrap';
 import { _warningNotify } from '../helpers';
 import Notifications from 'react-notify-toast';
 import { Link } from 'react-router-dom';
-import FaArrowLeft from 'react-icons/lib/fa/arrow-left';
-import FaPlus from 'react-icons/lib/fa/plus';
+import { FaArrowLeft, FaPlus} from 'react-icons/fa';
+
 
 export class NewRadiologyInvestigations extends Component {
   constructor(props) {

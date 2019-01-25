@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Form, FormGroup } from 'reactstrap';
 import { Link} from 'react-router-dom';
-import FaArrowRight from 'react-icons/lib/fa/arrow-right';
+import { FaArrowRight } from 'react-icons/fa';
 
 class CreateVitalSigns extends Component {
     constructor(props) {

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { Form, FormGroup, Modal, ModalBody, ModalFooter, ModalHeader, Button, Container } from 'reactstrap';
 import { Link} from 'react-router-dom';
-import FaArrowRight from 'react-icons/lib/fa/arrow-right';
-import FaArrowLeft from 'react-icons/lib/fa/arrow-left';
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+
 import 'bootstrap/dist/css/bootstrap.css';
 
 class SysExaminationEdit extends Component {

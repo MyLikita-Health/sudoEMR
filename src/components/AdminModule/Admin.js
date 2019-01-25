@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
+import {
+  MemoryRouter as Router,
+  Route,
+  Switch,
+  NavLink,
+} from 'react-router-dom';
+import { AppContainer, Navigation, Body, Title } from './containers';
+// import { AppNavigation } from './AppNavigation';
+import {RenderItems} from './DarkBar'
 import CreateUser from './CreateUserForm';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import Users from './Users';
 import './admin.css';
 
 export default class Admin extends Component {
   render() {
     return (
-      <Router>
-        <div className="admin">
-          <h2 className="header">User Administration and Management</h2>
-          <hr />
-          <div className="admin-dashboard">
-            <div className="admin-tab">
-              <TabList />
-            </div>
-
-            <div className="admin-container">
-              <Route
-                className="active"
-                path="/admin/newUser"
-                component={CreateUser}
-              />
-              <Route path="/admin/doctors" component={Users} />
-            </div>
-          </div>
-        </div>
-      </Router>
+      <AppContainer>
+        <Navigation>
+          <Title> User Admin </Title>
+          <RenderItems />
+        </Navigation>
+        <Body>
+          <Switch>
+            <Route path="/admin/new-user" component={CreateUser} />
+            <Route path="/admin/users" component={Users} />
+          </Switch>
+        </Body>
+      </AppContainer>
     );
   }
 }

@@ -10,16 +10,16 @@ import ErrorBoundary from './components/MyErrorBoundary';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import Login from './components/Login/Login2';
-import logo from './images/logo.png';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  Button,
-} from 'reactstrap';
+import Navbar from './nav-old'
+// import {
+//   Collapse,
+//   Navbar,
+//   NavbarToggler,
+//   NavbarBrand,
+//   Nav,
+//   NavItem,
+//   Button,
+// } from 'reactstrap';
 import './Style/index.css';
 import { _fetchData } from './components/helpers';
 
@@ -156,74 +156,15 @@ class App extends Component {
             <div>
               <div />
               {/* The header goes here */}
-              <Navbar color="secondary" dark expand="md">
-                <NavbarBrand href="https://di-hub.com/" target="_blank">
-                  <img
-                    src={logo}
-                    alt="logo"
-                    className="img-thumbnail"
-                    height="50em"
-                    width="80em"
-                  />
-                </NavbarBrand>
-                <NavbarToggler onClick={this.toggle} />
-                <Collapse isOpen={this.state.isOpen} navbar>
-                  <Nav className="ml-auto" navbar className="">
-                    {this.state.records && (
-                      <NavItem>
-                        <NavLink to="/patientlist" className="nav">
-                          Record Module
-                        </NavLink>
-                      </NavItem>
-                    )}
-                    {this.state.doctors && (
-                      <NavItem>
-                        <NavLink to="/patient_clarking" className="nav">
-                          Doctors Module
-                        </NavLink>
-                      </NavItem>
-                    )}
-                    {this.state.pharmacy && (
-                      <NavItem>
-                        <NavLink to="/pharmacy" className="nav">
-                          Pharmacy Module
-                        </NavLink>
-                      </NavItem>
-                    )}
-                    
-                    {this.state.lab && (
-                      <NavItem>
-                        <NavLink to="/lab" className="nav">
-                          Laboratory Module
-                        </NavLink>
-                      </NavItem>
-                    )}
-                    {this.state.admin && (
-                      <NavItem>
-                        <NavLink to="/admin" className="nav">
-                          Admin
-                        </NavLink>
-                      </NavItem>
-                    )}
-                    {this.state.account && (
-                      <NavItem>
-                        <NavLink to="/account" className="nav">
-                          Account Module
-                        </NavLink>
-                      </NavItem>
-                    )}
-                    <NavItem className="">
-                      User:{' '}
-                      <b>
-                        <em>{this.state.username.toUpperCase()}</em>
-                      </b>
-                      <Button color="danger" onClick={this.logout}>
-                        Logout
-                      </Button>
-                    </NavItem>
-                  </Nav>
-                </Collapse>
-              </Navbar>
+              <Navbar 
+                records= {this.state.records}
+                doctors= {this.state.doctors}
+                pharmacy= {this.state.pharmacy}
+                lab= {this.state.lab}
+                account= {this.state.account}
+                admin= {this.state.admin}
+                username={this.state.username} 
+              />
               <br />
               {/* ... and the contents go here */}
               <div className="">

@@ -10,8 +10,8 @@ import {
   ModalHeader,
   ModalBody,
 } from 'reactstrap';
-// import CaretUp from 'react-icons/lib/fa/caret-square-o-up'
-import CaretUp from 'react-icons/lib/fa/caret-up';
+
+import {FaCaretUp} from 'react-icons/fa'
 
 export default class ServicesSetupForm extends Component {
   constructor(props) {
@@ -147,7 +147,7 @@ export default class ServicesSetupForm extends Component {
                       <span
                         onClick={openHeadModal}
                         style={{ cursor: 'pointer' }}>
-                        <CaretUp size={30} />
+                        <FaCaretUp size={30} />
                       </span>
                     </FormGroup>
                   )}

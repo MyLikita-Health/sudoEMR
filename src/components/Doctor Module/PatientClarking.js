@@ -9,8 +9,7 @@ import LastDiagnosis from './LastDiagnosis';
 import Diagnosis from './Diagnosis';
 // import './doctor.css';
 import { _fetchData, _postData, _convertArrOfObjToArr } from '../helpers';
-import FaPaperPlane from 'react-icons/lib/fa/paper-plane-o';
-import FaPrint from 'react-icons/lib/fa/print';
+import {FaPaperPlane, FaPrint} from 'react-icons/fa';
 import Preview from './Preview';
 import { error } from 'util';
 

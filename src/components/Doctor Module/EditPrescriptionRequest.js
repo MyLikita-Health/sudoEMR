@@ -4,9 +4,7 @@ import DrugsTable from './DrugsTable';
 import { _warningNotify, _fetchData } from '../helpers';
 import Notifications from 'react-notify-toast';
 import { Link } from 'react-router-dom';
-import FaArrowRight from 'react-icons/lib/fa/arrow-right';
-import FaArrowLeft from 'react-icons/lib/fa/arrow-left';
-import ReactAutocomplete from 'react-autocomplete';
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 
 export default class EditPrescriptionRequest extends Component {
   constructor(props) {
@@ -127,28 +125,6 @@ export default class EditPrescriptionRequest extends Component {
         </h3>
         <hr />
         <Form onSubmit={this.handleSubmit}>
-          <ReactAutocomplete
-            items={[
-              { id: 'foo', label: 'foo' },
-              { id: 'bar', label: 'bar' },
-              { id: 'baz', label: 'baz' },
-            ]}
-            shouldItemRender={(item, value) =>
-              item.label.toLowerCase().indexOf(value.toLowerCase()) > -1
-            }
-            getItemValue={item => item.label}
-            renderItem={(item, highlighted) => (
-              <div
-                key={item.id}
-                style={{ backgroundColor: highlighted ? '#eee' : '#faaffe' }}>
-                {item.label}
-              </div>
-            )}
-            value={this.state.value}
-            onChange={e => this.setState({ value: e.target.value })}
-            onSelect={value => this.setState({ value })}
-          />
-      
           <FormGroup row>
             <label className="col-md-2">Select Drugs:</label>
             <input

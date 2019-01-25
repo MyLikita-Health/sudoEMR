@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'reactstrap';
-import MdArrowBack from 'react-icons/lib/md/arrow-back';
+import {MdArrowBack} from 'react-icons/md';
 import FreeScrollBar from 'react-free-scrollbar';
 import SearchBar from '../Records Module/SearchBar';
 
