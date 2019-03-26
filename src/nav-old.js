@@ -23,8 +23,10 @@ export default class NavbarNow extends Component {
       this.setState({
         isOpen: !this.state.isOpen,
       });
+      this.props.toggleLanding();
     };
     render(){
+      const { records, doctors, pharmacy, lab, admin,account, username } = this.props
   return (
     <Navbar color="secondary" dark expand="md">
       <NavbarBrand href="https://brainstormng.com/bits-his/" target="_blank">
@@ -39,21 +41,21 @@ export default class NavbarNow extends Component {
       <NavbarToggler onClick={this.toggle} />
       <Collapse isOpen={this.state.isOpen} navbar>
         <Nav className="ml-auto" navbar className="">
-          {this.props.records && (
+          {records && (
             <NavItem onClick={this.toggle}>
               <NavLink to="/patientlist" className="nav">
                 Record Module
               </NavLink>
             </NavItem>
           )}
-          {this.props.doctors && (
+          {doctors && (
             <NavItem onClick={this.toggle}>
               <NavLink to="/patient_clarking" className="nav">
                 Doctors Module
               </NavLink>
             </NavItem>
           )}
-          {this.props.pharmacy && (
+          {pharmacy && (
             <NavItem onClick={this.toggle}>
               <NavLink to="/pharmacy" className="nav">
                 Pharmacy Module
@@ -61,21 +63,21 @@ export default class NavbarNow extends Component {
             </NavItem>
           )}
 
-          {this.props.lab && (
+          {lab && (
             <NavItem onClick={this.toggle}>
               <NavLink to="/lab" className="nav">
                 Laboratory Module
               </NavLink>
             </NavItem>
           )}
-          {this.props.admin && (
+          {admin && (
             <NavItem onClick={this.toggle}>
               <NavLink to="/admin" className="nav">
                 Admin
               </NavLink>
             </NavItem>
           )}
-          {this.props.account && (
+          {account && (
             <NavItem onClick={this.toggle}>
               <NavLink to="/account" className="nav">
                 Account Module
@@ -85,7 +87,7 @@ export default class NavbarNow extends Component {
           <NavItem className="">
             User:{' '}
             <b>
-              <em>{this.props.username.toUpperCase()}</em>
+              <em>{username.toUpperCase()}</em>
             </b>
             {/* <Button color="danger" onClick={this.logout}>
               Logout

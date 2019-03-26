@@ -13,6 +13,7 @@ import Login from './components/Login/Login2';
 import Navbar from './nav-old'
 import './Style/index.css';
 import { _fetchData } from './components/helpers';
+import Landing from './components/landing';
 
 class App extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class App extends Component {
       users: [],
       isOpen: false,
       isLoading: true,
+      landing: true,
     };
   }
 
@@ -121,6 +123,8 @@ class App extends Component {
     });
   };
 
+  toggleLanding = () => this.setState({ landing: false })
+
   render() {
     return (
       <ErrorBoundary>
@@ -148,8 +152,10 @@ class App extends Component {
                 account= {this.state.account}
                 admin= {this.state.admin}
                 username={this.state.username} 
+                toggleLanding={this.toggleLanding}
               />
               <br />
+              {this.state.landing && <Landing />}
               {/* ... and the contents go here */}
               <div className="">
                 {this.state.records && (
