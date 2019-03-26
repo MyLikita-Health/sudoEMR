@@ -1,5 +1,7 @@
 import { notify } from 'react-notify-toast';
 
+const url = 'https://bits-his-back-end.herokuapp.com'
+
 /**
  * _fetchData()
  * helper function that fetches data from the database using a
@@ -28,27 +30,11 @@ import { notify } from 'react-notify-toast';
 // };
 
 const _fetchData = ({ route, success_callback, error_callback }) => {
-  fetch(`http://localhost:4000/${route}`)
-    .then(handleResponse)
-    .then(data => success_callback(data))
-    .catch(
-      error =>
-        error_callback ? error_callback(error.toString()) : console.log(error)
-    );
+  fetch(`${url}/${route}`)
+    .then(data => data.json())
+    .then(response => success_callback(response))
+    .catch(error => error_callback ? error_callback(error.toString()) : console.log(error));
 };
-
-function handleResponse(response) {
-  return response.json().then(json => {
-    if (response.ok) return json;
-    else
-      return Promise.reject(
-        Object.assign({}, json, {
-          status: response.status,
-          statusText: response.statusText,
-        })
-      );
-  });
-}
 
 /**
  * _postData()
@@ -58,7 +44,7 @@ function handleResponse(response) {
  * @params callback => optional callback function
  */
 const _postData = ({ route, data, callback }) => {
-  fetch(`http://localhost:4000/${route}`, {
+  fetch(`${url}/${route}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -70,7 +56,7 @@ const _postData = ({ route, data, callback }) => {
       return response.json();
     })
     .then(function(data) {
-      console.log(data);
+      // console.log(data);
       if (data === 'success') {
         if (callback) callback();
       }
@@ -89,7 +75,7 @@ const _postData = ({ route, data, callback }) => {
  * @params callback (func) => optional callback
  */
 const _deleteData = ({ route, data, callback }) => {
-  fetch(`http://localhost:4000/${route}`, {
+  fetch(`${url}/${route}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -101,7 +87,7 @@ const _deleteData = ({ route, data, callback }) => {
       return response.json();
     })
     .then(function(data) {
-      console.log(data);
+      // console.log(data);
       if (data === 'success') {
         if (callback) callback();
       }
@@ -112,7 +98,7 @@ const _deleteData = ({ route, data, callback }) => {
 };
 
 const _updateData = ({ route, data, callback }) => {
-  fetch(`http://localhost:4000/${route}`, {
+  fetch(`${url}/${route}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -127,7 +113,7 @@ const _updateData = ({ route, data, callback }) => {
       return response.json();
     })
     .then(function(data) {
-      console.log(data);
+      // console.log(data);
       if (data === 'success') {
         if (callback) callback();
       }

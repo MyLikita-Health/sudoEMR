@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import PatientClarking from './components/Doctor Module/PatientClarking';
 import Pharmacy from './components/Pharmacy Module/Pharmacy';
 import Account from './components/Account Module/Account';
@@ -11,32 +11,8 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import Login from './components/Login/Login2';
 import Navbar from './nav-old'
-// import {
-//   Collapse,
-//   Navbar,
-//   NavbarToggler,
-//   NavbarBrand,
-//   Nav,
-//   NavItem,
-//   Button,
-// } from 'reactstrap';
 import './Style/index.css';
 import { _fetchData } from './components/helpers';
-
-const defaultUsers = [
-  {
-    username: 'admin',
-    password: '@12345678',
-  },
-  {
-    username: 'doctor',
-    password: '@1234567',
-  },
-  {
-    username: 'record',
-    password: '@123456',
-  },
-];
 
 class App extends Component {
   constructor(props) {
@@ -44,7 +20,7 @@ class App extends Component {
 
     this.state = {
       msg: '',
-      loggedIn: true,
+      // loggedIn: false,
       username: '',
       password: '',
       records: true,
@@ -55,6 +31,7 @@ class App extends Component {
       admin: true,
       users: [],
       isOpen: false,
+      isLoading: true,
     };
   }
 
@@ -71,7 +48,11 @@ class App extends Component {
   // getUsername = () => 'Mustapha';
 
   componentDidMount() {
-    this.fetchUsers();
+    let user = localStorage.getItem('user');
+    console.log(user)
+    this.setState({ user })
+    // if(user)
+    // this.fetchUsers();
   }
 
   //Get all the users from the database
@@ -90,20 +71,23 @@ class App extends Component {
     if (this.state.username === '' || this.state.password === '') {
       return this.setState({ msg: 'Please enter your username and password!' });
     } else {
-      const users = this.state.users;
+      // const users = this.state.users;
       const username = this.state.username.trim();
       const password = this.state.password.trim();
 
       if (username === 'admin' && password === 'admin') {
-        return this.setState({
-          loggedIn: true,
+        localStorage.setItem('user', this.state.username);
+
+        this.setState(prevState => ({
+          // loggedIn: true,
           records: true,
           doctors: true,
           pharmacy: true,
           lab: true,
           admin: true,
-        });
-        localStorage.setItem('username', this.state.username);
+          user: prevState.username
+        }));
+        // localStorage.setItem('user', this.state.username);
       } else {
         this.setState({
           msg: 'You have entered wrong username or password',
@@ -141,7 +125,7 @@ class App extends Component {
     return (
       <ErrorBoundary>
         {/* Conditional rendering which check if the user is a valid user or not */}
-        {!this.state.loggedIn && (
+        {!this.state.user && (
           <Login
             handleLogin={this.handleLogin}
             message={this.state.msg}
@@ -151,7 +135,7 @@ class App extends Component {
             handlePasswordChange={this.handlePasswordChange}
           />
         )}
-        {this.state.loggedIn && (
+        {this.state.user && (
           <Router basename={process.env.PUBLIC_URL}>
             <div>
               <div />

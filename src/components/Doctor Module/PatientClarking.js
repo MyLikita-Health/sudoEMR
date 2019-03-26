@@ -227,8 +227,8 @@ class PatienClarking extends React.Component {
      * fetchData()
      */
     fetchData(){        
-        const username = localStorage.getItem('username');
-        let route =  `patientrecords/doctor?q=${username}`;
+        // const username = localStorage.getItem('user');
+        let route =  `patientrecords/doctor?q=${'aminu'}`;
         let success_callback = (data) => this.setState({ patientrecords: data })
         let error_callback = error => this.setState({error})
         _fetchData({ route, success_callback, error_callback })

@@ -68,6 +68,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "proxy": "https://bits-his-back-end.herokuapp.com",
   "browserslist": [
     ">0.2%",
     "not dead",

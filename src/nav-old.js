@@ -27,15 +27,14 @@ export default class NavbarNow extends Component {
     render(){
   return (
     <Navbar color="secondary" dark expand="md">
-      <NavbarBrand href="https://di-hub.com/" target="_blank">
-        {/* <img
+      <NavbarBrand href="https://brainstormng.com/bits-his/" target="_blank">
+        <img
           src={logo}
           alt="logo"
-          className="img-thumbnail"
-          height="50em"
-          width="80em"
-        /> */}
-        <h4 className="logoText">HMS</h4>
+          height="50"
+          width="150"
+        />
+        {/* <h4 className="logoText">HMS</h4> */}
       </NavbarBrand>
       <NavbarToggler onClick={this.toggle} />
       <Collapse isOpen={this.state.isOpen} navbar>

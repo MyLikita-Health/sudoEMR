@@ -13,6 +13,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { FormErrors } from './FormErrors';
 import defaultImage from '../../images/default_image.png';
 import { _fetchData, _postData } from '../helpers';
+import Notifications, { notify } from 'react-notify-toast';
+
 
 /**
  * The modal page for registering new patients
@@ -112,11 +114,11 @@ class ModalPage extends React.Component {
         fieldValidationErrors.email = emailValid ? '' : ' is invalid';
         break;
       case 'firstname':
-        firstnameValid = value.length > 0;
+        firstnameValid = value.length > 2;
         fieldValidationErrors.firstname = firstnameValid ? '' : ' is too short';
         break;
       case 'surname':
-        surnameValid = value.length > 0;
+        surnameValid = value.length > 2;
         fieldValidationErrors.surname = surnameValid ? '' : ' is too short';
         break;
       default:
@@ -163,9 +165,32 @@ class ModalPage extends React.Component {
 
     this.props.receiveState(data);
 
-    let route = 'patientrecords/new';
-    let callback = () => this.setState({ msg: 'Thanks for registering' });
-    _postData({ route, data, callback });
+    // let route = 'patientrecords/new';
+    let url = 'https://brainstormng.com/api/patient/create.php'
+    // let callback = () => this.setState({ msg: 'Thanks for registering' });
+    // _postData({ route, data, callback });
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }).then(response => {
+      if(response.status >= 500){
+        return notify.show(
+          `Bad response from server`,
+          'custom',
+          3000,
+          'red'
+        );
+      } 
+      return response.json()
+    }).then(data => {
+      notify.show(
+        data.message,
+        'custom',
+        3000,
+        'blue'
+      );
+    }).catch(err => console.log(err))
   };
 
   get = () => {
@@ -187,6 +212,7 @@ class ModalPage extends React.Component {
     return (
       <div>
         <Button onClick={this.toggle}>Add New patient</Button>
+        <Notifications options={{ zIndex: 200, top: '50px' }} />
         {/* the modal starts here */}
         <Modal isOpen={this.state.modal} toggle={this.toggle} size="lg">
           <ModalHeader toggle={this.toggle}>Add New patient</ModalHeader>

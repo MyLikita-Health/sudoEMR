@@ -111,17 +111,26 @@ export default class Patientlist extends Component {
   // fetching the data to display on componentDidMount using the
   // helper function _fetchData()
   fetchData() {
-    let route = 'patientrecords/unassignedPatientlist';
-    let success_callback = data => this.setState({ patientrecords: data });
-    let error_callback = error => this.setState({ unassignedError: error });
-    _fetchData({ route, success_callback, error_callback });
+    let route = 'https://brainstormng.com/api/patient/unassignedPatientlist.php';
+    fetch(route)
+      .then(data => data.json())
+      .then(response => this.setState({patientrecords: response.records}))
+    // let success_callback = data => {
+    //   console.log(data.records)
+    //   this.setState({ patientrecords: data.records })
+    //   }
+    // let error_callback = error => this.setState({ unassignedError: error });
+    // _fetchData({ route, success_callback, error_callback });
   }
 
   fetchAll = () => {
-    let route = 'patientrecords/patientlist';
-    let success_callback = data => this.setState({ allpatientrecords: data });
-    let error_callback = error => this.setState({ allPatientError: error });
-    _fetchData({ route, success_callback, error_callback });
+    let route = 'https://brainstormng.com/api/patient/patientlist.php';
+    fetch(route)
+      .then(data => data.json())
+      .then(response => this.setState({ allpatientrecords: response.records }))
+    // let success_callback = data => this.setState({ allpatientrecords: data });
+    // let error_callback = error => this.setState({ allPatientError: error });
+    // _fetchData({ route, success_callback, error_callback });
   };
 
   //when component has been mounted
