@@ -7,7 +7,7 @@ const Landing = () => (
         <p className="lead">
             Bits-HIS is a software aimed at managing patient hospital/clinical 
             and other related data in a timely, effective and efficient manner.
-            Find out more <a href="https://brainstormng.com/bits-his/" target="_blank">here</a>
+            Find out more <a href="https://bits-his.com" target="_blank">here</a>
         </p>
         <hr className="my-2" />
         <p>To get started, select a module on the navigation bar.</p>
