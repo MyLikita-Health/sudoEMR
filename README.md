@@ -3,8 +3,8 @@ Bits-HIS is an open source Health Information management aimed at managing patie
 and other related data in a timely, effective and efficient manner. <br />
 Try live demo http://bits-his.herokuapp.com/ <br />
 ## Application Requirment
- Nodejs
- Reactjs
+ Nodejs, 
+ Reactjs,
  Expressjs
 ## Table of Modules
  Record <br /> 
