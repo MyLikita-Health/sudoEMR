@@ -280,7 +280,7 @@ class PatienClarking extends React.Component {
     toggleCollapse2 = () => this.setState({ collapse2: true });
 
     onPreviewClick=()=>{ 
-        console.log(this.getSavedData());
+        this.getSavedData()
         this.setState(prevState => ({ 
             previewModal: !prevState.previewModal
         })) 
