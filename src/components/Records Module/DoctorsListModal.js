@@ -2,6 +2,7 @@ import React from 'react';
 import { Table, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import SearchBar from './SearchBar';
 import Notifications, { notify } from 'react-notify-toast';
+import { _fetchData, _postData } from '../helpers'
 
 /**
  * This renders the row in the table
@@ -17,7 +18,10 @@ class TableRow extends React.Component {
         <td className="moveToCenter">
           <button
             className="btn btn-primary"
-            onClick={() => this.props.assignDoctor(doctor.name)}
+            onClick={(e) => {
+              e.preventDefault(); 
+              this.props.assignDoctor(doctor.name)
+            }}
             style={{ marginBottom: '1rem' }}>
             Assign
           </button>
@@ -81,28 +85,16 @@ class DoctorsListModal extends React.Component {
       id: '',
       name: '',
       date: '',
+      error: ''
     };
   }
 
   //the method that fetches the data using fetch API
   fetchData = () => {
-    let self = this;
-
-    fetch('http://localhost:4000/users/doctorsList', {
-      method: 'GET',
-    })
-      .then(function(response) {
-        if (response.status >= 400) {
-          throw new Error('Bad response from server');
-        }
-        return response.json();
-      })
-      .then(function(data) {
-        self.setState({ doctorsList: data });
-      })
-      .catch(err => {
-        return err;
-      });
+    let route = 'users/doctorsList';
+    let success_callback = data => this.setState({ doctorsList: data })
+    let error_callback = error => this.setState({ error })
+    _fetchData({ route, success_callback, error_callback})
   };
 
   //when component is mounted, the data is displayed
@@ -123,49 +115,40 @@ class DoctorsListModal extends React.Component {
    */
   assignDoctor = name => {
     let myColor = { background: '#55ba98', text: '#FFFFFF' };
-    /**
-     * this part implement the notification that pops up
-     * after we have assigned a patient to a doctor.
-     * The notification color was set with the variable myColor above.
-     */
-    notify.show(
-      `Patient with id: ${
-        this.props.patientId
-      } has been assigned to Dr. ${name}!`,
-      'custom',
-      3000,
-      myColor
-    );
 
     var data = {
       assigned_to: name,
       id: this.props.patientId,
     };
 
-    fetch('http://localhost:4000/patientrecords/assign', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(function(response) {
-        if (response.status >= 400) {
-          throw new Error('Bad response from server');
-        }
-        return response.json();
-      })
-      .then(function(data) {
-        console.log(data);
-        if (data === 'success') {
-          this.setState({
-            msg: 'User has been edited.',
-          });
-        }
-      })
-      .catch(function(err) {
-        return err;
-      });
+    let route = 'patientrecords/assign';
+    let callback = () => {
+      /**
+     * this part implement the notification that pops up
+     * after we have assigned a patient to a doctor.
+     * The notification color was set with the variable myColor above.
+     */
+      notify.show(
+        `Patient with id: ${
+          this.props.patientId
+        } has been assigned to Dr. ${name}!`,
+        'custom',
+        3000,
+        myColor
+      );
+    }
+
+    let error_cb = error => {
+      return notify.show(
+        `Bad response from server`,
+        'custom',
+        3000,
+        'red'
+      );
+    }
+    _postData({ route, data, callback, error_cb });
+
+    this.props.closeDoctorsModal()
   };
 
   render() {
@@ -183,8 +166,8 @@ class DoctorsListModal extends React.Component {
             <SearchBar
               filterText={this.state.filterText}
               onFilterTextChange={this.handleFilterTextChange}
-              placeholder="Search for a patient..."
-              width="685px"
+              placeholder="Search for a doctor..."
+              width="60rem"
               size={45}
             />
             <br />

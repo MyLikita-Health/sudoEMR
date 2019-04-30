@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
-import {
-  FormGroup,
-  Col,
-  Label,
-  Collapse,
-  Modal,
-  ModalHeader,
-  ModalBody,
-} from 'reactstrap';
+import {  Collapse } from 'reactstrap';
 import ModalPage from './ModalPage';
 import DoctorsListModal from './DoctorsListModal';
 import { RecordGuide } from '../Guides';
@@ -114,8 +106,8 @@ export default class Patientlist extends Component {
     let route = 'patientrecords/unassignedPatientlist';
     
     let success_callback = data => {
-       console.log(data.records)
-       this.setState({ patientrecords: data.records })
+      //  console.log(data)
+       this.setState({ patientrecords: data })
       }
      let error_callback = error => this.setState({ unassignedError: error });
      _fetchData({ route, success_callback, error_callback });
@@ -124,7 +116,7 @@ export default class Patientlist extends Component {
   fetchAll = () => {
     let route = 'patientrecords/patientlist';
     
-    let success_callback = data => this.setState({ allpatientrecords: data });
+    let success_callback = data => this.setState({ allpatientrecords: data.results });
     let error_callback = error => this.setState({ allPatientError: error });
     _fetchData({ route, success_callback, error_callback });
   };
@@ -228,9 +220,9 @@ export default class Patientlist extends Component {
               renderEditButton={false}
               error={this.state.allPatientError}
               /*
-                                this part is used to enable in-records delete operations
-                                to activate this action, uncomment the code below
-                            */
+                  this part is used to enable in-records delete operations
+                  to activate this action, uncomment the code below
+              */
               // deletepatientrecords={this.deletepatientrecords}
             />
           </Collapse>

@@ -34,9 +34,20 @@ export default class EditModal extends React.Component {
     }
   }
 
+  componentDidMount() {
+    const { id, surname, firstname, age, gender, maritalstatus, DOB, tribe, religion, phoneNo, 
+      email, nationality, state, lga, occupation, address, kinName, 
+      kinRelationship, kinPhone, kinEmail, kinoccupation, kinAddress } = this.props.details;
+
+    this.setState({ id, surname, firstname, age, gender, maritalstatus, DOB, tribe, religion, phoneNo, 
+      email, nationality, state, lga, occupation, address, kinName, 
+      kinRelationship, kinPhone, kinEmail, kinoccupation, kinAddress })
+  }
+
   logChange=(e)=>{
     this.setState({ [e.target.name]: e.target.value });
   }
+
 
   //method for submitting data after editing it in the edit modal
   handleEdit = (e) => {
@@ -58,7 +69,7 @@ export default class EditModal extends React.Component {
     const { editModalIsOpen, closeEditModal, details } = this.props;
     const { id, surname, firstname, age, gender, maritalstatus, DOB, tribe, religion, phoneNo, 
       email, nationality, state, lga, occupation, address, kinName, 
-      kinRelationship, kinPhone, kinEmail, kinoccupation, kinAddress } = this.props.details;
+      kinRelationship, kinPhone, kinEmail, kinoccupation, kinAddress } = this.state;
     return (
       <Modal size="lg" isOpen={editModalIsOpen} toggle={closeEditModal}>
         <ModalHeader toggle={closeEditModal}>Preview Diagnosis<p>{this.state.new.email}</p></ModalHeader>
@@ -107,7 +118,7 @@ export default class EditModal extends React.Component {
                   onChange={this.handleUserInput}
                   name="firstname"
                   type="text"
-                  value={ this.props.firstname}
+                  value={firstname}
                   className="form-control Firstname"
                   placeholder="Firstname"
                 />

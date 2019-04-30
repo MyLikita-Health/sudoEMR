@@ -7,7 +7,7 @@ import Admin from './components/AdminModule/Admin';
 import Patientlist from './components/Records Module/Patientlist';
 import Lab from './components/Lab Module/Lab';
 import ErrorBoundary from './components/MyErrorBoundary';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import Login from './components/Login/Login2';
 import Navbar from './nav-old'
@@ -33,7 +33,7 @@ class App extends Component {
       users: [],
       isOpen: false,
       isLoading: true,
-      landing: true,
+      // landing: true,
     };
   }
 
@@ -142,7 +142,6 @@ class App extends Component {
         {this.state.user && (
           <Router basename={process.env.PUBLIC_URL}>
             <div>
-              <div />
               {/* The header goes here */}
               <Navbar 
                 records= {this.state.records}
@@ -155,28 +154,17 @@ class App extends Component {
                 toggleLanding={this.toggleLanding}
               />
               <br />
-              {this.state.landing && <Landing />}
+              {/* {this.state.landing && <Landing />} */}
               {/* ... and the contents go here */}
-              <div className="">
-                {this.state.records && (
-                  <Route
-                    className="active"
-                    path="/patientlist"
-                    component={Patientlist}
-                  />
-                )}
-                {this.state.doctors && (
-                  <Route path="/patient_clarking" component={PatientClarking} />
-                )}
-                {this.state.pharmacy && (
-                  <Route path="/pharmacy" component={Pharmacy} />
-                )}
-                {this.state.lab && <Route path="/lab" component={Lab} />}
-                {this.state.account && (
-                  <Route path="/account" component={Account} />
-                )}
-                {this.state.admin && <Route path="/admin" component={Admin} />}
-              </div>
+              <Switch>
+                <Route exact path='/' component={Landing} />
+                <Route exact path='/patientlist' component={Patientlist} />
+                <Route exact path='/patient_clarking' component={PatientClarking} />
+                <Route exact path='/pharmacy' component={Pharmacy} />
+                <Route exact path='/account' component={Lab} />
+                <Route exact path='/admin' component={Admin} />
+                <Route path='/app' component={AppDem} />
+              </Switch>
             </div>
           </Router>
         )}
@@ -193,3 +181,7 @@ class App extends Component {
 }
 
 export default App;
+
+function AppDem() {
+  return <h1>Page not found</h1>
+}

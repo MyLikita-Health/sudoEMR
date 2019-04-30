@@ -43,7 +43,7 @@ const _fetchData = ({ route, success_callback, error_callback }) => {
  * @params data (object) => item to be submitted
  * @params callback => optional callback function
  */
-const _postData = ({ route, data, callback }) => {
+const _postData = ({ route, data, callback, error_cb=f=>f }) => {
   fetch(`${url}/${route}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -51,7 +51,8 @@ const _postData = ({ route, data, callback }) => {
   })
     .then(function(response) {
       if (response.status >= 400) {
-        throw new Error('Bad response from server');
+        // throw new Error('Bad response from server');
+        error_cb()
       }
       return response.json();
     })

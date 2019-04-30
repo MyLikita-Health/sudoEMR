@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import { _fetchData } from '../helpers'
 // import './Style/App.css';
 
 /**
@@ -28,24 +29,33 @@ class AssignPatient extends React.Component {
     });
   }
 
-  componentDidMount() {
-    let self = this;
+  fetchData() {
+    let route = 'patientrecords/patientlist';
+    let success_callback = data => this.setState({ patientrecords: data });
+    let error_callback = error => console.log(error)
 
-    fetch('http://localhost:4000/patientrecords/patientlist', {
-      method: 'GET',
-    })
-      .then(function(response) {
-        if (response.status >= 400) {
-          throw new Error('Bad response from server');
-        }
-        return response.json();
-      })
-      .then(function(data) {
-        self.setState({ patientrecords: data });
-      })
-      .catch(err => {
-        return err;
-      });
+    _fetchData({ route, success_callback, error_callback })
+  }
+
+  componentDidMount() {
+    this.fetchData()
+    // let self = this;
+
+    // fetch('http://localhost:4000/patientrecords/patientlist', {
+    //   method: 'GET',
+    // })
+    //   .then(function(response) {
+    //     if (response.status >= 400) {
+    //       throw new Error('Bad response from server');
+    //     }
+    //     return response.json();
+    //   })
+    //   .then(function(data) {
+    //     self.setState({ patientrecords: data });
+    //   })
+    //   .catch(err => {
+    //     return err;
+    //   });
   }
 
   handleSubmit(e) {
@@ -61,30 +71,28 @@ class AssignPatient extends React.Component {
       data[field] = this.refs[field].value;
       //data[field]=this.refs[field].value;
     }
-    fetch('http://localhost:4000/patientrecords/assign', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(function(response) {
-        if (response.status >= 400) {
-          throw new Error('Bad response from server');
-        }
-        return response.json();
-      })
-      .then(function(data) {
-        console.log(data);
-        if (data === 'success') {
-          this.setState({
-            msg: 'User has been edited.',
-          });
-        }
-      })
-      .catch(function(err) {
-        return err;
-      });
+
+    this.props.receiveState(data);
+
+    let route = 'patientrecords/assign';
+    let callback = () => {
+      notify.show(
+        data.message||"Record Submitted",
+        'custom',
+        3000,
+        'blue'
+      );
+    }
+
+    let error_cb = error => {
+      return notify.show(
+        `Bad response from server`,
+        'custom',
+        3000,
+        'red'
+      );
+    }
+    _postData({ route, data, callback, error_cb });
   }
 
   logChange(e) {
