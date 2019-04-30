@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Form, FormGroup, Col, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import { _deleteData } from '../helpers'
 
 export default class PatientDetails extends React.Component {
   constructor(){
@@ -31,27 +32,17 @@ export default class PatientDetails extends React.Component {
             data[field]=this.refs[field].value;
             data[field]=this.refs[field].value;
         }
-        console.log(data)
-        fetch('http://localhost:4000/patientrecords/delete', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(data)}).then(function(response) {
-                if (response.status >= 400) {
-                  throw new Error("Bad response from server");
-                }
-                return response.json();
-            }).then(function(data) {
-                console.log(data)    
-                if(data === "success"){
-                   this.setState({msg: "Thanks for registering"});  
-                }
-            }).catch(function(err) {
-                return err;
-            });
-        }
-        logChange(e) {
-            this.setState({[e.target.ref]: e.target.value});  
-        }
+
+        let route = 'patientrecords/delete'
+
+        callback = () => this.setState({msg: "Thanks for registering"});  
+        
+        _deleteData({ route, data, callback })
+      }
+
+      logChange(e) {
+          this.setState({[e.target.ref]: e.target.value});  
+      }
 
 
   render() {

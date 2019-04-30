@@ -8,7 +8,7 @@ import { toCamelCase } from './helpers';
  * This component renders the basic details of the patient.
  */
 function PatientForm({ record }) {
-  const username = localStorage.getItem('username');
+  const username = localStorage.getItem('user');
   const doctor = toCamelCase(username);
   const date = new Date();
   const flexStyle = { display: 'flex', flexDirection: 'horizontal' };
