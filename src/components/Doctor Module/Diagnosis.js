@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 import { PcomplaintsForm } from './PcomplaintsForm';
 import HistoryForm from './HistoryForm';
 import SystemExaminationForm from './SysExaminationEdit';
@@ -40,20 +40,22 @@ const Tabs =()=> {
 const TabForm = () => {
     return (
             <div style={{height: '60vh', width:'100%'}}>
-                <Route path="/patient_clarking/presenting_complaints" component={PcomplaintsForm}/>
-                <Route path="/patient_clarking/history" component={HistoryForm}/>
-                <Route path="/patient_clarking/previous_medical_history" component={PreviousMedicalHistoryForm}/>
-                <Route path="/patient_clarking/system_examination" component={SystemExaminationForm}/>
-                <Route path="/patient_clarking/vital_signs" component={CreateVitalSigns}/>
-                <Route path="/patient_clarking/problems" component={NewProblems}/>
-                <Route path="/patient_clarking/radiological_investigation" component={NewRadiologyInvestigations}/>
-                <Route path="/patient_clarking/provisional_diagnosis" component={NewProvisionalDiagnosis}/>
-                <Route path="/patient_clarking/athropometry" component={CreateAthropometry}/>
-                <Route path="/patient_clarking/management_plan" component={EditManagementplan}/>
-                <Route path="/patient_clarking/prescription_request" component={EditPrescriptionRequest}/>
-                <Route path="/patient_clarking/observation_request" component={EditObservationRequest}/>
-                <Route path="/patient_clarking/dressing_request" component={EditDressingRequest}/>
-                <Route path="/patient_clarking/diagnostic_code" component={DiagnosticCode}/>
+            <Switch>
+                <Route exact path="/patient_clarking/presenting_complaints" component={PcomplaintsForm}/>
+                <Route exact path="/patient_clarking/history" component={HistoryForm}/>
+                <Route exact path="/patient_clarking/previous_medical_history" component={PreviousMedicalHistoryForm}/>
+                <Route exact path="/patient_clarking/system_examination" component={SystemExaminationForm}/>
+                <Route exact path="/patient_clarking/vital_signs" component={CreateVitalSigns}/>
+                <Route exact path="/patient_clarking/problems" component={NewProblems}/>
+                <Route exact path="/patient_clarking/radiological_investigation" component={NewRadiologyInvestigations}/>
+                <Route exact path="/patient_clarking/provisional_diagnosis" component={NewProvisionalDiagnosis}/>
+                <Route exact path="/patient_clarking/athropometry" component={CreateAthropometry}/>
+                <Route exact path="/patient_clarking/management_plan" component={EditManagementplan}/>
+                <Route exact path="/patient_clarking/prescription_request" component={EditPrescriptionRequest}/>
+                <Route exact path="/patient_clarking/observation_request" component={EditObservationRequest}/>
+                <Route exact path="/patient_clarking/dressing_request" component={EditDressingRequest}/>
+                <Route exact path="/patient_clarking/diagnostic_code" component={DiagnosticCode}/>
+            </Switch>
             </div>
     )
 }

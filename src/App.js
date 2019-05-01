@@ -163,7 +163,7 @@ class App extends Component {
                 <Route exact path='/pharmacy' component={Pharmacy} />
                 <Route exact path='/account' component={Lab} />
                 <Route exact path='/admin' component={Admin} />
-                <Route path='/app' component={AppDem} />
+                <Route component={AppDem} />
               </Switch>
             </div>
           </Router>
