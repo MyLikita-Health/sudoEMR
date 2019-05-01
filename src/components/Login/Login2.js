@@ -40,13 +40,19 @@ const Login = props => {
           <input type="submit" className="fourth customBtn" value="Login" />
           <label style={{ color: 'red' }}>{props.message}</label>
         </form>
-
+        <div id="form-footer">
+          <p>Note: For demo use the following info:</p>
+          <div>
+            username: user,
+            password: user
+          </div>
+        </div>
         {/* <!-- Remind Passowrd --> */}
-        <div id="formFooter">
+        {/* <div id="formFooter">
           <a className="underlineHover forgot-pswd" href="#">
             Forgot Password?
           </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );
