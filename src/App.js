@@ -77,7 +77,7 @@ class App extends Component {
       const username = this.state.username.trim();
       const password = this.state.password.trim();
 
-      if (username === 'admin' && password === 'admin') {
+      if (username === 'user' && password === 'user') {
         localStorage.setItem('user', this.state.username);
 
         this.setState(prevState => ({
