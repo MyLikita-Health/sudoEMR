@@ -14,6 +14,8 @@ If you know how to code, we welcome you to send fixes and new features, but in o
   By clicking on the fork button on [Github](https://github.com/bits-his/bits-his)
 - Clone your forked repo locally:
   `git clone [project URL]`
+- Run `npm install` to install all dependencies
+- Run `npm start` to start the app
 - Code your changes (if you want to implement many features do each one in a separated branch)
 - Write tests to ensure your feature works as expected and protect its behavior on future changes;
 Test it! Ensure you don't crash this project in Node.js or Browser environments;
