@@ -1,7 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { Route, NavLink } from 'react-router-dom';
 import Loading from '../loading';
-// import PendingPharmacyRequest from './PendingPharmacyRequest';
 const SalesReport = lazy(() => import('./SalesReport'));
 const UpToDateStockBalance = lazy(() => import('./UpToDateStockBalance'));
 const EditDrugs = lazy(() => import('./EditDrugs'));
@@ -10,42 +8,37 @@ const PrescriptionProcessingForm = lazy(() =>
   import('./PrescriptionProcessingForm')
 );
 
-const Tabs = ({ hideCarousel }) => {
+const Tabs = ({ setComponentToRender }) => {
   return (
     <div style={{ width: '100%' }}>
-      {/* <NavLink
-        to="/pharmacy/pendingPrescriptionRequest"
-        className="btn btn-outline-success col-xs-12 col-sm-6 col-md-4 col-lg-4">
-        Pending Prescription Requests
-      </NavLink> */}
-      <NavLink
-        to="/pharmacy/addDrugs"
+      <button
+        onClick={() => setComponentToRender('SalesReport')}
         className="btn btn-outline-warning col-xs-12 col-sm-6 col-md-4 col-lg-4"
-        onClick={hideCarousel}>
+      >
         Add Drugs
-      </NavLink>
+      </button>
 
-      <NavLink
-        to="/pharmacy/dailyInventoryReport"
+      <button
+        onClick={() => setComponentToRender('AddDrug')}
         className="btn btn-outline-danger col-xs-12 col-sm-6 col-md-4 col-lg-4"
-        onClick={hideCarousel}>
+      >
         Daily Inventory Report
-      </NavLink>
-      <NavLink
-        to="/pharmacy/salesReport"
+      </button>
+      <button
+        onClick={() => setComponentToRender('UpToDateStockBalance')}
         className="btn btn-outline-secondary col-xs-12 col-sm-6 col-md-4 col-lg-4"
-        onClick={hideCarousel}>
+      >
         Sales Report
-      </NavLink>
-      <NavLink
-        to="/pharmacy/upToDateStockBalance"
+      </button>
+      <button
+        onClick={() => setComponentToRender('EditDrugs')}
         className="btn btn-outline-success col-xs-12 col-sm-6 col-md-5 col-lg-5"
-        onClick={hideCarousel}>
+      >
         Up To Date Stock Balance
-      </NavLink>
+      </button>
     </div>
   );
-}; //385159356-7052
+};
 
 const TabForm = ({
   pendingRequest,
@@ -53,68 +46,43 @@ const TabForm = ({
   processing,
   toggleProcessingForm,
   details,
+  renderComponents
 }) => {
-  const routes = [
-    // {
-    //   path: '/pharmacy/pendingPrescriptionRequest',
-    //   main: () => <PendingPharmacyRequest />,
-    // },
-    {
-      path: '/pharmacy/salesReport',
-      main: () => <SalesReport />,
-    },
-    {
-      path: '/pharmacy/addDrugs',
-      main: () => <AddDrug />,
-    },
-    {
-      path: '/pharmacy/upToDateStockBalance',
-      main: () => <UpToDateStockBalance />,
-    },
-    {
-      path: '/pharmacy/dailyInventoryReport',
-      main: () => <EditDrugs />,
-    },
-  ];
   return (
     <Suspense fallback={<Loading />}>
-      {!processing && (
-        <div>
-          {!showCarousel &&
-            routes.map(route => (
-              <Route
-                key={route.path}
-                path={route.path}
-                component={route.main}
-              />
-            ))}
-          {showCarousel && (
-            <div style={{ height: '40vh' }}>
-              <h1>News Feed</h1>
-            </div>
-          )}
-        </div>
-      )}
-      {processing ? (
+      {renderComponents()}
+      {processing && (
         <div>
           <PrescriptionProcessingForm
             details={details}
             toggleProcessingForm={toggleProcessingForm}
           />
         </div>
-      ) : null}
+      )} 
     </Suspense>
   );
 };
 
 class PharmacyDashboard extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { showCrousel: true };
+  state = {
+    component: ''
   }
 
   hideCarousel = () => this.setState({ showCarousel: false });
+
+  renderComponents = () => {
+    const {component} = this.state
+
+    switch (component) {
+      case 'SalesReport' : return <SalesReport />
+      case 'AddDrug' : return <AddDrug />
+      case 'UpToDateStockBalance' : return <UpToDateStockBalance />
+      case 'EditDrugs' : return <EditDrugs />
+      default : return <p className="text-center">Select an item above to view</p>
+    }
+  }
+
+  setComponentToRender = component => this.setState({ component })
 
   render() {
     const {
@@ -125,11 +93,13 @@ class PharmacyDashboard extends React.Component {
     } = this.props;
     return (
       <div>
-        <Tabs hideCarousel={this.hideCarousel} />
+        <Tabs 
+          setComponentToRender={this.setComponentToRender} 
+        />
         <br />
         <TabForm
+          renderComponents={this.renderComponents}
           processing={processing}
-          showCarousel={this.state.showCarousel}
           pendingRequest={pendingRequest}
           toggleProcessingForm={toggleProcessingForm}
           details={details}
