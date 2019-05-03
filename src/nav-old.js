@@ -72,7 +72,7 @@ export default class NavbarNow extends Component {
                 </NavLink>
               </NavItem>
             )}
-            {/* {admin && (
+            {/* {admin && (d
               <NavItem onClick={this.toggle}>
                 <NavLink to="/admin" className="nav">
                   Admin
