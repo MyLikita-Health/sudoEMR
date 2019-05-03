@@ -6,7 +6,7 @@ import Account from './components/Account Module/Account';
 import Admin from './components/AdminModule/Admin';
 import Patientlist from './components/Records Module/Patientlist';
 import Lab from './components/Lab Module/Lab';
-import ErrorBoundary from './components/MyErrorBoundary';
+import ErrorBoundary from './error-boundary/MyErrorBoundary';
 import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import Login from './components/Login/Login2';
@@ -154,16 +154,16 @@ class App extends Component {
                 toggleLanding={this.toggleLanding}
               />
               <br />
-              {/* {this.state.landing && <Landing />} */}
               {/* ... and the contents go here */}
               <Switch>
                 <Route exact path='/' component={Landing} />
                 <Route exact path='/patientlist' component={Patientlist} />
                 <Route exact path='/patient_clarking' component={PatientClarking} />
                 <Route exact path='/pharmacy' component={Pharmacy} />
-                <Route exact path='/account' component={Lab} />
-                <Route exact path='/admin' component={Admin} />
-                <Route component={AppDem} />
+                <Route exact path='/lab' component={Lab} />
+                <Route exact path='/account' component={Account} />
+                {/* <Route exact path='/admin' component={Admin} /> */}
+                <Route component={PageNotFound} />
               </Switch>
             </div>
           </Router>
@@ -172,7 +172,6 @@ class App extends Component {
           <span
             className="col-xs-4 col-sm-4 col-md-4 col-lg-4"
             style={{ fontFamily: 'cursive' }}>
-            {/* &copy; di-hub - HMS Team */}
           </span>
         </div>
       </ErrorBoundary>
@@ -182,6 +181,6 @@ class App extends Component {
 
 export default App;
 
-function AppDem() {
-  return <h1>Page not found</h1>
+function PageNotFound() {
+  return <h1 style={{ textAlign: 'center', marginTop: 40 }}>Page not found</h1>
 }
