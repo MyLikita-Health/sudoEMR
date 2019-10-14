@@ -8,11 +8,11 @@ Checkout the demo http://bits-his.herokuapp.com/
  Nodejs
 
 ## Modules
-[] Record 
-[] Doctors
-[] Pharmacy
-[] Laboratory
-[] Accounting
+[ ] Record 
+[ ] Doctors
+[ ] Pharmacy
+[ ] Laboratory
+[ ] Accounting
  
  
 # Contribute
