@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PendingPharmacyRequest from './PendingPharmacyRequest';
 import image from '../../images/phamarcy.jpg';
 import { PharmacyGuide } from '../Guides';
+import DispensaryForm from './dispensaryform'
 import PharmacyDashboard from './PharmacyDashboard';
 import './pharmacy.css';
 
@@ -45,11 +46,12 @@ export default class Pharmacy extends Component {
         <div
           className="col-xs-12 col-s-12 col-md-8 col-lg-6"
           style={{ height: '85vh', border: '1px solid #007bff' }}>
-          <PharmacyDashboard
+          {/* <PharmacyDashboard
             details={details}
             processing={processing}
             toggleProcessingForm={toggleProcessingForm}
-          />
+          /> */}
+          <DispensaryForm />
         </div>
         <div className="col-xs-12 col-md-12 col-md-12 col-lg-3">
           <img src={image} alt="module-pic" className="module-pic" />
