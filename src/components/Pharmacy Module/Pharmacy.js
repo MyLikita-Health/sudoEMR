@@ -6,6 +6,7 @@ import PharmacyDashboard from "./PharmacyDashboard";
 import "./pharmacy.css";
 import AddPurchase from "./Purchase Record/AddPurchase";
 
+
 export default class Pharmacy extends Component {
   constructor(props) {
     super(props);
@@ -52,7 +53,6 @@ export default class Pharmacy extends Component {
             processing={processing}
             toggleProcessingForm={toggleProcessingForm}
           />
-          {/* <AddPurchase /> */}
         </div>
         <div className="col-xs-12 col-md-12 col-md-12 col-lg-3">
           <img src={image} alt="module-pic" className="module-pic" />
