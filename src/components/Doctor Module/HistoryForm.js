@@ -70,7 +70,7 @@ export default class HistoryForm extends React.Component {
                     <label className="col-md-2">Social History:</label>
                     <div className="col-md-4">
                         <label><input  name="Married" onChange={this.onInputChange} name= "social" value="married" type="checkbox" />Married  </label>
-                        <label><input  name="Somking" onChange={this.onInputChange} name= "social" value="smoking" type="checkbox"  />Smoking  </label>
+                        <label><input  name="Smoking" onChange={this.onInputChange} name= "social" value="smoking" type="checkbox"  />Smoking  </label>
                         <label><input  name="Alcohol" onChange={this.onInputChange} name= "social" value="alcohol" type="checkbox"  />Alcohol  </label>
                         
                     </div>
