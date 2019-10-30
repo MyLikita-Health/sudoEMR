@@ -1,52 +1,79 @@
-import React, { Component } from 'react';
-import {
-  MemoryRouter as Router,
-  Route,
-  Switch,
-  NavLink,
-} from 'react-router-dom';
-import { AppContainer, Navigation, Body, Title } from './containers';
-// import { AppNavigation } from './AppNavigation';
-import {RenderItems} from './DarkBar'
-import CreateUser from './CreateUserForm';
-import Users from './Users';
-import './admin.css';
+import React, { Component } from "react";
+import AdminDashboard from "./AdminDashboard";
+import { AdminGuide } from "../Guides";
+import { _fetchData } from "../helpers";
 
-export default class Admin extends Component {
+export default class Lab extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isRoute: true,
+      Users: [],
+      error: "",
+      mode: null
+    };
+  }
+
+  fetchData = route => {
+    let success_callback = data => this.setState({ Users: data });
+    let error_callback = error => this.setState({ error });
+    _fetchData({ route, success_callback, error_callback });
+  };
+
+  componentDidMount() {
+    let route = "Users/all";
+    this.fetchData(route);
+  }
+
+  toggleRoute = () => {
+    this.setState(prevState => ({ isRoute: !prevState.isRoute }));
+  };
+
+  onPatientClick = currentReq => {
+    this.setState({ currentReq });
+    this.toggleRoute();
+  };
+
+  setMode = mode => this.setState({ mode });
+
+  updateTable = id => {
+    const { requestsList } = this.state;
+    let newRequestList = requestsList.filter(req => req.id !== id);
+
+    this.setState({ requestsList: newRequestList });
+  };
+
   render() {
+    const { requestsList, isRoute, currentReq, error, mode } = this.state;
+    const {
+      toggleRoute,
+      updateTable,
+      onPatientClick,
+      fetchData,
+      setMode
+    } = this;
     return (
-      <AppContainer>
-        <Navigation>
-          <Title> User Admin </Title>
-          <RenderItems />
-        </Navigation>
-        <Body>
-          <Switch>
-            <Route path="/admin/new-user" component={CreateUser} />
-            <Route path="/admin/users" component={Users} />
-          </Switch>
-        </Body>
-      </AppContainer>
+      <div className="row" style={{ backgroundColor: "#ffffff" }}>
+        <div className="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+          <AdminGuide />
+        </div>
+        <div
+          style={{ border: "1px solid #007bff" }}
+          className="col-xs-12 col-sm-12 col-md-8 col-lg-6"
+        >
+          <AdminDashboard
+            fetchData={fetchData}
+            req={currentReq}
+            isRoute={isRoute}
+            toggleRoute={toggleRoute}
+            updateTable={updateTable}
+            setMode={setMode}
+            mode={mode}
+          />
+        </div>
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-3 module-pic"></div>
+      </div>
     );
   }
 }
-
-const TabList = props => {
-  return (
-    <ul className="sidebar" type="none">
-      <TabListItem to="newUser" title="Create New User" />
-      <TabListItem to="doctors" title="List all Users" />
-    </ul>
-  );
-};
-const TabListItem = ({ to, title }) => {
-  return (
-    <li>
-      <NavLink
-        style={{ textDecoration: 'none', color: 'white' }}
-        to={`/admin/${to}`}>
-        {title}
-      </NavLink>
-    </li>
-  );
-};

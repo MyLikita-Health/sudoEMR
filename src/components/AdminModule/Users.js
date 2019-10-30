@@ -1,21 +1,20 @@
-import React, { Component } from 'react';
-import { Table } from 'reactstrap';
-import { _fetchData } from '../helpers';
-import Likes from './Like';
+import React, { Component } from "react";
+import { Table } from "reactstrap";
+import { _fetchData } from "../helpers";
 
 export default class Users extends Component {
   constructor() {
     super();
     this.state = {
-      searchTerm: '',
-      users: [],
+      searchTerm: "",
+      users: []
     };
   }
 
   fetchData() {
     let self = this;
 
-    let route = 'users/usersList';
+    let route = "users/usersList";
     let success_callback = data => {
       // console.log(data);
       self.setState({ users: data });
@@ -51,7 +50,6 @@ export default class Users extends Component {
     });
     return (
       <div>
-        <Likes />
         <h2 className="text-center">List of All Users</h2>
         <input
           type="text"
@@ -86,5 +84,5 @@ const TableRow = ({ name, username, role, speciality }) => (
   </tr>
 );
 TableRow.defaultProps = {
-  users: [],
+  users: []
 };
