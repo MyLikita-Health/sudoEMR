@@ -162,7 +162,7 @@ class App extends Component {
                 <Route exact path='/pharmacy' component={Pharmacy} />
                 <Route exact path='/lab' component={Lab} />
                 <Route exact path='/account' component={Account} />
-                {/* <Route exact path='/admin' component={Admin} /> */}
+                <Route exact path='/admin' component={Admin} />
                 <Route component={PageNotFound} />
               </Switch>
             </div>
