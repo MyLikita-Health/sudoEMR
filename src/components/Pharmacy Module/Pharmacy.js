@@ -4,7 +4,7 @@ import image from "../../images/phamarcy.jpg";
 import { PharmacyGuide } from "../Guides";
 import PharmacyDashboard from "./PharmacyDashboard";
 import "./pharmacy.css";
-import AddPurchase from "./Purchase Record/AddPurchase";
+//import AddPurchase from "./Purchase Record/AddPurchase";
 
 export default class Pharmacy extends Component {
   constructor(props) {
