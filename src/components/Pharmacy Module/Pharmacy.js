@@ -46,8 +46,8 @@ export default class Pharmacy extends Component {
         </div>
         <div
           className="col-xs-12 col-s-12 col-md-8 col-lg-6"
-          style={{ height: "85vh", border: "1px solid #007bff" }}
-        >
+          style={{ height: '150vh', border: '1px solid #007bff' }}>
+         
           <PharmacyDashboard
             details={details}
             processing={processing}

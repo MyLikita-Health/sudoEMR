@@ -161,17 +161,14 @@ class App extends Component {
               <br />
               {/* ... and the contents go here */}
               <Switch>
-                <Route exact path="/" component={Landing} />
-                <Route exact path="/patientlist" component={Patientlist} />
-                <Route
-                  exact
-                  path="/patient_clarking"
-                  component={PatientClarking}
-                />
-                <Route exact path="/pharmacy" component={Pharmacy} />
-                <Route exact path="/lab" component={Lab} />
-                <Route exact path="/account" component={Account} />
-                <Route exact path="/admin" component={Admin} />
+
+                <Route exact path='/' component={Landing} />
+                <Route exact path='/patientlist' component={Patientlist} />
+                <Route exact path='/patient_clarking' component={PatientClarking} />
+                <Route exact path='/pharmacy' component={Pharmacy} />
+                <Route exact path='/lab' component={Lab} />
+                <Route exact path='/account' component={Account} />
+                <Route exact path='/admin' component={Admin} />
                 <Route component={PageNotFound} />
               </Switch>
             </div>
@@ -192,4 +189,5 @@ export default App;
 
 function PageNotFound() {
   return <h1 style={{ textAlign: "center", marginTop: 40 }}>Page not found</h1>;
+
 }
