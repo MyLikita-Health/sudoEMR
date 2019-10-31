@@ -13,8 +13,9 @@ class AddPurchase extends React.Component {
       recieptNo: "",
       supplier: "",
       cost: 0.0,
-      paymentStatus: "",
-      recieptPicture: ""
+      paymentStatus: {},
+      recieptPicture: "",
+      purchase: []
     };
   }
 
@@ -26,6 +27,7 @@ class AddPurchase extends React.Component {
   };
 
   handleSubmit(e) {
+    console.log(this.props);
     e.preventDefault();
     this.setState(prevState => ({
       purchase: prevState.purchase.concat({
@@ -38,16 +40,7 @@ class AddPurchase extends React.Component {
         cost: this.state.cost,
         paymentStatus: this.state.paymentStatus,
         recieptPicture: this.state.recieptPicture
-      }),
-      date: null,
-      name: "",
-      quantity: 0,
-      purchaseBy: "",
-      recieptNo: "",
-      supplier: "",
-      cost: 0.0,
-      paymentStatus: "",
-      recieptPicture: ""
+      })
     }));
   }
   render() {

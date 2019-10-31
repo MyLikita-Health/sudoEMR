@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -7,20 +7,20 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  Button,
-} from 'reactstrap';
-import logo from './images/logo.png';
+  Button
+} from "reactstrap";
+import logo from "./images/logo.png";
 
 export default class NavbarNow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false,
+      isOpen: false
     };
   }
   toggle = () => {
     this.setState({
-      isOpen: !this.state.isOpen,
+      isOpen: !this.state.isOpen
     });
     this.props.toggleLanding();
   };
@@ -32,7 +32,7 @@ export default class NavbarNow extends Component {
       lab,
       admin,
       account,
-      username,
+      username
     } = this.props;
     return (
       <Navbar color="secondary" dark expand="md">
@@ -72,7 +72,6 @@ export default class NavbarNow extends Component {
                 </NavLink>
               </NavItem>
             )}
-            
             <NavItem onClick={this.toggle}>
               <NavLink to="/admin" className="nav">
                 Admin
@@ -86,7 +85,7 @@ export default class NavbarNow extends Component {
               </NavItem>
             )} */}
             <NavItem className="">
-              User:{' '}
+              User:{" "}
               <b>
                 <em>{username.toUpperCase()}</em>
               </b>
