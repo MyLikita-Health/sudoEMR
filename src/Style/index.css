@@ -33,3 +33,26 @@ body {
     width: 100%;
   }
 }
+#fahad{
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  border-collapse: collapse;
+  border: 3px solid #dddd;
+  width: 100%
+  
+  
+  }
+  #fahad td, #fahad th{
+   border: 1px solid #ddd;
+   padding: 8px
+  }
+  #fahad tr:nth-child(even){background-color:#dddd};
+  #fahad tr :hover {background-color: #ddd};
+  
+  #fahad th {
+    padding-top:  12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #e2ece2;
+    color: white
+  }
