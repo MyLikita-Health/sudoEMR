@@ -4,6 +4,7 @@ import image from '../../images/phamarcy.jpg';
 import { PharmacyGuide } from '../Guides';
 import PharmacyDashboard from './PharmacyDashboard';
 import './pharmacy.css';
+import Diesel from './diesel'
 
 export default class Pharmacy extends Component {
   constructor(props) {
@@ -50,6 +51,7 @@ export default class Pharmacy extends Component {
             processing={processing}
             toggleProcessingForm={toggleProcessingForm}
           />
+          {/* <Diesel/> */}
         </div>
         <div className="col-xs-12 col-md-12 col-md-12 col-lg-3">
           <img src={image} alt="module-pic" className="module-pic" />
