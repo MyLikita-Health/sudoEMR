@@ -5,6 +5,8 @@ const UpToDateStockBalance = lazy(() => import("./UpToDateStockBalance"));
 const EditDrugs = lazy(() => import("./EditDrugs"));
 const AddDrug = lazy(() => import("./AddDrug"));
 const AddPurchase = lazy(() => import("./Purchase Record/AddPurchase"));
+const PurchasePending = lazy(() => import("./PurchasePending"));
+
 const PrescriptionProcessingForm = lazy(() =>
   import("./PrescriptionProcessingForm")
 );
@@ -43,7 +45,15 @@ const Tabs = ({ setComponentToRender }) => {
       >
         Purchase Records
       </button>
+      <button
+        onClick={() => setComponentToRender("PurchasePending")}
+        className="btn btn-outline-danger col-xs-12 col-sm-6 col-md-5 col-lg-5"
+      >
+       Purchase pending
+      </button>
+     
     </div>
+
   );
 };
 
@@ -91,7 +101,11 @@ class PharmacyDashboard extends React.Component {
         return <EditDrugs />;
       case "AddPurchase":
         return <AddPurchase />;
+        case "PurchasePending":
+            return <PurchasePending />;
+            
       default:
+          
         return <p className="text-center">Select an item above to view</p>;
     }
   };
