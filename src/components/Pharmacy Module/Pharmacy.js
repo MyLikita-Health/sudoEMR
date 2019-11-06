@@ -4,6 +4,7 @@ import image from "../../images/phamarcy.jpg";
 import { PharmacyGuide } from "../Guides";
 import PharmacyDashboard from "./PharmacyDashboard";
 import "./pharmacy.css";
+import Suppliers from "./supplierModule";
 //import AddPurchase from "./Purchase Record/AddPurchase";
 
 
@@ -48,11 +49,12 @@ export default class Pharmacy extends Component {
           className="col-xs-12 col-s-12 col-md-8 col-lg-6"
           style={{ height: '150vh', border: '1px solid #007bff' }}>
          
-          <PharmacyDashboard
+          {/* <PharmacyDashboard
             details={details}
             processing={processing}
             toggleProcessingForm={toggleProcessingForm}
-          />
+          /> */}
+          <Suppliers/>
         </div>
         <div className="col-xs-12 col-md-12 col-md-12 col-lg-3">
           <img src={image} alt="module-pic" className="module-pic" />
