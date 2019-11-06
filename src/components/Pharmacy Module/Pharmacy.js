@@ -5,7 +5,7 @@ import { PharmacyGuide } from '../Guides';
 import PharmacyDashboard from './PharmacyDashboard';
 import './pharmacy.css';
 //import Diesel from './diesel'
-import Staff from './Staff'
+import Staff from './staff'
 
 export default class Pharmacy extends Component {
   constructor(props) {
