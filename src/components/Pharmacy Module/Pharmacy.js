@@ -6,7 +6,7 @@ import PharmacyDashboard from './PharmacyDashboard';
 import './pharmacy.css';
 import DispensaryTable from './dispensaryTable'
 import BreakDown from './breakDown';
-import Companies from './Companies';
+import Companies from './companies';
 
 export default class Pharmacy extends Component {
   constructor(props) {
@@ -51,10 +51,16 @@ export default class Pharmacy extends Component {
          {/* <PharmacyDashboard 
             details={details}
             processing={processing}
+            toggleProcessingForm={toggle  <PharmacyDashboard 
+            details={details}
+            processing={processing}
             toggleProcessingForm={toggleProcessingForm}
           /> 
-          <DispensaryTable/> */}
-          <BreakDown/>
+          <DispensaryTable/>
+          <BreakDown/>ProcessingForm}
+          /> 
+          <DispensaryTable/>
+          <BreakDown/> */}
           <Companies/>
         </div>
         <div className="col-xs-12 col-md-12 col-md-12 col-lg-3">

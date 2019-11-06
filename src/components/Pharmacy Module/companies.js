@@ -13,7 +13,7 @@ class Companies extends Component{
     render(){
         return(
             <div>
-                <center>Companies Table</center>
+                <center>Companies Table. </center>
                 <Table responsive>
                 <thead>
                     <tr>
