@@ -13,6 +13,9 @@ class  BreakDown extends Component{
     render(){
         return(
             <div>
+                <center>
+                    <h5>BreakDown Table</h5>
+                </center>
                     <Table responsive>
       <thead>
         <tr>

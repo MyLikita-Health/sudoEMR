@@ -6,6 +6,7 @@ import PharmacyDashboard from './PharmacyDashboard';
 import './pharmacy.css';
 import DispensaryTable from './dispensaryTable'
 import BreakDown from './breakDown';
+import Companies from './Companies';
 
 export default class Pharmacy extends Component {
   constructor(props) {
@@ -47,13 +48,14 @@ export default class Pharmacy extends Component {
         <div
           className="col-xs-12 col-s-12 col-md-8 col-lg-6"
           style={{ height: '85vh', border: '1px solid #007bff' }}>
-         <PharmacyDashboard 
+         {/* <PharmacyDashboard 
             details={details}
             processing={processing}
             toggleProcessingForm={toggleProcessingForm}
           /> 
-          {/* <DispensaryTable/> */}
+          <DispensaryTable/> */}
           <BreakDown/>
+          <Companies/>
         </div>
         <div className="col-xs-12 col-md-12 col-md-12 col-lg-3">
           <img src={image} alt="module-pic" className="module-pic" />
