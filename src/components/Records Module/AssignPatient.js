@@ -19,10 +19,9 @@ class AssignPatient extends React.Component {
     };
     this.logChange = this.logChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
     this.toggle = this.toggle.bind(this);
   }
-
+  
   toggle() {
     this.setState({
       modal: !this.state.modal,
