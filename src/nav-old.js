@@ -39,6 +39,7 @@ export default class NavbarNow extends Component {
       pharmacy,
       lab,
       admin,
+      insurance,
       profile,
       account,
       username
@@ -87,13 +88,13 @@ export default class NavbarNow extends Component {
                 </NavLink>
               </NavItem>
             )}
-            {/* {account && (
+            {insurance && (
               <NavItem onClick={this.toggle}>
-                <NavLink to="/account" className="nav">
-                  Profile
+                <NavLink to="/insurance" className="nav">
+                  NHIS
                 </NavLink>
-              </NavItem>09014187068
-            )} */}
+              </NavItem>
+            )}
 
             <NavItem>
               <Profile

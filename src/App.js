@@ -6,6 +6,7 @@ import Account from "./components/Account Module/Account";
 import Admin from "./components/AdminModule/Admin";
 import Patientlist from "./components/Records Module/Patientlist";
 import Lab from "./components/Lab Module/Lab";
+import Insurance from "./components/Insurance/Insurance";
 import ErrorBoundary from "./error-boundary/MyErrorBoundary";
 
 import {
@@ -34,6 +35,7 @@ class App extends Component {
       doctors: true,
       pharmacy: true,
       lab: true,
+      insurance: true,
       account: true,
       admin: true,
       users: [],
@@ -157,6 +159,7 @@ class App extends Component {
                 lab={this.state.lab}
                 account={this.state.account}
                 admin={this.state.admin}
+                insurance={this.state.insurance}
                 username={this.state.username}
                 toggleLanding={this.toggleLanding}
               />
@@ -174,6 +177,7 @@ class App extends Component {
                 <Route exact path="/lab" component={Lab} />
                 <Route exact path="/account" component={Account} />
                 <Route exact path="/admin" component={Admin} />
+                <Route exact path="/insurance" component={Insurance} />
                 <Route component={PageNotFound} />
               </Switch>
             </div>
