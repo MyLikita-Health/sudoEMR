@@ -7,6 +7,7 @@ import Admin from "./components/AdminModule/Admin";
 import Patientlist from "./components/Records Module/Patientlist";
 import Lab from "./components/Lab Module/Lab";
 import ErrorBoundary from "./error-boundary/MyErrorBoundary";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -92,6 +93,7 @@ class App extends Component {
           pharmacy: true,
           lab: true,
           admin: true,
+          profile: true,
           user: prevState.username
         }));
         // localStorage.setItem('user', this.state.username);
