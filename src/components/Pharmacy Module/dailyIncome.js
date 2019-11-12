@@ -57,7 +57,7 @@ class DailyIncome extends React.Component {
                               <td>fidelity bank</td>
                               <td>600k</td>
                               <td>20k</td>
-                              <td>hmmm</td>
+                              <td>hmm</td>
                           </tr>
                           <tr>
                               <td>5</td>

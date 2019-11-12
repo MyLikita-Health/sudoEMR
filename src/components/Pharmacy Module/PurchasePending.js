@@ -14,8 +14,7 @@ class PurchasePending extends React.Component {
       supplier: "",
       cost: 0.0,
       paymentStatus: {},
-      recieptPicture: "",
-      purchase: []
+npm      purchase: []
     };
   }
 
