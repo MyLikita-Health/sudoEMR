@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import PendingPharmacyRequest from "./PendingPharmacyRequest";
 import image from "../../images/phamarcy.jpg";
 import { PharmacyGuide } from "../Guides";
-import DailyIncome from './dailyIncome'
-import HmoRegistration from './hmoRegistration'
 import PharmacyDashboard from "./PharmacyDashboard";
 import "./pharmacy.css";
-//import AddPurchase from "./Purchase Record/AddPurchase";
 
 
 export default class Pharmacy extends Component {
@@ -49,14 +46,11 @@ export default class Pharmacy extends Component {
         <div
           className="col-xs-12 col-s-12 col-md-8 col-lg-6"
           style={{ height: '150vh', border: '1px solid #007bff' }}>
-{/*          
           <PharmacyDashboard
             details={details}
             processing={processing}
             toggleProcessingForm={toggleProcessingForm}
-          /> */}
-          {/* <DailyIncome /> */}
-          <HmoRegistration />
+          />
         </div>
         <div className="col-xs-12 col-md-12 col-md-12 col-lg-3">
           <img src={image} alt="module-pic" className="module-pic" />
