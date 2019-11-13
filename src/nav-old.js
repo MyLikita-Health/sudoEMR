@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -7,20 +7,20 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  Button,
-} from 'reactstrap';
-import logo from './images/logo.png';
+  Button
+} from "reactstrap";
+import logo from "./images/logo.png";
 
 export default class NavbarNow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false,
+      isOpen: false
     };
   }
   toggle = () => {
     this.setState({
-      isOpen: !this.state.isOpen,
+      isOpen: !this.state.isOpen
     });
     this.props.toggleLanding();
   };
@@ -32,12 +32,27 @@ export default class NavbarNow extends Component {
       lab,
       admin,
       account,
-      username,
+      username
     } = this.props;
     return (
-      <Navbar color="secondary" dark expand="md">
+      <Navbar 
+        dark 
+        expand="md"
+        style={{
+          minHeight: '50px',
+          padding: 0,
+          margin: 0,
+          paddingRight: 5,
+          backgroundColor: '#0069D9',
+        }}
+      >
         <NavbarBrand href="https://bits-his.com" target="_blank">
-          <img src={logo} alt="logo" height="50" width="150" />
+          <img src={logo} alt="logo" height="44"
+            width="50"
+            style={{
+              margin: '0 20px',
+            }} 
+          />
           {/* <h4 className="logoText">HMS</h4> */}
         </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
@@ -72,13 +87,11 @@ export default class NavbarNow extends Component {
                 </NavLink>
               </NavItem>
             )}
-            {/* {admin && (d
-              <NavItem onClick={this.toggle}>
-                <NavLink to="/admin" className="nav">
-                  Admin
-                </NavLink>
-              </NavItem>
-            )} */}
+            <NavItem onClick={this.toggle}>
+              <NavLink to="/admin" className="nav">
+                Admin
+              </NavLink>
+            </NavItem>
             {/* {account && (
               <NavItem onClick={this.toggle}>
                 <NavLink to="/account" className="nav">
@@ -87,7 +100,7 @@ export default class NavbarNow extends Component {
               </NavItem>
             )} */}
             <NavItem className="">
-              User:{' '}
+              User:{" "}
               <b>
                 <em>{username.toUpperCase()}</em>
               </b>
