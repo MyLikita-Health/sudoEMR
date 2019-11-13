@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-// import PropTypes from 'prop-types';
 import PatientClarking from "./components/Doctor Module/PatientClarking";
 import Pharmacy from "./components/Pharmacy Module/Pharmacy";
 import Account from "./components/Account Module/Account";
 import Admin from "./components/AdminModule/Admin";
 import Patientlist from "./components/Records Module/Patientlist";
 import Lab from "./components/Lab Module/Lab";
+import Insurance from "./components/Insurance/Insurance";
 import ErrorBoundary from "./error-boundary/MyErrorBoundary";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -33,6 +34,7 @@ class App extends Component {
       doctors: true,
       pharmacy: true,
       lab: true,
+      insurance: true,
       account: true,
       admin: true,
       users: [],
@@ -92,6 +94,7 @@ class App extends Component {
           pharmacy: true,
           lab: true,
           admin: true,
+          profile: true,
           user: prevState.username
         }));
         // localStorage.setItem('user', this.state.username);
@@ -155,20 +158,25 @@ class App extends Component {
                 lab={this.state.lab}
                 account={this.state.account}
                 admin={this.state.admin}
+                insurance={this.state.insurance}
                 username={this.state.username}
                 toggleLanding={this.toggleLanding}
               />
               <br />
               {/* ... and the contents go here */}
               <Switch>
-
-                <Route exact path='/' component={Landing} />
-                <Route exact path='/patientlist' component={Patientlist} />
-                <Route exact path='/patient_clarking' component={PatientClarking} />
-                <Route exact path='/pharmacy' component={Pharmacy} />
-                <Route exact path='/lab' component={Lab} />
-                <Route exact path='/account' component={Account} />
-                <Route exact path='/admin' component={Admin} />
+                <Route exact path="/" component={Landing} />
+                <Route exact path="/patientlist" component={Patientlist} />
+                <Route
+                  exact
+                  path="/patient_clarking"
+                  component={PatientClarking}
+                />
+                <Route exact path="/pharmacy" component={Pharmacy} />
+                <Route exact path="/lab" component={Lab} />
+                <Route exact path="/account" component={Account} />
+                <Route exact path="/admin" component={Admin} />
+                <Route exact path="/insurance" component={Insurance} />
                 <Route component={PageNotFound} />
               </Switch>
             </div>

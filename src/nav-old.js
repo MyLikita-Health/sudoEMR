@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Profile from "./components/Profile/Profile";
 import { NavLink } from "react-router-dom";
 import {
   Collapse,
@@ -15,7 +16,8 @@ export default class NavbarNow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      isProfileOpen: false
     };
   }
   toggle = () => {
@@ -24,6 +26,12 @@ export default class NavbarNow extends Component {
     });
     this.props.toggleLanding();
   };
+
+  toggleProfile = () => {
+    this.setState({
+      isProfileOpen: !this.state.isProfileOpen
+    });
+  };
   render() {
     const {
       records,
@@ -31,6 +39,8 @@ export default class NavbarNow extends Component {
       pharmacy,
       lab,
       admin,
+      insurance,
+      profile,
       account,
       username
     } = this.props;
@@ -57,7 +67,7 @@ export default class NavbarNow extends Component {
         </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav className="ml-auto" navbar className="">
+          <Nav className="ml-auto" navbar>
             {records && (
               <NavItem onClick={this.toggle}>
                 <NavLink to="/patientlist" className="nav">
@@ -79,7 +89,6 @@ export default class NavbarNow extends Component {
                 </NavLink>
               </NavItem>
             )}
-
             {lab && (
               <NavItem onClick={this.toggle}>
                 <NavLink to="/lab" className="nav">
@@ -87,6 +96,7 @@ export default class NavbarNow extends Component {
                 </NavLink>
               </NavItem>
             )}
+
             <NavItem onClick={this.toggle}>
               <NavLink to="/admin" className="nav">
                 Admin
@@ -94,19 +104,30 @@ export default class NavbarNow extends Component {
             </NavItem>
             {/* {account && (
               <NavItem onClick={this.toggle}>
-                <NavLink to="/account" className="nav">
-                  Account Module
+                <NavLink to="/admin" className="nav">
+                  Admin
                 </NavLink>
               </NavItem>
-            )} */}
-            <NavItem className="">
-              User:{" "}
-              <b>
-                <em>{username.toUpperCase()}</em>
-              </b>
-              {/* <Button color="danger" onClick={this.logout}>
-              Logout
-            </Button> */}
+            )}*/}
+            
+              <NavItem onClick={this.toggle}>
+                <NavLink to="/insurance" className="nav">
+                  NHIS
+                </NavLink>
+              </NavItem>
+            
+
+            <NavItem>
+              <Profile
+                isProfileOpen={this.state.isProfileOpen}
+                toggleProfile={this.toggleProfile}
+              />
+            </NavItem>
+
+            <NavItem>
+              <Button color="danger" onClick={this.logout}>
+                Logout
+              </Button>
             </NavItem>
           </Nav>
         </Collapse>

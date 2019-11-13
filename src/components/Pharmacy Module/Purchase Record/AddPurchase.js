@@ -20,14 +20,14 @@ class AddPurchase extends React.Component {
   }
 
   handleChange = e => {
-    this.props.onChange({ [e.target.name]: e.target.value });
+    //this.props.onChange({ [e.target.name]: e.target.value });
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
   handleSubmit(e) {
-    console.log(this.props);
+    //console.log(this.props);
     e.preventDefault();
     this.setState(prevState => ({
       purchase: prevState.purchase.concat({
