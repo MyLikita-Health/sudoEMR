@@ -45,9 +45,24 @@ export default class NavbarNow extends Component {
       username
     } = this.props;
     return (
-      <Navbar color="secondary" dark expand="md">
+      <Navbar 
+        dark 
+        expand="md"
+        style={{
+          minHeight: '50px',
+          padding: 0,
+          margin: 0,
+          paddingRight: 5,
+          backgroundColor: '#0069D9',
+        }}
+      >
         <NavbarBrand href="https://bits-his.com" target="_blank">
-          <img src={logo} alt="logo" height="50" width="150" />
+          <img src={logo} alt="logo" height="44"
+            width="50"
+            style={{
+              margin: '0 20px',
+            }} 
+          />
           {/* <h4 className="logoText">HMS</h4> */}
         </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
@@ -81,20 +96,26 @@ export default class NavbarNow extends Component {
                 </NavLink>
               </NavItem>
             )}
-            {admin && (
+
+            <NavItem onClick={this.toggle}>
+              <NavLink to="/admin" className="nav">
+                Admin
+              </NavLink>
+            </NavItem>
+            {/* {account && (
               <NavItem onClick={this.toggle}>
                 <NavLink to="/admin" className="nav">
                   Admin
                 </NavLink>
               </NavItem>
-            )}
-            {insurance && (
+            )}*/}
+            
               <NavItem onClick={this.toggle}>
                 <NavLink to="/insurance" className="nav">
                   NHIS
                 </NavLink>
               </NavItem>
-            )}
+            
 
             <NavItem>
               <Profile

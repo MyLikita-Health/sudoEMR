@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import PropTypes from 'prop-types';
 import PatientClarking from "./components/Doctor Module/PatientClarking";
 import Pharmacy from "./components/Pharmacy Module/Pharmacy";
 import Account from "./components/Account Module/Account";
@@ -198,4 +197,5 @@ export default App;
 
 function PageNotFound() {
   return <h1 style={{ textAlign: "center", marginTop: 40 }}>Page not found</h1>;
+
 }
