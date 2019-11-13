@@ -124,12 +124,22 @@ function AdminGuide() {
     </div>
   );
 }
+function InsuranceGuide() {
+  return (
+    <div className="guide">
+      {title}
+      <b> 1.</b> Click on the NHIS Registration to register new user
+      <br />
+    </div>
+  );
+}
 
 export {
   DoctorGuide,
   RecordGuide,
   PharmacyGuide,
   LabGuide,
+  InsuranceGuide,
   AccountGuide,
   AdminGuide
 };
