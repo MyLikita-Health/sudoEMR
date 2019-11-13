@@ -1,5 +1,5 @@
-import React from 'react';
-import FreeScrollBar from 'react-free-scrollbar';
+import React from './node_modules/react';
+import FreeScrollBar from './node_modules/react-free-scrollbar';
 import {
   Card,
   CardBody,
@@ -7,10 +7,10 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-} from 'reactstrap';
-import FaPlus from 'react-icons/lib/fa/plus';
-import FaEdit from 'react-icons/lib/fa/edit';
-import FaRemove from 'react-icons/lib/io/trash-a';
+} from './node_modules/reactstrap';
+import FaPlus from './node_modules/react-icons/lib/fa/plus';
+import FaEdit from './node_modules/react-icons/lib/fa/edit';
+import FaRemove from './node_modules/react-icons/lib/io/trash-a';
 import { _postData, _convertArrOfObjToArr } from '../helpers';
 
 class AddDrugForm extends React.Component {
