@@ -4,10 +4,13 @@ const SalesReport = lazy(() => import("./SalesReport"));
 const UpToDateStockBalance = lazy(() => import("./UpToDateStockBalance"));
 const EditDrugs = lazy(() => import("./EditDrugs"));
 const AddDrug = lazy(() => import("./AddDrug"));
+const DispensaryTable = lazy(()=>import("./DispensaryTable"))
 const AddPurchase = lazy(() => import("./Purchase Record/AddPurchase"));
 const PrescriptionProcessingForm = lazy(() =>
   import("./PrescriptionProcessingForm")
 );
+
+
 
 const Tabs = ({ setComponentToRender }) => {
   return (
@@ -42,6 +45,12 @@ const Tabs = ({ setComponentToRender }) => {
         className="btn btn-outline-success col-xs-12 col-sm-6 col-md-5 col-lg-5"
       >
         Purchase Records
+      </button>
+      <button
+        onClick={() => setComponentToRender("DispensaryTable")}
+        className="btn btn-outline-warning col-xs-12 col-sm-6 col-md-4 col-lg-4"
+      >
+        Dispensary Table
       </button>
     </div>
   );
@@ -91,6 +100,8 @@ class PharmacyDashboard extends React.Component {
         return <EditDrugs />;
       case "AddPurchase":
         return <AddPurchase />;
+        case "DispensaryTable":
+          return <DispensaryTable />;
       default:
         return <p className="text-center">Select an item above to view</p>;
     }
