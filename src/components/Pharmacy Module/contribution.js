@@ -2,10 +2,10 @@ import React, { Component } from "react";
 
 export default class Contribution extends Component {
   state = {
-    EmployerCode: "",
-    Date_of_Contribution: "",
-    AmountContribute: "",
-    Contribute: []
+    employerCode: "",
+    dateOfContribution: "",
+    amountContribute: "",
+    contribute: []
   };
   
   eventChange = e => { 
@@ -20,19 +20,19 @@ export default class Contribution extends Component {
   addContribution = (e) => {  //this function collect input 
     e.preventDefault(); //wen refreshing it will b default
       this.setState(prevState => ({
-        Contribute: prevState.Contribute.concat({ // concat will join the items
-          EmployerCode: this.state.EmployerCode,
-          Date_of_Contribution: this.state.Date_of_Contribution,
-          AmountContribute: this.state.AmountContribute
+        contribute: prevState.contribute.concat({ // concat will join the items
+          employerCode: this.state.employerCode,
+          dateOfContribution: this.state.dateOfContribution,
+          amountContribute: this.state.amountContribute
          
       }),
-      EmployerCode: "",
-      Date_of_Contribution: "",
-      AmountContribute: "",
+      employerCode: "",
+      dateOfContribution: "",
+      amountContribute: "",
     }));
-    console.log(this.state.EmployerCode,
-        this.state.Date_of_Contribution,
-        this.state.AmountContribute)
+    console.log(this.state.employerCode,
+        this.state.dateOfContribution,
+        this.state.amountContribute)
   };
   
   
@@ -49,9 +49,9 @@ export default class Contribution extends Component {
           <label>Employer Code</label>
           <input
             className="form-control"           
-            value={this.state.EmployerCode}
+            value={this.state.employerCode}
             onChange={this.eventChange}
-            name="EmployerCode"
+            name="employerCode"
             type="number"
             min="1"
           />
@@ -61,10 +61,10 @@ export default class Contribution extends Component {
           
           <input
             className="form-control"           
-            value={this.state.Date_of_Contribution}
+            value={this.state.dateOfContribution}
             type="date"
             onChange={this.eventChange}
-            name="date_of_Contribution"
+            name="dateOfContribution"
             
           />
           <br />
@@ -73,10 +73,10 @@ export default class Contribution extends Component {
 
           <input
             className="form-control"
-            value={this.state.Supplier}
+            value={this.state.amountContribute}
             type="number"
             onChange={this.eventChange}
-            name="AmountContribute"
+            name="amountContribute"
             min="1000"
           />
                    
