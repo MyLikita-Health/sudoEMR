@@ -41,6 +41,7 @@ export default class Pharmacy extends Component {
               getDetails={getDetails}
               processing={processing}
             />
+            {/* <DispensaryTable/> */}
           </div>
         </div>
         <div

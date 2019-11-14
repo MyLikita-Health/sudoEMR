@@ -13,6 +13,7 @@
     "evergreen-ui": "^4.0.2",
     "express": "^4.16.2",
     "generator": "^1.0.1",
+    "google-maps-react": "^2.0.2",
     "history": "^1.17.0",
     "http": "0.0.0",
     "jquery": "^3.3.1",

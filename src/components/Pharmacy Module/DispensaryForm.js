@@ -212,7 +212,7 @@ function DispensaryFormModal({
     )
 }
 
-
+//dispensary table
 function DispensaryTable ({ dispense, handleDelete }) {
     return (
         <Table striped bordered hover>
@@ -226,6 +226,7 @@ function DispensaryTable ({ dispense, handleDelete }) {
                 </tr>
             </thead>
             <tbody>
+                {/* //this where all element will be put in an appropriate colum/row */}
             {dispense.map((item, index) => (
                 <tr key={index}>
                 <td> {item.patientID}</td>
