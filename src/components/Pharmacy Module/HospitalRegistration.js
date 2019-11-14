@@ -11,6 +11,7 @@ class HospitalRegistration extends Component {
     contactPerson : '',
     email : '',
     phoneNumber : '',
+    // toaster:'',
    
     Hr : []
 
@@ -269,7 +270,17 @@ if(!this.state.errorcontactPerson){
 
 
 <br/>
-         <center><Button className="btn btn-primary "onClick={this.handleSubmit}>Submit</Button></center>
+         <center><Button
+          className="btn btn-primary "
+          onClick={this.handleSubmit}
+          // onClick={() =>
+          //   toaster.notify(
+          //     'Evergreen is a open-source design system'
+          //   )
+          // }
+          >
+            Submit</Button>
+          </center>
          </Form>
          </div><br />
         
@@ -284,7 +295,7 @@ if(!this.state.errorcontactPerson){
              <th>Contact</th>
              <th>Email</th>
              <th>phone No</th>
-             <th>Location</th>
+            
              <th>Delete</th>
 
            </tr>
@@ -298,7 +309,7 @@ if(!this.state.errorcontactPerson){
              <td>{item.contactPerson}</td>
              <td>{item.email}</td>
              <td>{item.phoneNumber}</td>
-             <td>{item.location}</td>
+             
              <td><Button className="btn btn-danger"onClick={()=> this.handleDelete(item)}>
                Delete
              </Button></td>

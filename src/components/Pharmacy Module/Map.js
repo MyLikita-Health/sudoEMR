@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
+import { callbackify } from 'util';
 
 const mapStyles = {
-  width: '50%',
+  width: '95%',
   height: '25%'
 };
 
@@ -12,9 +13,18 @@ state={
   lng:'36.8233',
 }
 componentDidMount(){
+  const callback=(lat,lng)=>{
+    this.setState(
+      {
+        lat,
+        lng
+      }
+    )
+  }
   navigator.geolocation.getCurrentPosition(function(position){
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    callback(lat,lng)
   })
 }
   render() {
@@ -33,5 +43,5 @@ componentDidMount(){
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyAGU-rOOhYdaYRw7aKpMwWEfN2hd9h-6Nk'
+  apiKey: 'AIzaSyCO5EH4fewbHSgGKqGKEyygqXxqYVZcm_o'
 })(MapContainer);

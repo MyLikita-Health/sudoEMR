@@ -130,6 +130,6 @@ class PharmacyDashboard extends React.Component {
       </div>
     );
   }
-}
+}     
 
 export default PharmacyDashboard;
