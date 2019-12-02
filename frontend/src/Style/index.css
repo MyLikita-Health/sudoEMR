@@ -1,0 +1,35 @@
+body {
+  background-color: #EEEEEE
+}
+.nav {
+  text-decoration: none;
+  border: none;
+  text-align: center;
+  padding: 0.1em 1em;
+  color: white;
+  list-style-type: none;
+}
+
+.nav:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.active {
+  background-color: #0099ff;
+}
+
+.module-pic {
+  display: none;
+}
+
+.nav-right {
+  float: left;
+}
+
+@media screen and (min-width: 1024px) {
+  .module-pic {
+    display: inline;
+    width: 100%;
+  }
+}

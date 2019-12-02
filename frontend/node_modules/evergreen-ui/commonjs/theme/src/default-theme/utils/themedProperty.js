@@ -1,0 +1,26 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+/**
+ * Helper function for theming.
+ * @param {Object} object - an object with theme presets.
+ * @param {Object} keyOrValue - the key for the object, or an actual value.
+ * @return {*} the value of the object, or the `keyOrValue` itself.
+ */
+var themedProperty = function themedProperty(object, keyOrValue) {
+  // Check if there is a preset in the collection for the property.
+  if (Object.prototype.hasOwnProperty.call(object, keyOrValue)) {
+    return object[keyOrValue];
+  } // If there is no preset, simply return the property as is.
+
+
+  return keyOrValue;
+};
+
+var _default = themedProperty;
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3NyYy90aGVtZS9zcmMvZGVmYXVsdC10aGVtZS91dGlscy90aGVtZWRQcm9wZXJ0eS5qcyJdLCJuYW1lcyI6WyJ0aGVtZWRQcm9wZXJ0eSIsIm9iamVjdCIsImtleU9yVmFsdWUiLCJPYmplY3QiLCJwcm90b3R5cGUiLCJoYXNPd25Qcm9wZXJ0eSIsImNhbGwiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7QUFBQTs7Ozs7O0FBTUEsSUFBTUEsY0FBYyxHQUFHLFNBQWpCQSxjQUFpQixDQUFDQyxNQUFELEVBQVNDLFVBQVQsRUFBd0I7QUFDN0M7QUFDQSxNQUFJQyxNQUFNLENBQUNDLFNBQVAsQ0FBaUJDLGNBQWpCLENBQWdDQyxJQUFoQyxDQUFxQ0wsTUFBckMsRUFBNkNDLFVBQTdDLENBQUosRUFBOEQ7QUFDNUQsV0FBT0QsTUFBTSxDQUFDQyxVQUFELENBQWI7QUFDRCxHQUo0QyxDQU03Qzs7O0FBQ0EsU0FBT0EsVUFBUDtBQUNELENBUkQ7O2VBVWVGLGMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEhlbHBlciBmdW5jdGlvbiBmb3IgdGhlbWluZy5cbiAqIEBwYXJhbSB7T2JqZWN0fSBvYmplY3QgLSBhbiBvYmplY3Qgd2l0aCB0aGVtZSBwcmVzZXRzLlxuICogQHBhcmFtIHtPYmplY3R9IGtleU9yVmFsdWUgLSB0aGUga2V5IGZvciB0aGUgb2JqZWN0LCBvciBhbiBhY3R1YWwgdmFsdWUuXG4gKiBAcmV0dXJuIHsqfSB0aGUgdmFsdWUgb2YgdGhlIG9iamVjdCwgb3IgdGhlIGBrZXlPclZhbHVlYCBpdHNlbGYuXG4gKi9cbmNvbnN0IHRoZW1lZFByb3BlcnR5ID0gKG9iamVjdCwga2V5T3JWYWx1ZSkgPT4ge1xuICAvLyBDaGVjayBpZiB0aGVyZSBpcyBhIHByZXNldCBpbiB0aGUgY29sbGVjdGlvbiBmb3IgdGhlIHByb3BlcnR5LlxuICBpZiAoT2JqZWN0LnByb3RvdHlwZS5oYXNPd25Qcm9wZXJ0eS5jYWxsKG9iamVjdCwga2V5T3JWYWx1ZSkpIHtcbiAgICByZXR1cm4gb2JqZWN0W2tleU9yVmFsdWVdXG4gIH1cblxuICAvLyBJZiB0aGVyZSBpcyBubyBwcmVzZXQsIHNpbXBseSByZXR1cm4gdGhlIHByb3BlcnR5IGFzIGlzLlxuICByZXR1cm4ga2V5T3JWYWx1ZVxufVxuXG5leHBvcnQgZGVmYXVsdCB0aGVtZWRQcm9wZXJ0eVxuIl19

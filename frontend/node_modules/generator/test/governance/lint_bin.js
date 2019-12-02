@@ -1,0 +1,1 @@
+require('hint-hint')(__dirname + '/../../bin/*.js');

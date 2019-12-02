@@ -1,0 +1,41 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initValidation = initValidation;
+exports.isFormValid = isFormValid;
+exports.assertSpec = assertSpec;
+// Returns initial status of validation data as provided by this library.
+// It is recommended (but not necessary) to keep the validation data in the app
+// state structured in the same way.
+function initValidation() {
+  return { isValid: null, error: {}, show: false };
+}
+
+// Returns validity of multiple validation results. The result is false if any
+// single validation contains isValid = false, null if any validation contains
+// isValid = null (and none is false) and true otherwise. The argument
+// `validationData` should be a dict of validation results as provided by this
+// library.
+function isFormValid(validationData) {
+  var result = true;
+  for (var name in validationData) {
+    var v = validationData[name].isValid;
+    if (v === false) {
+      return false;
+    }
+    if (v == null) {
+      result = null;
+    }
+  }
+  return result;
+}
+
+function assertSpec(statement, shortMsg, received, expected) {
+  if (!statement) {
+    console.error( // eslint-disable-line no-console
+    shortMsg, '\nReceived:', received, '\nExpected:', expected);
+    throw new Error(shortMsg);
+  }
+}

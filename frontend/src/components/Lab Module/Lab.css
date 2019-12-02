@@ -1,0 +1,50 @@
+/* .labModule {
+    display: flex;
+    flex-direction: column;
+}
+
+.moduleItems {
+    width: 100%;
+}
+
+.moduleItemsContainer {
+    width: 100%;
+}
+
+.lab-guid-container {
+    width: 100%;
+}
+
+
+@media screen and (min-width: 700px) and (max-width: 1000px) {
+    .labModule {
+        display: flex;
+        
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .labModule{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .moduleItems {
+        width: 20%;
+    }
+    
+    .moduleItemsContainer {
+        padding-left: 3%;
+        width: 52%;
+    }
+    
+    .lab-guid-container {
+        width: 25%;
+        margin-left: 3%;
+    }
+
+    .lab-pic {
+        width: 23vw;
+        height: 55vh;
+    }
+} */

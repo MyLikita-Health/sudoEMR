@@ -1,0 +1,12 @@
+import scales from './scales';
+var borderShadowColor = scales.neutral.N5A; // Used to be colors.neutral['80A'] in v3 and down.
+
+var blurryShadowColor = scales.neutral.N6A; // Used to be colors.neutral['50A'] in v3 and down.
+
+/**
+ * Elevation styles are applied as box shadows.
+ * Available levels: 0, 1, 2, 3, 4.
+ */
+
+export default ["0 0 1px ".concat(borderShadowColor), "0 0 1px ".concat(borderShadowColor, ", 0 2px 4px -2px ").concat(blurryShadowColor), "0 0 1px ".concat(borderShadowColor, ", 0 5px 8px -4px ").concat(blurryShadowColor), "0 0 1px ".concat(borderShadowColor, ", 0 8px 10px -4px ").concat(blurryShadowColor), "0 0 1px ".concat(borderShadowColor, ", 0 16px 24px -8px ").concat(blurryShadowColor)];
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3NyYy90aGVtZS9zcmMvZGVmYXVsdC10aGVtZS9mb3VuZGF0aW9uYWwtc3R5bGVzL2VsZXZhdGlvbnMuanMiXSwibmFtZXMiOlsic2NhbGVzIiwiYm9yZGVyU2hhZG93Q29sb3IiLCJuZXV0cmFsIiwiTjVBIiwiYmx1cnJ5U2hhZG93Q29sb3IiLCJONkEiXSwibWFwcGluZ3MiOiJBQUFBLE9BQU9BLE1BQVAsTUFBbUIsVUFBbkI7QUFFQSxJQUFNQyxpQkFBaUIsR0FBR0QsTUFBTSxDQUFDRSxPQUFQLENBQWVDLEdBQXpDLEMsQ0FBNkM7O0FBQzdDLElBQU1DLGlCQUFpQixHQUFHSixNQUFNLENBQUNFLE9BQVAsQ0FBZUcsR0FBekMsQyxDQUE2Qzs7QUFFN0M7Ozs7O0FBSUEsZUFBZSxtQkFDRkosaUJBREUscUJBRUZBLGlCQUZFLDhCQUVtQ0csaUJBRm5DLHFCQUdGSCxpQkFIRSw4QkFHbUNHLGlCQUhuQyxxQkFJRkgsaUJBSkUsK0JBSW9DRyxpQkFKcEMscUJBS0ZILGlCQUxFLGdDQUtxQ0csaUJBTHJDLEVBQWYiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgc2NhbGVzIGZyb20gJy4vc2NhbGVzJ1xuXG5jb25zdCBib3JkZXJTaGFkb3dDb2xvciA9IHNjYWxlcy5uZXV0cmFsLk41QSAvLyBVc2VkIHRvIGJlIGNvbG9ycy5uZXV0cmFsWyc4MEEnXSBpbiB2MyBhbmQgZG93bi5cbmNvbnN0IGJsdXJyeVNoYWRvd0NvbG9yID0gc2NhbGVzLm5ldXRyYWwuTjZBIC8vIFVzZWQgdG8gYmUgY29sb3JzLm5ldXRyYWxbJzUwQSddIGluIHYzIGFuZCBkb3duLlxuXG4vKipcbiAqIEVsZXZhdGlvbiBzdHlsZXMgYXJlIGFwcGxpZWQgYXMgYm94IHNoYWRvd3MuXG4gKiBBdmFpbGFibGUgbGV2ZWxzOiAwLCAxLCAyLCAzLCA0LlxuICovXG5leHBvcnQgZGVmYXVsdCBbXG4gIGAwIDAgMXB4ICR7Ym9yZGVyU2hhZG93Q29sb3J9YCxcbiAgYDAgMCAxcHggJHtib3JkZXJTaGFkb3dDb2xvcn0sIDAgMnB4IDRweCAtMnB4ICR7Ymx1cnJ5U2hhZG93Q29sb3J9YCxcbiAgYDAgMCAxcHggJHtib3JkZXJTaGFkb3dDb2xvcn0sIDAgNXB4IDhweCAtNHB4ICR7Ymx1cnJ5U2hhZG93Q29sb3J9YCxcbiAgYDAgMCAxcHggJHtib3JkZXJTaGFkb3dDb2xvcn0sIDAgOHB4IDEwcHggLTRweCAke2JsdXJyeVNoYWRvd0NvbG9yfWAsXG4gIGAwIDAgMXB4ICR7Ym9yZGVyU2hhZG93Q29sb3J9LCAwIDE2cHggMjRweCAtOHB4ICR7Ymx1cnJ5U2hhZG93Q29sb3J9YFxuXVxuIl19

@@ -1,0 +1,3 @@
+export { default as Badge } from './src/Badge';
+export { default as Pill } from './src/Pill';
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9iYWRnZXMvaW5kZXguanMiXSwibmFtZXMiOlsiZGVmYXVsdCIsIkJhZGdlIiwiUGlsbCJdLCJtYXBwaW5ncyI6IkFBQUEsU0FBU0EsT0FBTyxJQUFJQyxLQUFwQixRQUFpQyxhQUFqQztBQUNBLFNBQVNELE9BQU8sSUFBSUUsSUFBcEIsUUFBZ0MsWUFBaEMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgeyBkZWZhdWx0IGFzIEJhZGdlIH0gZnJvbSAnLi9zcmMvQmFkZ2UnXG5leHBvcnQgeyBkZWZhdWx0IGFzIFBpbGwgfSBmcm9tICcuL3NyYy9QaWxsJ1xuIl19

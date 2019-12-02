@@ -1,0 +1,15 @@
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _scales = _interopRequireDefault(require("../foundational-styles/scales"));
+
+var overlayBackgroundColor = _scales.default.neutral.N7A;
+var _default = overlayBackgroundColor;
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3NyYy90aGVtZS9zcmMvZGVmYXVsdC10aGVtZS9jb21wb25lbnQtc3BlY2lmaWMvb3ZlcmxheUJhY2tncm91bmRDb2xvci5qcyJdLCJuYW1lcyI6WyJvdmVybGF5QmFja2dyb3VuZENvbG9yIiwic2NhbGVzIiwibmV1dHJhbCIsIk43QSJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBQUE7O0FBRUEsSUFBTUEsc0JBQXNCLEdBQUdDLGdCQUFPQyxPQUFQLENBQWVDLEdBQTlDO2VBRWVILHNCIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHNjYWxlcyBmcm9tICcuLi9mb3VuZGF0aW9uYWwtc3R5bGVzL3NjYWxlcydcblxuY29uc3Qgb3ZlcmxheUJhY2tncm91bmRDb2xvciA9IHNjYWxlcy5uZXV0cmFsLk43QVxuXG5leHBvcnQgZGVmYXVsdCBvdmVybGF5QmFja2dyb3VuZENvbG9yXG4iXX0=

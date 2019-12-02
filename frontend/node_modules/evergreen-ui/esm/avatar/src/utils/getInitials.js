@@ -1,0 +1,10 @@
+export default function getInitials(name) {
+  var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '?';
+  if (!name || typeof name !== 'string') return fallback;
+  return name.replace(/\s+/, ' ').split(' ') // Repeated spaces results in empty strings
+  .slice(0, 2).map(function (v) {
+    return v && v[0].toUpperCase();
+  }) // Watch out for empty strings
+  .join('');
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NyYy9hdmF0YXIvc3JjL3V0aWxzL2dldEluaXRpYWxzLmpzIl0sIm5hbWVzIjpbImdldEluaXRpYWxzIiwibmFtZSIsImZhbGxiYWNrIiwicmVwbGFjZSIsInNwbGl0Iiwic2xpY2UiLCJtYXAiLCJ2IiwidG9VcHBlckNhc2UiLCJqb2luIl0sIm1hcHBpbmdzIjoiQUFBQSxlQUFlLFNBQVNBLFdBQVQsQ0FBcUJDLElBQXJCLEVBQTJDO0FBQUEsTUFBaEJDLFFBQWdCLHVFQUFMLEdBQUs7QUFDeEQsTUFBSSxDQUFDRCxJQUFELElBQVMsT0FBT0EsSUFBUCxLQUFnQixRQUE3QixFQUF1QyxPQUFPQyxRQUFQO0FBQ3ZDLFNBQU9ELElBQUksQ0FDUkUsT0FESSxDQUNJLEtBREosRUFDVyxHQURYLEVBRUpDLEtBRkksQ0FFRSxHQUZGLEVBRU87QUFGUCxHQUdKQyxLQUhJLENBR0UsQ0FIRixFQUdLLENBSEwsRUFJSkMsR0FKSSxDQUlBLFVBQUFDLENBQUM7QUFBQSxXQUFJQSxDQUFDLElBQUlBLENBQUMsQ0FBQyxDQUFELENBQUQsQ0FBS0MsV0FBTCxFQUFUO0FBQUEsR0FKRCxFQUk4QjtBQUo5QixHQUtKQyxJQUxJLENBS0MsRUFMRCxDQUFQO0FBTUQiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBnZXRJbml0aWFscyhuYW1lLCBmYWxsYmFjayA9ICc/Jykge1xuICBpZiAoIW5hbWUgfHwgdHlwZW9mIG5hbWUgIT09ICdzdHJpbmcnKSByZXR1cm4gZmFsbGJhY2tcbiAgcmV0dXJuIG5hbWVcbiAgICAucmVwbGFjZSgvXFxzKy8sICcgJylcbiAgICAuc3BsaXQoJyAnKSAvLyBSZXBlYXRlZCBzcGFjZXMgcmVzdWx0cyBpbiBlbXB0eSBzdHJpbmdzXG4gICAgLnNsaWNlKDAsIDIpXG4gICAgLm1hcCh2ID0+IHYgJiYgdlswXS50b1VwcGVyQ2FzZSgpKSAvLyBXYXRjaCBvdXQgZm9yIGVtcHR5IHN0cmluZ3NcbiAgICAuam9pbignJylcbn1cbiJdfQ==

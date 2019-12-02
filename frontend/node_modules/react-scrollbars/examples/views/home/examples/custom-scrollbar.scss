@@ -1,0 +1,22 @@
+.ScrollbarContent--custom {
+  width: 100%;
+  height: 300px;
+  overflow: auto;
+  background: rgb(253, 253, 253);
+
+  &:hover {
+    .Scrollbar {
+      opacity: 1 !important;
+    }
+  }
+
+  .Scrollbar {
+    background: #3498db !important;
+    opacity: 0 !important;
+    transition: opacity 0.1s ease;
+  }
+
+  .Scrollbar-stick {
+    background: #2c3e50 !important;
+  }
+}

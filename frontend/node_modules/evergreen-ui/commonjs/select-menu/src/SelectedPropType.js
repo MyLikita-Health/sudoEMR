@@ -1,0 +1,21 @@
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+/**
+ * Selected can either be a string (single values)
+ * or an array of string (multiple values)
+ * NOTE: multiple values are not supported atm
+ */
+var SelectedPropType = _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.arrayOf(_propTypes.default.string)]);
+
+var _default = SelectedPropType;
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9zZWxlY3QtbWVudS9zcmMvU2VsZWN0ZWRQcm9wVHlwZS5qcyJdLCJuYW1lcyI6WyJTZWxlY3RlZFByb3BUeXBlIiwiUHJvcFR5cGVzIiwib25lT2ZUeXBlIiwic3RyaW5nIiwiYXJyYXlPZiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBQUE7O0FBRUE7Ozs7O0FBS0EsSUFBTUEsZ0JBQWdCLEdBQUdDLG1CQUFVQyxTQUFWLENBQW9CLENBQzNDRCxtQkFBVUUsTUFEaUMsRUFFM0NGLG1CQUFVRyxPQUFWLENBQWtCSCxtQkFBVUUsTUFBNUIsQ0FGMkMsQ0FBcEIsQ0FBekI7O2VBS2VILGdCIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFByb3BUeXBlcyBmcm9tICdwcm9wLXR5cGVzJ1xuXG4vKipcbiAqIFNlbGVjdGVkIGNhbiBlaXRoZXIgYmUgYSBzdHJpbmcgKHNpbmdsZSB2YWx1ZXMpXG4gKiBvciBhbiBhcnJheSBvZiBzdHJpbmcgKG11bHRpcGxlIHZhbHVlcylcbiAqIE5PVEU6IG11bHRpcGxlIHZhbHVlcyBhcmUgbm90IHN1cHBvcnRlZCBhdG1cbiAqL1xuY29uc3QgU2VsZWN0ZWRQcm9wVHlwZSA9IFByb3BUeXBlcy5vbmVPZlR5cGUoW1xuICBQcm9wVHlwZXMuc3RyaW5nLFxuICBQcm9wVHlwZXMuYXJyYXlPZihQcm9wVHlwZXMuc3RyaW5nKVxuXSlcblxuZXhwb3J0IGRlZmF1bHQgU2VsZWN0ZWRQcm9wVHlwZVxuIl19

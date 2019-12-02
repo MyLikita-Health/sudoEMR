@@ -1,0 +1,41 @@
+.checkboxes-stack {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding-left: 1vw;
+}
+
+.header {
+  text-align: center;
+}
+
+.admin {
+  background: whitesmoke;
+  height: 100%;
+  width: 100%;
+}
+
+.admin-dashboard {
+  display: flex;
+}
+
+.admin-tab {
+  width: 20%;
+  background-color: aliceblue;
+  height: 80%;
+}
+
+.sidebar {
+  background-color: #6c757d;
+  padding: 10px;
+}
+.admin-container {
+  width: 70%;
+  margin-left: 5%;
+}
+
+.admin-sidebar {
+  text-decoration: none;
+  color: white;
+  margin-left: 1em;
+}

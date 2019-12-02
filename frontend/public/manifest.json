@@ -1,0 +1,16 @@
+{
+  "short_name": "HMS",
+  "name": "Hospital Management Software",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "144x144 64x64 32x32 24x24 16x16 ",
+      "type": "image/png"
+    }
+  ],
+  "scope": "./",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#0000ff",
+  "background_color": "#ffffff"
+}

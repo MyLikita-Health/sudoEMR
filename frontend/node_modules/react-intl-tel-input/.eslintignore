@@ -1,0 +1,10 @@
+build/**
+dist/**
+example/**
+test/**
+src/libphonenumber.js
+node_modules/*
+eslintrc.js
+package.json
+webpack.*.js
+coverage/*
