@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { Table, Form,Button,Input,Col,Row,FormGroup} from 'reactstrap';
-import { toaster } from 'evergreen-ui/commonjs/toaster';
 
-
-
+import { Form,Button,Input,Col,Row,FormGroup} from 'reactstrap';
+import Location from './Location'
 
 
 class HospitalRegistration extends Component {
@@ -14,38 +12,30 @@ class HospitalRegistration extends Component {
     phone : '',
     contactPerson : '',
     email : '',
-    isOpen: false,
-    location: null,
-    locationStatusMessage: 'null',
-    locationStatus: false,
-    locationLoading: false,
-    isShow: false,
-  
-     hcf : []
+    lat:'',
+    long:'',
+
+    attendance:[]
 
   };
-
+//   componentDidMount(){
+//     fetch('http://localhost:4000/db/all')
+//       .then(res => res.json())
+//       .then(attendance =>{
+//        this.setState({attendance:attendance.users},()=>console.log('customer ',attendance.users))
+//       }
+//    )
+//    .catch(err=>console.log(err))
+//  }
 
   // componentDidMount(){
-  //   fetch('http://localhost:4000/fhddb/all')
-  //   .then(res=>res.json())
-  //   .then(hcf=>
-  //     this.setState({hcf:hcf.fhddb},()=>console.log('customer ',hcf))
-
+  //    fetch('http://localhost:4000/db/all')
+  //      .then(res => res.json())
+  //      .then(attendance =>this.setState({attendance:attendance.users},()=>console.log('customer ',attendance.users))
+       
   //   )
   //   .catch(err=>console.log(err))
   // }
-
-
-
-  open = () => this.setState({ isOpen: true });
-  close = () => this.setState({ isOpen: false });
-
-
-
-
-
-
 
 
 
@@ -55,194 +45,77 @@ class HospitalRegistration extends Component {
     });
   };
 
+  getLocation=(long,lat)=>{
+    this.setState({
+        long:long,
+        lat:lat
+    })
+  };
 
-
-validate=()=>{
- let errorhcfNo = '';
- let  errorhcfName = '';
- let erroraddress = '';
- let errorphone = '';
- let errorcontactPerson = '';
- let erroremail = '';
-
-if(!this.state.errorhcfNo)
-{
-  errorhcfNo=""
-}
- if(!this.state.hcfName){
-   errorhcfName="*"
- }
-if(!this.state.address){
-  erroraddress="*"
-}
-if(!this.state.phone){
-  errorphone="*"
-}
-if(!this.state.contactPerson){
-  errorcontactPerson="*"
-}
-
- if(!this.state.email.includes('@')){
-   erroremail =' invalid email';
-
- }
- if(erroremail || errorcontactPerson ||errorphone ||erroraddress||errorhcfName || errorhcfNo){
-   this.setState({erroremail,errorcontactPerson,errorphone,erroraddress,errorhcfName,errorhcfNo});
-   return false;
- }return true;
-}
-
-
-
-
-
-  handleSubmit = () => {
-    let obj={
-      hcfNo:this.state.hcfNo,
-      hcfName:this.state.hcfName,
-      address:this.state.address,
-      phone:this.state.phone,
-      contactPerson:this.state.contactPerson,
-      email:this.state.contactPerson,
-
-
+  
+  handleSubmit = (e) => {
+    e.preventDefault();
+    let object={
+        hcfNo:this.state.hcfNo,
+        hcfName:this.state.hcfName,
+        address:this.state.address,
+        phone:this.state.phone,
+        contactPerson:this.state.contactPerson,
+        email:this.state.email,
+        long:this.state.long,
+        lat:this.state.lat
     };
-    console.log(obj)
-    fetch('http://localhost:4000/fhddb/new',{
+    
+    fetch('http://localhost:4000/aishadb/new',{
       method:'POST',
       headers:{
         'Content-Type':'application/json',
       },
-      body:JSON.stringify(obj),
+      body:JSON.stringify(object),
     })
     .then(data=>console.log(data))
-    .catch(err=>console.log(err));
+    .catch(err=>console.log(err)); 
+   
+    const { hcfNo,hcfName,address,phone,contactPerson,email} = this.state;
 
-
-
-
-
-
-    const isValid= this.validate();
-    if(isValid){
-    this.setState(prevState => ({
-     hcf: prevState.hcf.concat({
-      hcfNo: this.state.hcfNo,
-      hcfName: this.state.hcfName,
-      address: this.state.address,
-      phone: this.state.phone,
-      contactPerson : this.state.contactPerson ,
-      email: this.state.email,
-     }),
-    hcfNo : '',
-    hcfName : '',
-    address : '',
-    phone : '',
-    contactPerson : '',
-    email : '',
-    }));
-    // this.refs.hcfNo.focus()
-  };}
-
-
-
-
-
-
-
-
-
-
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({
-        error: '',
-      [name]: value,
-    });
-  }
-
-
-
-  handleDelete = remove => {
-    let lily = this.state.hcf.filter(item => item !== remove);
-    this.setState({ hcf : lily});
-  }
-
-
-
-
-
-
-  handleKeypress (e) {
-    const characterCode = e.key
-    if (characterCode === 'Backspace') return
-
-    const characterNumber = Number(characterCode)
-    if (characterNumber >=0 && characterNumber <= 9) {
-      if (e.currentTarget.value && e.currentTarget.value.length) {
-        return
-      } else if (characterNumber === -1) {
-        e.preventDefault()
-      }
+    if(hcfNo===''||hcfName===''||address===''||phone===''||contactPerson===''||email===''){
+        this.setState({ error: 'Please complete the form' })
     } else {
-      e.preventDefault()
+        this.setState(prevState => ({ 
+            
+            attendance: prevState.attendance.concat({
+                hcfNo,
+                hcfName,
+                address,
+                phone,
+                contactPerson,
+                email
+            }),
+            hcfNo:'',
+            hcfName:'',
+            address:'',
+            phone:'',
+            contactPerson:'',
+            email:''
+       })
+       , () => console.log(email));
     }
+    
   }
-  
-  getLocation = () => {
-    this.setState({ locationLoading:true})
-    if (navigator && navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(pos => {
-        console.log('fn called')
-        // console.log('position');
-        const coords = pos.coords;
-        this.setState({
-          location: {
-            latitude: coords.latitude,
-            longitude: coords.longitude,
-          },
-          locationLoading: false, 
-          locationStatusMessage: 'Location taken',
-          locationStatus: true,
-        }, () => toaster.success('Location is captured'));
-
-      }, (error) => {
-        switch(error.code) {
-          case error.PERMISSION_DENIED:
-            this.setState({ locationLoading: false, 
-              locationStatusMessage: "User denied the request for Geolocation." }) 
-            break;
-          case error.POSITION_UNAVAILABLE:
-            this.setState({ locationLoading: false, 
-              locationStatusMessage: "Location information is unavailable." })
-            break;
-          case error.TIMEOUT:
-            this.setState({ locationLoading: false, 
-              locationStatusMessage: "The request to get user location timed out."})
-            break;
-          case error.UNKNOWN_ERROR:
-            this.setState({ locationLoading: false, 
-              locationStatusMessage: "An unknown error occurred." })
-            break;
-        }
-      });
-    } else {
-      this.setState({ locationLoading: false, locationStatusMessage: 'This device does not support location'})
-      console.log('not supported')
-    }
-  };
-
-  
 
 
+// handleDelete = remove => {
+//   let fahad = this.state.attendance.filter(item => item !== remove);
+//   this.setState({ hcf : fahad});
+// }
 
- 
+
   
  render(){
-    return(
-      
-      <div >
-     
-      <center> <h4 >HOSPITAL REGISTRATION</h4></center>
+  return(
+
+<div>
+<center> <h4 >HOSPITAL REGISTRATION</h4></center>
     <div  >
        <Form>
        <Row form>
@@ -337,61 +210,22 @@ if(!this.state.contactPerson){
          onChange={this.handleChange}
          />
          </FormGroup>
+         <div>
+           <location/>
+         </div>
 
+         <Button   onClick={this.handleSubmit}     type="submit">Submit</Button>
        </Col>
         </Row>
         <center>
-         <Button   onClick={this.handleSubmit}     type="submit">Submit</Button>
          </center>
          </Form>
          </div>
-        
-         {/* <span style={{margin: `1.5rem 0px`, fontFamily: 'monospace', color: locationStatusMessage!=='null' ? 'green' : 'red', fontSize:14 }}>Location Status: {locationStatusMessage}</span> */}
-
-<div style={{ margin: `1.5rem 0` }}>
-  <Button onClick={this.getLocation} >Add Location</Button>
+        <Location 
+          getLocation={this.getLocation}
+        />
 </div>
-       
-       
-       
-      
-       <div>
-         <Table responsive>
-           <thead>
-           <tr>
-              <th>Facility Number</th>
-             <th>Facility Name</th>
-             <th>Facility Adress</th>
-             <th>Phone Number</th>
-             <th>Contact Person</th>
-             <th>Email</th>
-             <th>Delete</th>
-           </tr>
-           </thead>
-           <tbody>
-           {
-             this.state.hcf.map((item,index) => (
-             <tr key={index}> 
-              <td>{item.hcfNo}</td>
-             <td>{item.hcfName}</td>
-             <td>{item.address}</td>  
-             <td>{item.phone}</td>
-             <td>{item.contactPerson}</td>
-             <td>{item.email}</td>
-             <td><button onClick={()=> this.handleDelete(item)}>
-               DELETE
-             </button></td>
-
-             </tr>
-
-           )
-           )}
-           </tbody>
-         </Table>
-       </div>
-      </div>
-
-    );
+  )
   }
 } 
 

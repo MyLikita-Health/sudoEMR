@@ -1,23 +1,22 @@
-//you need to import the all necessary setup
-var express = require('express');
-var bodyParser = require('body-parser');
-var cors = require('cors');
-var mysql = require('mysql');
-const port = process.env.PORT || 4000;
+const express=require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const mysql = require('mysql2');
+const port=4000;
 
 
-// creating express app
-var app= express()
+const app=express();
 
-// create connection to the MySQL database
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'test',
+
+
+// routes starts here
+app.get('/', (req, res) => {
+  res.json({ greetings: 'Hello' });
 });
 
 
+
+app.use(cors());
 // Middleware setup
 app.use(bodyParser.json());
 app.use(
@@ -25,36 +24,40 @@ app.use(
     extended: true,
   })
 );
-app.use(cors());
-
-// routes starts here
-app.get('/', (req, res) => {
-  res.json({ greetings: 'Hello' });
+ // create connection to the MySQL database
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'test',
 });
 
 // route for fetching all users
 app.get('/fhddb/all', (req, res) => {
-  connection.query('SELECT * FROM `fhddb`', function(err, results, fields) {
+  connection.query('SELECT * FROM `aishadb`', function(err, results, fields) {
     res.json({ users: results });
   });
 });
-
-
 // create a user
-app.post('/fhddb/new', (req, res) => {
-  const { hcfNo,hcfName,address,phone,contactPerson,email } = req.body;
+app.post('/aishadb/new', (req, res) => {
+  const { hcfNo,hcfName,address,phone,contactperson,email,long,lat} = req.body;
   console.log(req.body);
-
   connection.query(
-    `INSERT INTO fhddb(hcfNo,hcfName,address,phone,contactPerson,email) VALUES ("${hcfNo}","${hcfName}","${address}","${phone}","${contactPerson}","${email})`,
+    `INSERT INTO db(hcfNo,hcfName,address,phone,contactperson,email,long,lat) VALUES ("${hcfNo}","${hcfName}","${address}","${phone}","${contactperson}","${email}","${long}","${lat}")`,
     (err, results) => {
+      if(err) throw err;
       res.json({ results });
 
     }
   );
 });
+// route for fetching all users
+app.get('/aishadb/all', (req, res) => {
+  connection.query('SELECT * FROM `aishadb`', function(err, results, fields) {
+    res.json({ users: results });
+  });
+});
+
+app.listen(port,()=>console.log("app is runing on port "))
 
 
-app.listen(4000,function(){
-  console.log('server started on port 4000..')
-})

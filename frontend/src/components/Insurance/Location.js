@@ -22,8 +22,9 @@ class Location extends Component{
       if (navigator && navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => {
           console.log('fn called')
-          // console.log('position');
+          
           const coords = pos.coords;
+          this.props.getLocation(coords.longitude,coords.latitude);
           this.setState({
             location: {
               latitude: coords.latitude,
@@ -33,7 +34,7 @@ class Location extends Component{
             locationStatusMessage: 'Location taken',
             locationStatus: true,
           }, () => toaster.success('Location is captured'));
-  
+          console.log(coords);
         }, (error) => {
           switch(error.code) {
             case error.PERMISSION_DENIED:
@@ -72,4 +73,4 @@ class Location extends Component{
       }
 
 }
-export default Location;+
+export default Location;
