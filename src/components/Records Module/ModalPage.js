@@ -1,16 +1,10 @@
 import React from 'react';
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-} from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import { FormErrors } from './FormErrors';
 import defaultImage from '../../images/default_image.png';
 import { _fetchData, _postData } from '../helpers';
 import Notifications, { notify } from 'react-notify-toast';
-
 
 /**
  * The modal page for registering new patients
@@ -50,21 +44,21 @@ class ModalPage extends React.Component {
       passwordValid: false,
       formValid: false,
       modal: false,
-      selectedFile: ""
+      selectedFile: '',
     };
   }
 
   /**
    * Handles the gender text field change
    */
-  setGender = e => {
+  setGender = (e) => {
     this.setState({ gender: e.target.value });
   };
 
   /**
    * Handles change in the text field
    */
-  logChange = e => {
+  logChange = (e) => {
     this.setState({ [e.target.ref]: e.target.value });
   };
 
@@ -81,7 +75,7 @@ class ModalPage extends React.Component {
    * This handles the change when user input some
    * data in the text fields
    */
-  handleUserInput = e => {
+  handleUserInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value }, () => {
@@ -151,7 +145,7 @@ class ModalPage extends React.Component {
   /**
    * Handles the submit button click
    */
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const data = {};
     data.gender = this.state.gender;
@@ -163,59 +157,50 @@ class ModalPage extends React.Component {
 
     let route = 'patientrecords/new';
     let callback = () => {
-      notify.show(
-        data.message||"Record Submitted",
-        'custom',
-        3000,
-        'blue'
-      );
-    }
+      notify.show(data.message || 'Record Submitted', 'custom', 3000, 'blue');
+    };
 
-    let error_cb = error => {
-      return notify.show(
-        `Bad response from server`,
-        'custom',
-        3000,
-        'red'
-      );
-    }
+    let error_cb = (error) => {
+      return notify.show(`Bad response from server`, 'custom', 3000, 'red');
+    };
     _postData({ route, data, callback, error_cb });
-    
   };
 
   get = () => {
     let self = this;
     let route = 'patientrecords/getId';
-    let callback = data => self.setState({ id: JSON.stringify(data) });
+    let callback = (data) => self.setState({ id: JSON.stringify(data) });
     _fetchData({ route, callback });
   };
 
   fileChangedHandler = (event) => {
-    this.setState({selectedFile: event.target.files[0]})
-  }
+    this.setState({ selectedFile: event.target.files[0] });
+  };
 
-  uploadHandler = () => { 
-    console.log(this.state.selectedFile)
-  }
+  uploadHandler = () => {
+    console.log(this.state.selectedFile);
+  };
 
   render() {
     return (
       <div>
-        <Button onClick={this.toggle} style={{margin:10}}>Add New patient</Button>
+        <Button onClick={this.toggle} style={{ margin: 10 }}>
+          Add New patient
+        </Button>
         <Notifications options={{ zIndex: 200, top: '50px' }} />
         {/* the modal starts here */}
         <Modal isOpen={this.state.modal} toggle={this.toggle} size="lg">
           <ModalHeader toggle={this.toggle}>Add New patient</ModalHeader>
           <ModalBody>
             {/* the form */}
-            <form onSubmit={this.handleSubmit} method="POST">
+            <form>
               <div className="row">
                 <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                   <image
-                      src={defaultImage}
-                      alt="default image"
-                      className="col-xs-2 col-sm-2 col-md-2 col-lg-3"
-                    />
+                    src={defaultImage}
+                    alt="default image"
+                    className="col-xs-2 col-sm-2 col-md-2 col-lg-3"
+                  />
                   <input type="file" onChange={this.fileChangedHandler} />
                   {/* <button onClick={this.uploadHandler}>Upload!</button>                   */}
                 </div>
@@ -224,7 +209,8 @@ class ModalPage extends React.Component {
                   <label>Patient id</label>
                   {/* <input type="button" onClick={this.get} value="get" /> */}
                   <input
-                    onChange={this.logChange}
+                    name="id"
+                    onChange={this.handleUserInput}
                     type="text"
                     ref="id"
                     className="form-control id"
@@ -261,26 +247,26 @@ class ModalPage extends React.Component {
 
                 <div className="col-xs-6 col-sm-4 col-md-3 col-lg-4">
                   <label>Gender</label>
-                    <label>
-                      <input
-                        onClick={this.setGender}
-                        checked={this.state.gender === 'female'}
-                        type="radio"
-                        value="female"
-                        name="gender"
-                      />{' '}
-                      Female
-                    </label>
-                    <label>
-                      <input
-                        onClick={this.setGender}
-                        checked={this.state.gender === 'male'}
-                        type="radio"
-                        value="male"
-                        name="gender"
-                      />{' '}
-                      Male
-                    </label>
+                  <label>
+                    <input
+                      onClick={this.setGender}
+                      checked={this.state.gender === 'female'}
+                      type="radio"
+                      value="female"
+                      name="gender"
+                    />{' '}
+                    Female
+                  </label>
+                  <label>
+                    <input
+                      onClick={this.setGender}
+                      checked={this.state.gender === 'male'}
+                      type="radio"
+                      value="male"
+                      name="gender"
+                    />{' '}
+                    Male
+                  </label>
                 </div>
                 <div className="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                   <label>Age</label>
@@ -352,7 +338,7 @@ class ModalPage extends React.Component {
                     placeholder="Phone Number"
                   />
                 </div>
-                
+
                 <div className="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                   <label>Email Address</label>
                   <input
@@ -419,10 +405,10 @@ class ModalPage extends React.Component {
                     placeholder="Address"
                   />
                 </div>
-             </div>
+              </div>
 
-                  <h5>Next Of Kin Information</h5>
-                <div className="row">
+              <h5>Next Of Kin Information</h5>
+              <div className="row">
                 <div className="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                   <label>Name</label>
                   <input
@@ -454,7 +440,7 @@ class ModalPage extends React.Component {
                     placeholder=" Kin Phone Number"
                   />
                 </div>
-        
+
                 <div className="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                   <label>Email Address</label>
                   <input
@@ -496,16 +482,15 @@ class ModalPage extends React.Component {
                   </div>
                   <button
                     type="submit"
-                    onClick={this.toggle}
+                    onClick={this.handleSubmit}
+                    method="POST"
                     className="btn btn-primary"
                     disabled={!this.state.formValid}>
                     Submit
                   </button>
                 </div>
                 <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                  <button
-                    onClick={this.toggle}
-                    className="btn btn-danger">
+                  <button toggle={this.toggle} className="btn btn-danger">
                     Cancel
                   </button>
                 </div>
