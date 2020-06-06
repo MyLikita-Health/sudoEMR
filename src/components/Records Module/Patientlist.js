@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  Collapse } from 'reactstrap';
+import { Collapse } from 'reactstrap';
 import ModalPage from './ModalPage';
 import DoctorsListModal from './DoctorsListModal';
 import { RecordGuide } from '../Guides';
@@ -59,7 +59,7 @@ export default class Patientlist extends Component {
    * the method passes the information about the patient
    * along from the parent component
    */
-  openEditModal = patient => {
+  openEditModal = (patient) => {
     console.log(patient);
     this.setState({
       editModalIsOpen: true,
@@ -74,7 +74,7 @@ export default class Patientlist extends Component {
     });
   };
   //   to open the assignTo modal
-  openDoctorsModal = id => {
+  openDoctorsModal = (id) => {
     this.setState({
       patientId: id,
       doctorsModalIsOpen: true,
@@ -90,7 +90,7 @@ export default class Patientlist extends Component {
   };
 
   // onClick method for delete button
-  deletepatientrecords = patientrecords => {
+  deletepatientrecords = (patientrecords) => {
     let data = {
       id: patientrecords.id,
     };
@@ -104,20 +104,21 @@ export default class Patientlist extends Component {
   // helper function _fetchData()
   fetchData() {
     let route = 'patientrecords/unassignedPatientlist';
-    
-    let success_callback = data => {
+
+    let success_callback = (data) => {
       //  console.log(data)
-       this.setState({ patientrecords: data })
-      }
-     let error_callback = error => this.setState({ unassignedError: error });
-     _fetchData({ route, success_callback, error_callback });
+      this.setState({ patientrecords: data });
+    };
+    let error_callback = (error) => this.setState({ unassignedError: error });
+    _fetchData({ route, success_callback, error_callback });
   }
 
   fetchAll = () => {
     let route = 'patientrecords/patientlist';
-    
-    let success_callback = data => this.setState({ allpatientrecords: data.results });
-    let error_callback = error => this.setState({ allPatientError: error });
+
+    let success_callback = (data) =>
+      this.setState({ allpatientrecords: data.results });
+    let error_callback = (error) => this.setState({ allPatientError: error });
     _fetchData({ route, success_callback, error_callback });
   };
 
@@ -130,12 +131,12 @@ export default class Patientlist extends Component {
   }
 
   //method for setting gender in the edit modal
-  setGender = e => {
+  setGender = (e) => {
     this.setState({ gender: e.target.value });
   };
 
   //onChange method for updating the state as soon as the value
-  logChange = e => {
+  logChange = (e) => {
     this.setState({ [e.target.ref]: e.target.value });
   };
 
@@ -143,29 +144,29 @@ export default class Patientlist extends Component {
    * to render the newly added patient in the patientList after
    * the modal has been closed
    */
-  receiveState = data => {
-    this.setState(prevState => ({
+  receiveState = (data) => {
+    this.setState((prevState) => ({
       patientrecords: prevState.patientrecords.concat(data),
     }));
   };
 
   //this method sets the value of the filter text
-  handleFilterTextChange = filterText => {
+  handleFilterTextChange = (filterText) => {
     this.setState({
       filterText: filterText,
     });
   };
 
-  getUnassignedPatients = doctor => {
+  getUnassignedPatients = (doctor) => {
     const patientrecords = this.state.allpatientrecords;
     const unassignedPatients = patientrecords.filter(
-      f => f.assigned_to === `${doctor}`
+      (f) => f.assigned_to === `${doctor}`
     );
     this.setState({ unassignedPatients: unassignedPatients });
     // console.log(this.state.unassignedPatients)
   };
 
-  getNewListByDoctor = doctor => {
+  getNewListByDoctor = (doctor) => {
     this.getUnassignedPatients(doctor);
     this.setState({ collapse: false });
   };
@@ -181,9 +182,7 @@ export default class Patientlist extends Component {
                     on a current day */}
           <PatientAssignedToday getNewListByDoctor={this.getNewListByDoctor} />
         </div>
-        <div
-          style={{ border: '1px solid #007bff' }}
-          className="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+        <div className="col-xs-12 col-sm-12 col-md-8 col-lg-6">
           <div className="">
             {/* modal component to add a new patient  */}
             <ModalPage receiveState={this.receiveState.bind(this)} />
