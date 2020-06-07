@@ -19,9 +19,9 @@ export default class Lab extends Component {
     };
   }
 
-  fetchData = route => {
-    let success_callback = data => this.setState({ requestsList: data });
-    let error_callback = error => this.setState({ error });
+  fetchData = (route) => {
+    let success_callback = (data) => this.setState({ requestsList: data });
+    let error_callback = (error) => this.setState({ error });
     _fetchData({ route, success_callback, error_callback });
   };
 
@@ -32,19 +32,19 @@ export default class Lab extends Component {
   }
 
   toggleRoute = () => {
-    this.setState(prevState => ({ isRoute: !prevState.isRoute }));
+    this.setState((prevState) => ({ isRoute: !prevState.isRoute }));
   };
 
-  onPatientClick = currentReq => {
+  onPatientClick = (currentReq) => {
     this.setState({ currentReq });
     this.toggleRoute();
   };
 
-  setMode = mode => this.setState({ mode });
+  setMode = (mode) => this.setState({ mode });
 
-  updateTable = id => {
+  updateTable = (id) => {
     const { requestsList } = this.state;
-    let newRequestList = requestsList.filter(req => req.id !== id)
+    let newRequestList = requestsList.filter((req) => req.id !== id);
 
     this.setState({ requestsList: newRequestList });
   };
@@ -82,8 +82,9 @@ export default class Lab extends Component {
           />
         </div>
         <div
-          style={{ border: '1px solid #007bff' }}
-          className="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+          style={{ paddingTop: '10px' }}
+          className="col-xs-12 col-sm-12 col-md-8 col-lg-7"
+        >
           <LabDashboard
             fetchData={fetchData}
             req={currentReq}
@@ -94,7 +95,7 @@ export default class Lab extends Component {
             mode={mode}
           />
         </div>
-        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-3 module-pic">
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-2 module-pic">
           <img src={image} alt="module-pic" className="module-pic" />
         </div>
       </div>
