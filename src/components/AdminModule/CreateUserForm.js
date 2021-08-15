@@ -253,7 +253,7 @@ export default class CreateUserForm extends Component {
               <input
                 type="submit"
                 onClick={this.handleSubmit}
-                value="Sumit"
+                value="Submit"
                 className="btn btn-outline-secondary"
               />
             </CardBody>
