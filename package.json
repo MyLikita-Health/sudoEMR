@@ -58,7 +58,7 @@
     "redux-form": "^8.1.0",
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.0.3",
-    "validator": "^9.4.1"
+    "validator": "^13.7.0"
   },
   "scripts": {
     "start": "react-scripts start",
