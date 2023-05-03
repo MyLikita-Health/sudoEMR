@@ -42,7 +42,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-link": "^2.0.2",
-    "react-scripts": "2.1.1",
+    "react-scripts": "5.0.1",
     "react-scroll": "^1.7.9",
     "react-scroll-box": "^0.3.5",
     "react-scrollbar": "^0.5.4",
