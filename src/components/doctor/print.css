@@ -1,0 +1,12 @@
+@media print {
+  * {
+    display: none;
+  }
+  #diagnosisPrint {
+    display: block;
+  }
+  .value {
+    padding-left: 3em;
+  }
+
+}

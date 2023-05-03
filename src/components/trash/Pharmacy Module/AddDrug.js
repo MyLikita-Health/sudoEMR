@@ -1,5 +1,5 @@
-import React from './node_modules/react';
-import FreeScrollBar from './node_modules/react-free-scrollbar';
+import React from 'react';
+import { Scrollbars } from 'react-custom-scrollbars';
 import {
   Card,
   CardBody,
@@ -7,11 +7,11 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-} from './node_modules/reactstrap';
-import FaPlus from './node_modules/react-icons/lib/fa/plus';
-import FaEdit from './node_modules/react-icons/lib/fa/edit';
-import FaRemove from './node_modules/react-icons/lib/io/trash-a';
-import { _postData, _convertArrOfObjToArr } from '../helpers';
+} from 'reactstrap';
+import FaPlus from 'react-icons/lib/fa/plus';
+import FaEdit from 'react-icons/lib/fa/edit';
+import FaRemove from 'react-icons/lib/io/trash-a';
+import { _postData, _convertArrOfObjToArr } from '../utils/helpers';
 
 class AddDrugForm extends React.Component {
   constructor(props) {
@@ -266,7 +266,7 @@ export default class AddDrug extends React.Component {
 
 const ListTable = ({ list, onEditClick, onRemoveClick }) => (
   <div style={{ width: '100%', height: '25vh' }}>
-    <FreeScrollBar>
+    <Scrollbars>
       <Table striped hover bordered responsive>
         <thead>
           <tr>
@@ -309,7 +309,7 @@ const ListTable = ({ list, onEditClick, onRemoveClick }) => (
           ))}
         </tbody>
       </Table>
-    </FreeScrollBar>
+    </Scrollbars>
   </div>
 );
 

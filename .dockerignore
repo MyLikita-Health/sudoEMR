@@ -1,0 +1,25 @@
+# output
+build/
+build.zip
+
+# config
+.git
+.DS_Store
+.gitignore
+
+# dependencies
+node_modules/
+package-lock.json
+
+# unnecessary things
+.idea/
+.github/
+.netlify/
+.vscode/
+converage/
+docs/
+
+# root
+README.md
+Dockerfile
+dockerfile

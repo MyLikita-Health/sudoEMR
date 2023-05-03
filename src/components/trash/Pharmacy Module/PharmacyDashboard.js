@@ -1,14 +1,13 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import { Route, NavLink } from 'react-router-dom';
-import Loading from '../loading';
+import FullscreenLoading from '../../comp/components/FullscreenLoading';
 // import PendingPharmacyRequest from './PendingPharmacyRequest';
-const SalesReport = lazy(() => import('./SalesReport'));
-const UpToDateStockBalance = lazy(() => import('./UpToDateStockBalance'));
-const EditDrugs = lazy(() => import('./EditDrugs'));
-const AddDrug = lazy(() => import('./AddDrug'));
-const PrescriptionProcessingForm = lazy(() =>
-  import('./PrescriptionProcessingForm')
-);
+import SalesReport from './SalesReport'
+import UpToDateStockBalance from './UpToDateStockBalance'
+import EditDrugs from './EditDrugs'
+import AddDrug from './AddDrug'
+import PrescriptionProcessingForm from './PrescriptionProcessingForm'
+
 const Tabs = ({ hideCarousel }) => {
   return (
     <div style={{ width: '100%' }}>
@@ -76,7 +75,7 @@ const TabForm = ({
     },
   ];
   return (
-    <Suspense fallback={<Loading />}>
+    <div >
       {!processing && (
         <div>
           {!showCarousel &&
@@ -102,7 +101,7 @@ const TabForm = ({
           />
         </div>
       ) : null}
-    </Suspense>
+    </div>
   );
 };
 

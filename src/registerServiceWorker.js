@@ -1,3 +1,5 @@
+import { _customNotify } from "./components/utils/helpers";
+
 // In production, we register a service worker to serve assets from local cache.
 
 // This lets the app load faster on subsequent visits in production, and gives
@@ -54,7 +56,7 @@ export default function register() {
 
 function registerValidSW(swUrl) {
   navigator.serviceWorker
-    .register(swUrl)
+    .register(swUrl, { scope: "/hms/" })
     .then(registration => {
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
@@ -65,12 +67,14 @@ function registerValidSW(swUrl) {
               // the fresh content will have been added to the cache.
               // It's the perfect time to display a "New content is
               // available; please refresh." message in your web app.
-              console.log('New content is available; please refresh.');
+              console.log(`New content is available; please hold "SHIFT" and refresh.`);
+              _customNotify(`New content is available; please hold "SHIFT" and refresh.`);
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
               console.log('Content is cached for offline use.');
+              _customNotify('Content is cached for offline use.')
             }
           }
         };
@@ -102,16 +106,52 @@ function checkValidServiceWorker(swUrl) {
       }
     })
     .catch(() => {
-      console.log(
+      _customNotify(
         'No internet connection found. App is running in offline mode.'
       );
     });
 }
 
+// function askUserToInstallApp () {
+//   let deferredPrompt;
+//   const addBtn = document.querySelector('.addBtn')
+//   addBtn.style.display = 'none'
+
+//   window.addEventListener('beforeinstallprompt', e => {
+//     e.preventDefault()
+//     // stash the event to trigger it later
+//     deferredPrompt = e;
+//     addBtn.style.display = 'block'
+
+//     console.log('showing install promottion')
+//     addBtn.addEventListener('click', e => {
+//        //update ui to notify user
+//       addBtn.style.display = 'none'
+//       deferredPrompt.prompt();
+//       deferredPrompt.userChoice
+//         .then(choiceResult => {
+//           if(choiceResult.outcome === 'accepted') {
+//             console.log('user accepted A2HS prompt');
+//           } else {
+//             console.log('User dismissed the A2HS prompt');
+//           }
+//           deferredPrompt = null;
+//         })
+//     })
+   
+//   })
+
+//   //detecting installation
+//   window.addEventListener("appinstalled", e => {
+//     console.log("installed");
+//   });
+// }
+
+
 export function unregister() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(registration => {
       registration.unregister();
-    });
-  }
+;    });
+ ; }
 }

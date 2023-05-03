@@ -1,0 +1,12 @@
+.login-form {
+    width: '100%';
+    max-width: 400px;
+    padding: 15px;
+    margin: auto;
+    height: '100%';
+    padding-top: 15vh;
+}
+
+.sub {
+    padding: 10px;
+}

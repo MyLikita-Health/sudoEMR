@@ -1,21 +1,19 @@
 import React from 'react';
 import { Container } from 'reactstrap';
-import defaultImage from '../images/default_image.png';
-import { toCamelCase } from './helpers';
+import { toCamelCase } from './utils/helpers';
 // import './print.css';
 
 /**
  * This component renders the basic details of the patient.
  */
-function PatientForm({ record }) {
+function PatientForm({ record={} }) {
   const username = localStorage.getItem('user');
   const doctor = toCamelCase(username);
-  const date = new Date();
+  // const date = new Date();
   const flexStyle = { display: 'flex', flexDirection: 'horizontal' };
   return (
     <Container style={flexStyle}>
       <div style={{ width: '20%' }}>
-        <img src={defaultImage} alt="default_image" />
       </div>
       <div style={{ width: '80%' }}>
         <div style={flexStyle}>

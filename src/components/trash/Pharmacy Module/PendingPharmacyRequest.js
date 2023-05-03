@@ -1,80 +1,68 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { Card, CardBody, Input, Table } from 'reactstrap';
-import FreeScrollBar from 'react-free-scrollbar';
+import { Scrollbars } from 'react-custom-scrollbars';
 import Notifications from 'react-notify-toast';
 import Loading from '../loading';
-import { _fetchData, _customNotify } from '../helpers';
+import { _fetchData, _customNotify } from '../utils/helpers';
 
-class PendingPharmacyRequest extends Component {
-  constructor(props) {
-    super(props);
+export default function PendingPharmacyRequest () {
+  const [modal, setModal] = useState(false)
+  const [pendingPatientRequests, setPendingPatientRequests] = useState([])
+  const [currentDrug, setCurrentDrug] = useState({})
+  const [searchTerm, setSearchTerm]=useState('')
+  const [error, setError] = useState('')
 
-    this.state = {
-      modal: false,
-      pendingPatientRequests: [],
-      currentDrug: {},
-      searchTerm: '',
-      error: '',
-    };
-  }
-
-  fetchData() {
-    let route = 'prescriptionrequests/pendingRequests';
+  const fetchData = ()=> {
+    let route = 'prescriptions/pending';
     let success_callback = data =>
-      this.setState({ pendingPatientRequests: data });
-    let error_callback = err => this.setState({ error: err });
+    setPendingPatientRequests( data );
+    let error_callback = err => setError( err );
     _fetchData({ route, success_callback, error_callback });
   }
+  useEffect(()=> {
+    fetchData()
+  }, [])
 
-  componentDidMount() {
-    this.fetchData();
-  }
-
-  toggle = () => {
-    this.setState(prevState => ({
-      modal: !prevState.modal,
-    }));
+  const toggle = () => {
+   setModal(!modal)
   };
 
-  onPrescriptionClick = patient => {
-    const currentDrug = Object.assign({}, this.state.currentDrug, patient);
-    this.props.getDetails(currentDrug);
-    this.setState({ currentDrug });
+  const onPrescriptionClick = patient => {
+    // this.props.getDetails(currentDrug, patient);
+    setCurrentDrug(currentDrug);
   };
 
-  dispenseDrugs = drugs => {
+ const dispenseDrugs = drugs => {
     _customNotify('Drug(s) dispensed successfully!');
-    this.toggle();
+    toggle();
     console.log(drugs);
   };
 
-  onSearchTermChange = searchTerm => {
-    this.setState({ searchTerm });
+  const onSearchTermChange = searchTerm => {
+    setSearchTerm( searchTerm);
   };
+  const rows = [];
 
-  render() {
-    const { pendingPatientRequests, error } = this.state;
+  pendingPatientRequests.forEach((patient, i) => {
+    if (patient.name.toString().indexOf(searchTerm) === -1) return;
 
-    const rows = [];
-
-    pendingPatientRequests.forEach((patient, i) => {
-      if (patient.id.toString().indexOf(this.state.searchTerm) === -1) return;
-
-      rows.push(
-        <tr
-          key={i}
-          onClick={() => this.onPrescriptionClick(patient)}
-          style={{ cursor: 'pointer' }}>
-          <td>{patient.id}</td>
-          <td>
-            {patient.surname} {patient.firstname}
-          </td>
-          <td>{patient.gender}</td>
-        </tr>
-      );
-    });
-    return (
-      <div className=" ">
+    rows.push(
+      <tr
+        key={i}
+        onClick={() => this.onPrescriptionClick(patient)}
+        style={{ cursor: 'pointer' }}>
+        <td>{patient.name}</td>
+        <td>
+          {patient.prescribed_by}
+        </td>
+        <td>{patient.count}</td>
+      </tr>
+    );
+  });
+  return (
+    <>
+    {JSON.stringify(pendingPatientRequests)}
+<div className=" ">
         <Notifications options={{ zIndex: 200, top: '50px' }} />
         <Card className="border-secondary">
           <h6 className="text-center">Pending Pharmacy Request</h6>
@@ -83,11 +71,11 @@ class PendingPharmacyRequest extends Component {
               <Input
                 placeholder="Search request by patient's id"
                 value={this.state.searchTerm}
-                onChange={e => this.onSearchTermChange(e.target.value)}
+                onChange={e => onSearchTermChange(e.target.value)}
               />
             </div>
-            <div style={{ width: '100%', height: '45vh' }}>
-              <FreeScrollBar>
+            <div >
+              <Scrollbars style={{height: '65vh' }}>
                 {!pendingPatientRequests.length ? (
                   !error.length ? (
                     <Loading />
@@ -100,9 +88,9 @@ class PendingPharmacyRequest extends Component {
                   <Table bordered striped hover responsive>
                     <thead>
                       <tr>
-                        <th>Patient ID</th>
-                        <th>Full Name</th>
-                        <th>Gender</th>
+                        <th>Name</th>
+                        <th>Prescribed by:</th>
+                        <th>Count</th>
                       </tr>
                     </thead>
                     <tbody>{rows}</tbody>
@@ -111,13 +99,12 @@ class PendingPharmacyRequest extends Component {
                 {error.length ? (
                   <p className="alert alert-danger text-center">{error}</p>
                 ) : null}
-              </FreeScrollBar>
+              </Scrollbars>
             </div>
           </CardBody>
         </Card>
       </div>
-    );
-  }
+    </>
+  )
 }
 
-export default PendingPharmacyRequest;

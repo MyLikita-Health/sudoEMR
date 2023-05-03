@@ -1,0 +1,6 @@
+table.fc-border-separate { table-layout: fixed; }
+
+table.fc-border-separate, table.fc-border-separate.fc tr, .fc tr {
+    width: 10px !important;
+    height: 10px !important;
+    }

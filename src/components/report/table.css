@@ -1,0 +1,16 @@
+.fx-row {
+  width: 100%;
+  display: inline-table;
+  table-layout: fixed;
+}
+
+.fx-table {
+  height: 400px;
+  display: -moz-groupbox;
+}
+.fx-tbody {
+  overflow-y: scroll;
+  height: 300px;
+  width: 100%;
+  position: absolute;
+}

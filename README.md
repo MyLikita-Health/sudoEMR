@@ -8,12 +8,17 @@ Checkout the demo http://bits-his.herokuapp.com/
  Nodejs
 
 ## Modules
-- [ ] Record 
-- [ ] Doctors
-- [ ] Pharmacy
-- [ ] Laboratory
-- [ ] Accounting
+- Record 
+- Doctors
+- Pharmacy
+- Laboratory
+- Accounting
  
  
 # Contribute
 If you know how to code, we welcome you to send fixes and new features, but in order to be efficient we ask you [to follow the following procedure](https://github.com/bits-his/bits-his/blob/master/CONTRIBUTING.md).
+
+<!-- 
+RewriteEngine On
+RewriteCond %{HTTPS} off 
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]-->

@@ -1,0 +1,6 @@
+{
+    "cloud_name": "mylikita",
+    "api_key": "796923963195976",
+    "api_secret": "3RjILrjjZ8YnatHadlU6QUroCQQ",
+    "env_variable": "cloudinary://796923963195976:3RjILrjjZ8YnatHadlU6QUroCQQ@mylikita/"
+}

@@ -7,7 +7,7 @@ import {
   ModalHeader,
   ModalBody,
 } from 'reactstrap';
-import FreeScrollBar from 'react-free-scrollbar';
+import { Scrollbars } from 'react-custom-scrollbars';
 import Loading from '../loading';
 import {
   _fetchData,
@@ -15,7 +15,7 @@ import {
   _customNotify,
   _warningNotify,
   _updateData
-} from '../helpers';
+} from '../utils/helpers';
 import Notifications from 'react-notify-toast';
 
 export default class PrescriptionProcessingForm extends Component {
@@ -379,7 +379,7 @@ export default class PrescriptionProcessingForm extends Component {
         <h5 className="text-center">Pending Drugs</h5>
 
         {/* <div style={{ width: '100%', height: '28vh' }}>
-              <FreeScrollBar> */}
+              <Scrollbars> */}
         {!prescriptions.length ? (
           !prescriptionByIdErr.length ? (
             <Loading />
@@ -412,7 +412,7 @@ export default class PrescriptionProcessingForm extends Component {
             </tbody>
           </Table>
         )}
-        {/* </FreeScrollBar>
+        {/* </Scrollbars>
             </div> */}
 
         <button
@@ -565,7 +565,7 @@ const DrugsTable = ({ drugList, changeDrug, searchTerm }) => {
   });
   return (
     <div style={{ width: '100%', height: '50vh' }}>
-      <FreeScrollBar>
+      <Scrollbars>
         <Notifications options={{ zIndex: 200, top: '50px' }} />
         <Table hover bordered>
           <thead>
@@ -577,7 +577,7 @@ const DrugsTable = ({ drugList, changeDrug, searchTerm }) => {
           </thead>
           <tbody>{rows}</tbody>
         </Table>
-      </FreeScrollBar>
+      </Scrollbars>
     </div>
   );
 };
