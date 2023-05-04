@@ -16,7 +16,7 @@ import "./styles/index.css";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMobileView } from "./redux/actions/app";
-import { Spinner } from "reactstrap";
+// import { Spinner } from "reactstrap";
 
 import LandingContainer from "./components/landing/landing";
 import Login from "./components/auth/login/login";

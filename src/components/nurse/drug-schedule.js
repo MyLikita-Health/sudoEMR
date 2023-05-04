@@ -13,7 +13,7 @@ import moment from 'moment'
 import { apiURL } from '../../redux/actions'
 import { _fetchApiAsync, _postApi } from '../../redux/actions/api'
 import store from '../../redux/store'
-import { _convertArrOfObjToArr, _warningNotify } from '../utils/helpers'
+import {  _warningNotify } from '../utils/helpers'
 
 function generateSchedule(curr, pid, allocation_id, user, facId) {
   // try {

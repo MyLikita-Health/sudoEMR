@@ -8,7 +8,7 @@ import { Switch, Route, withRouter } from "react-router-dom";
 // import PendingAdmission from "./bed-allocation/PendingAdmission";
 // import BedAllocation from "./bed-allocation/BedAllocation";
 import CreateNewPatient from "./CreateNewPatient";
-import InPatientTable from "../nurse/InPatientTable";
+// import InPatientTable from "../nurse/InPatientTable";
 // import DischargedByDoctorList from "./bed-allocation/PendingDischarge";
 import DoctorsListModal from "./DoctorsListModal";
 import NewPatientList from "./NewPatientList";

@@ -1,7 +1,7 @@
 import PouchDB from "pouchdb-browser";
 import Find from "pouchdb-find";
 import { v4 as UUIDV4 } from "uuid";
-import { ipAddr } from ".";
+// import { ipAddr } from ".";
 import { GET_NOTIFICATIONS } from "../../components/doc_dash/types";
 import store from "../store";
 

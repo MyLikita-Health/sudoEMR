@@ -1,6 +1,6 @@
 import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
-import { useHistory, useLocation } from "react-router";
+import { useHistory } from "react-router";
 // import { ButtonGroup, Col, Row } from 'reactstrap'
 import { useQuery } from "../../../../hooks";
 // import BackButton from "../../../comp/components/BackButton";
@@ -10,7 +10,7 @@ import { APPOINTMENTS } from "../../routes";
 
 function ConsultationTopBar() {
   const history = useHistory();
-  const location = useLocation();
+  // const location = useLocation();
   const query = useQuery();
   const section = query.get("section");
   const showBack = query.get("show_back");

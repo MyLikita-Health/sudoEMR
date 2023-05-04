@@ -16,7 +16,7 @@ import { createUser, getRoles } from "../../redux/actions/auth";
 import { _customNotify, _warningNotify } from "../utils/helpers";
 import allModule from "./moduleData";
 // import CheckBoxNormal from "../theater/operation-notes/CheckBoxNormal";
-import { _fetchApi,_fetchApi2 } from "../../redux/actions/api";
+import { _fetchApi2 } from "../../redux/actions/api";
 import { apiURL } from "../../redux/actions";
 import SelectInput from "../comp/components/SelectInput";
 import { checkUsername } from "../auth/registration/api";

@@ -16,7 +16,7 @@ import {
 import { pad } from "../../utils/helpers";
 import store from "../../../redux/store";
 import { _fetchApi, _fetchApi2 } from "../../../redux/actions/api";
-import { apiURL, ipAddr } from "../../../redux/actions";
+import { apiURL } from "../../../redux/actions";
 
 PouchDB.plugin(RelationalPouch);
 PouchDB.plugin(Find);
@@ -26,8 +26,8 @@ export const patients_db = new PouchDB("patients_db");
 export function getPatient(_id, cb = (f) => f) {
   return (dispatch) => {
     // console.log(_id, '_________________________________id')
-    const { id, facilityId } = store.getState().auth.user;
-    let userId = facilityId === "doctors" ? id : facilityId;
+    // const { id, facilityId } = store.getState().auth.user;
+    // let userId = facilityId === "doctors" ? id : facilityId;
 
     // console.log('=====================>', _id);
     // console.log('getting patient', userId, _id);

@@ -1,6 +1,6 @@
 import PouchDB from 'pouchdb-browser';
 import Find from 'pouchdb-find';
-import { ipAddr } from '../redux/actions';
+// import { ipAddr } from '../redux/actions';
 
 PouchDB.plugin(Find);
 

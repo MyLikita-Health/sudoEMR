@@ -12,7 +12,7 @@ function VitalSignsHistory({ height = "23vh", isOpen, toggle }) {
   const { _patientId } = useParams();
   const query = useQuery();
   const patientId = query.get("patient_id");
-  const allocation_id = query.get("allocation_id");
+  // const allocation_id = query.get("allocation_id");
   const location = useLocation();
   let doctorCond = location.pathname.includes("/me/doctor/visits");
 

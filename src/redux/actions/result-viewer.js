@@ -1,5 +1,5 @@
 import { apiURL } from "./index.js";
-import { LOGIN, RESULT_ERROR, RESULT_VIEW } from "./types";
+import {  RESULT_ERROR, RESULT_VIEW } from "./types";
 
 export function view({ lab_no, token }, callback, error, history) {
   return (dispatch) => {

@@ -5,7 +5,7 @@ import { connect, useSelector } from 'react-redux'
 import { getPatientList } from '../actions/patientsActions'
 import { SET_PATIENT_FORM_MODE } from '../types'
 import { Row, Col } from 'reactstrap'
-import { FallbackComp } from '../../comp/components/FallbackSkeleton'
+// import { FallbackComp } from '../../comp/components/FallbackSkeleton'
 
 import PatientTable from './PatientTable'
 import PatientsAssignedToDoc from './PatientsAssignedToDoc'

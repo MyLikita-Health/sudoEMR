@@ -18,10 +18,10 @@ import {
 } from "reactstrap";
 import { Spinner } from "evergreen-ui";
 import "./login.css";
-import Loading from "../../loading";
+// import Loading from "../../loading";
 import PublicWrapper from "../../../routes/PublicWrapper";
-import { _fetchApi2 } from "../../../redux/actions/api";
-import { apiURL } from "../../../redux/actions";
+// import { _fetchApi2 } from "../../../redux/actions/api";
+// import { apiURL } from "../../../redux/actions";
 
 export const accountTypes = {
   PATIENT: "PATIENT",

@@ -1,36 +1,36 @@
 import React from 'react';
-import loading from '../../../images/loading-preferred.gif';
-import { InputGroup, Button, InputGroupAddon, Input } from 'reactstrap';
-import { FaMicrophone } from 'react-icons/fa';
+// import loading from '../../../images/loading-preferred.gif';
+import { InputGroup,  Input } from 'reactstrap';
+// import { FaMicrophone } from 'react-icons/fa';
 // import { LoadingXsm } from '../../loading';
 
 // const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
 // const recognition = new SpeechRecognition()
 
 const SpeechInput = (props) => {
-  const [btnColor, setBtnColor] = React.useState('secondary');
+  // const [, setBtnColor] = React.useState('secondary');
 
   // conts { tag, value, onInputChange, className } = props
-  const SpeechRecognition =
-    window.SpeechRecognition || window.webkitSpeechRecognition;
+  // const SpeechRecognition =
+  //   window.SpeechRecognition || window.webkitSpeechRecognition;
   // const SpeechGrammarList = window.SpeechGrammarList;
   // const SpeechRecognitionEvent = window.SpeechRecognitionEvent;
-  const recognition = new SpeechRecognition();
-  const handleStartClick = () => {
-    recognition.start();
-    recognition.onstart = () => setBtnColor('success');
-    recognition.onresult = (e) => {
-      const current = e.resultIndex;
-      const transcript = e.results[current][0].transcript;
-      const upperCase =
-        transcript.charAt(0).toUpperCase() + transcript.substring(1);
-      props.onInputChange(upperCase);
-      setBtnColor('secondary');
-    };
+  // const recognition = new SpeechRecognition();
+  // const handleStartClick = () => {
+  //   recognition.start();
+  //   recognition.onstart = () => setBtnColor('success');
+  //   recognition.onresult = (e) => {
+  //     const current = e.resultIndex;
+  //     const transcript = e.results[current][0].transcript;
+  //     const upperCase =
+  //       transcript.charAt(0).toUpperCase() + transcript.substring(1);
+  //     props.onInputChange(upperCase);
+  //     setBtnColor('secondary');
+  //   };
 
-    recognition.onerror = () => setBtnColor('danger');
-    // recognition.onspeechend = () => setBtnColor('secondary');
-  };
+  //   recognition.onerror = () => setBtnColor('danger');
+  //   // recognition.onspeechend = () => setBtnColor('secondary');
+  // };
 
   return (
     <InputGroup>

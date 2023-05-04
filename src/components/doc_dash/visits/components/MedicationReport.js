@@ -40,23 +40,23 @@ export const groupListByKey = (list, key) => {
 function MedicationReport({ isOpen, toggle, height = "40vh", newBtn = true }) {
   const { patientId } = useParams();
   const [medication, setMedications] = useState({});
-  const [modal, setModal] = useState(false);
-  const toggelDrugs = () => setModal((p) => !p);
-  const [mode] = useState("view");
+  // const [, setModal] = useState(false);
+  // const toggelDrugs = () => setModal((p) => !p);
+  // const [mode] = useState("view");
   const location = useLocation();
   let doctorCond = location.pathname.includes("/me/doctor/visits");
 
-  const fields = [
-    {
-      title: "Date",
-      value: "created_at",
-      custom: true,
-      component: (item) => (
-        <span>{moment(item.created_at).format("DD/MM/YYYY")}</span>
-      ),
-    },
-    { title: "Medication", value: "medication" },
-  ];
+  // const fields = [
+  //   {
+  //     title: "Date",
+  //     value: "created_at",
+  //     custom: true,
+  //     component: (item) => (
+  //       <span>{moment(item.created_at).format("DD/MM/YYYY")}</span>
+  //     ),
+  //   },
+  //   { title: "Medication", value: "medication" },
+  // ];
 
   const getMedicationReport = useCallback(() => {
     getPrescriptionForPatient(patientId, "med-report").then((resp) => {

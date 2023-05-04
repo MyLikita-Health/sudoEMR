@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import {
   Form,
   FormGroup,
@@ -9,94 +9,94 @@ import {
   CardFooter,
   // InputGroupAddon,
   // InputGroup,
-} from 'reactstrap'
-import DrugsTable from './DrugsTable'
-import { Typeahead } from 'react-bootstrap-typeahead'
-import { _warningNotify } from '../utils/helpers'
-import { FaPlus } from 'react-icons/fa'
-import { Scrollbars } from 'react-custom-scrollbars'
-import { savePrescriptionRequest } from '../../redux/actions/doctor'
-import FooterButtons from './components/FooterButtons'
-import { withRouter } from 'react-router'
-import { compose } from 'redux'
-import { v4 as uuidV4 } from 'uuid'
-import { apiURL } from '../../redux/actions/index'
-import SpeechInput from '../comp/speech-to-text/SpeechInput'
-import Autocomplete from '../../components/comp/components/AutoComplete'
-import { _fetchApi, _fetchApi2 } from '../../redux/actions/api'
+} from "reactstrap";
+import DrugsTable from "./DrugsTable";
+import { Typeahead } from "react-bootstrap-typeahead";
+import { _warningNotify } from "../utils/helpers";
+import { FaPlus } from "react-icons/fa";
+import { Scrollbars } from "react-custom-scrollbars";
+import { savePrescriptionRequest } from "../../redux/actions/doctor";
+import FooterButtons from "./components/FooterButtons";
+import { withRouter } from "react-router";
+import { compose } from "redux";
+import { v4 as uuidV4 } from "uuid";
+import { apiURL } from "../../redux/actions/index";
+import SpeechInput from "../comp/speech-to-text/SpeechInput";
+import Autocomplete from "../../components/comp/components/AutoComplete";
+import { _fetchApi2 } from "../../redux/actions/api";
 
 class EditPrescriptionRequest extends Component {
   constructor(props) {
-    super(props)
-    this.myRef = React.createRef()
+    super(props);
+    this.myRef = React.createRef();
     this.state = {
-      route: '',
-      drug: '',
-      dosage: '',
-      duration: '',
+      route: "",
+      drug: "",
+      dosage: "",
+      duration: "",
       period: 0,
-      frequency: '',
+      frequency: "",
       drugs: [],
       prescriptionRequest: [],
-      price: '',
+      price: "",
       drugFreq: [],
-    }
+    };
   }
 
   handleChange = (name, value) => {
     this.setState({
       [name]: value,
-    })
-  }
+    });
+  };
   onInputChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value })
-  }
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   getDrugFreq = () => {
     _fetchApi2(
       `${apiURL()}/drugs/drugs_freq?facilityId=${this.props.facilityId}`,
       (data) => {
         if (data && data.results) {
-          this.setState({ drugFreq: data.results })
+          this.setState({ drugFreq: data.results });
         }
       },
       (err) => {
-        console.log(err)
-      },
-    )
-  }
+        console.log(err);
+      }
+    );
+  };
 
   clearText = () => {
     this.setState({
-      route: '',
-      drug: '',
-      dosage: '',
-      duration: '',
+      route: "",
+      drug: "",
+      dosage: "",
+      duration: "",
       period: 0,
-      frequency: '',
-      price: '',
-      additionalInfo: '',
-    })
-    this._drugs_typeahead.clear()
-    this._route.clear()
-  }
+      frequency: "",
+      price: "",
+      additionalInfo: "",
+    });
+    this._drugs_typeahead.clear();
+    this._route.clear();
+  };
 
   getDrugs = () => {
     _fetchApi2(
       `${apiURL()}/drugs/drugs/all`,
       (data) => this.setState({ drugs: data.results }),
-      (err) => console.log(err),
-    )
-  }
+      (err) => console.log(err)
+    );
+  };
 
   componentDidMount() {
-    this.setState({ prescriptionRequest: this.props.prescriptionRequest })
-    this.getDrugs()
-    this.getDrugFreq()
+    this.setState({ prescriptionRequest: this.props.prescriptionRequest });
+    this.getDrugs();
+    this.getDrugFreq();
   }
 
   handleAddPrescription = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const {
       drug,
       dosage,
@@ -106,9 +106,9 @@ class EditPrescriptionRequest extends Component {
       price,
       route,
       additionalInfo,
-    } = this.state
-    if (drug === '') {
-      return _warningNotify('Invalid prescription, please complete the form')
+    } = this.state;
+    if (drug === "") {
+      return _warningNotify("Invalid prescription, please complete the form");
     }
 
     const formData = {
@@ -121,44 +121,44 @@ class EditPrescriptionRequest extends Component {
       frequency,
       price,
       additionalInfo,
-    }
+    };
     // console.log(formData, this.state.prescriptionRequest)
     this.setState((prev) => ({
       prescriptionRequest: [...prev.prescriptionRequest, formData],
-    }))
-    this.clearText()
-  }
+    }));
+    this.clearText();
+  };
 
-  onRouteChange = (name, value) => this.setState({ [name]: value })
+  onRouteChange = (name, value) => this.setState({ [name]: value });
 
   handleSubmit = () => {
-    const { prescriptionRequest } = this.state
-    this.props.savePrescriptionRequest(prescriptionRequest)
-  }
+    const { prescriptionRequest } = this.state;
+    this.props.savePrescriptionRequest(prescriptionRequest);
+  };
 
   removeDrug = (drug) => {
-    const { prescriptionRequest } = this.state
-    let newList = prescriptionRequest.filter((d) => d.drug !== drug)
-    this.setState({ prescriptionRequest: newList })
-  }
+    const { prescriptionRequest } = this.state;
+    let newList = prescriptionRequest.filter((d) => d.drug !== drug);
+    this.setState({ prescriptionRequest: newList });
+  };
 
-  handleDrugChange = (drug) => this.setState({ drug })
+  handleDrugChange = (drug) => this.setState({ drug });
 
   onPeriodChange = (e) => {
-    this.setState({ period: e.target.value })
-  }
+    this.setState({ period: e.target.value });
+  };
 
   onDurationChange = (e) => {
-    this.setState({ duration: e.target.value })
-  }
+    this.setState({ duration: e.target.value });
+  };
 
   render() {
-    const dropdownItems = []
+    const dropdownItems = [];
     for (let i = 0; i <= 10; i++) {
-      dropdownItems.push(<option value={i}>{i}</option>)
+      dropdownItems.push(<option value={i}>{i}</option>);
     }
 
-    const { history } = this.props
+    const { history } = this.props;
     const {
       dosage,
       period,
@@ -166,8 +166,8 @@ class EditPrescriptionRequest extends Component {
       frequency,
       route,
       additionalInfo,
-    } = this.state
-    const { handleDrugChange, onRouteChange } = this
+    } = this.state;
+    const { handleDrugChange, onRouteChange } = this;
     return (
       <Card>
         {/* {JSON.stringify(this.state)} */}
@@ -179,15 +179,15 @@ class EditPrescriptionRequest extends Component {
                 <div className="col-md-4">
                   <Autocomplete
                     name="route"
-                    options={['IV', 'IM', 'Tabs', 'Susp', 'SC', 'Syr', 'Caps']}
+                    options={["IV", "IM", "Tabs", "Susp", "SC", "Syr", "Caps"]}
                     value={route}
                     _ref={(ref) => (this._route = ref)}
                     onChange={(item) => {
                       if (item.length) {
-                        onRouteChange('route', item[0])
+                        onRouteChange("route", item[0]);
                       }
                     }}
-                    onInputChange={(text) => onRouteChange('route', text)}
+                    onInputChange={(text) => onRouteChange("route", text)}
                     label="Route"
                   />
                 </div>
@@ -201,7 +201,7 @@ class EditPrescriptionRequest extends Component {
                     labelKey={(item) => `${item.name}`}
                     onChange={(val) => {
                       if (val.length) {
-                        handleDrugChange(val[0].name)
+                        handleDrugChange(val[0].name);
                       }
                     }}
                     onInputChange={(text) => handleDrugChange(text)}
@@ -228,10 +228,10 @@ class EditPrescriptionRequest extends Component {
                     _ref={(ref) => (this.frequency = ref)}
                     onChange={(item) => {
                       if (item.length) {
-                        onRouteChange('frequency', item[0].description)
+                        onRouteChange("frequency", item[0].description);
                       }
                     }}
-                    onInputChange={(text) => onRouteChange('frequency', text)}
+                    onInputChange={(text) => onRouteChange("frequency", text)}
                     label="Frequency"
                     labelClass="font-weight-normal"
                     labelKey="description"
@@ -252,34 +252,34 @@ class EditPrescriptionRequest extends Component {
                   <label>Period</label>
                   <div
                     style={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
                     }}
                   >
                     <input
-                      style={{ width: '16px', height: '16px' }}
+                      style={{ width: "16px", height: "16px" }}
                       type="radio"
                       name="period"
-                      checked={period === 'day'}
+                      checked={period === "day"}
                       value="day"
                       onChange={this.onPeriodChange}
                     />
                     Day
                     <input
-                      style={{ width: '16px', height: '16px' }}
+                      style={{ width: "16px", height: "16px" }}
                       type="radio"
                       name="period"
-                      checked={period === 'week'}
+                      checked={period === "week"}
                       value="week"
                       onChange={this.onPeriodChange}
                     />
                     Week
                     <input
-                      style={{ width: '16px', height: '16px' }}
+                      style={{ width: "16px", height: "16px" }}
                       type="radio"
                       name="period"
-                      checked={period === 'Month'}
+                      checked={period === "Month"}
                       value="Month"
                       onChange={this.onPeriodChange}
                     />
@@ -294,7 +294,7 @@ class EditPrescriptionRequest extends Component {
                     className="form-control"
                     value={additionalInfo}
                     onInputChange={(text) =>
-                      this.handleChange('additionalInfo', text)
+                      this.handleChange("additionalInfo", text)
                     }
                   />
                 </div>
@@ -309,7 +309,7 @@ class EditPrescriptionRequest extends Component {
                 Add Prescription
               </button>
             </Form>
-            
+
             <br />
             <div className="">
               <DrugsTable
@@ -322,25 +322,25 @@ class EditPrescriptionRequest extends Component {
         <CardFooter className="p-0">
           <FooterButtons
             prev={() => {
-              this.handleSubmit()
+              this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${this.props.patient.patientHospitalId}/management/plan`,
-              )
+                `/me/doctor/visits/new/${this.props.patient.patientHospitalId}/management/plan`
+              );
             }}
             next={() => {
-              this.handleSubmit()
+              this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${this.props.patient.patientHospitalId}/management/radiologyinvestigations`,
-              )
+                `/me/doctor/visits/new/${this.props.patient.patientHospitalId}/management/radiologyinvestigations`
+              );
             }}
           />
         </CardFooter>
       </Card>
-    )
+    );
   }
 
   componentWillUnmount() {
-    this.handleSubmit()
+    this.handleSubmit();
   }
 }
 
@@ -348,13 +348,13 @@ const mapStateToProps = ({ doctor, pharmacy, auth }) => ({
   prescriptionRequest: doctor.prescriptionRequest,
   drugs: pharmacy.drugs,
   facilityId: auth.user.facilityId,
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
   savePrescriptionRequest: (data) => dispatch(savePrescriptionRequest(data)),
-})
+});
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, mapDispatchToProps),
-)(EditPrescriptionRequest)
+  connect(mapStateToProps, mapDispatchToProps)
+)(EditPrescriptionRequest);

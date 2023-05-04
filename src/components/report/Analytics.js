@@ -30,10 +30,10 @@ function Analytics() {
     }));
   };
 
-  const [fastSelling, setFastSelling] = useState([]);
+  const [, setFastSelling] = useState([]);
   // const [profit, setProfit] = useState([]);
 
-  const [bestSellingStaff, setbestSellingStaff] = useState([]);
+  const [, setbestSellingStaff] = useState([]);
 
   const fetchBestSellingStaff = useCallback(
     () => {

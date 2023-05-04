@@ -23,7 +23,7 @@ export default function NurseryReportForm({
   let patient_id = patientId ? patientId : _patientId;
   const [form, setForm] = useState({ report: "" });
   const [submitting, setSubmitting] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, ] = useState(false);
   const auth = useSelector((state) => state.auth.user);
 
   const saveNursery = (callback = (f) => f) => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Pane, Checkbox } from "evergreen-ui";
 
 export default function CheckBoxItem({ label, name, handleCheck, value = [] }) {

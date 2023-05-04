@@ -2,19 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import {
-  FaCoins,
   FaBook,
-  FaNotesMedical,
   FaUserAlt,
-  FaRegClipboard,
-  FaFileInvoiceDollar,
-  FaUserSecret,
   FaUserNurse,
-  FaCalendar,
 } from "react-icons/fa";
 import { Nav, NavItem } from "reactstrap";
-import { MdLocalPharmacy } from "react-icons/md";
-import { GiStethoscope, GiTransparentTubes } from "react-icons/gi";
+// import { MdLocalPharmacy } from "react-icons/md";
+import { GiStethoscope } from "react-icons/gi";
 import { hasAccess } from "../auth";
 
 const NavModules = ({ user, toggle, userAccess }) => {

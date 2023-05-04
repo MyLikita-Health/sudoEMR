@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import {  useSelector } from 'react-redux'
 // import { getDocLabCommission } from '../../redux/actions/lab'
 // import CustomButton from "../comp/components/Button";
 import { formatNumber } from '../utils/helpers'
@@ -10,7 +10,7 @@ import { useHistory } from 'react-router'
 
 function NavUserInfo({ logout }) {
   // const history = useHistory();
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const history = useHistory()
   const user = useSelector((state) => state.auth.user)
   const accDetails = useSelector((state) => state.lab.doctorCommission) || {

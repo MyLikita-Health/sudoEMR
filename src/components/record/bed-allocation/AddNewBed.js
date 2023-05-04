@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Form, FormGroup, Input, CardTitle, Col } from "reactstrap";
-import { apiURL, ipAddr } from "../../../redux/actions";
+import { apiURL } from "../../../redux/actions";
 import { _fetchApi2, _postApi } from "../../../redux/actions/api";
 import { getBeds } from "../../../redux/actions/records";
 import AutoComplete from "../../comp/components/AutoComplete";

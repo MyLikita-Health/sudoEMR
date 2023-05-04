@@ -46,9 +46,9 @@ const Clients = () => {
     fetchData();
   }, []);
 
-  const handleSearchTermChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
+  // const handleSearchTermChange = (e) => {
+  //   setSearchTerm(e.target.value);
+  // };
 
   const printPatientList = () => {
     window.frames[

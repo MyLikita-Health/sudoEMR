@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouteMatch } from "react-router";
 import { getPatient, toggleVideoView } from "../actions/patientsActions";
-import SpeechRecognitionGuide from "./SpeechRecGuide";
+// import SpeechRecognitionGuide from "./SpeechRecGuide";
 // import { CardHeader } from "reactstrap";
 
 import DoctorDashboard from "../../doctor/PatientDiagnosis"

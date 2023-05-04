@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { useLocation, useParams } from "react-router";
+import {  useParams } from "react-router";
 import { Button } from "reactstrap";
 import { useQuery } from "../../../../hooks";
 import CustomModal from "../../../comp/components/CustomModal";
@@ -15,7 +15,7 @@ export default function NurseryNote({ height = "30vh", isOpen, toggle }) {
   const { patientId } = useParams();
   const _patientId = query.get("patient_id");
   // const allocation_id = query.get("allocation_id");
-  const location = useLocation();
+  // const location = useLocation();
   const [modal, setModal] = useState(false);
   const toggleNursery = () => setModal((p) => !p);
   const [data, setData] = useState([]);

@@ -12,7 +12,7 @@ import {
 import { getPatient } from './patientsActions'
 import { lab_db } from '../../../db'
 import { visits_db } from './visitsActions'
-import { _fetchApi, _fetchApi2, _postApi } from '../../../redux/actions/api'
+import {  _fetchApi2, _postApi } from '../../../redux/actions/api'
 import { apiURL } from '../../../redux/actions'
 
 export const saveLab = (data = [], cb = (f) => f, error = (f) => f) => {
@@ -206,7 +206,7 @@ export function getPendingLabRequests(
 
 export function updatePendingLabReq(status, visitId, pid, cb = (f) => f) {
   // return (dispatch) => {
-  let user = store.getState().auth.user
+  // let user = store.getState().auth.user
 
   // dispatch(
   //   getVisitDetails(visitId, (visit) => {

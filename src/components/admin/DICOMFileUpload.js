@@ -1,11 +1,11 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Progress } from 'reactstrap'
-import { apiURL, DICOM_SERVER } from '../../redux/actions'
+import { apiURL,  } from '../../redux/actions'
 import { _postApi } from '../../redux/actions/api'
 import DICOMContainer from '../comp/dicom/DICOMContainer'
 import CustomButton from '../comp/components/Button'
-import { _customNotify } from '../utils/helpers'
+// import { _customNotify } from '../utils/helpers'
 
 function DicomFileUpload({ form = {}, success=f=>f }) {
   const [uploading, setUploading] = useState(false)

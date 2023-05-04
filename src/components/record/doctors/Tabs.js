@@ -3,7 +3,7 @@ import { Badge, Button, ButtonGroup } from "reactstrap";
 import WaitingList from "./WaitingList";
 
 const ListTabs = (props) => {
-  const { list=[] } = props
+  // const { list=[] } = props
   const [activeTab, setActiveTab] = useState("1");
 
   const toggle = (tab) => {

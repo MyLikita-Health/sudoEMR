@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect, useRef } from "react";
 import { Typeahead } from "react-bootstrap-typeahead";
 import {
   Button,
-  Card,
   Col,
   FormGroup,
   Input,
@@ -11,17 +10,16 @@ import {
   ModalBody,
   ModalFooter,
   Row,
-  Table,
 } from "reactstrap";
 import { _fetchApi2, _postApi } from "../../../../redux/actions/api";
 import { apiURL } from "../../../../redux/actions";
-import { CustomTable } from "../../../comp/components";
+// import { CustomTable } from "../../../comp/components";
 import DaterangeSelector from "../../../comp/components/DaterangeSelector";
-import CustomPagination from "../../../comp/CustomPagination";
+// import CustomPagination from "../../../comp/CustomPagination";
 import { useSelector } from "react-redux";
 import { formatNumber, today, _customNotify } from "../../../utils/helpers";
 import moment from "moment";
-import CustomScrollbar from "../../../comp/components/CustomScrollbar";
+// import CustomScrollbar from "../../../comp/components/CustomScrollbar";
 import CustomPaginationNew from "../../../comp/CustomPaginationNew";
 import Loading from "../../../comp/components/Loading";
 
@@ -41,7 +39,7 @@ export default function AppCharges() {
     amount: 0,
   });
   const [modal, setModal] = useState(false);
-  const [focusAfterClose, setFocusAfterClose] = useState(true);
+  const [focusAfterClose, ] = useState(true);
   // const handleSelectChange = ({ target: { value } }) => {
   //   setFocusAfterClose(JSON.parse(value));
   // };

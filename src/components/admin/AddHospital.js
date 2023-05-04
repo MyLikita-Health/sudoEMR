@@ -17,7 +17,7 @@ import { connect } from "react-redux";
 import { createUser } from "../../redux/actions/auth";
 // import CheckBoxItem from "../theater/operation-notes/CheckBoxItem";
 import { Switch } from "evergreen-ui";
-import allModule from "./moduleData";
+// import allModule from "./moduleData";
 import { checkUsername, checkEmail } from "../auth/registration/api";
 import Input from "../../components/auth/registration/component/Input";
 const hospitalAccess = [
@@ -46,9 +46,9 @@ function AddHospital() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [accessTo, setAccessTo] = useState([]);
+  // const [accessTo, setAccessTo] = useState([]);
   const [hasStore, setHasStore] = useState(true);
-  const [functionality, setFunctionality] = useState([]);
+  const [functionality, ] = useState([]);
 
   const [checkingUsername, toggleCheckingUsername] = useState(false);
   const [usernameGood, setUsernameGood] = useState(false);
@@ -169,23 +169,23 @@ function AddHospital() {
       });
   };
 
-  const handleCheck = (val) => {
-    if (accessTo.includes(val)) {
-      let newVal = accessTo.filter((item) => item !== val);
-      let newFunctionalities = functionality.filter(
-        (item) => !allModule[val.toLowerCase()].type.includes(item)
-      );
-      setFunctionality(newFunctionalities);
-      setAccessTo(newVal);
-    } else {
-      let newVal = [...accessTo, val];
-      setAccessTo(newVal);
-      setFunctionality((prev) => [
-        ...prev,
-        ...allModule[val.toLowerCase()].type,
-      ]);
-    }
-  };
+  // const handleCheck = (val) => {
+  //   if (accessTo.includes(val)) {
+  //     let newVal = accessTo.filter((item) => item !== val);
+  //     let newFunctionalities = functionality.filter(
+  //       (item) => !allModule[val.toLowerCase()].type.includes(item)
+  //     );
+  //     setFunctionality(newFunctionalities);
+  //     setAccessTo(newVal);
+  //   } else {
+  //     let newVal = [...accessTo, val];
+  //     setAccessTo(newVal);
+  //     setFunctionality((prev) => [
+  //       ...prev,
+  //       ...allModule[val.toLowerCase()].type,
+  //     ]);
+  //   }
+  // };
 
   return (
     <Card>

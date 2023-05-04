@@ -2,17 +2,17 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { FaEdit, FaSave } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { Alert, Card, CardText, Col, Row } from "reactstrap";
+import {  Card, CardText, Col, Row } from "reactstrap";
 import CustomButton from "../../../comp/components/Button";
 import TextWithNewLine from "../../../comp/components/TextWithNewline";
-import { LabRequestTable } from "../../../doctor/lab-test/LabRequestTable";
+// import { LabRequestTable } from "../../../doctor/lab-test/LabRequestTable";
 import {
-  DressingRequestView,
-  ManagementPlan,
+  // DressingRequestView,
+  // ManagementPlan,
   PrescriptionsView,
 } from "../../../doctor/PreviewForm";
 import { getPrescriptionByReqId } from "../../actions/visitsActions";
-import LabHistory from "./LabHistory";
+// import LabHistory from "./LabHistory";
 import Textarea from "./Textarea";
 
 function VisitPreviewItem({

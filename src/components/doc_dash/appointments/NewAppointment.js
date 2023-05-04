@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import AppointmentForm from "./AppointmentForm";
 import { Card, CardHeader } from "reactstrap";
 import { FaTimes, FaSave } from "react-icons/fa";

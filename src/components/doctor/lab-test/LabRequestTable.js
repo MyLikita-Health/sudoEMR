@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 // import PrintLabReq from "../../lab/NewLaboratory/PrintLabReq";
 
 function LabRequestTable({
@@ -7,7 +7,7 @@ function LabRequestTable({
   onRemove = (f) => f,
   patientInfo,
 }) {
-  return (
+  return null
     // <PrintLabReq
     //   data={formRecords}
     //   id="doctor-reporting-fees"
@@ -16,7 +16,7 @@ function LabRequestTable({
     //   patientInfo={patientInfo}
     // />
 
-    <></>
-  );
+   
+  // );
 }
 export default LabRequestTable;

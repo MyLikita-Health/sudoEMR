@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { useHistory, useRouteMatch } from 'react-router'
+import {  useRouteMatch } from 'react-router'
 import { getPatient, getPatientList } from '../actions/patientsActions'
 import ShortConsultationView from './ShortConsultationView'
 // import { useQuery } from '../../../hooks'

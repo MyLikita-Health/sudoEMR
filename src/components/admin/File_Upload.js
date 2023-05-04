@@ -6,24 +6,17 @@ import {
   Input,
   Col,
   Row,
-  FormText,
-  Button,
-  Label,
-  FormGroup,
 } from 'reactstrap'
 import moment from 'moment'
 // import Uploader from "./Uploader";
 import { _customNotify } from '../utils/helpers'
 import { apiURL } from '../../redux/actions'
-import CustomTable from '../comp/components/CustomTable'
-import { AiFillDelete } from 'react-icons/ai'
 import { _fetchApi } from '../../redux/actions/api'
 import { SET_LAB_PATIENT_LIST } from '../../redux/actions/actionTypes'
 import { useDispatch } from 'react-redux'
 import CustomTypeahead from '../comp/components/CustomTypeahead'
 import DicomFileUpload from './DICOMFileUpload'
-import CustomButton from '../comp/components/Button'
-import { FaUpload } from 'react-icons/fa'
+// import { FaUpload } from 'react-icons/fa'
 import CustomFileUploadDropzone from './CustomFileUploadDropzone'
 export const today = moment().format('YYYY-MM-DD')
 
@@ -35,17 +28,17 @@ const _form = {
 export default function FileUpload() {
   const dispatch = useDispatch()
   const [form, setForm] = useState(_form)
-  const [consultation, setConsultation] = useState([])
-  const [doctor, setDoctor] = useState([])
-  const [investigation, setInvestigation] = useState([])
-  const [nurseChart, setNurseChart] = useState([])
-  const [physioReview, setPhysioReview] = useState([])
-  const [reports, setReports] = useState([])
-  const [other, setOther] = useState([])
-  const [fileList, setFileList] = useState([])
-  const [data, setData] = useState([])
+  // const [consultation, setConsultation] = useState([])
+  // const [doctor, setDoctor] = useState([])
+  // const [investigation, setInvestigation] = useState([])
+  // const [nurseChart, setNurseChart] = useState([])
+  // const [physioReview, setPhysioReview] = useState([])
+  // const [reports, setReports] = useState([])
+  // const [other, setOther] = useState([])
+  // const [fileList] = useState([])
+  const [, setData] = useState([])
   const [list, setList] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [, setLoading] = useState(false)
   const [files, setFiles] = useState([])
 
   const getPendingLab = () => {
@@ -78,34 +71,34 @@ export default function FileUpload() {
     }))
   }
 
-  const handleDelete = (index) => {
-    let newArr = data.filter((it, idx) => index !== it.files_name)
-    setData(newArr)
-  }
+  // const handleDelete = (index) => {
+  //   let newArr = data.filter((it, idx) => index !== it.files_name)
+  //   setData(newArr)
+  // }
 
-  const handleAdd = () => {
-    if (form.file_type === '') {
-      alert('Please choose the file type')
-    } else {
-      for (let index = 0; index < fileList.length; index++) {
-        const element = fileList[index].name
+  // const handleAdd = () => {
+  //   if (form.file_type === '') {
+  //     alert('Please choose the file type')
+  //   } else {
+  //     for (let index = 0; index < fileList.length; index++) {
+  //       const element = fileList[index].name
 
-        // console.log(files[0]);
-        setData((p) => [
-          ...p,
-          {
-            ...form,
-            files_name: element,
-          },
-        ])
-      }
-      setForm((p) => ({ ...p, file_type: '', files_name: '' }))
-      // setKYCInfo((p) => ({ ...p, file_typ
+  //       // console.log(files[0]);
+  //       setData((p) => [
+  //         ...p,
+  //         {
+  //           ...form,
+  //           files_name: element,
+  //         },
+  //       ])
+  //     }
+  //     setForm((p) => ({ ...p, file_type: '', files_name: '' }))
+  //     // setKYCInfo((p) => ({ ...p, file_typ
 
-      // console.log("New Arrrrrr:", newArr);
-    }
-    console.log('Old arrr', data)
-  }
+  //     // console.log("New Arrrrrr:", newArr);
+  //   }
+  //   console.log('Old arrr', data)
+  // }
   const { patient_id, file_type, file_date } = form
 
   const submitFiles = (fileType, fileList) => {
@@ -197,32 +190,32 @@ export default function FileUpload() {
     // console.log(consultation, "Consultation..........");
   }
 
-  const fields = [
-    {
-      title: 'File Name',
-      value: 'files_name',
-    },
-    {
-      title: 'File Type',
-      value: 'file_type',
-    },
-    {
-      title: 'Action',
-      custom: true,
-      className: 'text-center',
-      component: (item) => (
-        <>
-          <Button
-            size="sm"
-            onClick={() => handleDelete(item.files_name)}
-            color="danger"
-          >
-            <AiFillDelete />
-          </Button>
-        </>
-      ),
-    },
-  ]
+  // const fields = [
+  //   {
+  //     title: 'File Name',
+  //     value: 'files_name',
+  //   },
+  //   {
+  //     title: 'File Type',
+  //     value: 'file_type',
+  //   },
+  //   {
+  //     title: 'Action',
+  //     custom: true,
+  //     className: 'text-center',
+  //     component: (item) => (
+  //       <>
+  //         <Button
+  //           size="sm"
+  //           onClick={() => handleDelete(item.files_name)}
+  //           color="danger"
+  //         >
+  //           <AiFillDelete />
+  //         </Button>
+  //       </>
+  //     ),
+  //   },
+  // ]
 
   const formIsValid =
     form.patient_id &&
@@ -313,55 +306,55 @@ export default function FileUpload() {
   )
 }
 
-function OtherDetails({
-  handleAdd,
-  handleImageAdd,
-  data,
-  fields,
-  handleSubmit,
-  loading = false,
-  fileList,
-}) {
-  return (
-    <>
-      {/* <Col sm={10}>
-        <Label>
-          <FaUpload size={30} />
-          {fileList && fileList.length && fileList[0].name}
-          <Input
-            type="file"
-            name="file"
-            id="exampleFile"
-            multiple
-            onChange={handleImageAdd}
-            className="p-2"
-            style={{ width: "100%" }}
-          />
-        </Label>
-        <FormText color="muted">
-          You can upload all your files here, NOTE: you can upload more than one
-          file at a time.
-        </FormText>
-      </Col> */}
+// function OtherDetails({
+//   handleAdd,
+//   handleImageAdd,
+//   data,
+//   fields,
+//   handleSubmit,
+//   loading = false,
+//   fileList,
+// }) {
+//   return (
+//     <>
+//       {/* <Col sm={10}>
+//         <Label>
+//           <FaUpload size={30} />
+//           {fileList && fileList.length && fileList[0].name}
+//           <Input
+//             type="file"
+//             name="file"
+//             id="exampleFile"
+//             multiple
+//             onChange={handleImageAdd}
+//             className="p-2"
+//             style={{ width: "100%" }}
+//           />
+//         </Label>
+//         <FormText color="muted">
+//           You can upload all your files here, NOTE: you can upload more than one
+//           file at a time.
+//         </FormText>
+//       </Col> */}
 
-      <CustomFileUploadDropzone onChange={handleImageAdd} />
-      <center>
-        <Button className="m-2" onClick={handleAdd}>
-          Click to add
-        </Button>
-      </center>
-      <CustomTable size="sm" data={data} fields={fields} bordered striped />
-      <center>
-        <CustomButton
-          color="primary"
-          size="md"
-          className="mt-3"
-          onClick={handleSubmit}
-          loading={loading}
-        >
-          Submit
-        </CustomButton>
-      </center>
-    </>
-  )
-}
+//       <CustomFileUploadDropzone onChange={handleImageAdd} />
+//       <center>
+//         <Button className="m-2" onClick={handleAdd}>
+//           Click to add
+//         </Button>
+//       </center>
+//       <CustomTable size="sm" data={data} fields={fields} bordered striped />
+//       <center>
+//         <CustomButton
+//           color="primary"
+//           size="md"
+//           className="mt-3"
+//           onClick={handleSubmit}
+//           loading={loading}
+//         >
+//           Submit
+//         </CustomButton>
+//       </center>
+//     </>
+//   )
+// }

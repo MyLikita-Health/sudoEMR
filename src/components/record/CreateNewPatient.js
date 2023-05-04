@@ -13,7 +13,7 @@ import { FaTimes } from "react-icons/fa";
 import { WarningModal } from "../comp/components/Modal";
 import { useSelector } from "react-redux";
 import { useHistory, useRouteMatch } from "react-router";
-import { _fetchApi, _postApi } from "../../redux/actions/api";
+import { _fetchApi } from "../../redux/actions/api";
 import { apiURL } from "../../redux/actions";
 // import InputGroup from "../comp/components/InputGroup";
 import { Label } from "reactstrap";
@@ -81,9 +81,9 @@ const CreateNewPatient = () => {
 
   const [updating, setUpdating] = useState(false);
 
-  const setContactPerson = (val) => {
-    setPatient((p) => ({ ...p, contact: val }));
-  };
+  // const setContactPerson = (val) => {
+  //   setPatient((p) => ({ ...p, contact: val }));
+  // };
   const getNextClientID = async (facId) => {
     try {
       const response = await fetch(

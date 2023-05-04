@@ -1,6 +1,6 @@
 import React from 'react'
-import { Alert, Table, Button } from 'reactstrap'
-import Loading from '../../comp/components/Loading'
+import { Alert, Table } from 'reactstrap'
+// import Loading from '../../comp/components/Loading'
 import { FaTimes } from 'react-icons/fa'
 
 function WaitingList({

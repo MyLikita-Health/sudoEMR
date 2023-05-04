@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Card, CardTitle } from 'reactstrap';
 // import Loading from '../../comp/components/Loading';
 import { useSelector } from 'react-redux';

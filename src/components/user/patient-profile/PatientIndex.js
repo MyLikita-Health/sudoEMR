@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+// import { useDispatch } from 'react-redux';
 import PatientInfo from './PatientInfo';
 import { Card, CardBody } from 'reactstrap';
 import Wallet from '../components/Wallet';
 import PasswordMngmt from '../PasswordMngmt';
 import HealthStatus from './PatientHealthStatus';
 import BackButton from '../../comp/components/BackButton';
-import { init } from '../../../redux/actions/auth';
-import { useHistory, } from 'react-router';
+// import { init } from '../../../redux/actions/auth';
+// import { useHistory, } from 'react-router';
 // import PatientProfileMenu from './Menu';
 
 function PatientIndex() {
-  const dispatch = useDispatch();
-  const history = useHistory();
+  // const dispatch = useDispatch();
+  // const history = useHistory();
   const [profile, setProfile] = useState({
     fullname: '',
     location: '',

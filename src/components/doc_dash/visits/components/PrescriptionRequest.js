@@ -8,7 +8,6 @@ import { Typeahead } from "react-bootstrap-typeahead";
 // import FooterButtons from './components/FooterButtons'
 // import { useHistory, withRouter } from "react-router";
 // import { compose } from 'redux'
-import { v4 as uuidV4 } from "uuid";
 
 import AutoComplete from "../../../comp/components/AutoComplete";
 import { apiURL } from "../../../../redux/actions";
@@ -28,7 +27,7 @@ function NewPrescriptionRequest(props) {
   } = props;
   const [drugFrequency, setDrugFrequency] = useState([]);
   const [drugs, setDrugs] = useState([]);
-  const [scheduleList, setFrequecyList] = useState([]);
+  const [, setFrequecyList] = useState([]);
   const [modal, setModal] = useState(false);
   const togglePrompt = () => setModal((p) => !p);
 
@@ -157,29 +156,29 @@ function NewPrescriptionRequest(props) {
     handleConsultationChange("prescriptionRequestList", newList);
   };
 
-  const editPrescription = (index) => {
-    let newList = prescriptionList.map((it, i) => {
-      if (i === index) {
-        return {
-          ...it,
-          mode: "edit",
-        };
-      } else return it;
-    });
-    handleConsultationChange("prescriptionRequestList", newList);
-  };
+  // const editPrescription = (index) => {
+  //   let newList = prescriptionList.map((it, i) => {
+  //     if (i === index) {
+  //       return {
+  //         ...it,
+  //         mode: "edit",
+  //       };
+  //     } else return it;
+  //   });
+  //   handleConsultationChange("prescriptionRequestList", newList);
+  // };
 
-  const updatePrescription = (index) => {
-    let newList = prescriptionList.map((it, i) => {
-      if (i === index) {
-        return {
-          ...it,
-          mode: "view",
-        };
-      } else return it;
-    });
-    handleConsultationChange("prescriptionRequestList", newList);
-  };
+  // const updatePrescription = (index) => {
+  //   let newList = prescriptionList.map((it, i) => {
+  //     if (i === index) {
+  //       return {
+  //         ...it,
+  //         mode: "view",
+  //       };
+  //     } else return it;
+  //   });
+  //   handleConsultationChange("prescriptionRequestList", newList);
+  // };
   const DetailsForm = ({ id }) => {
     const [additionalInfo, setAdditionalInfo] = useState("");
     const handleChange = (e) => {

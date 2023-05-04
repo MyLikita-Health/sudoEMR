@@ -31,7 +31,7 @@ export default function NewFluidChartForm({ history, toggleVital = (f) => f,_grt
   const [allocationInfo, setAllocationInfo] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [next_allo_id, setNextAlloId] = useState(null);
+  const [, setNextAlloId] = useState(null);
   const auth = useSelector((state) => state.auth.user);
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }));

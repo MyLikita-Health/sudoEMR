@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from "react";
+import React, {  useState } from "react";
 import { useEffect } from "react";
 import { useLocation, useParams } from "react-router";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import CollapsibleCard from "../../../CollapsibleCard.js";
-import { _fetchApi2 } from "../../../../redux/actions/api";
-import { apiURL } from "../../../../redux/actions";
+// import { _fetchApi2 } from "../../../../redux/actions/api";
+// import { apiURL } from "../../../../redux/actions";
 import { surgical_note } from "./helper";
 import { Table } from "reactstrap";
 import moment from "moment";

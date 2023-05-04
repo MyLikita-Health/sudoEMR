@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, useLocation, useParams, Prompt } from "react-router";
+import { useHistory, useLocation, useParams } from "react-router";
 
 import { saveBreifDiagnosis } from "./components/helper";
 import { _fetchApi } from "../../../redux/actions/api";
 import { apiURL } from "../../../redux/actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { v4 as UUIDV4 } from "uuid";
-import { checkEmpty, today, _customNotify } from "../../utils/helpers";
+import { checkEmpty,  _customNotify } from "../../utils/helpers";
 import { Col, Row } from "reactstrap";
 import { useQuery } from "../../../hooks";
 import {
@@ -34,10 +34,10 @@ function ShortConsultationView() {
   const query = useQuery();
   const patientType = query.get("patientType");
   const consultationType = query.get("consultation_type");
-  const assignmentId = query.get("assignment_id");
+  // const assignmentId = query.get("assignment_id");
   const allocation_id = query.get("allocation_id");
   const section = query.get("section");
-  const facilityId = useSelector((state) => state.auth.user.facilityId);
+  // const facilityId = useSelector((state) => state.auth.user.facilityId);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
   const location = useLocation();
@@ -47,8 +47,8 @@ function ShortConsultationView() {
 
   const sheetIsValid = patientId && patientId !== "view";
   const [preview, setPreview] = useState(false);
-  const [getTime, setGetTime] = useState([]);
-  const [getLastConsult, setgetLastConsult] = useState([]);
+  const [getTime, ] = useState([]);
+  const [getLastConsult, ] = useState([]);
   // const sheetIsValid = patientInfo.id;
   let timeLast = moment().diff(
     getLastConsult && getLastConsult.created_at,
@@ -203,6 +203,7 @@ function ShortConsultationView() {
   const formIsNotEmpty =
     !pComplaintsEmpty || !nursingReqEmpty || !treatmentPlanEmpty;
 
+  // eslint-disable-next-line no-unused-vars
   let preventNavigation = formIsNotEmpty;
 
   const sectionIsDisabled = section === "disabled";

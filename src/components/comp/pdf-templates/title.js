@@ -1,6 +1,5 @@
 import React from "react";
 import { Text, View, StyleSheet, Image, Font } from "@react-pdf/renderer";
-import { facilityDetails } from "./deposit-receipt";
 import customRobotoNormal from "../../../fonts/Roboto-Regular.ttf";
 import customRobotoBold from "../../../fonts/Roboto-Bold.ttf";
 // import { checkEmpty } from '../../utils/helpers';

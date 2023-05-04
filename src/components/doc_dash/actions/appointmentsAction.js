@@ -1,6 +1,6 @@
 import PouchDB from "pouchdb-browser";
 import Find from "pouchdb-find";
-import { v4 as UUIDV4 } from "uuid";
+// import { v4 as UUIDV4 } from "uuid";
 import {
   GET_APPOINTMENTS,
   SET_PATIENT_APPOINTMENTS,
@@ -14,8 +14,8 @@ import {
 import store from "../../../redux/store";
 import { createNotification } from "../../../redux/actions/notifications";
 import {
-  getAppointments as getPatientAppointment,
-  getPatientPendingAppt,
+  // getAppointments as getPatientAppointment,
+  // getPatientPendingAppt,
 } from "../../patient/actions/appointments";
 import { _postApi } from "../../../redux/actions/api";
 import { apiURL } from "../../../redux/actions";

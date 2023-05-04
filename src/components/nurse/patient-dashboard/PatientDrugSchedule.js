@@ -16,7 +16,7 @@ function PatientDrugSchedule() {
   let today = moment().format("YYYY-MM-DD");
   const { patientId } = useParams();
   const [drugSchedule, setDrugSchedule] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(today);
+  const [selectedDate, ] = useState(today);
   const [reason, setReason] = useState("");
   const [selectedSchedule, setSelectedSchedule] = useState({});
   const [showAlert, setShowAlert] = useState(false);

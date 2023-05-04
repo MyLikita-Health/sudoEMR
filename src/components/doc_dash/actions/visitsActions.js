@@ -1,11 +1,11 @@
 // import moment from 'moment';
-import moment from 'moment'
+// import moment from 'moment'
 import PouchDB from 'pouchdb-browser'
 import Find from 'pouchdb-find'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import { v4 as uuidv4 } from 'uuid'
-import { apiURL, ipAddr } from '../../../redux/actions'
-import { _fetchApi, _fetchApi2, _postApi } from '../../../redux/actions/api'
+import { apiURL  } from '../../../redux/actions'
+import {  _fetchApi2, _postApi } from '../../../redux/actions/api'
 import store from '../../../redux/store'
 import {
   GET_VISITS_LIST,

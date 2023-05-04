@@ -8,10 +8,9 @@ import Loading from '../../comp/components/Loading'
 import {
   FaCheckCircle,
   FaExclamationCircle,
-  FaHourglass,
   FaPlus,
 } from 'react-icons/fa'
-import { _fetchApi, _fetchApi2 } from '../../../redux/actions/api'
+import {  _fetchApi2 } from '../../../redux/actions/api'
 import { apiURL } from '../../../redux/actions'
 import { DOCTOR_LAB_ROUTE } from '.'
 import DaterangeSelector from '../../comp/components/DaterangeSelector'

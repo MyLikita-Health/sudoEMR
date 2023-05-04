@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import {
-  Button,
   Card,
   CardBody,
   CardHeader,
@@ -17,7 +16,7 @@ import { _postApi } from "../../../../redux/actions/api";
 import CustomButton from "../../../comp/components/Button";
 import PrintWrapper from "../../../comp/components/print/PrintWrapper";
 import BackButton from "../../../landing/BackButton";
-import { today, _customNotify, _warningNotify } from "../../../utils/helpers";
+import { today, _customNotify } from "../../../utils/helpers";
 
 export default function MedicalReport() {
   const query = useQuery();

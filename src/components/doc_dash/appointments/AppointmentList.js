@@ -5,24 +5,22 @@ import { useHistory } from "react-router";
 // import { connect } from 'react-redux';
 import {
   getPatientAppointments,
-  saveAppointment,
-  setSelectedAppointment,
 } from "../actions/appointmentsAction";
 import { Card, CardText } from "reactstrap";
 import moment from "moment";
 import { FiChevronRight, FiClock } from "react-icons/fi";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 function AppointmentList({ patient }) {
   const history = useHistory();
-  const { facilityId, id } = useSelector((state) => state.auth.user);
-  const [data, setData] = useState([]);
-  let obj = {
-    user_id: id,
-    patientId: patient.patientHospitalId,
-    facilityId,
-    query_type: "select",
-  };
+  // const { facilityId, id } = useSelector((state) => state.auth.user);
+  const [data, ] = useState([]);
+  // let obj = {
+  //   user_id: id,
+  //   patientId: patient.patientHospitalId,
+  //   facilityId,
+  //   query_type: "select",
+  // };
   useEffect(() => {
     // saveAppointment(obj, cb, err);
     if (patient.patientHospitalId) {

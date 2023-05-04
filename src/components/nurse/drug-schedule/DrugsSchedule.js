@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useSelector } from "react-redux";
-import { Alert, Card, CardBody, CardHeader } from "reactstrap";
+import { Alert,  } from "reactstrap";
 import { apiURL } from "../../../redux/actions";
 import { _fetchApi2, _updateApi } from "../../../redux/actions/api";
 import { checkEmpty } from "../../utils/helpers";

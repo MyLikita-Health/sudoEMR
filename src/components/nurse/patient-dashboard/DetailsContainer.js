@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, useHistory } from 'react-router'
+import { useParams } from 'react-router'
 import { Row, Col } from 'reactstrap'
 import { useQuery } from '../../../hooks'
 import { apiURL } from '../../../redux/actions'
 import { _fetchApi } from '../../../redux/actions/api'
-import BackButton from '../../comp/components/BackButton'
-import CustomButton from '../../comp/components/Button'
 import CustomScrollbar from '../../comp/components/CustomScrollbar'
 import useWindowDimensions from '../../comp/getWindowDimension'
 import LabHistory from '../../doc_dash/visits/components/LabHistory'
 import MedicationHistory from '../../doc_dash/visits/components/MedicationHistory'
 import NurseryNote from '../../doc_dash/visits/components/NurseryNote'
 import VitalSignsHistory from '../../doc_dash/visits/components/VitalSignsHistory'
-import { getAgeFromDOB } from '../../utils/helpers'
-import { NURSING_ROUTE_ROOT } from '../routes'
 // import NursingRequests from '../nursing-requests'
 import FluidChart from "./FluidChart";
 import PatientNursingRequests from "./NursingRequests";
@@ -25,7 +21,7 @@ function DetailsContainer() {
   const { patientId } = useParams();
   const query = useQuery();
   const allocation_id = query.get("patient_id");
-  const history = useHistory();
+  // const history = useHistory();
   const [patientInfo, setPatientInfo] = useState({});
   const [modalState, setModalState] = useState({
     medicationHistory: true,

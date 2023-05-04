@@ -1,4 +1,4 @@
-import { RESULT_VIEW, RESULT_ERROR } from '../actions/types'
+import { RESULT_VIEW } from '../actions/types'
 
 const initialState = {
   view: {},

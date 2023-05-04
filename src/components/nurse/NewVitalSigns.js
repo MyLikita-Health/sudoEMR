@@ -45,7 +45,7 @@ const VitalSignForm = ({ history, toggleVital = (f) => f }) => {
   const [allocationInfo, setAllocationInfo] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [next_allo_id, setNextAlloId] = useState(null);
+  const [, setNextAlloId] = useState(null);
 
   const handleInputChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }));

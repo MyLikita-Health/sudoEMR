@@ -8,14 +8,14 @@
 import store from '../../../redux/store'
 import {
   // patients_db,
-  pushPatientsChanges,
+  // pushPatientsChanges,
 } from '../../doc_dash/actions/patientsActions'
-import { visits_db } from '../../doc_dash/actions/visitsActions'
+// import { visits_db } from '../../doc_dash/actions/visitsActions'
 // import {
 //   GET_PATIENT_LIST,
 //   SET_CURRENT_PATIENT,
 // } from '../../../redux/actions/actionTypes'
-import { assign_db } from '../../../db'
+// import { assign_db } from '../../../db'
 import {
   GET_PATIENT_ASSIGNED_TODAY,
   GETTING_PATIENT_ASSIGNED_TODAY,
@@ -155,7 +155,7 @@ export function removePatientAssignment(data, cb = (f) => f, error = (f) => f) {
 }
 
 export function getPendingAdmissionList(callback = (f) => f, error = (f) => f) {
-  let user = store.getState().auth.user
+  // let user = store.getState().auth.user
 
   getInPatientsQuery('pending-admission', '', (data) => {
     if (data && data.results) {

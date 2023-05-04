@@ -11,7 +11,7 @@ import CustomButton from "../../../comp/components/Button";
 import CustomTable from "../../../comp/components/CustomTable";
 import CollapsibleCard from "../../../CollapsibleCard.js";
 import SearchBar from "../../../record/SearchBar";
-import { getPatientVisits } from "../../actions/visitsActions";
+// import { getPatientVisits } from "../../actions/visitsActions";
 
 const previousVisit = "previous-visit";
 const inPatients = "in-patients";
@@ -30,12 +30,12 @@ function InPatientList() {
   const [view, setView] = useState(inPatients);
   // const [selectedPatient, setSelectedPatient] = useState({})
 
-  const getVisits = (p) => {
-    // setLoading(true)
-    setView(previousVisit);
-    // setSelectedPatient(p)
-    dispatch(getPatientVisits(p.patient_id));
-  };
+  // const getVisits = (p) => {
+  //   // setLoading(true)
+  //   setView(previousVisit);
+  //   // setSelectedPatient(p)
+  //   dispatch(getPatientVisits(p.patient_id));
+  // };
 
   const fields = [
     {

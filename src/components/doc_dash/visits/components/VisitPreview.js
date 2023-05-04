@@ -17,11 +17,11 @@ import {
   // getVisitDetails2,
   updateVisit,
 } from "../../actions/visitsActions";
-import BackButton from "../../../comp/components/BackButton";
+// import BackButton from "../../../comp/components/BackButton";
 import { useQuery } from "../../../../hooks";
 // import { LabRequestTable } from '../../../doctor/lab-test/LabRequestTable'
 // import CustomButton from '../../../comp/components/Button'
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 // import moment from 'moment'
 // import { FaEdit, FaSave } from 'react-icons/fa'
 // import Textarea from './Textarea'
@@ -53,12 +53,12 @@ export const consultationViewQueryTypes = {
 };
 
 function VisitPreview() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
   // const { search } = useLocation()
   const query = useQuery();
-  const visitId = query.get("visit_id");
+  // const visitId = query.get("visit_id");
   const patientType = query.get("patientType");
   const [loading, setLoading] = useState(false);
   const isNurse = location.pathname.includes("nurse");
@@ -73,14 +73,14 @@ function VisitPreview() {
   const [visitList, setVisitList] = useState([]);
   const [loadingVisitDates, setLoadingVisitDates] = useState(false);
   const [loadingOpDates, setLoadingOpDates] = useState(false);
-  const [viewType, setViewType] = useState(
+  const [, setViewType] = useState(
     consultationViewQueryTypes.CONSULTATION
   );
   const [isLoadingRecord, setIsLoadingRecord] = useState(false);
   const [isLoadingConsult, setIsLoadingConsult] = useState(false);
 
   const [surgeryDays, setSurgeryDays] = useState([]);
-  const [surgeryList, setSurgeryList] = useState([]);
+  // const [surgeryList, setSurgeryList] = useState([]);
 
   const [queryDate, setQueryDate] = useState({
     date: today,

@@ -14,7 +14,6 @@ import Loading from "../comp/components/Loading";
 // import CollapsibleCard from "../lab/NewLaboratory/CollapsibleCard";
 import {
   generateReceiptNo,
-  today,
   _customNotify,
   _warningNotify,
 } from "../utils/helpers";
@@ -29,8 +28,8 @@ function InPatientTable() {
   const isRecords = location.pathname.includes("records");
   const isDoctor = location.pathname.includes("doctor");
   const isNursing = location.pathname.includes("nurse");
-  const [drugConsumed, setDrugConsumed] = useState([]);
-  const [testTaken, setTestTaken] = useState([]);
+  const [drugConsumed, ] = useState([]);
+  const [testTaken, ] = useState([]);
   // const [display, setDisplay] = useState(false);
 
   const isSelected = (id) => patient_id === id;

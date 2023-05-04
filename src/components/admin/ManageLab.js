@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import moment from "moment"
 
 function ManageLab() {
+  let today = moment().format("YYYY-MM-DD");
   const [range, setRange] = useState({ from: today, to: today });
   const [results, setResults] = useState([])
   const facilityId = useSelector((state) => state.facility.info.facility_id);
@@ -14,7 +15,7 @@ function ManageLab() {
     setRange((p) => ({ ...p, [name]: value }));
   };
 
-  let today = moment().format("YYYY-MM-DD");
+  
 
   const getLabProccess = useCallback(
     () => {

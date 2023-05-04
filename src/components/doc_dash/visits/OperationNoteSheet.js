@@ -46,7 +46,7 @@ function OperationNoteSheet() {
   const dispatch = useDispatch();
   const { patientId } = match.params;
   const [patientInfo, setPatientInfo] = useState({});
-  const [admissionMode, setAdmissionMode] = useState(false);
+  const [, setAdmissionMode] = useState(false);
   const [loading, setLoading] = useState(false);
   const [opNote, setOpNote] = useState({
     _id: UUIDV4(),
@@ -118,44 +118,44 @@ function OperationNoteSheet() {
     });
   }, [patientId]);
 
-  const handleChange = ({ target: { name, value } }) => {
-    setOpNote((p) => ({ ...p, [name]: value }));
-  };
+  // const handleChange = ({ target: { name, value } }) => {
+  //   setOpNote((p) => ({ ...p, [name]: value }));
+  // };
 
-  const handleCheck = (name, checked, value) => {
-    console.log(name, checked, value);
-    let rChecked =
-      opNote[name] && opNote[name].length && opNote[name].includes(value);
-    if (rChecked) {
-      setOpNote((p) => ({ ...p, [name]: p[name].filter((i) => i !== value) }));
-    } else {
-      if (opNote[name] && opNote[name].length) {
-        setOpNote((p) => ({ ...p, [name]: [...p[name], value] }));
-      } else {
-        setOpNote((p) => ({ ...p, [name]: [value] }));
-      }
-    }
-  };
+  // const handleCheck = (name, checked, value) => {
+  //   console.log(name, checked, value);
+  //   let rChecked =
+  //     opNote[name] && opNote[name].length && opNote[name].includes(value);
+  //   if (rChecked) {
+  //     setOpNote((p) => ({ ...p, [name]: p[name].filter((i) => i !== value) }));
+  //   } else {
+  //     if (opNote[name] && opNote[name].length) {
+  //       setOpNote((p) => ({ ...p, [name]: [...p[name], value] }));
+  //     } else {
+  //       setOpNote((p) => ({ ...p, [name]: [value] }));
+  //     }
+  //   }
+  // };
 
-  const handleAdd = (name, values) => {
-    if (values.length) {
-      let testData = opNote[name];
-      let newData = [...testData];
-      values.forEach((d) => {
-        if (!testData.includes(d)) {
-          return newData.push(d);
-        }
-      });
+  // const handleAdd = (name, values) => {
+  //   if (values.length) {
+  //     let testData = opNote[name];
+  //     let newData = [...testData];
+  //     values.forEach((d) => {
+  //       if (!testData.includes(d)) {
+  //         return newData.push(d);
+  //       }
+  //     });
 
-      setOpNote((p) => ({ ...p, [name]: newData }));
-    }
-  };
+  //     setOpNote((p) => ({ ...p, [name]: newData }));
+  //   }
+  // };
 
-  const handleRemove = (name, value) => {
-    let testData = opNote[name];
-    let newData = testData.filter((d) => d !== value);
-    setOpNote((p) => ({ ...p, [name]: newData }));
-  };
+  // const handleRemove = (name, value) => {
+  //   let testData = opNote[name];
+  //   let newData = testData.filter((d) => d !== value);
+  //   setOpNote((p) => ({ ...p, [name]: newData }));
+  // };
 
   const handleSubmit = () => {
     setLoading(true);
@@ -221,11 +221,11 @@ function OperationNoteSheet() {
     }
   };
 
-  const handleAnestheticAgenChange = (v) =>
-    setOpNote((p) => ({ ...p, anesthetic: v }));
+  // const handleAnestheticAgenChange = (v) =>
+  //   setOpNote((p) => ({ ...p, anesthetic: v }));
 
-  const handlePrescriptionChange = (key, value) =>
-    setOpNote((p) => ({ ...p, [key]: value }));
+  // const handlePrescriptionChange = (key, value) =>
+  //   setOpNote((p) => ({ ...p, [key]: value }));
 
   return (
     <div>
