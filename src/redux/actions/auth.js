@@ -304,7 +304,7 @@ export function init(history, location) {
                     dispatch({ type: "STOP_FULL_PAGE_LOADING" });
                     let url = home.results.length
                       ? home.results[0].home_page
-                      : "/me/account";
+                      : "/me/records";
                     history.push(url);
                   }
                 },

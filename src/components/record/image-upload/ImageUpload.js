@@ -72,7 +72,7 @@ export default class ImageUpload extends Component {
     if (imagePreviewUrl) {
       $imagePreview = (
         <img
-          alt="Patient passport"
+          alt="Patient passport "
           src={imagePreviewUrl}
           style={{ borderRadius: 20 }}
           height="150px"
