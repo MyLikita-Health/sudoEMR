@@ -1,5 +1,5 @@
-# bits-his
-An open-source Hospital Management System aimed at managing patient information flow
+# SudoEMR
+SudoEMR is an open-source Electronic Medical Records platform aimed at managing patient information flow
 and other related data in a timely, effective and efficient manner.
 
 Checkout the demo http://bits-his.herokuapp.com/
@@ -18,7 +18,4 @@ Checkout the demo http://bits-his.herokuapp.com/
 # Contribute
 If you know how to code, we welcome you to send fixes and new features, but in order to be efficient we ask you [to follow the following procedure](https://github.com/bits-his/bits-his/blob/master/CONTRIBUTING.md).
 
-<!-- 
-RewriteEngine On
-RewriteCond %{HTTPS} off 
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]-->
+
