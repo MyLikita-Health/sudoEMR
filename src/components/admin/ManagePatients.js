@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { Table } from 'reactstrap';
-import moment from 'moment';
-import { useCallback } from 'react';
-import { mylikitaURL } from '../../redux/actions';
+import React, { useState, useEffect } from "react";
+import { Table } from "reactstrap";
+import moment from "moment";
+import { useCallback } from "react";
+import { sudoEMRURL } from "../../redux/actions";
 // import { _customNotify } from '../utils/helpers';
-import Loading from '../comp/components/Loading';
+import Loading from "../comp/components/Loading";
 
 function ManagePatients() {
   const [data, setData] = useState([]);
   const [loading, toggle] = useState(false);
-  const [last7days, setLast7days] = useState('');
+  const [last7days, setLast7days] = useState("");
 
   const getData = useCallback(() => {
     toggle(true);
-    fetch(`${mylikitaURL}/api/users/list`)
+    fetch(`${sudoEMRURL}/api/users/list`)
       .then((raw) => raw.json())
       .then((res) => {
         toggle(false);
@@ -24,7 +24,7 @@ function ManagePatients() {
 
   const getLast7days = useCallback(() => {
     toggle(true);
-    fetch(`${mylikitaURL}/api/users/last7days`)
+    fetch(`${sudoEMRURL}/api/users/last7days`)
       .then((raw) => raw.json())
       .then((res) => {
         toggle(false);

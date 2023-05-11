@@ -14,7 +14,7 @@ import {
   LOADING_APPROVED_DOCTORS,
   GET_APPROVED_DOCTORS,
 } from "./types";
-import { apiURL, mylikitaURL } from "./index.js";
+import { apiURL, sudoEMRURL } from "./index.js";
 import PouchDB from "pouchdb-browser";
 import store from "../store";
 import fire from "./firebase";
@@ -34,7 +34,7 @@ export function patientSignup(data, callback = (f) => f, error = (f) => f) {
       .auth()
       .createUserWithEmailAndPassword(data.email, data.password)
       .then(() => {
-        fetch(`${mylikitaURL}/api/users/create`, {
+        fetch(`${sudoEMRURL}/api/users/create`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
@@ -139,7 +139,7 @@ export function doctorLogin({ username, password }, callback, error) {
           dispatch({ type: ERROR, payload: data.error });
         } else {
           localStorage.setItem("user", data.user.username);
-          localStorage.setItem("@@mylikita_token", data.token);
+          localStorage.setItem("@@sudoEMR_token", data.token);
           // saveUserData(data);
           dispatch({ type: LOGIN, payload: data });
           callback();
@@ -158,7 +158,7 @@ export function patientLogin(
   error = (f) => f
 ) {
   return async (dispatch) => {
-    fetch(`${mylikitaURL}/api/users/login`, {
+    fetch(`${sudoEMRURL}/api/users/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -271,7 +271,7 @@ export async function getUserProfile(_token) {
 export function init(history, location) {
   return (dispatch) => {
     dispatch({ type: "START_FULL_PAGE_LOADING" });
-    let token = localStorage.getItem("@@mylikita_token");
+    let token = localStorage.getItem("@@sudoEMR_token");
     // dispatch({ type: START_LOADING_APP });
     console.log("Start Auth Process");
     if (token) {
@@ -333,7 +333,7 @@ export function init(history, location) {
             console.log("Token is invalid, navigating to auth...");
             // callback()
             // console.log(err)
-            localStorage.removeItem("@@mylikita_token");
+            localStorage.removeItem("@@sudoEMR_token");
             dispatch({ type: "STOP_FULL_PAGE_LOADING" });
             history.push("/auth");
           }

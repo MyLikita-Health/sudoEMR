@@ -14,7 +14,7 @@ function Footer() {
         width: '100%',
       }}
     >
-      Copyright {moment().format('YYYY')} - MyLikita Health, a product of Bit-HIS
+      Copyright {moment().format('YYYY')} - sudoEMR
     </p>
   );
 }

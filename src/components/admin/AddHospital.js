@@ -48,7 +48,7 @@ function AddHospital() {
   const [loading, setLoading] = useState(false);
   // const [accessTo, setAccessTo] = useState([]);
   const [hasStore, setHasStore] = useState(true);
-  const [functionality, ] = useState([]);
+  const [functionality] = useState([]);
 
   const [checkingUsername, toggleCheckingUsername] = useState(false);
   const [usernameGood, setUsernameGood] = useState(false);
@@ -139,29 +139,31 @@ function AddHospital() {
       }),
     })
       .then((response) => response.json())
-      .then(({ hospital }) => {
-        fetch(`${apiURL()}/auth/sign-up`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            facilityId: hospital.id,
-            firstname,
-            lastname,
-            email,
-            username,
-            password,
-            role: "Admin",
-            accessTo: facilityAccess,
-            functionality: functionality.join(","),
-          }),
-        })
-          .then((response) => response.json())
-          .then(() => {
-            setLoading(false);
-            resetForm();
-            _customNotify(`Facility assigned id of ${hospital.id}`);
+      .then((res) => {
+        if (res.success) {
+          fetch(`${apiURL()}/auth/sign-up`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              facilityId: res.hospital.id,
+              firstname,
+              lastname,
+              email,
+              username,
+              password,
+              role: "Admin",
+              accessTo: facilityAccess,
+              functionality: functionality.join(","),
+            }),
           })
-          .catch(() => _warningNotify("An error occurred"));
+            .then((response) => response.json())
+            .then(() => {
+              setLoading(false);
+              resetForm();
+              _customNotify(`Facility assigned id of ${res.hospital.id}`);
+            })
+            .catch(() => _warningNotify("An error occurred"));
+        }
       })
       .catch((err) => {
         setLoading(false);
@@ -245,11 +247,7 @@ function AddHospital() {
                 <Label className="mr-1 font-weight-bold h6">
                   Pharmacy has store?
                 </Label>
-                <Switch
-                  height={20}
-                  checked={hasStore}
-                  onChange={handeSubmit}
-                />
+                <Switch height={20} checked={hasStore} onChange={handeSubmit} />
                 <div className="ml-2">
                   {!hasStore ? <h5>No</h5> : <h5>Yes</h5>}
                 </div>
@@ -399,7 +397,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(AddHospital);
+export default connect(null, mapDispatchToProps)(AddHospital);

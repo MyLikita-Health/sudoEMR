@@ -79,7 +79,7 @@ function App() {
   }
 
   return (
-    <Switch>
+    <Switch> 
       <Redirect from="/" to="/auth" exact />
       <Route exact path="/" component={LandingContainer} />
       <Route path="/auth" component={Login} />

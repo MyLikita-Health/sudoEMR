@@ -6,7 +6,6 @@
     "npm": ">=7.11.2",
     "node": ">=10.24.1"
   },
-  "homepage": "http://localhost/mylikita",
   "dependencies": {
     "@fullcalendar/core": "^4.4.0",
     "@fullcalendar/daygrid": "^4.4.0",
@@ -76,7 +75,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "dev": "nodemon index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -96,12 +96,12 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mylikita/hms.git"
+    "url": "git+https://github.com/sudoEMR/hms.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mylikita/hms/issues"
+    "url": "https://github.com/sudoEMR/hms/issues"
   },
   "config": {
     "unsafe-perm": true

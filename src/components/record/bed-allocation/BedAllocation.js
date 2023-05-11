@@ -34,14 +34,11 @@ const BedAllocation = () => {
   const [modalIsOpen, toggleModal] = useState(false);
   const [dischargeModalOpen, toggleDischargeModal] = useState(false);
 
-  useEffect(
-    () => {
-      setLoading(true);
-      dispatch(getAvailableBeds(() => setLoading(false)));
-      dispatch(getPatients());
-    },
-    [dispatch]
-  );
+  useEffect(() => {
+    setLoading(true);
+    dispatch(getAvailableBeds(() => setLoading(false)));
+    dispatch(getPatients());
+  }, [dispatch]);
 
   const allocateBed = (bed) => {
     setSelectedBed(bed);
@@ -183,7 +180,7 @@ function AllocationModal({
         />
         {/* {"facilityId":"1be0a9da-bff9-4ab6-a36c-edfd8ca88f1a","title":"","surname":"Samuel","firstname":"Director","other":"",
         "Gender":"Female","age":0,"maritalstatus":"Married","DOB":"1986-06-04","dateCreated":"2021-06-04T00:00:00.000Z",
-        "phoneNo":"07036105884","email":"Mylikita","state":"","lga":"","occupation":"Student",
+        "phoneNo":"07036105884","email":"sudoEMR","state":"","lga":"","occupation":"Student",
         "address":"No 3. Sabo Bakin Zuwo Road, Kano","kinName":"ISAH RABIU","kinRelationship":"Father",
         "kinPhone":"07036105884","kinEmail":"Issa.emaitee@gmail.com","kinAddress":"No 3. Sabo Bakin Zuwo Road, 
         Kano","accountNo":8,"beneficiaryNo":1,"balance":0,"id":"8-1","patient_id":117,"enteredBy":null,"patient

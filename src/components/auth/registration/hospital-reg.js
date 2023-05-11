@@ -10,6 +10,7 @@ import { checkUsername, checkEmail } from "./api";
 import Input from "./component/Input";
 import PasswordInput from "./component/PasswordInput";
 import { Success } from "./doctor-reg";
+import { navArr } from "../../nav/nav-modules";
 
 class Hospital extends Component {
   state = {
@@ -116,7 +117,7 @@ class Hospital extends Component {
 
     let facilityAccess = "";
     if (this.props.type === "Hospital") {
-      facilityAccess = "Admin,Records,Account,Pharmacy,Lab";
+      facilityAccess = navArr.map((item) => item.name).join(",");
     } else if (this.props.type === "Pharmacy") {
       facilityAccess = "Admin,Pharmacy,Account";
     } else if (this.props.type === "Laboratory") {
@@ -141,6 +142,9 @@ class Hospital extends Component {
           body: JSON.stringify({
             ...userObj,
             accessTo: facilityAccess,
+            facilityId: hospital.id,
+            role: "Admin",
+            privilege: 4,
           }),
         })
           .then((response) => response.json())
@@ -175,7 +179,7 @@ class Hospital extends Component {
                     <Input
                       label={`${type} Name`}
                       name="name"
-                      placeholder="e.g. MyLikita Clinic"
+                      placeholder="e.g. sudoEMR Clinic"
                       value={this.state.name}
                       onChange={(e) =>
                         this.onInputChange("name", e.target.value)

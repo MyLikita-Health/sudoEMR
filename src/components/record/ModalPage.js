@@ -1,24 +1,19 @@
-import React from 'react';
-import {
-  Card,
-  CardBody,
-  Button,
-  Input,
-} from 'reactstrap';
-import 'bootstrap/dist/css/bootstrap.css';
-import { connect } from 'react-redux';
-import { FormErrors } from './FormErrors';
-import { withRouter } from 'react-router-dom';
-import { _postData, url, _customNotify } from '../utils/helpers';
-import ImageUpload from './image-upload/ImageUpload';
-import moment from 'moment';
-import Autocomplete from '../comp/Autocomplete';
-import { TiUserAdd } from 'react-icons/ti';
-import { recordsDB } from './Patientlist';
+import React from "react";
+import { Card, CardBody, Button, Input } from "reactstrap";
+import "bootstrap/dist/css/bootstrap.css";
+import { connect } from "react-redux";
+import { FormErrors } from "./FormErrors";
+import { withRouter } from "react-router-dom";
+import { _postData, url, _customNotify } from "../utils/helpers";
+import ImageUpload from "./image-upload/ImageUpload";
+import moment from "moment";
+import Autocomplete from "../comp/Autocomplete";
+import { TiUserAdd } from "react-icons/ti";
+import { recordsDB } from "./Patientlist";
 // import { FaTimes } from 'react-icons/fa';
-import { LoadingSM } from '../loading';
-import { _fetchApi } from '../../redux/actions/api';
-import { compose } from 'redux';
+import { LoadingSM } from "../loading";
+import { _fetchApi } from "../../redux/actions/api";
+import { compose } from "redux";
 
 /**
  * The modal page for registering new patients
@@ -32,30 +27,30 @@ class ModalPage extends React.Component {
     //initiating the state
     this.state = {
       patient: {
-        id: '',
-        accountNo: '',
-        beneficiaryNo: '',
-        title: '',
-        firstname: '',
-        surname: '',
-        other: '',
-        Gender: '',
-        age: '',
-        maritalstatus: '',
-        DOB: '',
-        phoneNo: '',
-        email: '',
-        state: '',
-        lga: '',
-        occupation: '',
-        address: '',
-        kinName: '',
-        kinRelationship: '',
-        kinPhone: '',
-        kinEmail: '',
-        kinAddress: '',
+        id: "",
+        accountNo: "",
+        beneficiaryNo: "",
+        title: "",
+        firstname: "",
+        surname: "",
+        other: "",
+        Gender: "",
+        age: "",
+        maritalstatus: "",
+        DOB: "",
+        phoneNo: "",
+        email: "",
+        state: "",
+        lga: "",
+        occupation: "",
+        address: "",
+        kinName: "",
+        kinRelationship: "",
+        kinPhone: "",
+        kinEmail: "",
+        kinAddress: "",
       },
-      formErrors: { email: '', password: '' },
+      formErrors: { email: "", password: "" },
       GenderValid: false,
       firstnameValid: false,
       surnameValid: false,
@@ -77,7 +72,7 @@ class ModalPage extends React.Component {
     this.setState({ generatingAcc: true });
     if (!navigator.onLine) {
       recordsDB
-        .get('ids')
+        .get("ids")
         .then(({ ids }) => {
           let accountNo = ids[ids.length - 1] + 1;
           // console.log(lastId)
@@ -88,9 +83,9 @@ class ModalPage extends React.Component {
               id: `${accountNo}-1`,
             }),
           }));
-          this.validateField('id', `${accountNo}-1`);
+          this.validateField("id", `${accountNo}-1`);
         })
-        .catch(() => console.log('Error: Could not get the resource'));
+        .catch(() => console.log("Error: Could not get the resource"));
       //   let cachedIds = JSON.parse(localStorage.getItem('ids'));
       //   let lastId = cachedIds[cachedIds.length - 1] + 1;
       //   console.log(lastId);
@@ -117,7 +112,7 @@ class ModalPage extends React.Component {
             generatingAcc: false,
           }));
         }
-        this.validateField('id', `${accountNo}-1`);
+        this.validateField("id", `${accountNo}-1`);
       },
       (error) => {
         console.log(error.toString());
@@ -130,11 +125,11 @@ class ModalPage extends React.Component {
   getNextAvailableBeneficiaryNo(accountNo) {
     if (!navigator.onLine) {
       recordsDB
-        .get('allpatients')
+        .get("allpatients")
         .then(({ allpatients }) => {
           console.log(allpatients);
         })
-        .catch(() => console.log('Could not find resource'));
+        .catch(() => console.log("Could not find resource"));
     }
     _fetchApi(
       `${url}/patientrecords/getBeneficiaryNo/${accountNo}`,
@@ -145,12 +140,12 @@ class ModalPage extends React.Component {
             id: `${accountNo}-${beneficiaryNo}`,
           }),
         }));
-        this.validateField('id', `${accountNo}-${beneficiaryNo}`);
+        this.validateField("id", `${accountNo}-${beneficiaryNo}`);
       },
       (err) =>
         this.setState((prevState) => ({
           formErrors: Object.assign({}, prevState.formErrors, {
-            idVal: 'Please enter a valid ID',
+            idVal: "Please enter a valid ID",
           }),
         }))
     );
@@ -165,7 +160,7 @@ class ModalPage extends React.Component {
         patient: Object.assign({}, prevState.patient, { Gender: target.value }),
       }),
       () => {
-        this.validateField('Gender', target.value);
+        this.validateField("Gender", target.value);
       }
     );
   };
@@ -202,8 +197,8 @@ class ModalPage extends React.Component {
     this.setState(
       (prevState) => ({
         patient: Object.assign({}, prevState.patient, {
-          [name]: `${value[0] ? value[0].toUpperCase() : ''}${
-            value.substr(1) ? value.substr(1).toLowerCase() : ''
+          [name]: `${value[0] ? value[0].toUpperCase() : ""}${
+            value.substr(1) ? value.substr(1).toLowerCase() : ""
           }`,
         }),
       }),
@@ -235,29 +230,29 @@ class ModalPage extends React.Component {
      *  is not met
      */
     switch (fieldName) {
-      case 'email':
+      case "email":
         emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-        fieldValidationErrors.email = emailValid ? '' : ' is invalid';
+        fieldValidationErrors.email = emailValid ? "" : " is invalid";
         break;
-      case 'firstname':
+      case "firstname":
         firstnameValid = value.length > 0 && value.match(/^\S*$/);
-        fieldValidationErrors.firstname = firstnameValid ? '' : ' is not valid';
+        fieldValidationErrors.firstname = firstnameValid ? "" : " is not valid";
         break;
-      case 'surname':
+      case "surname":
         surnameValid = value.length > 0 && value.match(/^\S*$/);
-        fieldValidationErrors.surname = surnameValid ? '' : ' is not valid';
+        fieldValidationErrors.surname = surnameValid ? "" : " is not valid";
         break;
-      case 'Gender':
+      case "Gender":
         GenderValid = value.length > 0;
-        fieldValidationErrors.Gender = GenderValid ? '' : 'is not selected';
+        fieldValidationErrors.Gender = GenderValid ? "" : "is not selected";
         break;
-      case 'age':
+      case "age":
         ageValid = value.length > 0;
-        fieldValidationErrors.age = ageValid ? '' : 'must be entered';
+        fieldValidationErrors.age = ageValid ? "" : "must be entered";
         break;
-      case 'id':
+      case "id":
         idValid = value.length > 0;
-        fieldValidationErrors.id = idValid ? '' : 'is not valid';
+        fieldValidationErrors.id = idValid ? "" : "is not valid";
         break;
       default:
         break;
@@ -292,7 +287,7 @@ class ModalPage extends React.Component {
 
   //if there is error
   errorClass(error) {
-    return error.length === 0 ? '' : 'has-error';
+    return error.length === 0 ? "" : "has-error";
   }
 
   /**
@@ -305,12 +300,12 @@ class ModalPage extends React.Component {
     // console.log(data)
 
     if (navigator.onLine) {
-      let route = 'patientrecords/new';
+      let route = "patientrecords/new";
       let callback = () => {
         this.props.receiveState(data);
         this.setState({ loading: false, patient: {} });
         this.toggle();
-        _customNotify('Record Submitted');
+        _customNotify("Record Submitted");
       };
 
       let error_cb = (error) => {
@@ -322,38 +317,38 @@ class ModalPage extends React.Component {
     } else {
       // let init = JSON.parse(localStorage.getItem('offPatientrecords')) || [];
       recordsDB
-        .get('newrec')
+        .get("newrec")
         .then((rec) => {
           let newPatients = [...rec.newrec, data];
           recordsDB
-            .put({ _id: 'newrec', _rev: rec._rev, newrec: newPatients })
+            .put({ _id: "newrec", _rev: rec._rev, newrec: newPatients })
             .then(() => {
               this.setState({ loading: false, patient: {} });
               this.toggle();
               recordsDB
-                .get('ids')
+                .get("ids")
                 .then(({ _rev, ids }) => {
                   let newIdArr = [...ids, rec];
                   recordsDB
-                    .put({ _id: 'ids', _rev, ids: newIdArr })
-                    .then((res) => console.log('updated ids', res))
-                    .catch(() => console.log('Could not find resource'));
+                    .put({ _id: "ids", _rev, ids: newIdArr })
+                    .then((res) => console.log("updated ids", res))
+                    .catch(() => console.log("Could not find resource"));
                 })
-                .catch(() => console.log('Could not find resource'));
+                .catch(() => console.log("Could not find resource"));
             })
-            .catch(() => console.log('Error: Could ot get the resource'));
+            .catch(() => console.log("Error: Could ot get the resource"));
         })
         .catch(() => {
           let newPatients = [data];
           recordsDB
-            .put({ _id: 'newrec', newrec: newPatients })
+            .put({ _id: "newrec", newrec: newPatients })
             .then(() => {
               this.setState({ loading: false, patient: {} });
               this.toggle();
             })
             .catch(() => {
               this.setState({ loading: false });
-              console.log('Error: Could not get the resource');
+              console.log("Error: Could not get the resource");
             });
         });
     }
@@ -361,19 +356,19 @@ class ModalPage extends React.Component {
 
   generateDOB = (age) => {
     const dob = moment()
-      .subtract(age, 'years')
+      .subtract(age, "years")
       .calendar();
-    console.log(moment(dob).format('YYYY-MM-DD'));
+    console.log(moment(dob).format("YYYY-MM-DD"));
     this.setState((prevState) => ({
       patient: Object.assign({}, prevState.patient, {
-        DOB: moment(dob).format('YYYY-MM-DD'),
+        DOB: moment(dob).format("YYYY-MM-DD"),
       }),
     }));
   };
 
   getIDs = () => {
     // const cachedIds = JSON.parse(localStorage.getItem('ids')) || [];
-    recordsDB.get('ids').then(({ ids }) => this.setState({ ids }));
+    recordsDB.get("ids").then(({ ids }) => this.setState({ ids }));
 
     // if(cachedIds.length) {
     //   this.setState({ ids: cachedIds })
@@ -386,15 +381,15 @@ class ModalPage extends React.Component {
         if (arr.length) {
           // localStorage.setItem('ids', JSON.stringify(arr))
           recordsDB
-            .get('ids')
+            .get("ids")
             .then(({ _rev, ids }) => {
               recordsDB
-                .put({ _id: 'ids', _rev, ids: arr })
-                .then((res) => console.log('updated ids', res))
-                .catch(() => console.log('Error'));
+                .put({ _id: "ids", _rev, ids: arr })
+                .then((res) => console.log("updated ids", res))
+                .catch(() => console.log("Error"));
             })
             .catch(() => {
-              recordsDB.put({ _id: 'ids', ids: arr });
+              recordsDB.put({ _id: "ids", ids: arr });
             });
         }
       },
@@ -412,7 +407,7 @@ class ModalPage extends React.Component {
           <Button
             color="link"
             className="mb-2"
-            onClick={() => this.props.history.push('/me/records')}
+            onClick={() => this.props.history.push("/me/records")}
           >
             <i className="fa fa-arrow-left mr-2 fa-fw text-primary" />
             Go back
@@ -433,7 +428,7 @@ class ModalPage extends React.Component {
                 <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                   <ImageUpload />
                 </div>
-                {/* <CloudinaryContext cloudName="mylikita">
+                {/* <CloudinaryContext cloudName="sudoEMR">
                     <Image publicId="sample" format="jpg">
                         <Transformation crop="fill" gravity="faces" width="300" height="200"/>
                     </Image>
@@ -446,9 +441,9 @@ class ModalPage extends React.Component {
                 <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                   <div
                     style={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
                       margin: 5,
                     }}
                   >
@@ -463,9 +458,9 @@ class ModalPage extends React.Component {
 
                   <div
                     style={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
                       margin: 5,
                     }}
                   >
@@ -477,7 +472,7 @@ class ModalPage extends React.Component {
                         value={
                           this.state.patient.accountNo
                             ? this.state.patient.accountNo
-                            : ''
+                            : ""
                         }
                         onInputChange={(val) => {
                           this.setState(
@@ -486,7 +481,7 @@ class ModalPage extends React.Component {
                                 accountNo: val,
                               }),
                             }),
-                            () => this.validateField('id', val)
+                            () => this.validateField("id", val)
                           );
                           this.getNextAvailableBeneficiaryNo(val);
                         }}
@@ -500,7 +495,7 @@ class ModalPage extends React.Component {
                         value={
                           this.state.patient.beneficiaryNo
                             ? this.state.patient.beneficiaryNo
-                            : ''
+                            : ""
                         }
                       />
                     </div>
@@ -519,7 +514,7 @@ class ModalPage extends React.Component {
                     autoComplete="disabled"
                     autoFocus
                     value={
-                      this.state.patient.title ? this.state.patient.title : ''
+                      this.state.patient.title ? this.state.patient.title : ""
                     }
                     className="form-control"
                     placeholder="Title"
@@ -542,14 +537,14 @@ class ModalPage extends React.Component {
                     value={
                       this.state.patient.surname
                         ? this.state.patient.surname
-                        : ''
+                        : ""
                     }
                     className="form-control Surname"
                     placeholder="Surname"
                   />
-                  <span style={{ color: 'red' }}>
+                  <span style={{ color: "red" }}>
                     {this.state.formErrors.surname
-                      ? 'space is not allowed'
+                      ? "space is not allowed"
                       : null}
                   </span>
                 </div>
@@ -567,14 +562,14 @@ class ModalPage extends React.Component {
                     value={
                       this.state.patient.firstname
                         ? this.state.patient.firstname
-                        : ''
+                        : ""
                     }
                     className="form-control Firstname"
                     placeholder="First Name"
                   />
-                  <span style={{ color: 'red' }}>
+                  <span style={{ color: "red" }}>
                     {this.state.formErrors.firstname
-                      ? 'space is not allowed'
+                      ? "space is not allowed"
                       : null}
                   </span>
                 </div>
@@ -586,7 +581,7 @@ class ModalPage extends React.Component {
                     name="other"
                     type="text"
                     value={
-                      this.state.patient.other ? this.state.patient.other : ''
+                      this.state.patient.other ? this.state.patient.other : ""
                     }
                     className="form-control other"
                     placeholder="Other Name"
@@ -599,21 +594,21 @@ class ModalPage extends React.Component {
                     <label>
                       <input
                         onClick={this.setGender}
-                        defaultChecked={this.state.patient.Gender === 'female'}
+                        defaultChecked={this.state.patient.Gender === "female"}
                         type="radio"
                         defaultValue="female"
                         name="Gender"
-                      />{' '}
+                      />{" "}
                       Female
                     </label>
                     <label className="offset-xs-1 offset-sm-1 offset-md-1 offset-lg-1">
                       <input
                         onClick={this.setGender}
-                        defaultChecked={this.state.patient.Gender === 'male'}
+                        defaultChecked={this.state.patient.Gender === "male"}
                         type="radio"
                         defaultValue="male"
                         name="Gender"
-                      />{' '}
+                      />{" "}
                       Male
                     </label>
                   </div>
@@ -625,7 +620,7 @@ class ModalPage extends React.Component {
                     onChange={this.handleAgeChange}
                     className="form-control"
                     type="number"
-                    value={this.state.patient.age ? this.state.patient.age : ''}
+                    value={this.state.patient.age ? this.state.patient.age : ""}
                     name="age"
                     placeholder="Age"
                   />
@@ -638,7 +633,7 @@ class ModalPage extends React.Component {
                     value={
                       this.state.patient.maritalstatus
                         ? this.state.patient.maritalstatus
-                        : ''
+                        : ""
                     }
                     name="maritalstatus"
                     className="form-control"
@@ -656,7 +651,7 @@ class ModalPage extends React.Component {
                     onChange={this.handleUserInput}
                     className="form-control"
                     type="date"
-                    value={this.state.patient.DOB ? this.state.patient.DOB : ''}
+                    value={this.state.patient.DOB ? this.state.patient.DOB : ""}
                     name="DOB"
                     placeholder="Date of Birth"
                   />
@@ -671,7 +666,7 @@ class ModalPage extends React.Component {
                     value={
                       this.state.patient.phoneNo
                         ? this.state.patient.phoneNo
-                        : ''
+                        : ""
                     }
                     name="phoneNo"
                     placeholder="Phone Number"
@@ -686,7 +681,7 @@ class ModalPage extends React.Component {
                     className="form-control"
                     type="email"
                     value={
-                      this.state.patient.email ? this.state.patient.email : ''
+                      this.state.patient.email ? this.state.patient.email : ""
                     }
                     placeholder="Email Address"
                   />
@@ -699,7 +694,7 @@ class ModalPage extends React.Component {
                     className="form-control"
                     type="text"
                     value={
-                      this.state.patient.state ? this.state.patient.state : ''
+                      this.state.patient.state ? this.state.patient.state : ""
                     }
                     name="state"
                     placeholder="State"
@@ -712,7 +707,7 @@ class ModalPage extends React.Component {
                     onChange={this.handleUserInput}
                     className="form-control"
                     type="text"
-                    value={this.state.patient.lga ? this.state.patient.lga : ''}
+                    value={this.state.patient.lga ? this.state.patient.lga : ""}
                     name="lga"
                     placeholder="LGA"
                   />
@@ -727,7 +722,7 @@ class ModalPage extends React.Component {
                     value={
                       this.state.patient.occupation
                         ? this.state.patient.occupation
-                        : ''
+                        : ""
                     }
                     name="occupation"
                     placeholder="Occupation"
@@ -743,7 +738,7 @@ class ModalPage extends React.Component {
                     value={
                       this.state.patient.address
                         ? this.state.patient.address
-                        : ''
+                        : ""
                     }
                     name="address"
                     placeholder="Address"
@@ -761,7 +756,7 @@ class ModalPage extends React.Component {
                     value={
                       this.state.patient.kinName
                         ? this.state.patient.kinName
-                        : ''
+                        : ""
                     }
                     name="kinName"
                     placeholder="Next of Kin Name"
@@ -777,7 +772,7 @@ class ModalPage extends React.Component {
                     value={
                       this.state.patient.kinRelationship
                         ? this.state.patient.kinRelationship
-                        : ''
+                        : ""
                     }
                     name="kinRelationship"
                     placeholder="Relationship"
@@ -793,7 +788,7 @@ class ModalPage extends React.Component {
                     value={
                       this.state.patient.kinPhone
                         ? this.state.patient.kinPhone
-                        : ''
+                        : ""
                     }
                     name="kinPhone"
                     placeholder="Phone Number"
@@ -809,7 +804,7 @@ class ModalPage extends React.Component {
                     value={
                       this.state.patient.kinEmail
                         ? this.state.patient.kinEmail
-                        : ''
+                        : ""
                     }
                     name="kinEmail"
                     placeholder="Email Address"
@@ -825,7 +820,7 @@ class ModalPage extends React.Component {
                     value={
                       this.state.patient.kinAddress
                         ? this.state.patient.kinAddress
-                        : ''
+                        : ""
                     }
                     name="kinAddress"
                     placeholder="Address"
@@ -850,7 +845,7 @@ class ModalPage extends React.Component {
                   <LoadingSM />
                 ) : (
                   <span>
-                    <TiUserAdd style={{ margin: '0 5px' }} size={18} /> Submit
+                    <TiUserAdd style={{ margin: "0 5px" }} size={18} /> Submit
                   </span>
                 )}
               </button>
@@ -876,7 +871,4 @@ class ModalPage extends React.Component {
 
 const mapStateToProps = ({ auth: { user } }) => ({ user });
 
-export default compose(
-  withRouter,
-  connect(mapStateToProps)
-)(ModalPage);
+export default compose(withRouter, connect(mapStateToProps))(ModalPage);

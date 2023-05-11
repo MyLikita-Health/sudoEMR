@@ -1,6 +1,6 @@
-import React from 'react';
-import { Card } from 'reactstrap';
-import PublicWrapper from '../../routes/PublicWrapper';
+import React from "react";
+import { Card } from "reactstrap";
+import PublicWrapper from "../../routes/PublicWrapper";
 
 function PrivacyPolicy() {
   return (
@@ -154,9 +154,9 @@ function PrivacyPolicy() {
             You can contact us for further information concerning our privacy
             practices at No. 3 Sabo Bakin Zuwo Road, Kano.
           </p>
-          <p className='text-right'>
-              Signed <br/>
-              MyLikita Managment
+          <p className="text-right">
+            Signed <br />
+            sudoEMR Managment
           </p>
         </div>
       </Card>

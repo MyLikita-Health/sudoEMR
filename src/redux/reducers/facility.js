@@ -7,7 +7,7 @@ const initialState = {
   loadingInfo: false,
   info: {
     facility_id: "",
-    facility_name: "MyLikita",
+    facility_name: "sudoEMR",
     code: "",
     logo: "",
     type: "",

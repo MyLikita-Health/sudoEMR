@@ -10,15 +10,15 @@ let local = "127.0.0.1";
 export const ipAddr = local;
 
 // local setup
-// export function apiURL() {
-//   if (!navigator.onLine) {
-//     // return 'http://192.168.0.118:49495'
-//     return `http://127.0.0.1:49495`;
-//   } else {
-//     // return 'http://localhost:49495'
-//     return `http://127.0.0.1:49495`;
-//   }
-// }
+export function apiURL() {
+  if (!navigator.onLine) {
+    // return 'http://192.168.0.118:49495'
+    return `http://127.0.0.1:49495`;
+  } else {
+    // return 'http://localhost:49495'
+    return `http://127.0.0.1:49495`;
+  }
+}
 
 // export function apiURL() {
 //   if (!navigator.onLine) {
@@ -34,7 +34,7 @@ export const ipAddr = local;
 const LOCAL_DICOM_SERVER = `http://localhost:5986`;
 const REMOTE_DICOM_SERVER =
   "https://yge.wvi.mybluehost.me/test/dicomweb-server";
-const REMOTE_DICOM_WEB_URL = "https://dicom.mylikita.clinic";
+const REMOTE_DICOM_WEB_URL = "https://dicom.sudoEMR.clinic";
 const LOCAL_DICOM_WEB_URL = `http://localhost:3000`;
 
 const QMS_IP = "192.168.10.122";
@@ -52,13 +52,13 @@ export const DICOM_CLIENT_WEB_URL =
     ? LOCAL_DICOM_WEB_URL
     : REMOTE_DICOM_WEB_URL;
 
-export function apiURL() {
-  if (!navigator.onLine) {
-    return "https://yge.wvi.mybluehost.me/test/server";
-  } else {
-    return "https://yge.wvi.mybluehost.me/test/server";
-  }
-}
+// export function apiURL() {
+//   if (!navigator.onLine) {
+//     return "https://yge.wvi.mybluehost.me/test/server";
+//   } else {
+//     return "https://yge.wvi.mybluehost.me/test/server";
+//   }
+// }
 
 // export function apiURL() {
 //   if (!navigator.onLine) {
@@ -113,8 +113,8 @@ export function apiURL() {
 // export const apiURL = 'https://bitshis-server.herokuapp.com';
 // export const apiURL = () => 'https://doc-individual.herokuapp.com';
 
-export const mylikitaURL = "https://mylikita.herokuapp.com";
-// export const mylikitaURL = 'http://localhost:9000';
+export const sudoEMRURL = "https://sudoEMR.herokuapp.com";
+// export const sudoEMRURL = 'http://localhost:9000';
 
 // export const twilioServer = 'http://localhost:6000';
 export const twilioServer = "https://bits-video-server.herokuapp.com";

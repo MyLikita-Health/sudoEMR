@@ -1,11 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 // import ContactForm from './ContactForm';
 // import { NavLink } from 'react-router-dom';
-import { Col, Row } from 'reactstrap';
+import { Col, Row } from "reactstrap";
 // import PublicNavbar from '../../routes/PublicNav';
-import { Link } from 'react-router-dom';
-import PublicWrapper from '../../routes/PublicWrapper';
+import { Link } from "react-router-dom";
+import PublicWrapper from "../../routes/PublicWrapper";
 // import { FiCheck } from 'react-icons/fi';
 // import moment from 'moment';
 
@@ -15,7 +15,7 @@ const Landing = ({ authenticated }) => (
       {/* <Col md={4}  className=' align-items-center justify-content-center mt-lg-5'>
     <h5 className="text-center display-4 mt-5">Health Information Management System</h5>
     <p className="lead text-center">
-      MyLikita is a software aimed at managing patient hospital/clinical and
+      sudoEMR is a software aimed at managing patient hospital/clinical and
       other related data in a timely, effective and efficient manner. Find out
       more{' '}
       <a href="https://bits-his.com/" target="_blank" rel="noopener noreferrer">
@@ -34,22 +34,22 @@ const Landing = ({ authenticated }) => (
       <Col className="d-flex flex-column align-items-center justify-content-center">
         <h2
           className="display-4 font-weight-normal"
-          style={{ fontSize: '40px' }}
+          style={{ fontSize: "40px" }}
         >
           Access Healthcare from Anywhere
         </h2>
         <p className="lead ">
-          MyLikita is a platform aimed at managing patient hospital/clinical and
+          sudoEMR is a platform aimed at managing patient hospital/clinical and
           other related data in a timely, effective and efficient manner.
           <Link to="/signup" className="btn btn-primary">
-            {' '}
+            {" "}
             Get started
           </Link>
         </p>
       </Col>
     </Row>
 
-    <div style={{ backgroundColor: 'white', padding: '2em' }}>
+    <div style={{ backgroundColor: "white", padding: "2em" }}>
       <center>
         <h3 className="display-4 m-0 ">Features</h3>
       </center>
@@ -64,7 +64,7 @@ const Landing = ({ authenticated }) => (
         <Col sm={3} className="mt-2 boxshadow">
           <div className="text-center">
             <div className="icon d-flex justify-content-center">
-              {' '}
+              {" "}
               <img
                 alt="video"
                 // src={require('../../images/undraw_video_call_kxyp.svg')}
@@ -73,7 +73,7 @@ const Landing = ({ authenticated }) => (
             </div>
             <h5 className="text-center pt-3">Chat/Video Call With Doctor</h5>
             <p className=" text-muted">
-              {' '}
+              {" "}
               We enable real-time communication and real-time video calling
               features to aid communication between Doctors and Patient.
               Patients can enjoy this feature at the comfort of their homes.
@@ -83,7 +83,7 @@ const Landing = ({ authenticated }) => (
         <Col sm={3} className="mt-2">
           <div className="text-center">
             <div className="icon d-flex justify-content-center">
-              {' '}
+              {" "}
               <img
                 alt="booking"
                 // src={require('../../images/booking_co.svg')}
@@ -101,7 +101,7 @@ const Landing = ({ authenticated }) => (
         <Col sm={3} className="mt-2">
           <div className="text-center">
             <div className="icon d-flex justify-content-center">
-              {' '}
+              {" "}
               <img
                 alt="hms"
                 // src={require('../../images/undraw_finance_0bdk.svg')}
@@ -119,7 +119,7 @@ const Landing = ({ authenticated }) => (
         <Col sm={3} className="mt-2">
           <div className="text-center">
             <div className="icon d-flex justify-content-center">
-              {' '}
+              {" "}
               <img
                 alt="video"
                 // src={require('../../images/undraw_group_video_el8e.svg')}
@@ -130,7 +130,7 @@ const Landing = ({ authenticated }) => (
             <p className=" text-muted">
               Every person needs a doctor for their health checkup. In their
               busy lives, they often forget to make an appointment with doctor
-              and miss their regular health checkup. Mylikita App help these
+              and miss their regular health checkup. sudoEMR App help these
               people to make appointments for themselves even they are in rush.
             </p>
           </div>
@@ -155,7 +155,7 @@ const Landing = ({ authenticated }) => (
           {/* <h3 className='mt-4'>Our Mission</h3> */}
           <p
             className="text-muted display-4 text-center pt-lg-5"
-            style={{ fontSize: '30px' }}
+            style={{ fontSize: "30px" }}
           >
             We are integrated hospital management solution company aimed at
             digitization of healthcare service delivery. We provide services

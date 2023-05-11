@@ -135,7 +135,8 @@ class Login extends PureComponent {
             break;
           }
           case accountTypes.OTHER: {
-            this.props.history.push("/me/lab");
+            
+            this.props.history.push(`/me/records`);
             break;
           }
           default:
