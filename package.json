@@ -71,7 +71,7 @@
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts --max_old_space_size=50096 start",
-    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts --max_old_space_size=50096 build",
+    "build": "cross-env GENERATE_SOURCEMAP=false --openssl-legacy-provider react-scripts --max_old_space_size=50096 build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
