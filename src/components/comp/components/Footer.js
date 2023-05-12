@@ -5,7 +5,7 @@ function Footer() {
     <p
       className="text-center"
       style={{
-        borderTop: '1px solid #E7E7E7',
+        borderTop: '0px solid #E7E7E7',
         textAlign: 'center',
         padding: '10px',
         left: '0',
@@ -14,7 +14,7 @@ function Footer() {
         width: '100%',
       }}
     >
-      Copyright {moment().format('YYYY')} - sudoEMR
+      {/* Copyright {moment().format('YYYY')} - sudoEMR */}
     </p>
   );
 }

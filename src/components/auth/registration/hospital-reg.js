@@ -12,6 +12,7 @@ import PasswordInput from "./component/PasswordInput";
 import { Success } from "./doctor-reg";
 import { navArr } from "../../nav/nav-modules";
 import BackButton from "../../BackButton";
+import { adminFunctionalites } from "../../admin/AdminDashboard";
 
 class Hospital extends Component {
   state = {
@@ -146,6 +147,12 @@ class Hospital extends Component {
             facilityId: hospital.id,
             role: "Admin",
             privilege: 4,
+            functionality: adminFunctionalites
+              .map((item) => item.name)
+              .filter((value, index, self) => {
+                return self.indexOf(value) === index;
+              })
+              .join(","),
           }),
         })
           .then((response) => response.json())
