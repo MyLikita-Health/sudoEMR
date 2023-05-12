@@ -1,18 +1,19 @@
-import React from 'react';
-import Input from './component/Input';
-import { useState, useEffect } from 'react';
+import React from "react";
+import Input from "./component/Input";
+import { useState, useEffect } from "react";
 import {
   checkUsername,
   checkEmail,
   checkPrefix,
   getSpecialityList,
-} from './api';
-import PasswordInput from './component/PasswordInput';
-import Autocomplete from './component/Autocomplete';
-import { Link, useRouteMatch } from 'react-router-dom';
-import BackButton from '../../landing/BackButton';
-import PublicWrapper from '../../../routes/PublicWrapper';
-import { apiURL } from '../../../redux/actions';
+} from "./api";
+import PasswordInput from "./component/PasswordInput";
+import Autocomplete from "./component/Autocomplete";
+import { Link, useRouteMatch } from "react-router-dom";
+// import BackButton from '../../BackButton';
+import PublicWrapper from "../../../routes/PublicWrapper";
+import { apiURL } from "../../../redux/actions";
+import BackButton from "../../BackButton";
 
 function DocReg() {
   const match = useRouteMatch();
@@ -21,38 +22,38 @@ function DocReg() {
   const [submitting, toggleSubmitting] = useState(false);
   const [checkingUsername, toggleCheckingUsername] = useState(false);
   const [usernameGood, setUsernameGood] = useState(false);
-  const [usernameMsg, setUsernameMsg] = useState('');
+  const [usernameMsg, setUsernameMsg] = useState("");
   const [checkingEmail, toggleCheckingEmail] = useState(false);
   const [emailGood, setEmailGood] = useState(false);
-  const [emailMsg, setEmailMsg] = useState('');
+  const [emailMsg, setEmailMsg] = useState("");
   const [checkingPrefix, toggleCheckingPrefix] = useState(false);
   const [prefixGood, setPrefixGood] = useState(false);
-  const [prefixMsg, setPrefixMsg] = useState('');
-  const [error, setError] = useState('');
+  const [prefixMsg, setPrefixMsg] = useState("");
+  const [error, setError] = useState("");
   const [specialities, setSpecialities] = useState([]);
   const [form, setForm] = useState({
-    fullname: '',
-    username: '',
-    email: '',
-    phone: '',
-    password: '',
-    retypePass: '',
-    speciality: '',
-    licenceNo: '',
-    prefix: '',
-    referralId: referralId ? referralId : '',
+    fullname: "",
+    username: "",
+    email: "",
+    phone: "",
+    password: "",
+    retypePass: "",
+    speciality: "",
+    licenceNo: "",
+    prefix: "",
+    referralId: referralId ? referralId : "",
   });
   const [showPassword, togglePassword] = useState(false);
   const [showRPassword, toggleRPassword] = useState(false);
 
-  const [mode, setMode] = useState('basic');
+  const [mode, setMode] = useState("basic");
 
   const onInputChange = (name, value) => setForm({ ...form, [name]: value });
 
   useEffect(() => {
     getSpecialityList(
       (list) => setSpecialities(list),
-      () => console.log('An error occured'),
+      () => console.log("An error occured")
     );
   }, []);
 
@@ -70,7 +71,7 @@ function DocReg() {
         toggleCheckingUsername(false);
         setUsernameGood(false);
         setUsernameMsg(err);
-      },
+      }
     );
   };
 
@@ -88,7 +89,7 @@ function DocReg() {
         toggleCheckingEmail(false);
         setEmailGood(false);
         setEmailMsg(err);
-      },
+      }
     );
   };
 
@@ -106,23 +107,23 @@ function DocReg() {
         toggleCheckingPrefix(false);
         setPrefixGood(false);
         setPrefixMsg(err);
-      },
+      }
     );
   };
 
   const submit = () => {
     if (
-      form.fullname === '' ||
-      form.username === '' ||
-      form.email === '' ||
-      form.retypePass === '' ||
-      form.password === '' ||
-      form.prefix === ''
+      form.fullname === "" ||
+      form.username === "" ||
+      form.email === "" ||
+      form.retypePass === "" ||
+      form.password === "" ||
+      form.prefix === ""
     ) {
-      setError('Please complete the form');
+      setError("Please complete the form");
     } else {
       if (form.password !== form.retypePass) {
-        setError('Passwords do not match!');
+        setError("Passwords do not match!");
       } else {
         toggleSubmitting(true);
         saveDocRecord();
@@ -132,9 +133,9 @@ function DocReg() {
 
   const saveDocRecord = () => {
     fetch(`${apiURL()}/users/doctors/create`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(form),
     })
@@ -143,18 +144,18 @@ function DocReg() {
         toggleSubmitting(false);
         if (data.success) {
           console.log(data);
-          setMode('success');
+          setMode("success");
         } else {
           toggleSubmitting(false);
           if (data.username) {
             setError(data.username);
           }
-          console.log('error => ', data);
+          console.log("error => ", data);
         }
       })
       .catch((err) => {
         toggleSubmitting(false);
-        console.log('err');
+        console.log("err");
       });
   };
 
@@ -164,7 +165,7 @@ function DocReg() {
       {/* <div>{JSON.stringify(match)}ss</div> */}
       {/* {<h3>Referred</h3>} */}
       <div className="row mt-2 mb-4 m-0">
-        {mode === 'success' ? (
+        {mode === "success" ? (
           <Success />
         ) : (
           <UserInfo
@@ -201,18 +202,18 @@ function DocReg() {
 function UserInfo({
   form = {},
   onInputChange = (f) => f,
-  error = '',
+  error = "",
   submit = (f) => f,
   submitting = false,
   checkingUsername = false,
   usernameGood = false,
-  usernameMsg = '',
+  usernameMsg = "",
   checkingEmail = false,
   emailGood = false,
-  emailMsg = '',
+  emailMsg = "",
   checkingPrefix = false,
   prefixGood = false,
-  prefixMsg = '',
+  prefixMsg = "",
   handleUsernameChange = (f) => f,
   handlePrefixChange = (f) => f,
   handleEmailChange = (f) => f,
@@ -248,7 +249,7 @@ function UserInfo({
                 className="form-control"
                 id="fullname"
                 name="fullname"
-                onChange={(e) => onInputChange('fullname', e.target.value)}
+                onChange={(e) => onInputChange("fullname", e.target.value)}
                 value={form.fullname}
                 placeholder="Enter full name here"
                 required
@@ -260,16 +261,16 @@ function UserInfo({
             <Autocomplete
               label="Speciality"
               options={
-                specialities.length ? specialities : [{ speciality: '' }]
+                specialities.length ? specialities : [{ speciality: "" }]
               }
               labelKey="speciality"
               value={form.speciality}
               onChange={(item) => {
                 if (item.length) {
-                  onInputChange('speciality', item[0].speciality);
+                  onInputChange("speciality", item[0].speciality);
                 }
               }}
-              onInputChange={(text) => onInputChange('speciality', text)}
+              onInputChange={(text) => onInputChange("speciality", text)}
               name="speciality"
               placeholder="Enter speciality"
               required
@@ -280,7 +281,7 @@ function UserInfo({
               className="col-lg-6"
               label="Folio Number"
               name="licenceNo"
-              onChange={(e) => onInputChange('licenceNo', e.target.value)}
+              onChange={(e) => onInputChange("licenceNo", e.target.value)}
               value={form.licenceNo}
               placeholder="Enter your folio number"
               required
@@ -335,7 +336,7 @@ function UserInfo({
               label="Phone Number"
               type="tel"
               name="phone"
-              onChange={(e) => onInputChange('phone', e.target.value)}
+              onChange={(e) => onInputChange("phone", e.target.value)}
               value={form.phone}
               required
               // loading={checkingPhone}
@@ -351,7 +352,7 @@ function UserInfo({
               value={form.password}
               showPass={showPass}
               toggleShowPass={() => toggleShowPass(!showPass)}
-              onChange={(e) => onInputChange('password', e.target.value)}
+              onChange={(e) => onInputChange("password", e.target.value)}
             />
           </div>
           <div className="col-lg-6">
@@ -362,14 +363,14 @@ function UserInfo({
               value={form.retypePass}
               showPass={showRPass}
               toggleShowPass={() => toggleRShowPass(!showRPass)}
-              onChange={(e) => onInputChange('retypePass', e.target.value)}
+              onChange={(e) => onInputChange("retypePass", e.target.value)}
             />
           </div>
           <div className="col-lg-6">
             <Input
               label="Referral Code (optional)"
               name="referralId"
-              onChange={(e) => onInputChange('referralId', e.target.value)}
+              onChange={(e) => onInputChange("referralId", e.target.value)}
               value={form.referralId}
               placeholder="Referral Code"
             />
@@ -379,7 +380,7 @@ function UserInfo({
 
         <div className="card-footer d-flex flex-row justify-content-end">
           <button className="btn btn-primary" onClick={submit}>
-            {submitting ? 'Loading...' : 'Submit'}
+            {submitting ? "Loading..." : "Submit"}
           </button>
         </div>
       </div>

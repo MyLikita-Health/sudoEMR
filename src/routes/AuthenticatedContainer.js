@@ -9,7 +9,6 @@ import Nurse from "../components/nurse/Nurse";
 import Admin from "../components/admin/Admin";
 import ReportIssues from "../components/user/ReportIssues";
 import Profile from "../components/user/Profile";
-import Report from "../components/report/Report";
 import { NURSING_ROUTE_ROOT } from "../components/nurse/routes";
 import AppointmentsIndex from "../components/appointments";
 import CustomScrollbar from "../components/comp/components/CustomScrollbar";
@@ -55,8 +54,6 @@ const AuthenticatedContainer = ({ user = {} }) => {
                 />
               )
             : null}
-
-          <Route path="/me/report" render={(props) => <Report {...props} />} />
 
           <Route
             exact

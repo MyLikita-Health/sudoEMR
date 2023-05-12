@@ -16,9 +16,6 @@ import "./styles/index.css";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMobileView } from "./redux/actions/app";
-// import { Spinner } from "reactstrap";
-
-import LandingContainer from "./components/landing/landing";
 import Login from "./components/auth/login/login";
 import ResultViewer from "./components/auth/results-viewer/Credentials";
 import ResultIndex from "./components/auth/results-viewer/ResultIndex";
@@ -27,7 +24,6 @@ import DoctorReg from "./components/auth/registration/doctor-reg";
 import ForgetPassword from "./components/auth/login/ForgetPassword";
 import PageNotFound from "./components/comp/components/PageNotFound";
 import PatientApp from "./components/patient/pages";
-
 import SignUp from "./components/auth/registration/signUp";
 import Hospital from "./components/auth/registration/hospital-reg";
 import PatientRegistration from "./components/auth/registration/patient-reg";
@@ -59,20 +55,6 @@ function App() {
   useEffect(() => {
     dispatch(init(history, location));
   }, [init]);
-  // const clearCacheData = () => {
-  //   caches.keys().then((names) => {
-  //     names.forEach((name) => {
-  //       caches.delete(name);
-  //     });
-  //   });
-  //   // alert("Complete Cache Cleared");
-  // };
-
-  // useEffect(() => {
-  //   // if (location.pathname.includes("/auth")) {
-  //   //   clearCacheData();
-  //   // }
-  // }, []);
 
   if (fullPageLoading) {
     return <LoadingComp />;
@@ -81,7 +63,6 @@ function App() {
   return (
     <Switch> 
       <Redirect from="/" to="/auth" exact />
-      <Route exact path="/" component={LandingContainer} />
       <Route path="/auth" component={Login} />
       <Route path="/result-viewer" component={ResultViewer} />
       <Route
@@ -105,9 +86,6 @@ function App() {
       <Route path="/signup/laboratory">
         <Hospital type="Laboratory" />
       </Route>
-
-      {/* <Route path="/signup/pharmacy" component={PharmacyReg} />
-            <Route path="/signup/laboratory" component={Laboratory} /> */}
       <Route path="/signup" component={SignUp} />
       <Route path="/forgotpassword" component={ForgetPassword} />
       <Route path="/me" component={AuthenticatedContainer} />

@@ -1,40 +1,40 @@
-import React from 'react';
-import { Card, CardHeader, CardBody, FormGroup } from 'reactstrap';
-import PublicWrapper from '../../../routes/PublicWrapper';
-import BackButton from '../../landing/BackButton';
-import Input from './component/Input';
-import PasswordInput from './component/PasswordInput';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { patientSignup } from '../../../redux/actions/auth';
-import { useHistory } from 'react-router';
-import {useParams} from 'react-router-dom'
+import React from "react";
+import { Card, CardHeader, CardBody, FormGroup } from "reactstrap";
+import PublicWrapper from "../../../routes/PublicWrapper";
+import BackButton from "../../BackButton";
+import Input from "./component/Input";
+import PasswordInput from "./component/PasswordInput";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { patientSignup } from "../../../redux/actions/auth";
+import { useHistory } from "react-router";
+import { useParams } from "react-router-dom";
 
 function PatientRegistration() {
   const [form, setForm] = useState({
-    fullname: '',
-    email: '',
-    password: '',
-    retypePassword: '',
+    fullname: "",
+    email: "",
+    password: "",
+    retypePassword: "",
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, toggle] = useState(false);
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
 
   const onInputChange = (name, value) => setForm({ ...form, [name]: value });
 
   const handleSubmit = () => {
     if (
-      form.fullname === '' ||
-      form.email === '' ||
-      form.password === '' ||
-      form.retypePassword === ''
+      form.fullname === "" ||
+      form.email === "" ||
+      form.password === "" ||
+      form.retypePassword === ""
     ) {
-      setError('Please complete the form');
+      setError("Please complete the form");
     } else {
       if (form.password !== form.retypePassword) {
-        setError('Passwords do not match');
+        setError("Passwords do not match");
       } else {
         toggle(true);
         let data = {};
@@ -46,11 +46,11 @@ function PatientRegistration() {
             data,
             () => {
               toggle(false);
-              history.push('/user')
+              history.push("/user");
             },
             (err) => {
               // console.log(err, 'from fronetnend')
-              setError(err)
+              setError(err);
               toggle(false);
             }
           )
@@ -58,7 +58,7 @@ function PatientRegistration() {
       }
     }
   };
-  let params = useParams()
+  let params = useParams();
   return (
     <PublicWrapper>
       <div className="offset-md-3 col-md-6 col-lg-6 p-0">
@@ -72,7 +72,7 @@ function PatientRegistration() {
                 name="fullname"
                 placeholder="Full name"
                 label="Full name"
-                onChange={(e) => onInputChange('fullname', e.target.value)}
+                onChange={(e) => onInputChange("fullname", e.target.value)}
                 value={form.fullname}
                 required
               />
@@ -81,21 +81,21 @@ function PatientRegistration() {
                 placeholder="Email"
                 label="Email"
                 required
-                onChange={(e) => onInputChange('email', e.target.value)}
+                onChange={(e) => onInputChange("email", e.target.value)}
                 value={form.email}
               />
               <PasswordInput
                 name="password"
                 label="Password"
                 required
-                onChange={(e) => onInputChange('password', e.target.value)}
+                onChange={(e) => onInputChange("password", e.target.value)}
                 value={form.password}
               />
               <PasswordInput
                 name="retypePassword"
                 label="Retype Password"
                 onChange={(e) =>
-                  onInputChange('retypePassword', e.target.value)
+                  onInputChange("retypePassword", e.target.value)
                 }
                 value={form.retypePassword}
               />
@@ -104,7 +104,7 @@ function PatientRegistration() {
           </CardBody>
           <div className="card-footer d-flex flex-row justify-content-end">
             <button className="btn btn-primary" onClick={handleSubmit}>
-              {loading ? 'Loading...' : 'Submit'}
+              {loading ? "Loading..." : "Submit"}
             </button>
           </div>
         </Card>

@@ -1,11 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import PublicNavbar from '../../../routes/PublicNav';
-// import BackButton from '../../landing/BackButton';
+// import BackButton from '../../BackButton';
 
-import {
-  Card,
-  CardTitle,
-} from 'reactstrap';
+import { Card, CardTitle } from "reactstrap";
 // import VideoChat from '../video-chat/VideoChat';
 
 class Hospital extends Component {

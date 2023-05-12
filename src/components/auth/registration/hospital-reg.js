@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import BackButton from "../../landing/BackButton";
+// import BackButton from "../../landing/BackButton";
 import "./signUp.css";
 import CustomButton from "../../comp/components/Button";
 import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
@@ -11,6 +11,7 @@ import Input from "./component/Input";
 import PasswordInput from "./component/PasswordInput";
 import { Success } from "./doctor-reg";
 import { navArr } from "../../nav/nav-modules";
+import BackButton from "../../BackButton";
 
 class Hospital extends Component {
   state = {

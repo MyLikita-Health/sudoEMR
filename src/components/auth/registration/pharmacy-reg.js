@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BackButton from '../../landing/BackButton';
+import BackButton from '../../BackButton';
 
 import { Card, CardHeader, CardBody, CardFooter } from 'reactstrap';
 import PublicWrapper from '../../../routes/PublicWrapper';

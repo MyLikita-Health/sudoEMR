@@ -15,9 +15,10 @@ import UserInfo from "./doc-profile/DoctorInfo";
 import PasswordMngmt from "./PasswordMngmt";
 import { DocAvailable } from "./doc-profile/DoctorAvailability";
 import { ProfileImageEdit } from "./ProfileImageEdit";
+import BackButton from "../BackButton";
 // import Loading from "../loading";
 // import LabDocAmt from "./LabDocAmt";
-import BackButton from "../landing/BackButton";
+// import BackButton from "../landing/BackButton";
 
 function Profile({ user, _saveUserData }) {
   // const [loading, setLoading] = useState(false);

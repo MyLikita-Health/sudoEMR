@@ -10,9 +10,10 @@ import CalenderView from "./CalenderView";
 import { useSelector } from "react-redux";
 import { clearPatient } from "../actions/patientsActions";
 import { UNAPPROVED_APPOINTMENTS } from "../routes";
-import BackButton from "../../landing/BackButton";
+// import BackButton from "../../landing/BackButton";
 import { appointmentFunc } from "../actions/appointmentsAction";
 import moment from "moment";
+import BackButton from "../../BackButton";
 
 function Appointments() {
   const history = useHistory();

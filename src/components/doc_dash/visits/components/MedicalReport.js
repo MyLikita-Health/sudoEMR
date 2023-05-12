@@ -15,8 +15,9 @@ import { apiURL } from "../../../../redux/actions";
 import { _postApi } from "../../../../redux/actions/api";
 import CustomButton from "../../../comp/components/Button";
 import PrintWrapper from "../../../comp/components/print/PrintWrapper";
-import BackButton from "../../../landing/BackButton";
+// import BackButton from "../../../landing/BackButton";
 import { today, _customNotify } from "../../../utils/helpers";
+import BackButton from "../../../BackButton";
 
 export default function MedicalReport() {
   const query = useQuery();
