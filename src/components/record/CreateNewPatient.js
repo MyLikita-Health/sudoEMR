@@ -29,6 +29,7 @@ import { v4 as uuidv4 } from "uuid";
 import BasicInformation from "../doc_dash/patients/BasicInfomation";
 import ContactInformation from "../doc_dash/patients/ContactInformation";
 import NextOfKin from "../doc_dash/patients/NextOfKin";
+import { ContactPerson } from "../client-form";
 
 const CreateNewPatient = () => {
   const match = useRouteMatch();
@@ -81,9 +82,9 @@ const CreateNewPatient = () => {
 
   const [updating, setUpdating] = useState(false);
 
-  // const setContactPerson = (val) => {
-  //   setPatient((p) => ({ ...p, contact: val }));
-  // };
+  const setContactPerson = (val) => {
+    setPatient((p) => ({ ...p, contact: val }));
+  };
   const getNextClientID = async (facId) => {
     try {
       const response = await fetch(
@@ -545,12 +546,11 @@ const CreateNewPatient = () => {
       />
       {/* <div className="card">{JSON.stringify(patient)}</div> */}
       {patient.accountType === "Cooporate" ? (
-        // <ContactPerson
-        //   client={patient}
-        //   onInputChange={onInputChange}
-        //   setContactPerson={setContactPerson}
-        // />
-        <></>
+        <ContactPerson
+          client={patient}
+          onInputChange={onInputChange}
+          setContactPerson={setContactPerson}
+        />
       ) : (
         <>
           <ContactInformation
