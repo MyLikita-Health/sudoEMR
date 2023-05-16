@@ -37,7 +37,10 @@ body {
   .bg-black {
     background: #000 !important;
   }
-  
+  .nav-link-active-bg{
+    background:#e8e8e8;
+    border-radius: 5px;
+  }
   /* Navbar */
   .site-navbar-top .site-logo {
     font-size: 2rem;

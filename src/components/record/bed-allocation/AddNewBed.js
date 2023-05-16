@@ -93,6 +93,7 @@ const AddNewBed = () => {
             <AutoComplete
               label="Class Type"
               labelKey="class_type"
+              allowNew
               labelClass="font-weight-normal"
               options={classes}
               onInputChange={(text) =>

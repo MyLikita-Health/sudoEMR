@@ -16,7 +16,12 @@ import { useSelector } from "react-redux";
 import allModule from "./moduleData";
 // import CheckBoxNormal from "../theater/operation-notes/CheckBoxNormal";
 // import CheckBoxItem from "../theater/operation-notes/CheckBoxItem";
-import { _updateApi, _fetchApi, _postApi, _fetchApi2 } from "../../redux/actions/api";
+import {
+  _updateApi,
+  _fetchApi,
+  _postApi,
+  _fetchApi2,
+} from "../../redux/actions/api";
 import { _customNotify, _warningNotify } from "../utils/helpers";
 import { useHistory, useParams } from "react-router";
 import { apiURL } from "../../redux/actions";
@@ -26,7 +31,6 @@ import { MdUpdate } from "react-icons/md";
 import SelectInput from "../comp/components/SelectInput";
 import CheckBoxNormal from "../CheckBoxNormal";
 import CheckBoxItem from "../CheckBoxItem";
-
 
 export default function StaffReview() {
   // const user = useSelector((state) => state.auth.user);
@@ -42,21 +46,23 @@ export default function StaffReview() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
   const [toggle, setToggle] = useState(false);
-  const [departments,setDepartments] = useState([])
+  const [departments, setDepartments] = useState([]);
 
   const _toggle = () => setToggle(!toggle);
 
   const getDepartments = useCallback(() => {
-      _fetchApi2(
-        `${apiURL()}/department?query_type=get&facilityId=${facility.info.facility_id}`,
-        (data) => {
-          if (data.success) {
-            setDepartments(data.results);
-          }
-        },
-        (err) => console.log(err)
-      );
-    }, [facility.info.facility_id]);
+    _fetchApi2(
+      `${apiURL()}/department?query_type=get&facilityId=${
+        facility.info.facility_id
+      }`,
+      (data) => {
+        if (data.success) {
+          setDepartments(data.results);
+        }
+      },
+      (err) => console.log(err)
+    );
+  }, [facility.info.facility_id]);
 
   const handleFetch = () => {
     _fetchApi(
@@ -77,7 +83,7 @@ export default function StaffReview() {
 
   useEffect(() => {
     handleFetch();
-    getDepartments()
+    getDepartments();
   }, [getDepartments]);
 
   const handleCheckboxChange = (val) => {
@@ -110,7 +116,6 @@ export default function StaffReview() {
     setStatus(true);
   };
   // const onInputChange = (e) => setPaymentType(e.target.value);
-  const isChecked = (name) => accessTo && accessTo.includes(name);
 
   const handleUserUpdate = (accessTo, functionality, id, facilityId) => {
     let newAccessTo = accessTo.join(",");
@@ -160,7 +165,7 @@ export default function StaffReview() {
   return (
     <>
       <BackButton />
-      <Card>
+      <Card className="mb-2">
         <CardHeader>User Information</CardHeader>
         {/* <Button color="danger" className="px-3 float-right" onClick={handleDelete}>Delete User</Button> */}
         <CardBody>
@@ -199,12 +204,12 @@ export default function StaffReview() {
                   Department
                 </Label>
                 <SelectInput
-                      container="px-0 mx-0"
-                      name="department"
-                      value={test.department}
-                      options={departments.map(i => i.dept_name)}
-                      onChange={handleTableChange}
-                    />
+                  container="px-0 mx-0"
+                  name="department"
+                  value={test.department}
+                  options={departments.map((i) => i.dept_name)}
+                  onChange={handleTableChange}
+                />
                 {/*<Input
                     {JSON.stringify(departments)}
                                   type="text"
@@ -299,279 +304,37 @@ export default function StaffReview() {
                 </div>
               </div>
             )}
-            <div className="col-md-12 col-lg-12">
+            <div className="">
               <h6>Access (User's Privilege)</h6>
-              <div className="row">
-                <div
-                  className={isChecked("Laboratory") ? "col-md-6" : "col-md-3"}
-                >
-                  <div className="row">
-                    {facility.info.type === "hospital" ||
-                    facility.info.type === "laboratory" ||
-                    facility.info.type === "diagnosticCenter" ? (
-                      <div className="col-md-12">
-                        <CheckBoxNormal
-                          label="Laboratory"
-                          name="Laboratory"
-                          handleCheck={handleCheckboxChange}
-                          value={accessTo}
-                          className="font-weight-bold ml-4 m-0 pr-3"
-                        />
-                      </div>
-                    ) : null}
-                    {// JSON.stringify(allModule.lab.type)
-                    facility.info.type === "hospital" ||
-                    facility.info.type === "laboratory" ||
-                    facility.info.type === "diagnosticCenter"
-                      ? allModule.laboratory.type.map((item) => (
-                          <div className="col-md-6">
-                            {isChecked("Laboratory") ? (
-                              <CheckBoxItem
-                                label={item}
-                                name={item}
-                                handleCheck={handleFunctionality}
-                                value={functionality}
-                              />
-                            ) : null}
-                          </div>
-                        ))
-                      : null}
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <CheckBoxNormal
-                    label="Reports"
-                    name="Reports"
-                    handleCheck={handleCheckboxChange}
-                    value={accessTo}
-                    className="font-weight-bold ml-4 m-0 pr-3"
-                  />
-                  {allModule.reports.type.map((item) =>
-                    isChecked("Reports") ? (
-                      <CheckBoxItem
-                        label={item}
-                        name={item}
-                        handleCheck={handleFunctionality}
-                        value={functionality}
-                      />
-                    ) : null
-                  )}
-                </div>
-                <div className="col-md-3 ">
-                  {facility.info.type === "hospital" ||
-                  facility.info.type === "pharmacy" ? (
-                    <CheckBoxNormal
-                      className="font-weight-bold ml-4 m-0 pr-3"
-                      label="Pharmacy"
-                      name="Pharmacy"
-                      handleCheck={handleCheckboxChange}
-                      value={accessTo}
-                    />
-                  ) : null}
-                  {facility.info.type === "hospital" ||
-                  facility.info.type === "pharmacy"
-                    ? allModule.pharmacy.type.map((item) =>
-                        isChecked("Pharmacy") ? (
-                          <CheckBoxItem
+              <div className="">
+                <div className="m-4">
+                  {facility.type === "Hospital" ? (
+                    <div className="row">
+                      {allModule.map((item) => (
+                        <div className="col-md-3">
+                          <CheckBoxNormal
+                            label={item.name}
+                            name={item.name}
+                            handleCheck={handleCheckboxChange}
+                            value={accessTo}
                             className="font-weight-bold ml-4 m-0 pr-3"
-                            label={item}
-                            name={item}
-                            handleCheck={handleFunctionality}
-                            value={functionality}
                           />
-                        ) : null
-                      )
-                    : null}
-                </div>
-
-                <div className="col-md-3 col-lg-3">
-                  {facility.info.type === "hospital" && (
-                    <CheckBoxNormal
-                      className="font-weight-bold ml-4 m-0 pr-3"
-                      label="Maintenance"
-                      name="Maintenance"
-                      handleCheck={handleCheckboxChange}
-                      value={accessTo}
-                    />
-                  )}
-                  {facility.info.type === "hospital" ? (
-                    <CheckBoxNormal
-                      className="font-weight-bold ml-4 m-0 pr-3"
-                      label="Records"
-                      name="Records"
-                      handleCheck={handleCheckboxChange}
-                      value={accessTo}
-                    />
+                          {item.type.map((item) =>
+                            !accessTo.includes(item) ? (
+                              <div className="col-md-12">
+                                <CheckBoxItem
+                                  label={item}
+                                  name={item}
+                                  handleCheck={handleFunctionality}
+                                  value={functionality}
+                                />
+                              </div>
+                            ) : null
+                          )}
+                        </div>
+                      ))}
+                    </div>
                   ) : null}
-                  {facility.info.type === "hospital"
-                    ? allModule.records.type.map((item) =>
-                        isChecked("Records") ? (
-                          <CheckBoxItem
-                            className="font-weight-bold ml-4 m-0 pr-3"
-                            label={item}
-                            name={item}
-                            handleCheck={handleFunctionality}
-                            value={functionality}
-                          />
-                        ) : null
-                      )
-                    : null}
-
-                  {facility.info.type === "hospital" ? (
-                    <CheckBoxNormal
-                      className="font-weight-bold ml-4 m-0 pr-3"
-                      label="Nurse"
-                      name="Nurse"
-                      handleCheck={handleCheckboxChange}
-                      value={accessTo}
-                    />
-                  ) : null}
-                  {facility.info.type === "hospital"
-                    ? allModule.nurse.type.map((item) =>
-                        isChecked("Nurse") ? (
-                          <CheckBoxItem
-                            className="font-weight-bold ml-4 m-0 pr-3"
-                            label={item}
-                            name={item}
-                            handleCheck={handleFunctionality}
-                            value={functionality}
-                          />
-                        ) : null
-                      )
-                    : null}
-
-                  {facility.info.type === "hospital" ||
-                  facility.info.type === "pharmacy" ||
-                  facility.info.type === "diagnosticCenter" ? (
-                    <CheckBoxNormal
-                      className="font-weight-bold ml-4 m-0 pr-3"
-                      label="Accounts"
-                      name="Accounts"
-                      handleCheck={handleCheckboxChange}
-                      value={accessTo}
-                    />
-                  ) : null}
-                  {facility.info.type === "hospital" ||
-                  facility.info.type === "pharmacy" ||
-                  facility.info.type === "diagnosticCenter"
-                    ? allModule.account.type.map((item) =>
-                        isChecked("Accounts") ? (
-                          <CheckBoxItem
-                            className="font-weight-bold ml-4 m-0 pr-3"
-                            label={item}
-                            name={item}
-                            handleCheck={handleFunctionality}
-                            value={functionality}
-                          />
-                        ) : null
-                      )
-                    : null}
-                </div>
-
-                <div className="col-md-3 col-lg-3">
-                  {facility.info.type === "hospital" && (
-                    <CheckBoxNormal
-                      className="font-weight-bold ml-4 m-0 pr-3"
-                      label="Theater"
-                      name="Theater"
-                      handleCheck={handleCheckboxChange}
-                      value={accessTo}
-                    />
-                  )}
-                  {facility.info.type === "hospital" &&
-                    allModule.theater.type.map((item) =>
-                      isChecked("Theater") ? (
-                        <CheckBoxItem
-                          className="font-weight-bold ml-4 m-0 pr-3"
-                          label={item}
-                          name={item}
-                          handleCheck={handleFunctionality}
-                          value={functionality}
-                        />
-                      ) : null
-                    )}
-                </div>
-                <div className="col-md-3 col-lg-3">
-                  {facility.info.type === "hospital" && (
-                    <CheckBoxNormal
-                      className="font-weight-bold ml-4 m-0 pr-3"
-                      label="Doctors"
-                      name="Doctors"
-                      handleCheck={handleCheckboxChange}
-                      value={accessTo}
-                    />
-                  )}
-                  {facility.info.type === "hospital" &&
-                    allModule.doctor.type.map((item) =>
-                      isChecked("Doctors") ? (
-                        <CheckBoxItem
-                          className="font-weight-bold ml-4 m-0 pr-3"
-                          label={item}
-                          name={item}
-                          handleCheck={handleFunctionality}
-                          value={functionality}
-                        />
-                      ) : null
-                    )}
-                </div>
-                <div className="col-md-3">
-                  {facility.info.type === "hospital" ||
-                  facility.info.type === "pharmacy" ||
-                  facility.info.type === "laboratory" ||
-                  facility.info.type === "diagnosticCenter" ? (
-                    <CheckBoxNormal
-                      label="Admin"
-                      name="Admin"
-                      handleCheck={handleCheckboxChange}
-                      value={accessTo}
-                      className="font-weight-bold ml-4 m-0 pl-3"
-                    />
-                  ) : null}
-                  {facility.info.type === "hospital" ||
-                  facility.info.type === "pharmacy" ||
-                  facility.info.type === "laboratory" ||
-                  facility.info.type === "diagnosticCenter"
-                    ? allModule.admin.type.map((item) =>
-                        isChecked("Admin") ? (
-                          <CheckBoxItem
-                            label={item}
-                            name={item}
-                            handleCheck={handleFunctionality}
-                            value={functionality}
-                          />
-                        ) : null
-                      )
-                    : null}
-                </div>
-
-                <div className="col-md-3">
-                  {facility.info.type === "hospital" ||
-                  facility.info.type === "pharmacy" ||
-                  facility.info.type === "laboratory" ||
-                  facility.info.type === "diagnosticCenter" ? (
-                    <CheckBoxNormal
-                      label="Appointments"
-                      name="Appointments"
-                      handleCheck={handleCheckboxChange}
-                      value={accessTo}
-                      className="font-weight-bold ml-4 m-0 pl-3"
-                    />
-                  ) : null}
-                  {facility.info.type === "hospital" ||
-                  facility.info.type === "pharmacy" ||
-                  facility.info.type === "laboratory" ||
-                  facility.info.type === "diagnosticCenter"
-                    ? allModule.appointments.type.map((item) =>
-                        isChecked("Appointments") ? (
-                          <CheckBoxItem
-                            label={item}
-                            name={item}
-                            handleCheck={handleFunctionality}
-                            value={functionality}
-                          />
-                        ) : null
-                      )
-                    : null}
                 </div>
               </div>
             </div>

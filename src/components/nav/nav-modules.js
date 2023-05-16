@@ -6,6 +6,7 @@ import { Nav, NavItem } from "reactstrap";
 // import { MdLocalPharmacy } from "react-icons/md";
 import { GiStethoscope } from "react-icons/gi";
 import { hasAccess } from "../auth";
+import './nav2.css';
 
 export const navArr = [
   {
@@ -54,7 +55,7 @@ const NavModules = ({ user, toggle, userAccess }) => {
         user.accessTo
           ? hasAccess(user, [item.name]) && (
               <NavItem onClick={toggle}>
-                <NavLink to={`${item.route}`} className="nav">
+                <NavLink to={`${item.route}`} activeClassName=' nav-link-active-bg   ' className="nav text-primary" >
                   {item.icon}
                   {item.display_name}
                 </NavLink>

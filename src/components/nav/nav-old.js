@@ -101,12 +101,13 @@ class NavbarNow extends PureComponent {
       <Navbar
         dark
         expand="md"
+        className="shadow-lg shadow-sm shadow-md"
         style={{
-          minHeight: "40px",
+          minHeight: "50px",
           padding: 0,
           margin: 0,
           // paddingRight: 5,
-          backgroundColor: "#0069D9",
+          backgroundColor: "#fff",
         }}
       >
         <NavbarBrand onClick={this.gotoHome}>
@@ -118,7 +119,7 @@ class NavbarNow extends PureComponent {
             // src={facilityInfo.logo}
             alt="logo"
             height="30"
-            // width="auto"
+            // width="50"
             style={{
               margin: "0 5px",
             }}
@@ -144,12 +145,13 @@ class NavbarNow extends PureComponent {
               <UserAvatar logout={this.logout} />
             </div>
           ) : null}
-          <NavbarToggler onClick={this.toggle} />
+          <NavbarToggler onClick={this.toggle}  className="bg-primary"/>
         </div>
 
         <Collapse
           isOpen={this.state.isOpen}
           navbar
+          
           style={{
             flexDirection: "row",
             justifyContent: "space-between",

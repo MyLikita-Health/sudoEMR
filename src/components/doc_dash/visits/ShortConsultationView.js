@@ -119,7 +119,8 @@ function ShortConsultationView() {
       });
 
       getInPatientsQuery("in_patient_by_id", patientId, (data) => {
-        if (data.results.length) {
+        alert(JSON.stringify(data))
+        if (data.success) {
           setAdmissionMode(true);
           setConsultation((p) => ({
             ...p,
