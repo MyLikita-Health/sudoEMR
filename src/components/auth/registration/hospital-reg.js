@@ -13,6 +13,7 @@ import { Success } from "./doctor-reg";
 import { navArr } from "../../nav/nav-modules";
 import BackButton from "../../BackButton";
 import { adminFunctionalites } from "../../admin/AdminDashboard";
+import allModule from "../../admin/moduleData";
 
 class Hospital extends Component {
   state = {
@@ -147,8 +148,8 @@ class Hospital extends Component {
             facilityId: hospital.id,
             role: "Admin",
             privilege: 4,
-            functionality: adminFunctionalites
-              .map((item) => item.name)
+            functionality: allModule
+              .flatMap((module) => module.type)
               .filter((value, index, self) => {
                 return self.indexOf(value) === index;
               })
@@ -187,7 +188,7 @@ class Hospital extends Component {
                     <Input
                       label={`${type} Name`}
                       name="name"
-                      placeholder="e.g. sudoEMR Clinic"
+                      placeholder="e.g. MyLikita Clinic"
                       value={this.state.name}
                       onChange={(e) =>
                         this.onInputChange("name", e.target.value)
