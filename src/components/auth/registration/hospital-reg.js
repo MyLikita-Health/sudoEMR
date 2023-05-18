@@ -12,7 +12,6 @@ import PasswordInput from "./component/PasswordInput";
 import { Success } from "./doctor-reg";
 import { navArr } from "../../nav/nav-modules";
 import BackButton from "../../BackButton";
-import { adminFunctionalites } from "../../admin/AdminDashboard";
 import allModule from "../../admin/moduleData";
 
 class Hospital extends Component {
