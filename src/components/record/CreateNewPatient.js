@@ -399,7 +399,6 @@ const CreateNewPatient = () => {
   };
 
   const handleAccountSelect = (acc) => {
-    // console.log(acc);
     getNextBeneficiaryId(acc.account_no, facilityId)
       .then((d) => {
         // console.log(d);
@@ -455,7 +454,6 @@ const CreateNewPatient = () => {
               <div className="d-flex justify-content-between col-xs-12 col-sm-12 col-md-12 col-lg-12 p-0">
                 <div className="col-md-12 form-group">
                   <Label className="font-weight-bold">Registration Type </Label>
-
                   {/* <div class="form-check form-check-inline ml-2"> */}
                   <label
                     for="existingAccount"
