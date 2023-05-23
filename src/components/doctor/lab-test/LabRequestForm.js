@@ -328,7 +328,6 @@ function LabRequestForm({
           <Form>
             <FormGroup className="mb-0 mx-0">
               {/* <div className="col-md-6"> */}
-
               <AutoComplete
                 options={labList}
                 labelKey="description"
@@ -396,6 +395,7 @@ function LabRequestForm({
           // id="doctor-reporting-fees"
           // style={{ height: '68vh', overflow: 'scroll' }}
           >
+            {/* {JSON.stringify(receiptDisplayed)} */}
             <LabRequestTable
               formRecords={receiptDisplayed}
               onRemove={removeTest}
