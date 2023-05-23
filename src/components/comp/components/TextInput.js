@@ -21,7 +21,7 @@ function TextInput({
           <input
             ref={_ref}
             autoFocus={autoFocus}
-            className="form-control"
+            className="input_field"
             type={type}
             value={value}
             name={name}

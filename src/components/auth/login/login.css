@@ -1,4 +1,4 @@
-.login-form {
+/* .login-form {
     width: '100%';
     max-width: 400px;
     padding: 15px;
@@ -9,4 +9,124 @@
 
 .sub {
     padding: 10px;
+} */
+
+/* .login-form {
+    width: '100%';
+    max-width: 400px;
+    padding: 15px;
+    margin: auto;
+    height: '100%';
+    padding-top: 15vh;
 }
+
+.sub {
+    padding: 10px;
+} */
+
+:root {
+    --inputBgColor: rgb(240, 240, 240);
+    --appBlue: #0069d9;
+  }
+  
+  .auth_right_col {
+    background-color: white;
+    height: 100vh;
+  }
+  .auth_left_col {
+    height: 100vh;
+    background-color: var(--appBlue);
+  }
+  .auth_heading {
+    font-weight: 500;
+  }
+  .login_text {
+    color: var(--appBlue);
+    cursor: pointer;
+  }
+  .input_label {
+    font-size: 12px;
+    color: grey;
+    margin: 0;
+  }
+  
+  .input_field {
+    background-color: var(--inputBgColor);
+    border: none;
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .input_field:focus {
+    outline: none;
+    border: 1px solid #007bff42;
+  }
+  
+  .star {
+    color: rgb(255, 99, 99);
+  }
+  
+  .app_primary_button {
+    background-color: var(--appBlue);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    transition: 500ms;
+  }
+  
+  /* .app_primary_button:hover {
+    background-color: #006de2;
+  } */
+  
+  .auth_button_1 {
+    /* float: right; */
+    width: 100%;
+  }
+  
+  .auth_button_2 {
+    background-color: white;
+    color: var(--appBlue);
+    margin-top: 20px;
+  }
+  
+  .already_have_account {
+    float: right;
+  }
+  
+  .auth_logo {
+    /* filter: drop-shadow(5px 5px 5px rgb(255, 255, 255)); */
+    width: 250px;
+  }
+  
+  .disc_div {
+    margin-top: 70px;
+  }
+  .sudoEMR {
+    font-weight: 900;
+    font-size: 20px;
+  }
+  .disc_div > a {
+    color: white;
+  }
+  .auth_doc {
+    /* width: 100%; */
+    opacity: 0.5;
+  }
+  
+  .eddddd {
+    height: 100vh;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .modal_closer{
+    font-size: 30px;
+    background-color: var(--inputBgColor);
+    border-radius: 5px;
+    color: var(--appBlue);
+    cursor: pointer;
+    transform: 500ms;
+  }
