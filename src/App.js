@@ -31,6 +31,7 @@ import Admin from "./components/admin";
 import { init } from "./redux/actions/auth";
 import { useSelector } from "react-redux";
 import LoadingComp from "./components/comp/components/LoadingComp";
+import NewRegistration from "./components/auth/login/NewRegistration";
 
 function App() {
   const dispatch = useDispatch();
@@ -63,7 +64,7 @@ function App() {
   return (
     <Switch> 
       <Redirect from="/" to="/auth" exact />
-      <Route path="/auth" component={Login} />
+      <Route path="/auth" component={NewRegistration} />
       <Route path="/result-viewer" component={ResultViewer} />
       <Route
         path="/result-index/:patientId/:labNo"
