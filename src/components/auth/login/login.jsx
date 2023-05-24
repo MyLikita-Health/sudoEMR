@@ -1,44 +1,41 @@
-import React, { PureComponent } from "react";
-import { withRouter, Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { bindActionCreators, compose } from "redux";
-import {
-  login,
-  authLoading,
-} from "../../../redux/actions/auth";
+import React, { PureComponent } from 'react'
+import { withRouter, Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { bindActionCreators, compose } from 'redux'
+import { login, authLoading } from '../../../redux/actions/auth'
 import {
   Button,
   Form,
   FormGroup,
   Label,
-  Input, 
+  Input,
   CardFooter,
   CardBody,
   Row,
-} from "reactstrap";
-import { Spinner } from "evergreen-ui";
-import "./login.css";
+} from 'reactstrap'
+import { Spinner } from 'evergreen-ui'
+import './login.css'
 // import Loading from "../../loading";
-import PublicWrapper from "../../../routes/PublicWrapper";
+import PublicWrapper from '../../../routes/PublicWrapper'
 // import { _fetchApi2 } from "../../../redux/actions/api";
 // import { apiURL } from "../../../redux/actions";
 
 export const accountTypes = {
-  PATIENT: "PATIENT",
-  DOCTOR: "DOCTOR",
-  OTHER: "OTHER",
-};
+  PATIENT: 'PATIENT',
+  DOCTOR: 'DOCTOR',
+  OTHER: 'OTHER',
+}
 
 class Login extends PureComponent {
   state = {
     formData: {
-      username: "",
-      passowrd: "",
-      accountType: "OTHER",
+      username: '',
+      passowrd: '',
+      accountType: 'OTHER',
     },
     loading: false,
     pageLoading: true,
-  };
+  }
 
   // defaultNav = (access) => {
   //   if (access && access.length) {
@@ -109,58 +106,57 @@ class Login extends PureComponent {
   handleChange = ({ target: { name, value } }) =>
     this.setState((prevState) => ({
       formData: Object.assign({}, prevState.formData, { [name]: value }),
-    }));
+    }))
 
   handleRadioChange = (value) =>
     this.setState((prevState) => ({
       formData: Object.assign({}, prevState.formData, { accountType: value }),
-    }));
+    }))
 
   loginSuccess = () => {
-    const { accountType } = this.state.formData;
+    const { accountType } = this.state.formData
     this.setState(
       {
         loading: false,
-        formData: { username: "", password: "" },
+        formData: { username: '', password: '' },
       },
       () => {
-        console.log(accountType);
+        console.log(accountType)
         switch (accountType) {
           case accountTypes.PATIENT: {
-            this.props.history.push("/user");
-            break;
+            this.props.history.push('/user')
+            break
           }
           case accountTypes.DOCTOR: {
-            this.props.history.push("/me/doctor");
-            break;
+            this.props.history.push('/me/doctor')
+            break
           }
           case accountTypes.OTHER: {
-            
-            this.props.history.push(`/me/records`);
-            break;
+            this.props.history.push(`/me/records`)
+            break
           }
           default:
-            return null;
+            return null
         }
-      }
-    );
-  };
+      },
+    )
+  }
 
   loginErr = () => {
-    this.setState({ loading: false });
-  };
+    this.setState({ loading: false })
+  }
 
   handleSubmit = (e) => {
-    e.preventDefault();
-    this.setState({ loading: true });
-    const { username, password, accountType } = this.state.formData;
+    e.preventDefault()
+    this.setState({ loading: true })
+    const { username, password, accountType } = this.state.formData
     this.props.login(
       { username, password, accountType },
       this.loginSuccess,
-      this.loginErr
-    );
+      this.loginErr,
+    )
     // alert("JFJFJFFJ");
-  };
+  }
 
   render() {
     const {
@@ -173,7 +169,7 @@ class Login extends PureComponent {
         // pageLoading,
       },
       props: { error },
-    } = this;
+    } = this
 
     // if (pageLoading) {
     //   return (
@@ -188,9 +184,9 @@ class Login extends PureComponent {
         <Row className="m-0">
           <img
             alt="bg"
-            src={require("../../../images/callWitDoc.png")}
+            src={require('../../../images/callWitDoc.png')}
             className="img-fluid h-100 w-100"
-            style={{ position: "absolute", zIndex: -1 }}
+            style={{ position: 'absolute', zIndex: -1 }}
           />
           <Form className="login-form" onSubmit={handleSubmit}>
             <div>
@@ -256,9 +252,10 @@ class Login extends PureComponent {
                 <Button
                   className="btn-dark btn-block"
                   disabled={
-                    username === "" ||
-                    password === "" ||
-                    !accountType || accountType === ""
+                    username === '' ||
+                    password === '' ||
+                    !accountType ||
+                    accountType === ''
                   }
                 >
                   <>
@@ -267,7 +264,7 @@ class Login extends PureComponent {
                         <Spinner size={20} />
                       </center>
                     ) : (
-                      "Login"
+                      'Login'
                     )}
                   </>
                 </Button>
@@ -282,15 +279,15 @@ class Login extends PureComponent {
                     Forgot password?
                   </Link>
                 </div>
-                <div style={{ color: "red" }}>
-                  <center>{error.length ? error : ""}</center>
+                <div style={{ color: 'red' }}>
+                  <center>{error.length ? error : ''}</center>
                 </div>
               </CardFooter>
             </div>
           </Form>
         </Row>
       </PublicWrapper>
-    );
+    )
   }
 }
 
@@ -299,14 +296,14 @@ function mapStateToProps({ auth: { authenticated, error, user } }) {
     authenticated,
     error,
     user,
-  };
+  }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ login, authLoading }, dispatch);
+  return bindActionCreators({ login, authLoading }, dispatch)
 }
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, mapDispatchToProps)
-)(Login);
+  connect(mapStateToProps, mapDispatchToProps),
+)(Login)
