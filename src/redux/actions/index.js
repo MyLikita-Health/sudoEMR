@@ -13,10 +13,10 @@ export const ipAddr = local;
 export function apiURL() {
   if (!navigator.onLine) {
     // return 'http://192.168.0.118:49495'
-    return `http://127.0.0.1:49495`;
+    return `http://192.168.0.175:49495`;
   } else {
     // return 'http://localhost:49495'
-    return `http://127.0.0.1:49495`;
+    return `http://192.168.0.175:49495`;
   }
 }
 

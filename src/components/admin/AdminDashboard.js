@@ -4,6 +4,7 @@ import {
   FaUsers,
   FaAddressBook,
   FaBed,
+  FaDrupal,
 } from "react-icons/fa";
 import VerticalMenu from "../comp/components/vertical-menu/VerticalMenu";
 import ListMenuItem from "../comp/components/vertical-menu/ListMenuItem";
@@ -31,6 +32,14 @@ export const adminFunctionalites = [
     route: "/me/admin/create-new-user",
     icon: (
       <FaUserPlus size={26} fontWeight="bold" style={{ marginRight: 10 }} />
+    ),
+  },
+  {
+    name: "Settings",
+    display_name: "Drug Registration",
+    route: "/me/admin/drug-registration",
+    icon: (
+      <FaDrupal size={26} fontWeight="bold" style={{ marginRight: 10 }} />
     ),
   },
   {
