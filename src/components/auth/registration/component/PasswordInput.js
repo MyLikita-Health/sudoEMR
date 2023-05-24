@@ -6,8 +6,8 @@ export default function PasswordInput({
   value,
   required,
   onChange,
-  name = '',
-  label,
+  // name = '',
+  // label,
 }) {
   const [showPass, toggleShowPass] = useState(false);
   return (
