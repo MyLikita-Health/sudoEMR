@@ -24,8 +24,6 @@ import DoctorReg from "./components/auth/registration/doctor-reg";
 import ForgetPassword from "./components/auth/login/ForgetPassword";
 import PageNotFound from "./components/comp/components/PageNotFound";
 import PatientApp from "./components/patient/pages";
-import SignUp from "./components/auth/registration/signUp";
-import Hospital from "./components/auth/registration/hospital-reg";
 import PatientRegistration from "./components/auth/registration/patient-reg";
 import Admin from "./components/admin";
 import { init } from "./redux/actions/auth";
@@ -82,13 +80,6 @@ function App() {
       <Route path="/signup/hospital">
         <NewRegistration />
       </Route>
-      <Route path="/signup/pharmacy">
-        <Hospital type="Pharmacy" />
-      </Route>
-      <Route path="/signup/laboratory">
-        <Hospital type="Laboratory" />
-      </Route>
-      <Route path="/signup" component={SignUp} />
       <Route path="/forgotpassword" component={ForgetPassword} />
       <Route path="/me" component={AuthenticatedContainer} />
       <Route path="/admin" component={Admin} />
