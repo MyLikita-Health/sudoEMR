@@ -156,7 +156,7 @@ class NewLogin extends PureComponent {
                 <p className="m-0">
                   Don't have an account?{' '}
                   <span className="login_text">
-                    <Link to="/signup">Register</Link>
+                    <Link to="/signup/hospital">Register</Link>
                   </span>
                 </p>
               </Col>
