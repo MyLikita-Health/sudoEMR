@@ -16,7 +16,7 @@ import "./styles/index.css";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMobileView } from "./redux/actions/app";
-import Login from "./components/auth/login/login";
+// import Login from "./components/auth/login/login";
 import ResultViewer from "./components/auth/results-viewer/Credentials";
 import ResultIndex from "./components/auth/results-viewer/ResultIndex";
 import AuthenticatedContainer from "./routes/AuthenticatedContainer";
@@ -32,6 +32,7 @@ import { init } from "./redux/actions/auth";
 import { useSelector } from "react-redux";
 import LoadingComp from "./components/comp/components/LoadingComp";
 import NewRegistration from "./components/auth/login/NewRegistration";
+import NewLogin from "./components/auth/login/NewLogin";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,9 +63,9 @@ function App() {
   }
 
   return (
-    <Switch> 
+    <Switch>
       <Redirect from="/" to="/auth" exact />
-      <Route path="/auth" component={NewRegistration} />
+      <Route path="/auth" component={NewLogin} />
       <Route path="/result-viewer" component={ResultViewer} />
       <Route
         path="/result-index/:patientId/:labNo"
@@ -79,7 +80,7 @@ function App() {
       />
       <Route exact path="/signup/doctor/:referralId" component={DoctorReg} />
       <Route path="/signup/hospital">
-        <Hospital type="Hospital" />
+        <NewRegistration />
       </Route>
       <Route path="/signup/pharmacy">
         <Hospital type="Pharmacy" />

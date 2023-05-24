@@ -17,7 +17,7 @@ const PublicNavbar = (props) => {
           maxHeight: '50px',
           margin: 0,
           paddingRight: 5,
-          backgroundColor: '#f0f0f0',
+          backgroundColor: '# ',
         }}
       >
         <NavbarBrand>

@@ -1,5 +1,5 @@
-import { Row, Col, Modal } from 'reactstrap'
 import React from 'react'
+import { Row, Col, Modal } from 'reactstrap'
 import sudoEMR from '../../../images/sudoEMR...png'
 import { BsX } from 'react-icons/bs'
 import { TextInput } from '../../comp/components'

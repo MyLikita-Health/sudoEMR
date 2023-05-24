@@ -12,28 +12,30 @@ export default function PasswordInput({
   const [showPass, toggleShowPass] = useState(false);
   return (
     <div className="form-group">
-      <label htmlFor={name}>
+      {/* <label htmlFor={name}>
         {label} {required && <span className="text-danger">*</span>}
-      </label>
+      </label> */}
 
-      <div className="form-control d-flex flex-row justify-content-between p-1">
+      {/* <div className="form-control d-flex flex-row justify-content-between p-1"> */}
+      <div className='password_input d-flex flex-row align-items-ce justify-content-between'>
         <input
-          className="form-control form-control-sm"
+          // className="form-control form-control-sm"
+          className="input_field"
           style={{ flex: 2, border: 'none' }}
           type={showPass ? 'text' : 'password'}
           onChange={onChange}
           value={value}
-          placeholder="****************"
+          // placeholder="****************"
           required={required}
         />
         <div
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: 'pointer', marginTop: 5, marginRight: 5 }}
           onClick={() => toggleShowPass((d) => !d)}
         >
           {showPass ? (
-            <AiFillEyeInvisible size={26} />
+            <AiFillEyeInvisible size={23} />
           ) : (
-            <AiFillEye size={26} />
+            <AiFillEye size={23} />
           )}
         </div>
       </div>
