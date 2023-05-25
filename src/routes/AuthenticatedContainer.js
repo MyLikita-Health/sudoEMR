@@ -31,7 +31,7 @@ const AuthenticatedContainer = ({ user = {} }) => {
           {user.accessTo
             ? hasAccess(user, ["Doctors"]) && (
                 <Route
-                  path="/me/doctor"
+                  path="/me/doctors"
                   render={(props) => <Doctor {...props} />}
                 />
               )

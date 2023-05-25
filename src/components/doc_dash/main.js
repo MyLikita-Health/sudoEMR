@@ -46,21 +46,21 @@ function DoctorMain() {
     <Switch>
       <Redirect
         exact
-        from="/me/doctor"
-        to="/me/doctor/visits/new-summary/view"
+        from="/me/doctors"
+        to="/me/doctors/visits/new-summary/view"
       />
       <Route
         exact
-        path="/me/doctor/patients"
+        path="/me/doctors/patients"
         component={(props) => <Patients {...props} />}
       />
       <Route
         exact
-        path="/me/doctor/patients/new"
+        path="/me/doctors/patients/new"
         component={(props) => <NewPatient {...props} />}
       />
       <Route
-        path="/me/doctor/patients/view/:patientId"
+        path="/me/doctors/patients/view/:patientId"
         component={(props) => <ViewPatient {...props} />}
       />
       <Route
@@ -75,12 +75,12 @@ function DoctorMain() {
       />
       <Route
         exact
-        path="/me/doctor/appointments/new/:patientId"
+        path="/me/doctors/appointments/new/:patientId"
         component={(props) => <NewAppointment {...props} />}
       />
       <Route
         exact
-        path="/me/doctor/appointments/new/:patientId/:type"
+        path="/me/doctors/appointments/new/:patientId/:type"
         component={(props) => <NewAppointment {...props} />}
       />
       <Route
@@ -95,53 +95,53 @@ function DoctorMain() {
       />
       <Route
         exact
-        path="/me/doctor/visits"
+        path="/me/doctors/visits"
         component={(props) => <Visits {...props} />}
       />
       <Route
-        path="/me/doctor/visits/new-summary/:patientId"
+        path="/me/doctors/visits/new-summary/:patientId"
         component={(props) => <ConsultationSheet />}
       />
       <Route
-        path="/me/doctor/operation-notes/new/:patientId"
+        path="/me/doctors/operation-notes/new/:patientId"
         component={(props) => <OperationNoteSheet />}
       />
       <Route
-        path="/me/doctor/past-records/:patientId"
+        path="/me/doctors/past-records/:patientId"
         component={(props) => <PastRecords />}
       />
       <Route
-        path="/me/doctor/visit-preview/:patientId"
+        path="/me/doctors/visit-preview/:patientId"
         component={(props) => <VisitPreview />}
       />
       <Route
-        path="/me/doctor/visits/new/:patientId"
+        path="/me/doctors/visits/new/:patientId"
         component={(props) => <NewVisit />}
       />
       <Route
-        path="/me/doctor/visits/view/:visitId"
+        path="/me/doctors/visits/view/:visitId"
         component={(props) => <ViewVisits {...props} />}
       />
       <Route
         // exact
-        path="/me/doctor/labs"
+        path="/me/doctors/labs"
         component={(props) => <Lab {...props} />}
       />
 
       <Route
         exact
-        path="/me/doctor/patients/refer"
+        path="/me/doctors/patients/refer"
         component={(props) => <ReferPatient {...props} />}
       />
       <Route
         exact
-        path="/me/doctor/patients/transfer"
+        path="/me/doctors/patients/transfer"
         component={(props) => <TransferPatient {...props} />}
       />
 
       {/* <Route
         // exact
-        path="/me/doctor/labs/view/:labId"
+        path="/me/doctors/labs/view/:labId"
         component={(props) => (
           
             <ViewLab {...props} />
@@ -151,44 +151,44 @@ function DoctorMain() {
 
       <Route
         exact
-        path="/me/doctor/notifications"
+        path="/me/doctors/notifications"
         component={(props) => <Notifications {...props} />}
       />
 
       <Route
         exact
-        path="/me/doctor/videochat"
+        path="/me/doctors/videochat"
         component={(props) => <VideoChat {...props} />}
       />
       <Route
         exact
-        path="/me/doctor/consultation"
+        path="/me/doctors/consultation"
         component={(props) => <StartConsultation {...props} />}
       />
       <Route
         exact
-        path="/me/doctor/offlineconsultation"
+        path="/me/doctors/offlineconsultation"
         component={(props) => <OfflineConsultation {...props} />}
       />
       <Route
         exact
-        path="/me/doctor/onlineconsultation"
+        path="/me/doctors/onlineconsultation"
         component={(props) => <OnlineConsultation {...props} />}
       />
       <Route
         exact
-        path="/me/doctor/consult_referral"
+        path="/me/doctors/consult_referral"
         component={(props) => <ConsultReferral {...props} />}
       />
-      <Route exact path="/me/doctor/in-patients" component={InPatientTable} />
+      <Route exact path="/me/doctors/in-patients" component={InPatientTable} />
       <Route
         exact
-        path="/me/doctor/surgical-note/new"
+        path="/me/doctors/surgical-note/new"
         component={SurgicalNote}
       />
       <Route
         exact
-        path="/me/doctor/medical-report/new"
+        path="/me/doctors/medical-report/new"
         component={MedicalReport}
       />
     </Switch>

@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useLocation, useParams } from "react-router";
 // import { useSelector } from "react-redux";
@@ -17,7 +17,7 @@ export default function SurgicalNoteList({
 }) {
   const { patientId } = useParams();
   const location = useLocation();
-  let doctorCond = location.pathname.includes("/me/doctor/visits");
+  let doctorCond = location.pathname.includes("/me/doctors/visits");
   const [data, setData] = useState([]);
 
   useEffect(() => {

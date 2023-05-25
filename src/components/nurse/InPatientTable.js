@@ -28,8 +28,8 @@ function InPatientTable() {
   const isRecords = location.pathname.includes("records");
   const isDoctor = location.pathname.includes("doctor");
   const isNursing = location.pathname.includes("nurse");
-  const [drugConsumed, ] = useState([]);
-  const [testTaken, ] = useState([]);
+  const [drugConsumed] = useState([]);
+  const [testTaken] = useState([]);
   // const [display, setDisplay] = useState(false);
 
   const isSelected = (id) => patient_id === id;
@@ -159,9 +159,9 @@ function InPatientTable() {
             size="sm"
             onClick={() => {
               history.push(
-                `/me/doctor/visits/new-summary/${item.patient_id}`
+                `/me/doctors/visits/new-summary/${item.patient_id}`
                 // }/history/presentingcomplaints`
-                // `/me/doctor/patients/view/${item.patient_id}/diagnoses`
+                // `/me/doctors/patients/view/${item.patient_id}/diagnoses`
               );
             }}
           >
@@ -180,7 +180,7 @@ function InPatientTable() {
             color="info"
             onClick={() => {
               history.push(
-                `/me/doctor/patients/view/${item.patient_id}/diagnoses`
+                `/me/doctors/patients/view/${item.patient_id}/diagnoses`
               );
             }}
           >

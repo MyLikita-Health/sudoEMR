@@ -448,7 +448,7 @@ function LabInvestigationRequests({
             prev={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
+                `/me/doctors/visits/new/${
                   this.props.patient.patientHospitalId
                 }/management/prescription`
               );
@@ -456,7 +456,7 @@ function LabInvestigationRequests({
             next={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
+                `/me/doctors/visits/new/${
                   this.props.patient.patientHospitalId
                 }/management/dressing`
               );

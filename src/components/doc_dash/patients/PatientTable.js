@@ -1,66 +1,66 @@
-import React, { Component } from 'react'
-import { Input, InputGroup, CardHeader, Card } from 'reactstrap'
-import { withRouter } from 'react-router-dom'
-import { AgGridReact, AgGridColumn } from 'ag-grid-react'
-import Loading from '../../loading'
-import { connect } from 'react-redux'
-import { compose } from 'redux'
-import { SET_SELECTED_PATIENT, SET_PATIENT_FORM_MODE } from '../types'
+import React, { Component } from "react";
+import { Input, InputGroup, CardHeader, Card } from "reactstrap";
+import { withRouter } from "react-router-dom";
+import { AgGridReact, AgGridColumn } from "ag-grid-react";
+import Loading from "../../loading";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { SET_SELECTED_PATIENT, SET_PATIENT_FORM_MODE } from "../types";
 
 class PatientTable extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       rowData: [],
       visibleCount: 0,
-      quickFilterValue: '',
+      quickFilterValue: "",
       loading: false,
-    }
+    };
 
-    this.gridApi = null
+    this.gridApi = null;
 
-    this.onGridReady = this.onGridReady.bind(this)
-    this.onModelUpdated = this.onModelUpdated.bind(this)
-    this.onQuickFilterChange = this.onQuickFilterChange.bind(this)
+    this.onGridReady = this.onGridReady.bind(this);
+    this.onModelUpdated = this.onModelUpdated.bind(this);
+    this.onQuickFilterChange = this.onQuickFilterChange.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.gridApi) {
       if (this.state.quickFilterValue !== prevState.quickFilterValue) {
-        this.gridApi.setQuickFilter(this.state.quickFilterValue)
+        this.gridApi.setQuickFilter(this.state.quickFilterValue);
       }
     }
   }
 
   onModelUpdated() {
     if (this.gridApi) {
-      const model = this.gridApi.getModel()
-      const visibleCount = model.getRowCount()
+      const model = this.gridApi.getModel();
+      const visibleCount = model.getRowCount();
 
-      this.setState({ visibleCount })
+      this.setState({ visibleCount });
     }
   }
 
   onGridReady({ api }) {
-    this.gridApi = api
+    this.gridApi = api;
   }
 
   onQuickFilterChange(e) {
-    this.setState({ quickFilterValue: e.target.value })
+    this.setState({ quickFilterValue: e.target.value });
   }
 
   handleRowClick = ({ data }) => {
-    this.props.history.push(`/me/doctor/patients/view/${data.id}`)
-    this.props.selectPatient(data)
-    this.props.setFormMode()
-  }
+    this.props.history.push(`/me/doctors/patients/view/${data.id}`);
+    this.props.selectPatient(data);
+    this.props.setFormMode();
+  };
 
   render() {
-    const { rowData, visibleCount, quickFilterValue, loading } = this.state
-    const { patients } = this.props
+    const { rowData, visibleCount, quickFilterValue, loading } = this.state;
+    const { patients } = this.props;
 
-    if (loading) return <Loading />
+    if (loading) return <Loading />;
     // else if (!loading && patientlist.length) {
     return (
       <div style={{ height: 800 }}>
@@ -88,7 +88,10 @@ class PatientTable extends Component {
           </CardHeader>
         </Card>
         <div>
-          <div className="ag-theme-balham" style={{ height: '500px', overflow:'scroll' }}>
+          <div
+            className="ag-theme-balham"
+            style={{ height: "500px", overflow: "scroll" }}
+          >
             <AgGridReact
               rowData={patients}
               rowSelection="multiple"
@@ -156,8 +159,8 @@ class PatientTable extends Component {
 
                 onCellClicked={({ data }) =>
                   this.props.history.push(
-                    `/me/doctor/visits/new-summary/${data.id}`,
-                    // `/me/doctor/visits/new-summary/${
+                    `/me/doctors/visits/new-summary/${data.id}`
+                    // `/me/doctors/visits/new-summary/${
                     //   data.id
                     // }/history/presentingcomplaints`
                   )
@@ -177,7 +180,7 @@ class PatientTable extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
   //   }
 }
@@ -185,16 +188,16 @@ class PatientTable extends Component {
 function mapStateToProps(state) {
   return {
     patients: state.individualDoc.patients,
-  }
+  };
 }
 
 const mapDispatchToProps = (dispatch) => ({
   selectPatient: (patient) =>
     dispatch({ type: SET_SELECTED_PATIENT, payload: patient }),
-  setFormMode: () => dispatch({ type: SET_PATIENT_FORM_MODE, payload: 'VIEW' }),
-})
+  setFormMode: () => dispatch({ type: SET_PATIENT_FORM_MODE, payload: "VIEW" }),
+});
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withRouter,
-)(PatientTable)
+  withRouter
+)(PatientTable);

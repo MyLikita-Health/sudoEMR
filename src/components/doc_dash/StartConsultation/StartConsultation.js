@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import { withRouter } from 'react-router-dom';
 
 import {
@@ -10,7 +10,7 @@ import {
   // CardFooter,
   Button,
   ButtonGroup,
-} from 'reactstrap';
+} from "reactstrap";
 
 class StartConsultation extends Component {
   render() {
@@ -25,22 +25,23 @@ class StartConsultation extends Component {
                   color="success"
                   outline
                   onClick={() => {
-                    this.props.history.push('/me/doctor/onlineconsultation');
-                  }}>
+                    this.props.history.push("/me/doctors/onlineconsultation");
+                  }}
+                >
                   Online Consultation
                 </Button>
                 <Button
                   color="primary"
                   outline
                   onClick={() => {
-                    this.props.history.push('/me/doctor/offlineconsultation');
-                  }}>
+                    this.props.history.push("/me/doctors/offlineconsultation");
+                  }}
+                >
                   Offline Consultation
                 </Button>
               </ButtonGroup>
             </center>
           </CardBody>
-         
         </Card>
       </div>
     );

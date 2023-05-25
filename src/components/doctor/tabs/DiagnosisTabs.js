@@ -14,12 +14,12 @@ const DiagnosisTabs = ({ patientId }) => {
         <div className="multisteps-form__progress">
           <TabItem
             title="Problems"
-            path={`/me/doctor/visits/new/${patientId}/diagnosis/problems`}
+            path={`/me/doctors/visits/new/${patientId}/diagnosis/problems`}
             done={checkEmpty(problems)}
           />
           <TabItem
             title="Provisional Diagnosis"
-            path={`/me/doctor/visits/new/${patientId}/diagnosis/provisionaldiagnosis`}
+            path={`/me/doctors/visits/new/${patientId}/diagnosis/provisionaldiagnosis`}
             done={checkEmpty(provisionalDiagnosis)}
           />
         </div>

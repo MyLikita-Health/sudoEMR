@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
   Badge,
-} from 'reactstrap';
-import { MdNotifications } from 'react-icons/md';
-import { useEffect } from 'react';
+} from "reactstrap";
+import { MdNotifications } from "react-icons/md";
+import { useEffect } from "react";
 import {
   readNotification,
   notificationTypes,
-} from '../../redux/actions/notifications';
-import { useHistory } from 'react-router';
-import { UNAPPROVED_APPOINTMENTS } from '../doc_dash/routes';
-import moment from 'moment';
-import { Link } from 'react-router-dom';
+} from "../../redux/actions/notifications";
+import { useHistory } from "react-router";
+import { UNAPPROVED_APPOINTMENTS } from "../doc_dash/routes";
+import moment from "moment";
+import { Link } from "react-router-dom";
 
 function NotificationBob() {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ function NotificationBob() {
   const toggle = () => setState((prevState) => !prevState);
 
   const notifications = useSelector(
-    (state) => state.notifications.notifications,
+    (state) => state.notifications.notifications
   );
 
   const _countUnreadNot = () => {
@@ -40,12 +40,9 @@ function NotificationBob() {
     setUnread(count);
   };
 
-  useEffect(
-    () => {
-      _countUnreadNot();
-    },
-    [dispatch, _countUnreadNot],
-  );
+  useEffect(() => {
+    _countUnreadNot();
+  }, [dispatch, _countUnreadNot]);
 
   const readNot = (not) => {
     dispatch(readNotification(not));
@@ -64,10 +61,10 @@ function NotificationBob() {
         direction="left"
         isOpen={isOpen}
         toggle={toggle}
-        style={{ cursor: 'pointer' }}
+        style={{ cursor: "pointer" }}
       >
-        <DropdownToggle tag="span" className="btn" style={{ margin: '0 10px' }}>
-          <MdNotifications style={{ color: '#fff', fontSize: 30 }} />
+        <DropdownToggle tag="span" className="btn" style={{ margin: "0 10px" }}>
+          <MdNotifications style={{ color: "#fff", fontSize: 30 }} />
           {unread ? (
             <Badge color="danger" pill>
               {unread}
@@ -86,7 +83,7 @@ function NotificationBob() {
           >
             View all
           </DropdownItem> */}
-          <Link to="/me/doctor/notifications">more notifications</Link>
+          <Link to="/me/doctors/notifications">more notifications</Link>
         </DropdownMenu>
       </Dropdown>
     </div>
@@ -99,7 +96,7 @@ function NotificationItem({ item, readNot }) {
       tag="div"
       onClick={() => readNot(item)}
       className={`${
-        item.read ? '' : 'font-weight-bold'
+        item.read ? "" : "font-weight-bold"
       } d-flex flex-row justify-content-between p-0 mt-1 mb-1`}
     >
       {/* <Card className="p-2 m-0"> */}

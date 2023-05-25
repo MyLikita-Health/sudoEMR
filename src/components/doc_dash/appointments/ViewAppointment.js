@@ -81,7 +81,7 @@ function ViewAppointment() {
       () => {
         getAppointmentByDoc("select");
         _customNotify("Appointment Deleted!");
-        history.push("/me/doctor/appointments");
+        history.push("/me/doctors/appointments");
       },
       err
     );

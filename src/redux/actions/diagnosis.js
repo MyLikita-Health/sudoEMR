@@ -1,6 +1,5 @@
 import {
   SUBMIT_DIAGNOSIS_LOADING,
-  GET_PATIENT_ASSIGNED_TODAY,
   GETTING_PATIENT_ASSIGNED_TODAY,
   GETTING_PATIENTS_ASSIGNED_TO_DOC,
   GET_PATIENTS_ASSIGNED_TO_DOC,
@@ -33,18 +32,18 @@ export const saveNewDiagnosis = (data) => {
 export const getPatientAssignedToday = () => {
   return (dispatch) => {
     dispatch({ type: GETTING_PATIENT_ASSIGNED_TODAY });
-    _fetchApi(
-      `${apiURL()}/patientrecords/patientAssignedToday`,
-      ({ results }) => {
-        console.log(results);
-        dispatch({ type: GET_PATIENT_ASSIGNED_TODAY, payload: results });
-        dispatch({ type: GETTING_PATIENT_ASSIGNED_TODAY });
-      },
-      (err) => {
-        dispatch({ type: GETTING_PATIENT_ASSIGNED_TODAY });
-        console.log(err);
-      }
-    );
+    // _fetchApi(
+    //   `${apiURL()}/patientrecords/patientAssignedToday`,
+    //   ({ results }) => {
+    //     console.log(results);
+    //     dispatch({ type: GET_PATIENT_ASSIGNED_TODAY, payload: results });
+    //     dispatch({ type: GETTING_PATIENT_ASSIGNED_TODAY });
+    //   },
+    //   (err) => {
+    //     dispatch({ type: GETTING_PATIENT_ASSIGNED_TODAY });
+    //     console.log(err);
+    //   }
+    // );
   };
 };
 

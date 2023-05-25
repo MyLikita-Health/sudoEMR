@@ -1,5 +1,5 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 import {
   Form,
   FormGroup,
@@ -8,25 +8,25 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
-} from 'reactstrap';
-import { _warningNotify } from '../utils/helpers';
-import { FaArrowRight } from 'react-icons/fa';
-import { MdSave } from 'react-icons/md';
-import { savePresentingComplaints } from '../../redux/actions/doctor';
-import { Scrollbars } from 'react-custom-scrollbars';
-import { iconStyle, iconButtonStyle } from '../utils/styles-helper';
-import { compose } from 'redux';
-import { withRouter } from 'react-router';
-import CustomButton from '../comp/components/Button';
-import SpeechInput from '../comp/speech-to-text/SpeechInput';
+} from "reactstrap";
+import { _warningNotify } from "../utils/helpers";
+import { FaArrowRight } from "react-icons/fa";
+import { MdSave } from "react-icons/md";
+import { savePresentingComplaints } from "../../redux/actions/doctor";
+import { Scrollbars } from "react-custom-scrollbars";
+import { iconStyle, iconButtonStyle } from "../utils/styles-helper";
+import { compose } from "redux";
+import { withRouter } from "react-router";
+import CustomButton from "../comp/components/Button";
+import SpeechInput from "../comp/speech-to-text/SpeechInput";
 
 class PcomplaintsForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      history: '',
-      complaint: '',
+      history: "",
+      complaint: "",
       formRecords: [],
     };
   }
@@ -51,8 +51,8 @@ class PcomplaintsForm extends React.Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
     const { complaint } = this.state;
-    if (complaint === '') {
-      return _warningNotify('Please fill all the fields');
+    if (complaint === "") {
+      return _warningNotify("Please fill all the fields");
     }
 
     const formData = { complaint };
@@ -60,7 +60,7 @@ class PcomplaintsForm extends React.Component {
 
     this.setState((prev) => ({
       formRecords: [...prev.formRecords, formData],
-      complaint: '',
+      complaint: "",
     }));
   };
 
@@ -76,7 +76,7 @@ class PcomplaintsForm extends React.Component {
   handleNext = () => {
     if (this.state.formRecords !== [])
       return localStorage.setItem(
-        'presenting_complaints',
+        "presenting_complaints",
         JSON.stringify(this.state.formRecords)
       );
   };
@@ -103,7 +103,9 @@ class PcomplaintsForm extends React.Component {
 
     return (
       <Card>
-        <CardHeader tag="h6" className='py-2'>Presenting Complaints</CardHeader>
+        <CardHeader tag="h6" className="py-2">
+          Presenting Complaints
+        </CardHeader>
         <CardBody style={{ height: 400 }}>
           <Scrollbars autohide>
             <Form onSubmit={this.handleFormSubmit}>
@@ -129,18 +131,17 @@ class PcomplaintsForm extends React.Component {
             />
           </Scrollbars>
         </CardBody>
-        <CardFooter className='p-0'>
+        <CardFooter className="p-0">
           <button
             onClick={() => {
               this.handleSave();
               this.props.history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/history/previousmedicalhistory`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/history/previousmedicalhistory`
               );
             }}
             style={iconButtonStyle}
-            className="btn btn-sm btn-outline-primary col-sm-3 col-xs-3 offset-sm-9 offset-xs-9 offset-md-9 col-md-3">
+            className="btn btn-sm btn-outline-primary col-sm-3 col-xs-3 offset-sm-9 offset-xs-9 offset-md-9 col-md-3"
+          >
             Next
             <FaArrowRight />
           </button>
@@ -164,10 +165,7 @@ function mapStateToProps(state) {
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(PcomplaintsForm);
 
 export const PComplaintsTable = ({

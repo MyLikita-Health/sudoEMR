@@ -14,7 +14,7 @@ function VitalSignsHistory({ height = "23vh", isOpen, toggle }) {
   const patientId = query.get("patient_id");
   // const allocation_id = query.get("allocation_id");
   const location = useLocation();
-  let doctorCond = location.pathname.includes("/me/doctor/visits");
+  let doctorCond = location.pathname.includes("/me/doctors/visits");
 
   const [vitalHistory, setVitalHistory] = useState([]);
   const [modal, setModal] = useState(false);

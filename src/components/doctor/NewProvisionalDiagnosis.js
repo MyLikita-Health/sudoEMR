@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { Scrollbars } from 'react-custom-scrollbars';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { Scrollbars } from "react-custom-scrollbars";
 import {
   Card,
   CardHeader,
@@ -10,12 +10,12 @@ import {
   CardFooter,
   ListGroup,
   ListGroupItem,
-} from 'reactstrap';
-import { FaPlus, FaTimes } from 'react-icons/fa';
-import { saveProvisionalDiagnosis } from '../../redux/actions/doctor';
-import SpeechInput from '../comp/speech-to-text/SpeechInput';
-import { iconButtonStyle } from '../utils/styles-helper';
-import FooterButtons from './components/FooterButtons';
+} from "reactstrap";
+import { FaPlus, FaTimes } from "react-icons/fa";
+import { saveProvisionalDiagnosis } from "../../redux/actions/doctor";
+import SpeechInput from "../comp/speech-to-text/SpeechInput";
+import { iconButtonStyle } from "../utils/styles-helper";
+import FooterButtons from "./components/FooterButtons";
 
 class NewProvisionalDiagnosis extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class NewProvisionalDiagnosis extends Component {
 
     this.state = {
       provisionalDiagnosis: [],
-      diagnosis: '',
+      diagnosis: "",
       showInput: false,
     };
   }
@@ -71,7 +71,7 @@ class NewProvisionalDiagnosis extends Component {
                   >
                     {item}
                     <span
-                      style={{ cursor: 'pointer' }}
+                      style={{ cursor: "pointer" }}
                       onClick={() => this.deleteDiagnosis(index)}
                     >
                       <FaTimes className="text-danger" />
@@ -88,7 +88,7 @@ class NewProvisionalDiagnosis extends Component {
                 value={diagnosis}
                 // autoFocus
                 onInputChange={(text) =>
-                  this.handleSpeechInputChange(text, 'provisionalDiagnosis1')
+                  this.handleSpeechInputChange(text, "provisionalDiagnosis1")
                 }
               />
 
@@ -97,13 +97,13 @@ class NewProvisionalDiagnosis extends Component {
                   className="btn btn-outline-primary"
                   style={iconButtonStyle}
                   onClick={() => {
-                    if (diagnosis !== '') {
+                    if (diagnosis !== "") {
                       this.setState((prev) => ({
                         provisionalDiagnosis: [
                           ...prev.provisionalDiagnosis,
                           diagnosis,
                         ],
-                        diagnosis: '',
+                        diagnosis: "",
                       }));
                     }
                   }}
@@ -115,22 +115,18 @@ class NewProvisionalDiagnosis extends Component {
             </div>
           </Scrollbars>
         </CardBody>
-        <CardFooter className='p-0'>
+        <CardFooter className="p-0">
           <FooterButtons
             prev={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/diagnosis/problems`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/diagnosis/problems`
               );
             }}
             next={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/management/plan`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/management/plan`
               );
             }}
           />
@@ -153,8 +149,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(NewProvisionalDiagnosis);

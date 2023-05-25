@@ -73,9 +73,7 @@ function VisitPreview() {
   const [visitList, setVisitList] = useState([]);
   const [loadingVisitDates, setLoadingVisitDates] = useState(false);
   const [loadingOpDates, setLoadingOpDates] = useState(false);
-  const [, setViewType] = useState(
-    consultationViewQueryTypes.CONSULTATION
-  );
+  const [, setViewType] = useState(consultationViewQueryTypes.CONSULTATION);
   const [isLoadingRecord, setIsLoadingRecord] = useState(false);
   const [isLoadingConsult, setIsLoadingConsult] = useState(false);
 
@@ -223,7 +221,7 @@ function VisitPreview() {
           size="sm"
           onClick={() =>
             history.push(
-              "/me/doctor/visits/new-summary/view?section=in-patients"
+              "/me/doctors/visits/new-summary/view?section=in-patients"
             )
           }
         >
@@ -252,7 +250,7 @@ function VisitPreview() {
                   className="mr-1"
                   onClick={() =>
                     history.push(
-                      `/me/doctor/medical-report/new?patient_details=${JSON.stringify(
+                      `/me/doctors/medical-report/new?patient_details=${JSON.stringify(
                         patientDetails
                       )}&patientType=${patientType}`
                     )
@@ -267,7 +265,7 @@ function VisitPreview() {
                   className="mr-1"
                   onClick={() =>
                     history.push(
-                      `/me/doctor/surgical-note/new?patient_id=${patientDetails.id}&patient_name=${patientDetails.name}&patientType=${patientType}`
+                      `/me/doctors/surgical-note/new?patient_id=${patientDetails.id}&patient_name=${patientDetails.name}&patientType=${patientType}`
                     )
                   }
                 >
@@ -283,7 +281,7 @@ function VisitPreview() {
               onClick={() => {
                 // history.goBack();
                 history.push(
-                  `/me/doctor/past-records/${patientDetails.id}?view_type=Consultation&patientType=${patientType}`
+                  `/me/doctors/past-records/${patientDetails.id}?view_type=Consultation&patientType=${patientType}`
                 );
               }}
             >
@@ -296,7 +294,7 @@ function VisitPreview() {
               className="mr-1"
               onClick={() =>
                 history.push(
-                  `/me/doctor/operation-notes/new/${patientDetails.id}?section=disabled&patient_id=${patientDetails.id}&show_back=true&patientType=${patientType}`
+                  `/me/doctors/operation-notes/new/${patientDetails.id}?section=disabled&patient_id=${patientDetails.id}&show_back=true&patientType=${patientType}`
                 )
               }
             >
@@ -308,7 +306,7 @@ function VisitPreview() {
               color="success"
               onClick={() =>
                 history.push(
-                  `/me/doctor/visits/new-summary/${patientDetails.id}?section=disabled&patient_id=${patientDetails.id}&show_back=true&patientType=${patientType}`
+                  `/me/doctors/visits/new-summary/${patientDetails.id}?section=disabled&patient_id=${patientDetails.id}&show_back=true&patientType=${patientType}`
                 )
               }
             >

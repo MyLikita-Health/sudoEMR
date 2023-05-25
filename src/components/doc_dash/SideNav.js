@@ -1,14 +1,14 @@
-import React from 'react';
-import { BsListUl } from 'react-icons/bs';
+import React from "react";
+import { BsListUl } from "react-icons/bs";
 // import { FiCalendar } from 'react-icons/fi';
 // import { useHistory, useLocation } from 'react-router';
-import { FaClipboardList, FaVideo, FaCalendar } from 'react-icons/fa';
+import { FaClipboardList, FaVideo, FaCalendar } from "react-icons/fa";
 // import { IoMdPeople } from 'react-icons/io';
-import { GiTestTubes } from 'react-icons/gi';
+import { GiTestTubes } from "react-icons/gi";
 // import { RiUserShared2Line } from 'react-icons/ri';
 // import { useSelector } from 'react-redux';
-import { Nav, NavItem } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { Nav, NavItem } from "reactstrap";
+import { NavLink } from "react-router-dom";
 // import { useSelector } from 'react-redux';
 
 function SideNav({ toggle = (f) => f }) {
@@ -22,50 +22,50 @@ function SideNav({ toggle = (f) => f }) {
         title="Out-Patients"
         icon={<BsListUl className="mr-2" size={22} />}
         toggle={toggle}
-        route="/me/doctor/patients"
+        route="/me/doctors/patients"
       /> */}
       {/* <NavElement
         title="In-Patients"
         icon={<BsListUl className="mr-2" size={22} />}
         toggle={toggle}
-        route="/me/doctor/in-patients"
+        route="/me/doctors/in-patients"
       /> */}
       <NavElement
         title="Appointments"
         icon={<FaCalendar className="mr-2" size={22} />}
         toggle={toggle}
-        route="/me/doctor/appointments"
+        route="/me/doctors/appointments"
       />
       <NavElement
         title="Consultations"
         icon={<FaClipboardList className="mr-2" size={22} />}
         toggle={toggle}
-        // route="/me/doctor/visits"
-        route="/me/doctor/visits/new-summary/view"
+        // route="/me/doctors/visits"
+        route="/me/doctors/visits/new-summary/view"
       />
       {/* <NavElement
         title="Lab Results"
         icon={<GiTestTubes className="mr-2" size={22} />}
         toggle={toggle}
-        route="/me/doctor/labs"
+        route="/me/doctors/labs"
       /> */}
       {/* <NavElement
         title="Video Chat"
         icon={<FaVideo className="mr-2" size={22} />}
         toggle={toggle}
-        route="/me/doctor/videochat"
+        route="/me/doctors/videochat"
       /> */}
       {/* <NavElement
         title="Start Consultation"
         icon={<IoMdPeople className="mr-2" size={22} />}
         toggle={toggle}
-        route="/me/doctor/consultation"
+        route="/me/doctors/consultation"
       /> */}
       {/* <NavElement
         title="Consult/Referral"
         icon={<RiUserShared2Line className="mr-2" size={22} />}
         toggle={toggle}
-        route="/me/doctor/consult_referral"
+        route="/me/doctors/consult_referral"
       /> */}
 
       {/* {user.userType === 'admin' && (
@@ -73,7 +73,7 @@ function SideNav({ toggle = (f) => f }) {
           icon={<FaUser className="mr-2" size={22} />}
           title="Admin"
           toggle={toggle}
-          route="/me/doctor/manage"
+          route="/me/doctors/manage"
         />
       )} */}
     </Nav>
@@ -96,12 +96,12 @@ export default SideNav;
 // <div className="mt-2">
 //       <button
 //         className={`btn col-md-3 col-lg-3 ${
-//           location.pathname.includes('/me/doctor/patients')
+//           location.pathname.includes('/me/doctors/patients')
 //             ? 'btn-light'
 //             : 'btn-outline-light'
 //         } ${isMobile ? 'text-dark' : ''} text-left`}
 //         onClick={() => {
-//           history.push('/me/doctor/patients');
+//           history.push('/me/doctors/patients');
 //           toggle();
 //         }}
 //       >
@@ -112,12 +112,12 @@ export default SideNav;
 //       </button>
 //       <button
 //         className={`btn col-md-3 col-lg-3 ${
-//           location.pathname.includes('/me/doctor/appointments')
+//           location.pathname.includes('/me/doctors/appointments')
 //             ? 'btn-light'
 //             : 'btn-outline-light'
 //         } ${isMobile ? 'text-dark' : ''}  text-left`}
 //         onClick={() => {
-//           history.push('/me/doctor/appointments');
+//           history.push('/me/doctors/appointments');
 //           toggle();
 //         }}
 //       >
@@ -128,12 +128,12 @@ export default SideNav;
 //       </button>
 //       <button
 //         className={`btn col-md-3 col-lg-3 ${
-//           location.pathname.includes('/me/doctor/visits')
+//           location.pathname.includes('/me/doctors/visits')
 //             ? 'btn-light'
 //             : 'btn-outline-light'
 //         } ${isMobile ? 'text-dark' : ''}  text-left`}
 //         onClick={() => {
-//           history.push('/me/doctor/visits');
+//           history.push('/me/doctors/visits');
 //           toggle();
 //         }}
 //       >
@@ -144,12 +144,12 @@ export default SideNav;
 //       </button>
 //       <button
 //         className={`btn col-md-3 col-lg-3 ${
-//           location.pathname.includes('/me/doctor/labs')
+//           location.pathname.includes('/me/doctors/labs')
 //             ? 'btn-light'
 //             : 'btn-outline-light'
 //         } ${isMobile ? 'text-dark' : ''}  text-left`}
 //         onClick={() => {
-//           history.push('/me/doctor/labs');
+//           history.push('/me/doctors/labs');
 //           toggle();
 //         }}
 //       >
@@ -160,12 +160,12 @@ export default SideNav;
 //       </button>
 //       <button
 //         className={`btn col-md-3 col-lg-3 ${
-//           location.pathname.includes('/me/doctor/videochat')
+//           location.pathname.includes('/me/doctors/videochat')
 //             ? 'btn-light'
 //             : 'btn-outline-light'
 //         } ${isMobile ? 'text-dark' : ''}  text-left`}
 //         onClick={() => {
-//           history.push('/me/doctor/videochat');
+//           history.push('/me/doctors/videochat');
 //           toggle();
 //         }}
 //       >

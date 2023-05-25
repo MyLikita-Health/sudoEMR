@@ -1,33 +1,33 @@
-import React from 'react';
-import { Card, CardHeader, CardBody } from 'reactstrap';
-import AutoComplete from '../../comp/components/AutoComplete';
+import React from "react";
+import { Card, CardHeader, CardBody } from "reactstrap";
+import AutoComplete from "../../comp/components/AutoComplete";
 // import DatePicker from '../components/DatePicker';
-import InputGroup, { TextArea } from '../../comp/components/InputGroup';
-import SelectInput from '../../comp/components/SelectInput';
-import BackButton from '../../comp/components/BackButton';
-import { FaTimes } from 'react-icons/fa';
-import { FiSend } from 'react-icons/fi';
-import { connect } from 'react-redux';
-import { getPatientList, clearPatient } from '../actions/patientsActions';
-import { appointmentFunc } from '../actions/appointmentsAction';
-import { _customNotify, _warningNotify } from '../../utils/helpers';
-import { compose } from 'redux';
-import { withRouter } from 'react-router';
-import DateTimePicker from '../../comp/components/DateTimePicker';
+import InputGroup, { TextArea } from "../../comp/components/InputGroup";
+import SelectInput from "../../comp/components/SelectInput";
+import BackButton from "../../comp/components/BackButton";
+import { FaTimes } from "react-icons/fa";
+import { FiSend } from "react-icons/fi";
+import { connect } from "react-redux";
+import { getPatientList, clearPatient } from "../actions/patientsActions";
+import { appointmentFunc } from "../actions/appointmentsAction";
+import { _customNotify, _warningNotify } from "../../utils/helpers";
+import { compose } from "redux";
+import { withRouter } from "react-router";
+import DateTimePicker from "../../comp/components/DateTimePicker";
 
-export const iconClass = 'd-flex flex-direction-row align-items-center';
+export const iconClass = "d-flex flex-direction-row align-items-center";
 
 class NewAppointment extends React.PureComponent {
   state = {
     appointment: {
-      _id: '',
-      patientId: '',
+      _id: "",
+      patientId: "",
       start: new Date(),
       end: new Date(),
-      location: '',
-      appointmentType: '',
-      title: '',
-      reason: '',
+      location: "",
+      appointmentType: "",
+      title: "",
+      reason: "",
     },
     patient: {},
     submitting: false,
@@ -35,13 +35,13 @@ class NewAppointment extends React.PureComponent {
 
   resetForm = () => {
     this.setState({
-      patientId: '',
-      title: '',
-      start: '',
-      end: '',
-      location: '',
-      appointmentType: '',
-      reason: '',
+      patientId: "",
+      title: "",
+      start: "",
+      end: "",
+      location: "",
+      appointmentType: "",
+      reason: "",
     });
   };
 
@@ -110,13 +110,13 @@ class NewAppointment extends React.PureComponent {
     let cb = () => {
       this.toggleSubmit();
       this.resetForm();
-      _customNotify('Appointment created and added to calender');
+      _customNotify("Appointment created and added to calender");
       this.props.history.push(
-        `/me/doctor/patients/view/${patientId}/appointments`
+        `/me/doctors/patients/view/${patientId}/appointments`
       );
     };
     let err = () => {
-      _warningNotify('An error occurred');
+      _warningNotify("An error occurred");
       this.toggleSubmit();
     };
     this.props.appointmentFunc(formData, cb, err);
@@ -168,9 +168,7 @@ class NewAppointment extends React.PureComponent {
                       ...prev.appointment,
                       patientId: item[0].patientId,
                       _id: item[0]._id,
-                      title: `${item[0].surname} ${item[0].firstname} (${
-                        this.state.appointment.appointmentType
-                      })`,
+                      title: `${item[0].surname} ${item[0].firstname} (${this.state.appointment.appointmentType})`,
                     },
                   }));
                 }
@@ -212,11 +210,11 @@ class NewAppointment extends React.PureComponent {
                 container="p-0"
                 label="Apointment Type"
                 options={[
-                  'Checkup',
-                  'Emergency',
-                  'Follow up',
-                  'Routine',
-                  'Walk in',
+                  "Checkup",
+                  "Emergency",
+                  "Follow up",
+                  "Routine",
+                  "Walk in",
                 ]}
                 name="appointmentType"
                 value={appointmentType}
@@ -225,9 +223,7 @@ class NewAppointment extends React.PureComponent {
                     appointment: {
                       ...prev.appointment,
                       appointmentType: value,
-                      title: `${prev.patient.surname} ${
-                        prev.patient.firstname
-                      } (${value})`,
+                      title: `${prev.patient.surname} ${prev.patient.firstname} (${value})`,
                     },
                   }));
                 }}
@@ -285,8 +281,5 @@ function mapDispatchToProps(dispatch) {
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(NewAppointment);

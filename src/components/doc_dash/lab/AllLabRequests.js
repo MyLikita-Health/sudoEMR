@@ -1,85 +1,86 @@
-import React, { useCallback, useState } from 'react'
-import { Alert, Card, Table } from 'reactstrap'
-import moment from 'moment'
-import { useHistory } from 'react-router'
-import { useEffect } from 'react'
-import Scrollbars from 'react-custom-scrollbars'
-import Loading from '../../comp/components/Loading'
-import {
-  FaCheckCircle,
-  FaExclamationCircle,
-  FaPlus,
-} from 'react-icons/fa'
-import {  _fetchApi2 } from '../../../redux/actions/api'
-import { apiURL } from '../../../redux/actions'
-import { DOCTOR_LAB_ROUTE } from '.'
-import DaterangeSelector from '../../comp/components/DaterangeSelector'
-import { useSelector } from 'react-redux'
-import SearchBar from '../../record/SearchBar'
+import React, { useCallback, useState } from "react";
+import { Alert, Card, Table } from "reactstrap";
+import moment from "moment";
+import { useHistory } from "react-router";
+import { useEffect } from "react";
+import Scrollbars from "react-custom-scrollbars";
+import Loading from "../../comp/components/Loading";
+import { FaCheckCircle, FaExclamationCircle, FaPlus } from "react-icons/fa";
+import { _fetchApi2 } from "../../../redux/actions/api";
+import { apiURL } from "../../../redux/actions";
+import { DOCTOR_LAB_ROUTE } from ".";
+import DaterangeSelector from "../../comp/components/DaterangeSelector";
+import { useSelector } from "react-redux";
+import SearchBar from "../../record/SearchBar";
 
 function AllLabRequests() {
-  const facility = useSelector((state) => state.facility.info)
-  const tomorrow = moment().add(1, 'day').format('YYYY-MM-DD')
-  const aMonthAgo = moment().subtract(1, 'month').format('YYYY-MM-DD')
-  const [loading, toggleLoading] = useState(false)
-  const [list, setList] = useState([])
+  const facility = useSelector((state) => state.facility.info);
+  const tomorrow = moment()
+    .add(1, "day")
+    .format("YYYY-MM-DD");
+  const aMonthAgo = moment()
+    .subtract(1, "month")
+    .format("YYYY-MM-DD");
+  const [loading, toggleLoading] = useState(false);
+  const [list, setList] = useState([]);
   const [range, setRange] = useState({
     from: aMonthAgo,
     to: tomorrow,
-  })
-  const [searchTerm, setSearchTerm] = useState('')
+  });
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleRangeChange = ({ target: { name, value } }) =>
-    setRange((p) => ({ ...p, [name]: value }))
+    setRange((p) => ({ ...p, [name]: value }));
 
-  const history = useHistory()
+  const history = useHistory();
   //   const dispatch = useDispatch();
 
   //   const lablist = useSelector((state) => state.individualDoc.labTests);
 
   const getCompletedLabTests = useCallback(() => {
-    toggleLoading(true)
+    toggleLoading(true);
     _fetchApi2(
       `${apiURL()}/lab/completed-lab-tests/${facility.facility_id}?from=${
         range.from
       }&to=${range.to}`,
       (data) => {
-        toggleLoading(false)
+        toggleLoading(false);
         if (data.success) {
-          setList(data.results)
+          setList(data.results);
         }
       },
       (err) => {
-        toggleLoading(false)
-        console.log(err)
-      },
-    )
-  }, [range, facility])
+        toggleLoading(false);
+        console.log(err);
+      }
+    );
+  }, [range, facility]);
 
   useEffect(() => {
     //
     // dispatch(getLabList(() => toggleLoading(false)));
-    getCompletedLabTests()
-  }, [getCompletedLabTests])
+    getCompletedLabTests();
+  }, [getCompletedLabTests]);
 
-  let rows = []
+  let rows = [];
   list.forEach((item) => {
-    if (item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) === -1) return
-    rows.push(item)
-  })
+    if (item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) === -1)
+      return;
+    rows.push(item);
+  });
 
   return (
     <>
       <div className="d-flex justify-content-end mb-1 mt-1">
         <button
           className="btn btn-outline-dark"
-          onClick={() => history.push('/me/doctor/labs/new')}
+          onClick={() => history.push("/me/doctors/labs/new")}
         >
           <FaPlus size={20} className="mr-1" /> New Lab Request
         </button>
       </div>
       <Card body>
-        <Scrollbars style={{ height: '75vh' }}>
+        <Scrollbars style={{ height: "75vh" }}>
           {loading ? <Loading /> : null}
           <h5>All Lab Requisitions</h5>
           <DaterangeSelector
@@ -108,16 +109,16 @@ function AllLabRequests() {
               {rows.map((item, index) => (
                 <tr
                   key={index}
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                   onClick={() => {
                     if (item.completed === item.tests) {
                       history.push(
-                        `${DOCTOR_LAB_ROUTE}/view/${item.patient_id}/${item.booking_no}`,
-                      )
+                        `${DOCTOR_LAB_ROUTE}/view/${item.patient_id}/${item.booking_no}`
+                      );
                     } else {
                       history.push(
-                        `${DOCTOR_LAB_ROUTE}/uncompleted/${item.patient_id}/${item.booking_no}`,
-                      )
+                        `${DOCTOR_LAB_ROUTE}/uncompleted/${item.patient_id}/${item.booking_no}`
+                      );
                     }
                   }}
                 >
@@ -150,7 +151,7 @@ function AllLabRequests() {
         </Scrollbars>
       </Card>
     </>
-  )
+  );
 }
 
-export default AllLabRequests
+export default AllLabRequests;

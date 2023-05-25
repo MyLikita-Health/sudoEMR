@@ -1,27 +1,24 @@
-import React, { Component } from 'react';
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-} from 'reactstrap';
+import React, { Component } from "react";
+import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
 // import { connect } from 'react-redux';
 // import { Scrollbars } from 'react-custom-scrollbars';
-import { FaArrowLeft } from 'react-icons/fa';
-import {IoMdCheckmarkCircle} from 'react-icons/io'
+import { FaArrowLeft } from "react-icons/fa";
+import { IoMdCheckmarkCircle } from "react-icons/io";
 class EditView extends Component {
-  
-
   render() {
-    const { history} = this.props;
+    const { history } = this.props;
 
     return (
       <Card>
         <CardHeader tag="h6">Finished View</CardHeader>
         <CardBody style={{ height: 400 }}>
-         
-          <center> <IoMdCheckmarkCircle  size="250px" color="green"/></center>
-            <center><h5>All done, Click submit now</h5></center>
+          <center>
+            {" "}
+            <IoMdCheckmarkCircle size="250px" color="green" />
+          </center>
+          <center>
+            <h5>All done, Click submit now</h5>
+          </center>
         </CardBody>
         <CardFooter>
           <button
@@ -29,9 +26,7 @@ class EditView extends Component {
             onClick={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/management/dressing`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/management/dressing`
               );
             }}
           >
@@ -42,7 +37,5 @@ class EditView extends Component {
     );
   }
 }
-
-
 
 export default EditView;

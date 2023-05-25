@@ -541,7 +541,7 @@ function NewPrescriptionRequest(props) {
             prev={() => {
               handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
+                `/me/doctors/visits/new/${
                   props.patient.patientHospitalId
                 }/management/plan`
               );
@@ -549,7 +549,7 @@ function NewPrescriptionRequest(props) {
             next={() => {
               handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
+                `/me/doctors/visits/new/${
                   props.patient.patientHospitalId
                 }/management/radiologyinvestigations`
               );

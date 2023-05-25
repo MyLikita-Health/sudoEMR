@@ -20,7 +20,7 @@ function Appointments() {
   const { facilityId, id } = useSelector((state) => state.auth.user);
 
   const handleNewAppointmentClick = () => {
-    history.push("/me/doctor/appointments/new");
+    history.push("/me/doctors/appointments/new");
     clearPatient();
   };
   const [appointment, setAppointments] = useState([]);

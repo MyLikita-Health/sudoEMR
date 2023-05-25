@@ -1,16 +1,16 @@
-import React from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import moment from 'moment';
-import { Card, Table, CardTitle } from 'reactstrap';
-import { Scrollbars } from 'react-custom-scrollbars';
-import Loading from '../loading';
+import React from "react";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import moment from "moment";
+import { Card, Table, CardTitle } from "reactstrap";
+import { Scrollbars } from "react-custom-scrollbars";
+import Loading from "../loading";
 import {
   setPatientToSee,
   setTab,
   getPatientPastVisits,
-} from '../../redux/actions/doctor';
+} from "../../redux/actions/doctor";
 
 function AssignedList({
   loading,
@@ -22,7 +22,7 @@ function AssignedList({
   history,
 }) {
   return (
-    <Card body style={{ height: '90vh' }}>
+    <Card body style={{ height: "90vh" }}>
       <CardTitle tag="h6" className="text-center">
         List of Patients Assigned to you
       </CardTitle>
@@ -45,16 +45,17 @@ function AssignedList({
             <tbody>
               {pendingRequests.map((record) => (
                 <tr
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                   key={record.id}
                   onClick={() => {
                     setPatient(record);
-                    setTab('PcomplaintsForm');
-                    history.push('/me/doctor/patient/history');
+                    setTab("PcomplaintsForm");
+                    history.push("/me/doctors/patient/history");
                     toggle();
                     getPastVisits(record.id);
-                  }}>
-                  <td>{moment(record.date_assigned).format('DD-MM-YYYY')}</td>
+                  }}
+                >
+                  <td>{moment(record.date_assigned).format("DD-MM-YYYY")}</td>
                   <td>{record.id}</td>
                   <td>
                     {record.firstname} {record.surname}
@@ -114,7 +115,7 @@ function AssignedList({
 //       </td> */
 // }
 // {
-//   /* 
+//   /*
 //       <td>{item.biology_lab.testname}</td>
 //       <td>{item.biology_lab.value}</td>
 //       <td>{item.biology_lab.speciment}</td>
@@ -162,8 +163,5 @@ function mapStateToProps(state) {
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(AssignedList);
