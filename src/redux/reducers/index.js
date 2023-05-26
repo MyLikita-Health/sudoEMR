@@ -14,6 +14,7 @@ import notificationReducer from './notifications'
 import patientAppointmentReducer from '../../components/patient/reducers/patientAppointment'
 import adminReducer from './admin'
 import resultsReducer from './results'
+import pharmacyReducer from './pharmacy'
 
 const rootReducer = combineReducers({
   app: appReducer,
@@ -32,6 +33,7 @@ const rootReducer = combineReducers({
   patientAppointment: patientAppointmentReducer,
   admin: adminReducer,
   result: resultsReducer,
+  pharmacy:pharmacyReducer
 });
 
 export default rootReducer

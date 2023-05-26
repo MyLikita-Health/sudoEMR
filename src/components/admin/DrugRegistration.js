@@ -1,22 +1,28 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Printer, Trash } from "react-feather";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-// import { useNavigate } from "react-router-dom";
-import { useToasts } from "react-toast-notifications";
-import { Button, Card, CardBody, Col, Row } from "reactstrap";
+import { CardBody, Col, Row } from "reactstrap";
+
+import { CustomButton, CustomForm, CustomTable } from "../comp/components";
+import CustomModal from "../comp/components/CustomModal";
+import Scrollbar from "../comp/components/Scrollbar";
+import CustomPagination from "../comp/CustomPagination";
+import Loading from "../comp/components/Loading";
+import { _customNotify, _warningNotify, formatNumber } from "../utils/helpers";
+import SearchBar from "../record/SearchBar";
+import { _deleteApi, _postApi } from "../../redux/actions/api";
+import { AiOutlinePrinter } from "react-icons/ai";
+import { BsTrash } from "react-icons/bs";
 import {
   getDrugList,
   getDrugListCount,
   getDrugListSearch,
-  getPharmStore,
-  getSupplierInfo,
-} from "../../../redux/action/pharmacy";
-export default function Newtask() {
-  const { addToast } = useToasts();
+} from "../../redux/actions/pharmacy";
+import CustomCard from "../comp/components/CustomCard";
+import { apiURL } from "../../redux/actions";
+export default function DrugRegistrations() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-
   const [isOpen1, setIsOpen1] = useState(false);
   const [loadingDelete, setLoadingDelete] = useState(false);
   const [drugInfo, setDrugInfo] = useState({});
@@ -27,12 +33,11 @@ export default function Newtask() {
   const [viewPDF, setViewPDF] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const drugList = useSelector((state) => state.pharmacy.drugList);
-  const isOpen = useSelector((state) => state.pharmacy.isOpen);
+  const [isOpen, setIsOpen] = useState(false);
   const drugListCount = useSelector((state) => state.pharmacy.drugListCount);
   const _loading = useSelector((state) => state.pharmacy.loading);
-  const { activeBusiness } = useSelector((state) => state.auth);
   const toggle = () => {
-    dispatch({type:"TOGGLE",payload:!isOpen})
+    setIsOpen(!isOpen);
   };
   const initialState = {
     drug_name: "",
@@ -40,14 +45,6 @@ export default function Newtask() {
     formulation: "",
   };
   const [form, setForm] = useState(initialState);
-  const _getSupplierInfo = useCallback(() => {
-    dispatch(getSupplierInfo());
-    dispatch(getPharmStore());
-  }, [dispatch]);
-
-  useEffect(() => {
-    _getSupplierInfo();
-  }, [_getSupplierInfo]);
 
   let generics = drugList.map((obj) => obj.generic_name);
   generics = generics.filter((v, i) => generics.indexOf(v) === i);
@@ -81,10 +78,10 @@ export default function Newtask() {
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }));
     if (name === "drug_name" && generics.includes(value)) {
-      _customNotification(addToast, "Drug name exists", "warning");
+      _customNotify("Drug name exists");
     }
     if (name === "generic_name" && drugs.includes(value)) {
-      _customNotification(addToast, "Generic name exists", "warning");
+      _warningNotify("Generic name exists");
     }
   };
 
@@ -112,7 +109,7 @@ export default function Newtask() {
       custom: true,
       component: (itm, idx) => (
         <Col className="text-center">
-          <Trash
+          <BsTrash
             style={{ cursor: "pointer", color: "red" }}
             className="primary"
             onClick={() => toggle1(itm)}
@@ -135,7 +132,7 @@ export default function Newtask() {
   const handleSubmit = () => {
     setLoading(true);
     _postApi(
-      `/pharmacy/v1/create-drug`,
+      `${apiURL()}/api/pharmacy/v1/create-drug`,
       {
         ...form,
         facilityId,
@@ -143,27 +140,19 @@ export default function Newtask() {
       (res) => {
         if (res.success) {
           setLoading(false);
-          _customNotification(addToast, "submitted successfully", "success");
+          _customNotify("submitted successfully");
           setForm(initialState);
           dispatch(getDrugList());
           dispatch(getDrugListCount(filterText));
           toggle();
         } else {
-          _customNotification(
-            addToast,
-            "drug already exist successfully",
-            "warning"
-          );
+          _warningNotify("drug already exist successfully");
           setLoading(false);
         }
       },
       (err) => {
         console.log(err);
-        _customNotification(
-          addToast,
-          `Error occured ${JSON.stringify(err)}`,
-          "warning"
-        );
+        _warningNotify(`Error occured ${JSON.stringify(err)}`);
         setLoading(false);
       }
     );
@@ -195,11 +184,7 @@ export default function Newtask() {
       (res) => {
         if (res.success) {
           setLoadingDelete(false);
-          _customNotification(
-            addToast,
-            "drug information deleted successfully",
-            "success"
-          );
+          _customNotify("drug information deleted successfully");
           dispatch(getDrugList());
           dispatch(getDrugListCount(filterText));
           toggle1({});
@@ -207,18 +192,21 @@ export default function Newtask() {
       },
       (err) => {
         console.log(err);
-        _customNotification(
-          addToast,
-          `Error occured ${JSON.stringify(err)}`,
-          "warning"
-        );
+        _warningNotify(`Error occured ${JSON.stringify(err)}`);
         setLoadingDelete(false);
       }
     );
   };
   return (
     <div>
-      <CardBody>
+      <CustomCard
+        header="Drug registration"
+        headerRight={
+          <CustomButton outline onClick={toggle}>
+            Add new drug
+          </CustomButton>
+        }
+      >
         <Row>
           <Col md={10}>
             <SearchBar
@@ -248,40 +236,17 @@ export default function Newtask() {
                 currentPage={currentPage}
               />
             </Col>
-            <Col md={2}>
-              <CustomButton
-                onClick={() => setViewPDF(!viewPDF)}
-                color={viewPDF ? "danger" : "primary"}
-                size={"sm"}
-              >
-                <Printer />
-                {viewPDF ? "Close" : "Print"}
-              </CustomButton>
-            </Col>
-            {viewPDF ? (
-              <>
-                <RegisteredDrugPDF
-                  list={drugList}
-                  range={range}
-                  title={"Registered Drugs"}
-                  total={drugListCount}
-                  activeBusiness={activeBusiness}
-                />
-              </>
-            ) : (
-              <Scrollbar>
-                <CustomTable
-                  height="70vh"
-                  // preheader={drugList.length > 0}
-                  fields={tbl}
-                  data={drugList}
-                />
-              </Scrollbar>
-            )}
           </Row>
-          {/* </Scrollbar> */}
         </Row>
-      </CardBody>
+        <Row>
+          <Scrollbar>
+            <CustomTable
+              fields={tbl}
+              data={drugList}
+            />
+          </Scrollbar>
+        </Row>
+      </CustomCard>
       <CustomModal
         isOpen={isOpen1}
         header="Drug Information"
@@ -304,7 +269,7 @@ export default function Newtask() {
         <h5>
           Are you sure you want to delete{" "}
           <i>
-            <b>{drugInfo?.name}</b>
+            <b>{drugInfo.name}</b>
           </i>{" "}
           from this system?
         </h5>
@@ -333,29 +298,3 @@ export default function Newtask() {
     </div>
   );
 }
-
-export const DrugRegistrationWrapper = (props) => {
-  return (
-    <CustomCard
-      header="Drug registration"
-      headerRight={
-        <CustomButton outline onClick={props.toggle}>
-          Add new drug
-        </CustomButton>
-      }
-    >
-      {props.children}
-    </CustomCard>
-  );
-};
-
-
-export const DrugRegistrationWrapperReport = (props) => {
-  return (
-    <CustomCard
-      header="Registered drugs report"
-    >
-      {props.children}
-    </CustomCard>
-  );
-};

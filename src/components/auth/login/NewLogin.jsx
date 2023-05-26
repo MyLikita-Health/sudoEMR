@@ -37,7 +37,6 @@ class NewLogin extends PureComponent {
     }))
 
   loginSuccess = (data) => {
-    alert(JSON.stringify(data.user.accessTo[0].toLowerCase()))
     this.setState(
       {
         loading: false,

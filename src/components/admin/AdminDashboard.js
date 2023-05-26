@@ -24,6 +24,7 @@ import SurgicalNote from "../doc_dash/visits/components/SurgicalNote";
 import ConsultationReports from "./ConsultationReports";
 import { BsUpload } from "react-icons/bs";
 import StaffReview from "./StaffReview";
+import DrugRegistrations from "./DrugRegistration";
 
 export const adminFunctionalites = [
   {
@@ -38,9 +39,7 @@ export const adminFunctionalites = [
     name: "Settings",
     display_name: "Drug Registration",
     route: "/me/admin/drug-registration",
-    icon: (
-      <FaDrupal size={26} fontWeight="bold" style={{ marginRight: 10 }} />
-    ),
+    icon: <FaDrupal size={26} fontWeight="bold" style={{ marginRight: 10 }} />,
   },
   {
     name: "Manage Users",
@@ -132,6 +131,11 @@ function AdminDashboard() {
           path="/me/admin/consultation-reports"
           component={ConsultationReports}
         />
+         <Route
+          path="/me/admin/drug-registration"
+          component={DrugRegistrations}
+        />
+       
       </Switch>
     </div>
   );

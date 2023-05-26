@@ -29,6 +29,7 @@ import {
   GET_TOTAL_DRUG,
   SET_PENDING_PHARMACY_REQUEST,
   OUT_OF_STOCK_LIST,
+  GET_DRUG_LIST_COUNT,
 } from "./actionTypes";
 import {
   GETTING_ALL_SUPPLIERS,
@@ -98,31 +99,12 @@ export function init() {
 }
 
 export const endpoint = `${apiURL()}/api/pharmacy`;
-export function getSupplierInfo() {
-  const facilityId = store.getState().auth.user.facilityId;
-  return (dispatch) => {
-    dispatch({ type: PHARM_LOADING, payload: true });
-    let url = `${endpoint}/v1/get-suppliers?facilityId=${facilityId}`;
-    _fetchApi2(
-      url,
-      (res) => {
-        if (res.success) {
-          dispatch({ type: GET_SUPPLIER_INFO, payload: res.results });
-          dispatch({ type: PHARM_LOADING, payload: false });
-        }
-      },
-      (err) => {
-        console.log(err);
-        dispatch({ type: PHARM_LOADING, payload: false });
-      }
-    );
-  };
-}
+
 export function getDrugList() {
   const facilityId = store.getState().auth.user.facilityId;
   return (dispatch) => {
     let url = `/${endpoint}/v1/get-drug-list?facilityId=${facilityId}`;
-    _fetchApi(
+    _fetchApi2(
       url,
       (res) => {
         if (res.success) {
@@ -140,7 +122,7 @@ export function getDrugListCount(filterText) {
   const facilityId = store.getState().auth.user.facilityId;
   return (dispatch) => {
     let url = `/${endpoint}/v1/get-total-drug-list?facilityId=${facilityId}&filterText=${filterText}`;
-    _fetchApi(
+    _fetchApi2(
       url,
       (res) => {
         if (res.success) {
@@ -157,58 +139,16 @@ export function getDrugListCount(filterText) {
   };
 }
 
-export function getPharmStore() {
-  const facilityId = store.getState().auth.user.facilityId;
-  return (dispatch) => {
-    dispatch({ type: PHARM_LOADING, payload: true });
-    let url = `/${endpoint}/v1/get-pharm-store?facilityId=${facilityId}`;
-    _fetchApi(
-      url,
-      (res) => {
-        if (res.success) {
-          dispatch({ type: GET_PHARM_STORE, payload: res.results });
-          dispatch({ type: PHARM_LOADING, payload: false });
-        }
-      },
-      (err) => {
-        console.log(err);
-        dispatch({ type: PHARM_LOADING, payload: false });
-      }
-    );
-  };
-}
-
 export function getDrugListSearch(searchValue, from, to, query = "default") {
   const facilityId = store.getState().auth.user.facilityId;
   return (dispatch) => {
     dispatch({ type: PHARM_LOADING, payload: true });
     let url = `/${endpoint}/v1/get-drug-search?facilityId=${facilityId}&searchValue=${searchValue}&from=${from}&to=${to}&query=${query}`;
-    _fetchApi(
-      url,
-      (res) => {
-        if (res.success) {
-          dispatch({ type: GET_DRUG_LIST, payload: res.results });
-          dispatch({ type: PHARM_LOADING, payload: false });
-        }
-      },
-      (err) => {
-        console.log(err);
-        dispatch({ type: PHARM_LOADING, payload: false });
-      }
-    );
-  };
-}
-
-export function getSupplierCount() {
-  const facilityId = store.getState().auth.user.facilityId;
-  return (dispatch) => {
-    dispatch({ type: PHARM_LOADING, payload: true });
-    let url = `${endpoint}/v1/get-supplier-count?facilityId=${facilityId}`;
     _fetchApi2(
       url,
       (res) => {
         if (res.success) {
-          dispatch({ type: SUPPLIER_COUNT, payload: res.results[0].num });
+          dispatch({ type: GET_DRUG_LIST, payload: res.results });
           dispatch({ type: PHARM_LOADING, payload: false });
         }
       },
@@ -387,23 +327,23 @@ export function getDrugView(
     );
   };
 }
-export function getDrugList() {
-  const facilityId = store.getState().auth.user.facilityId;
-  return (dispatch) => {
-    let url = `${endpoint}/v1/get-drug-list?facilityId=${facilityId}&query_type=stock`;
-    _fetchApi2(
-      url,
-      (res) => {
-        if (res.success) {
-          dispatch({ type: GET_DRUG_LIST, payload: res.results });
-        }
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  };
-}
+// export function getDrugList() {
+//   const facilityId = store.getState().auth.user.facilityId;
+//   return (dispatch) => {
+//     let url = `${endpoint}/v1/get-drug-list?facilityId=${facilityId}&query_type=stock`;
+//     _fetchApi2(
+//       url,
+//       (res) => {
+//         if (res.success) {
+//           dispatch({ type: GET_DRUG_LIST, payload: res.results });
+//         }
+//       },
+//       (err) => {
+//         console.log(err);
+//       }
+//     );
+//   };
+// }
 export function getOutOfStock() {
   const facilityId = store.getState().auth.user.facilityId;
   return (dispatch) => {
@@ -912,7 +852,7 @@ export function getSupplier(
   );
 }
 
-export function getDrugSearch(searchValue, from, to,store_type) {
+export function getDrugSearch(searchValue, from, to, store_type) {
   const facilityId = store.getState().auth.user.facilityId;
   return (dispatch) => {
     // console.log('searching',searchValue, from, to)

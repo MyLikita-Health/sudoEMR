@@ -14,6 +14,7 @@ import {
   GET_PENDING_PURCHASES,
   DISPENSING_DRUGS,
   DISPENSE_DRUGS,
+  GET_DRUG_LIST_COUNT,
   GETTING_ALL_SUPPLIERS,
   GET_ALL_SUPPLIERS,
   CREATING_SUPPLIERS,
@@ -156,6 +157,7 @@ const initialState = {
   // expiryAlert:[],
   reorderLevel: [],
   totalDrugs: 0,
+  drugListCount:0
 };
 
 const pharmacyReducer = (state = initialState, action) => {
@@ -171,7 +173,11 @@ const pharmacyReducer = (state = initialState, action) => {
         ...state,
         quantityAlert: action.payload,
       };
-
+    case GET_DRUG_LIST_COUNT:
+      return {
+        ...state,
+        quantityAlert: action.payload,
+      };
     case LOAD_EXPIRED:
       return {
         ...state,
@@ -433,7 +439,7 @@ const pharmacyReducer = (state = initialState, action) => {
         ...state,
         saleItems: action.payload,
       };
-      
+
     case RECEIPT_DATA:
       return {
         ...state,
