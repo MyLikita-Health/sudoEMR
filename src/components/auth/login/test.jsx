@@ -1,20 +1,20 @@
-import React, { PureComponent } from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { bindActionCreators, compose } from 'redux';
+import React, { PureComponent } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { bindActionCreators, compose } from "redux";
 import {
   login,
   authLoading,
   checkAuthStatus,
-} from '../../../redux/actions/auth';
-import './login.css';
-import Loading from '../../loading';
+} from "../../../redux/actions/auth";
+import "./login.css";
+import Loading from "../../loading";
 
 class Login extends PureComponent {
   state = {
     formData: {
-      username: '',
-      passowrd: '',
+      username: "",
+      passowrd: "",
     },
     loading: false,
     pageLoading: true,
@@ -25,22 +25,22 @@ class Login extends PureComponent {
     this.setState({ pageLoading: false });
     if (access && access.length) {
       switch (access[0]) {
-        case 'records':
-          return this.props.history.push('/me/records');
-        case 'doctor':
-          return this.props.history.push('/me/doctor');
-        case 'pharmacy':
-          return this.props.history.push('/me/pharmacy');
-        case 'lab':
-          return this.props.history.push('/me/lab');
-        case 'account':
-          return this.props.history.push('/me/account');
-        case 'operation':
-          return this.props.history.push('/me/operation');
-        case 'admin':
-          return this.props.history.push('/me/admin');
+        case "records":
+          return this.props.history.push("/me/records");
+        case "doctor":
+          return this.props.history.push("/me/doctors");
+        case "pharmacy":
+          return this.props.history.push("/me/pharmacy");
+        case "lab":
+          return this.props.history.push("/me/lab");
+        case "account":
+          return this.props.history.push("/me/account");
+        case "operation":
+          return this.props.history.push("/me/operation");
+        case "admin":
+          return this.props.history.push("/me/admin");
         default:
-          return this.props.history.push('/');
+          return this.props.history.push("/");
       }
     }
   }
@@ -62,9 +62,9 @@ class Login extends PureComponent {
     this.setState(
       {
         loading: false,
-        formData: { username: '', password: '' },
+        formData: { username: "", password: "" },
       },
-      () => this.props.history.push('/me/records')
+      () => this.props.history.push("/me/records")
     );
   };
 
@@ -86,7 +86,7 @@ class Login extends PureComponent {
 
     if (pageLoading) {
       return (
-        <div style={{ marginTop: '40vh' }}>
+        <div style={{ marginTop: "40vh" }}>
           <Loading />
         </div>
       );
@@ -100,7 +100,7 @@ class Login extends PureComponent {
               <div class="col-lg-12">
                 <h1>Log In</h1>
                 <p>
-                  You don't have a password? Then please{' '}
+                  You don't have a password? Then please{" "}
                   <a class="white" href="sign-up.html">
                     Sign Up
                   </a>
@@ -168,8 +168,5 @@ function mapDispatchToProps(dispatch) {
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(Login);

@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { Collapse,Button,Input } from 'reactstrap';
-// import BedAllocation from './bed-allocation/BedAllocation'
-import AddNewBed from './bed-allocation/AddNewBed'
 import ModalPage from './ModalPage'
 import DoctorsListModal from './DoctorsListModal'
-// import { RecordGuide } from '../Guides';
-// import PatientAssignedToday from './PatientAssignedToday';
 import RenderPatientList from './RenderPatientList'
 import { _deleteData, _customNotify, url } from '../utils/helpers'
 import EditModal from './EditModal'
@@ -15,7 +10,6 @@ import { toaster } from 'evergreen-ui'
 import { getPatientAssignedToday } from '../../redux/actions/diagnosis'
 import { _fetchApi } from '../../redux/actions/api'
 import BedToggle from './bed-allocation/BedToggle'
-import FullscreenLoading from '../comp/components/FullscreenLoading'
 import PatientAssignedToday from './PatientAssignedToday'
 
 export const recordsDB = PouchDB('recordsDB')

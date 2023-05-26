@@ -46,21 +46,7 @@ const PatientAssignedToday = (props) => {
    * number of patients from the database
    */
 
-  // fetchData() {
-  //   this.setState({ loading: true });
-  //   _fetchApi(
-  //     `${apiURL()}/patientrecords/patientAssignedToday`,
-  //     ({ results }) => {
-  //       if (results) {
-  //         this.setState({ list: results, loading: false });
-  //       }
-  //     },
-  //     error => {
-  //       console.log(error.toString());
-  //       this.setState({ loading: false });
-  //     }
-  //   )
-  // }
+
 
   /**
    * when component has been mounted, the list of patients assigned for

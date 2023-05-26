@@ -19,9 +19,7 @@ import { saveVisits } from "../actions/visitsActions";
 
 function NewLab() {
   const { patientId } = useParams();
-  const [patient, setPatient] = useState({
-    
-  });
+  const [patient, setPatient] = useState({});
   // const [patientInfo, setPatientInfo] = useState({});
 
   const [saving, setSaving] = useState(false);
@@ -38,12 +36,9 @@ function NewLab() {
   );
   const user = useSelector((state) => state.auth.user);
 
-  useEffect(
-    () => {
-      dispatch(getPatient(patientId));
-    },
-    [patientId, dispatch]
-  );
+  useEffect(() => {
+    dispatch(getPatient(patientId));
+  }, [patientId, dispatch]);
 
   // const onInputChange = (name, value) => setTest({ ...test, [name]: value });
 
@@ -67,7 +62,7 @@ function NewLab() {
         () => {
           setSaving(false);
           _customNotify("Lab request saved!");
-          history.push(`/me/doctor/patients/view/${patientId}/lab`);
+          history.push(`/me/doctors/patients/view/${patientId}/lab`);
         },
         () => {
           setSaving(false);
@@ -85,7 +80,7 @@ function NewLab() {
     //       () => {
     //         _customNotify("Lab request saved!");
     //         setSaving(false);
-    //         history.push(`/me/doctor/patients/view/${test.patient_id}/lab`);
+    //         history.push(`/me/doctors/patients/view/${test.patient_id}/lab`);
     //       },
     //       () => {
     //         _warningNotify("An error occured, please try again later");

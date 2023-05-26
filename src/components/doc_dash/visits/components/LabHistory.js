@@ -22,7 +22,7 @@ function LabHistory({
   const { patientId } = useParams();
   const facilityId = useSelector((state) => state.auth.user.facilityId);
   const location = useLocation();
-  let doctorCond = location.pathname.includes("/me/doctor/visits");
+  let doctorCond = location.pathname.includes("/me/doctors/visits");
   //   const [tabledLabs, setTabledLabs] = useState([])
   //   const [tabledLabsList, setTabledLabsList] = useState([])
   //   const [inputLabs, setInputLabs] = useState([])

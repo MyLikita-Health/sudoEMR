@@ -109,9 +109,9 @@ function NewAppointment() {
         () => {
           toggleSubmit();
           _customNotify("Appointment created and added to calender");
-          history.push(`/me/doctor/appointments`);
+          history.push(`/me/doctors/appointments`);
           //  history.push(
-          //    `/me/doctor/patients/view/${patientId && patientId}/appointments`
+          //    `/me/doctors/patients/view/${patientId && patientId}/appointments`
           //  );
         },
         err

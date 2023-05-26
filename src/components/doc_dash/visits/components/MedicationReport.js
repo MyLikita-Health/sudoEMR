@@ -44,7 +44,7 @@ function MedicationReport({ isOpen, toggle, height = "40vh", newBtn = true }) {
   // const toggelDrugs = () => setModal((p) => !p);
   // const [mode] = useState("view");
   const location = useLocation();
-  let doctorCond = location.pathname.includes("/me/doctor/visits");
+  let doctorCond = location.pathname.includes("/me/doctors/visits");
 
   // const fields = [
   //   {

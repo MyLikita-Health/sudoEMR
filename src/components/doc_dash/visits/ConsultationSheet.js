@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import {  useRouteMatch } from 'react-router'
-import { getPatient, getPatientList } from '../actions/patientsActions'
-import ShortConsultationView from './ShortConsultationView'
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useRouteMatch } from "react-router";
+import { getPatient, getPatientList } from "../actions/patientsActions";
+import ShortConsultationView from "./ShortConsultationView";
 // import { useQuery } from '../../../hooks'
 
 function ConsultationSheet() {
-  const match = useRouteMatch()
-  const dispatch = useDispatch()
-  const { patientId } = match.params
+  const match = useRouteMatch();
+  const dispatch = useDispatch();
+  const { patientId } = match.params;
   // const patientDetails = useSelector(
   //   (state) => state.individualDoc.selectedPatient,
   // )
@@ -20,9 +20,9 @@ function ConsultationSheet() {
 
   useEffect(() => {
     // console.log('heereeee', patientId)
-    dispatch(getPatient(patientId))
-    dispatch(getPatientList())
-  }, [dispatch, patientId])
+    dispatch(getPatient(patientId));
+    dispatch(getPatientList());
+  }, [dispatch, patientId]);
   // const search = window.location.search;
   // const params = new URLSearchParams(search);
   // const query = useQuery()
@@ -33,19 +33,18 @@ function ConsultationSheet() {
   // const history = useHistory()
 
   return (
-    <div >
+    <div>
       {/* <CardHeader tag="h6">{JSON.stringify(patientDetails)}</CardHeader> */}
-      
 
-      <div >
+      <div>
         <ShortConsultationView />
         {/* <Switch> */}
         {/* <Route
-            path="/me/doctor/visits/new-summary/:patientId"
+            path="/me/doctors/visits/new-summary/:patientId"
             component={ShortConsultationView}
           />
           <Route
-            path="/me/doctor/visits/view-visit/:patientId/:visitId"
+            path="/me/doctors/visits/view-visit/:patientId/:visitId"
             component={VisitPreview}
           /> */}
         {/* </Switch> */}
@@ -56,7 +55,7 @@ function ConsultationSheet() {
         </div>
       )} */}
     </div>
-  )
+  );
 }
 
-export default ConsultationSheet
+export default ConsultationSheet;

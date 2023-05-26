@@ -14,7 +14,7 @@ function CalenderView({ events, setAppointment, display }) {
         calendarEvents={events}
         onEventClick={(item) => {
           history.push(
-            `/me/doctor/appointments/edit?appointmentId=${item.xid}`
+            `/me/doctors/appointments/edit?appointmentId=${item.xid}`
           );
           console.log(item, "UFHFH");
           setAppointment(item);

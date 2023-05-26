@@ -142,7 +142,7 @@ export function doctorLogin({ username, password }, callback, error) {
           localStorage.setItem("@@sudoEMR_token", data.token);
           // saveUserData(data);
           dispatch({ type: LOGIN, payload: data });
-          callback();
+          callback(data);
         }
       })
       .catch((err) => {
@@ -202,7 +202,7 @@ export function logout(callback = (f) => f) {
       authDB.put(data);
     });
     dispatch({ type: LOGOUT });
-    localStorage.removeItem("@@__token");
+    localStorage.removeItem("@@sudoEMR_token");
     callback();
   };
 }
@@ -231,7 +231,7 @@ const navigateBasedOnAccess = (access, history) => {
       case "Records":
         return history.push("/me/records");
       case "Doctors":
-        return history.push("/me/doctor");
+        return history.push("/me/doctors");
       case "Pharmacy":
         return history.push("/me/pharmacy");
 

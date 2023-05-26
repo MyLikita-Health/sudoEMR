@@ -6,7 +6,7 @@ import { _fetchApi } from "../../../redux/actions/api";
 import { apiURL } from "../../../redux/actions";
 import { useDispatch } from "react-redux";
 import { v4 as UUIDV4 } from "uuid";
-import { checkEmpty,  _customNotify } from "../../utils/helpers";
+import { checkEmpty, _customNotify } from "../../utils/helpers";
 import { Col, Row } from "reactstrap";
 import { useQuery } from "../../../hooks";
 import {
@@ -47,8 +47,8 @@ function ShortConsultationView() {
 
   const sheetIsValid = patientId && patientId !== "view";
   const [preview, setPreview] = useState(false);
-  const [getTime, ] = useState([]);
-  const [getLastConsult, ] = useState([]);
+  const [getTime] = useState([]);
+  const [getLastConsult] = useState([]);
   // const sheetIsValid = patientInfo.id;
   let timeLast = moment().diff(
     getLastConsult && getLastConsult.created_at,
@@ -67,7 +67,7 @@ function ShortConsultationView() {
     frequency: "",
     price: "",
     treatmentPlan: "",
-    id:""
+    id: "",
   };
 
   //     additionalInfo: "",
@@ -172,28 +172,34 @@ function ShortConsultationView() {
     setLoading(true);
     // toggleModal();
     // preventNavigation = false
-    
+
     dispatch(
-      saveBreifDiagnosis(consultation, patientInfo, consultStatus,patientType, () => {
-        _customNotify("Consultation saved!");
-        setPatientInfo({});
-        if (consultationType === "assignment") {
-          dispatch(
-            assignPatient({
-              id: patientInfo.id,
-              query_type: "end",
-            })
+      saveBreifDiagnosis(
+        consultation,
+        patientInfo,
+        consultStatus,
+        patientType,
+        () => {
+          _customNotify("Consultation saved!");
+          setPatientInfo({});
+          if (consultationType === "assignment") {
+            dispatch(
+              assignPatient({
+                id: patientInfo.id,
+                query_type: "end",
+              })
+            );
+            // dispatch(updateAssignedPatient(assignmentId, 'completed'))
+            dispatch(getWaitingList());
+            dispatch(getAssignedToDoc());
+            setConsultation(emptyConsultation);
+          }
+          history.push(
+            `/me/doctors/visit-preview/${patientId}?page_type=preview&visit_id=&patient_id=${patientId}&allocation_id=${allocation_id}&page_type=preview&section=disabled`
           );
-          // dispatch(updateAssignedPatient(assignmentId, 'completed'))
-          dispatch(getWaitingList());
-          dispatch(getAssignedToDoc());
-          setConsultation(emptyConsultation);
+          setLoading(false);
         }
-        history.push(
-          `/me/doctor/visit-preview/${patientId}?page_type=preview&visit_id=&patient_id=${patientId}&allocation_id=${allocation_id}&page_type=preview&section=disabled`
-        );
-        setLoading(false);
-      })
+      )
     );
   };
 

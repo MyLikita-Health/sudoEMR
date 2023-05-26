@@ -173,8 +173,6 @@ class NexRegistration extends Component {
   }
 
   render() {
-    const { type } = this.props
-    const { submitted } = this.state
     return (
       <>
         <div className="auth_div">
@@ -201,7 +199,7 @@ class NexRegistration extends Component {
                         available at the link below.
                       </p>
 
-                      <a href="#" target="_blank" rel="noreferrer">
+                      <a href="/" target="_blank" rel="noreferrer">
                         sudoEMR Disclosure
                       </a>
                       <div>

@@ -1,11 +1,11 @@
-import React from 'react';
-import { FaSms, FaCopy } from 'react-icons/fa';
-import { MdCall } from 'react-icons/md';
-import { Card } from 'reactstrap';
-import { FiMail } from 'react-icons/fi';
-import { BsChat } from 'react-icons/bs';
-import { _customNotify, _warningNotify } from '../../utils/helpers';
-import { useHistory } from 'react-router';
+import React from "react";
+import { FaSms, FaCopy } from "react-icons/fa";
+import { MdCall } from "react-icons/md";
+import { Card } from "reactstrap";
+import { FiMail } from "react-icons/fi";
+import { BsChat } from "react-icons/bs";
+import { _customNotify, _warningNotify } from "../../utils/helpers";
+import { useHistory } from "react-router";
 
 function Contact({ patient }) {
   const history = useHistory();
@@ -19,7 +19,9 @@ function Contact({ patient }) {
           <button
             className="btn btn-outline-primary ml-2"
             onClick={() =>
-              history.push(`/me/doctor/patients/view/${patient.patientHospitalId}/chat`)
+              history.push(
+                `/me/doctors/patients/view/${patient.patientHospitalId}/chat`
+              )
             }
           >
             <BsChat size={20} className="mr-1" /> Chat
@@ -57,8 +59,8 @@ function Contact({ patient }) {
               onClick={() =>
                 navigator.clipboard
                   .writeText(patient.email)
-                  .then(() => _customNotify('Email Copied!'))
-                  .catch(() => _warningNotify('Cannot copy text at this time'))
+                  .then(() => _customNotify("Email Copied!"))
+                  .catch(() => _warningNotify("Cannot copy text at this time"))
               }
             >
               <FaCopy /> copy!
@@ -93,7 +95,7 @@ function Contact({ patient }) {
           //   target="_blanc"
           onClick={() => {
             history.push(
-              `/me/doctor/visits/new/${
+              `/me/doctors/visits/new/${
                 patient.patientHospitalId
               }/history/presentingcomplaints`
             );

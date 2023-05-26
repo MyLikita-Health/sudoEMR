@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { Scrollbars } from 'react-custom-scrollbars';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { Scrollbars } from "react-custom-scrollbars";
 import {
   ListGroupItem,
   ListGroup,
@@ -10,19 +10,19 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
-} from 'reactstrap';
-import { FaPlus, FaTimes } from 'react-icons/fa';
-import { saveProblems } from '../../redux/actions/doctor';
-import SpeechInput from '../comp/speech-to-text/SpeechInput';
-import { iconButtonStyle } from '../utils/styles-helper';
-import FooterButtons from './components/FooterButtons';
+} from "reactstrap";
+import { FaPlus, FaTimes } from "react-icons/fa";
+import { saveProblems } from "../../redux/actions/doctor";
+import SpeechInput from "../comp/speech-to-text/SpeechInput";
+import { iconButtonStyle } from "../utils/styles-helper";
+import FooterButtons from "./components/FooterButtons";
 
 class NewProblems extends Component {
   constructor(props) {
     super(props);
     this.state = {
       problems: [],
-      prob: '',
+      prob: "",
       showInput: false,
     };
   }
@@ -74,7 +74,7 @@ class NewProblems extends Component {
                   >
                     {item}
                     <span
-                      style={{ cursor: 'pointer' }}
+                      style={{ cursor: "pointer" }}
                       onClick={() => this.deleteProblem(index)}
                     >
                       <FaTimes className="text-danger" />
@@ -91,7 +91,7 @@ class NewProblems extends Component {
                 value={prob}
                 // autoFocus
                 onInputChange={(text) =>
-                  this.handleSpeechInputChange(text, 'prob')
+                  this.handleSpeechInputChange(text, "prob")
                 }
               />
 
@@ -100,10 +100,10 @@ class NewProblems extends Component {
                   className="btn btn-outline-primary"
                   style={iconButtonStyle}
                   onClick={() => {
-                    if (prob !== '') {
+                    if (prob !== "") {
                       this.setState((prev) => ({
                         problems: [...prev.problems, prob],
-                        prob: '',
+                        prob: "",
                       }));
                     }
                   }}
@@ -115,22 +115,18 @@ class NewProblems extends Component {
             </div>
           </Scrollbars>
         </CardBody>
-        <CardFooter className='p-0'>
+        <CardFooter className="p-0">
           <FooterButtons
             prev={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/examination/athropometry`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/examination/athropometry`
               );
             }}
             next={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/diagnosis/provisionaldiagnosis`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/diagnosis/provisionaldiagnosis`
               );
             }}
           />
@@ -158,8 +154,5 @@ function mapDispatchToProps(dispatch) {
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(NewProblems);

@@ -424,17 +424,13 @@ class NewRadiologyInvestigations extends Component {
             prev={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/management/prescription`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/management/prescription`
               );
             }}
             next={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/management/dressing`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/management/dressing`
               );
             }}
           />
@@ -458,8 +454,5 @@ const mapDispatchToProblems = (dispatch) => ({
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProblems
-  )
+  connect(mapStateToProps, mapDispatchToProblems)
 )(NewRadiologyInvestigations);

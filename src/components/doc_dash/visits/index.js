@@ -1,21 +1,21 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect } from "react";
 import {
   Card,
   Table,
   InputGroup,
   InputGroupAddon,
   InputGroupText,
-} from 'reactstrap';
-import { Typeahead } from 'react-bootstrap-typeahead';
-import moment from 'moment';
-import { useHistory } from 'react-router';
-import { connect, useSelector, useDispatch } from 'react-redux';
+} from "reactstrap";
+import { Typeahead } from "react-bootstrap-typeahead";
+import moment from "moment";
+import { useHistory } from "react-router";
+import { connect, useSelector, useDispatch } from "react-redux";
 // import AutoComplete from '../../comp/components/AutoComplete';
-import { getPatientList } from '../actions/patientsActions';
-import { getVisitsList } from '../actions/visitsActions';
-import Scrollbars from 'react-custom-scrollbars';
-import SearchPatientComponent from '../../comp/components/SearchPatient';
-import { FaSearch } from 'react-icons/fa';
+import { getPatientList } from "../actions/patientsActions";
+import { getVisitsList } from "../actions/visitsActions";
+import Scrollbars from "react-custom-scrollbars";
+import SearchPatientComponent from "../../comp/components/SearchPatient";
+import { FaSearch } from "react-icons/fa";
 // import { FiChevronRight } from 'react-icons/fi';
 
 function Visits() {
@@ -36,12 +36,12 @@ function Visits() {
       <div className="mb-3">
         <SearchPatientComponent
           onChange={(patient) => {
-            history.push(`/me/doctor/visits/new-summary/${patient.id}`);
+            history.push(`/me/doctors/visits/new-summary/${patient.id}`);
           }}
         />
       </div>
 
-      <Scrollbars style={{ height: '75vh' }}>
+      <Scrollbars style={{ height: "75vh" }}>
         {visitsList.length ? (
           <Table hover responsive>
             <thead>
@@ -58,16 +58,16 @@ function Visits() {
               {visitsList.map((item, index) => (
                 <tr
                   key={index}
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                   onClick={() =>
-                    history.push(`/me/doctor/visits/view/${item._id}`)
+                    history.push(`/me/doctors/visits/view/${item._id}`)
                   }
                 >
                   <td>{item.patient_id}</td>
                   <td>{item.presenting_complaints}</td>
                   <td>{item.provisionalDiagnosis}</td>
                   <td>
-                    {moment(item.createdAt).format('DD-MM-YYYY, hh:mm a')}
+                    {moment(item.createdAt).format("DD-MM-YYYY, hh:mm a")}
                   </td>
                   <td>{item.createdBy}</td>
                 </tr>
@@ -81,7 +81,7 @@ function Visits() {
           key={index}
           className="rounded-lg mt-2"
           style={{ cursor: 'pointer' }}
-          onClick={() => history.push(`/me/doctor/visits/view/${item._id}`)}
+          onClick={() => history.push(`/me/doctors/visits/view/${item._id}`)}
         >
           <CardText>
             <small className="text-muted float-right">
@@ -121,7 +121,7 @@ export const SearchPatient = connect(
   ({
     patients = [],
     onChange = (f) => f,
-    value = '',
+    value = "",
     editable = true,
     getPatients = (f) => f,
     required = false,
@@ -145,7 +145,7 @@ export const SearchPatient = connect(
           options={
             patients.length
               ? patients
-              : [{ surname: '', firstname: '', patientId: '' }]
+              : [{ surname: "", firstname: "", patientId: "" }]
           }
           // onInputChange={onChange}
           onChange={(item) => {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Form,
   FormGroup,
@@ -6,15 +6,15 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
-  UncontrolledAlert
-} from 'reactstrap';
-import { connect } from 'react-redux';
-import { Scrollbars } from 'react-custom-scrollbars';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import {  saveDressingRequest } from '../../redux/actions/doctor';
-import SpeechInput from '../comp/speech-to-text/SpeechInput';
-import { compose } from 'redux';
-import { withRouter } from 'react-router';
+  UncontrolledAlert,
+} from "reactstrap";
+import { connect } from "react-redux";
+import { Scrollbars } from "react-custom-scrollbars";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { saveDressingRequest } from "../../redux/actions/doctor";
+import SpeechInput from "../comp/speech-to-text/SpeechInput";
+import { compose } from "redux";
+import { withRouter } from "react-router";
 
 class EditDressingRequest extends Component {
   constructor(props) {
@@ -22,13 +22,12 @@ class EditDressingRequest extends Component {
 
     this.state = {
       dressingRequest: {
-        dressingInfo: '',
-        nursingReq: '',
+        dressingInfo: "",
+        nursingReq: "",
       },
     };
   }
 
- 
   componentDidMount() {
     this.setState({ dressingRequest: this.props.dressingRequest });
   }
@@ -37,7 +36,7 @@ class EditDressingRequest extends Component {
     // e.preventDefault();
     const { dressingInfo, nursingReq } = this.state.dressingRequest;
     const formData = { dressingInfo, nursingReq };
-    if (dressingInfo === '' && nursingReq === '') return;
+    if (dressingInfo === "" && nursingReq === "") return;
     this.props.saveDressingRequest(formData);
   };
 
@@ -49,10 +48,10 @@ class EditDressingRequest extends Component {
 
   componentWillUnmount() {
     this.handleSubmit();
-  };
+  }
 
   render() {
-    const { history} = this.props;
+    const { history } = this.props;
     const { dressingInfo, nursingReq } = this.state.dressingRequest;
     return (
       <Card>
@@ -67,37 +66,34 @@ class EditDressingRequest extends Component {
                   name="dressingInfo"
                   value={dressingInfo}
                   onInputChange={(text) =>
-                    this.handleSpeechInputChange(text, 'dressingInfo')
+                    this.handleSpeechInputChange(text, "dressingInfo")
                   }
                 />
 
-                
-                  <label>Nursing Requests</label>
-                  <SpeechInput
-                    tag="textarea"
-                    name="nursingReq"
-                    value={nursingReq}
-                    onInputChange={(text) =>
-                      this.handleSpeechInputChange(text, 'nursingReq')
-                    }
-                  />
-               
+                <label>Nursing Requests</label>
+                <SpeechInput
+                  tag="textarea"
+                  name="nursingReq"
+                  value={nursingReq}
+                  onInputChange={(text) =>
+                    this.handleSpeechInputChange(text, "nursingReq")
+                  }
+                />
               </FormGroup>
             </Form>
             <UncontrolledAlert color="info" className="mt-4 text-center">
-        Make sure you reach the last step or click the next button to save the Nursing Request before submitting
-      </UncontrolledAlert>
+              Make sure you reach the last step or click the next button to save
+              the Nursing Request before submitting
+            </UncontrolledAlert>
           </Scrollbars>
         </CardBody>
-        <CardFooter className='p-0'>
+        <CardFooter className="p-0">
           <button
             className="btn btn-sm btn-outline-primary col-md-3"
             onClick={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/management/radiologyinvestigations`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/management/radiologyinvestigations`
               );
             }}
           >
@@ -107,12 +103,11 @@ class EditDressingRequest extends Component {
             onClick={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/management/view`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/management/view`
               );
             }}
-            className="btn btn-sm btn-outline-primary offset-md-6 col-md-3">
+            className="btn btn-sm btn-outline-primary offset-md-6 col-md-3"
+          >
             Next
             <FaArrowRight />
           </button>
@@ -149,8 +144,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(EditDressingRequest);

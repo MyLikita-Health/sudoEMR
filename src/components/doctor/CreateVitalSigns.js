@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { Scrollbars } from 'react-custom-scrollbars';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { Scrollbars } from "react-custom-scrollbars";
 import {
   Form,
   FormGroup,
@@ -11,11 +11,11 @@ import {
   InputGroup,
   InputGroupAddon,
   Input,
-} from 'reactstrap';
-import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
-import { connect } from 'react-redux';
-import { saveVitalSigns } from '../../redux/actions/doctor';
-import { compose } from 'redux';
+} from "reactstrap";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import { connect } from "react-redux";
+import { saveVitalSigns } from "../../redux/actions/doctor";
+import { compose } from "redux";
 
 class CreateVitalSigns extends Component {
   constructor(props) {
@@ -23,12 +23,12 @@ class CreateVitalSigns extends Component {
 
     this.state = {
       vitalSigns: {
-        tempreture: '',
-        pulse: '',
-        bloodpressure: '',
-        vital_height: '',
-        respiratoryRate: '',
-        vital_weight: '',
+        tempreture: "",
+        pulse: "",
+        bloodpressure: "",
+        vital_height: "",
+        respiratoryRate: "",
+        vital_weight: "",
       },
       formRecords: [],
     };
@@ -61,11 +61,11 @@ class CreateVitalSigns extends Component {
     };
 
     if (
-      tempreture === '' &&
-      pulse === '' &&
-      bloodpressure === '' &&
-      vital_height === '' &&
-      respiratoryRate === '' &&
+      tempreture === "" &&
+      pulse === "" &&
+      bloodpressure === "" &&
+      vital_height === "" &&
+      respiratoryRate === "" &&
       vital_weight
     )
       return;
@@ -152,15 +152,13 @@ class CreateVitalSigns extends Component {
             </Form>
           </Scrollbars>
         </CardBody>
-        <CardFooter className='p-0'>
+        <CardFooter className="p-0">
           <button
             className="btn btn-sm btn-outline-primary col-sm-3 col-xs-3 col-md-3"
             onClick={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/history/previousmedicalhistory`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/history/previousmedicalhistory`
               );
             }}
           >
@@ -170,9 +168,7 @@ class CreateVitalSigns extends Component {
             onClick={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/examination/systemexam`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/examination/systemexam`
               );
             }}
             className="btn btn-sm btn-outline-primary offset-md-6 col-md-3"
@@ -204,8 +200,5 @@ function mapDispatchToProps(dispatch) {
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(CreateVitalSigns);

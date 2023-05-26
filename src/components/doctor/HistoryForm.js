@@ -768,15 +768,13 @@ class HistoryForm extends React.Component {
             />
           </Scrollbars>
         </CardBody>
-        <CardFooter className='p-0'>
+        <CardFooter className="p-0">
           <button
             className="btn btn-sm btn-outline-primary col-md-3"
             onClick={() => {
               this.handleSubmit();
               this.props.history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/history/presentingcomplaints`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/history/presentingcomplaints`
               );
             }}
           >
@@ -786,9 +784,7 @@ class HistoryForm extends React.Component {
             onClick={() => {
               this.handleSubmit();
               this.props.history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/examination/vitalsigns`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/examination/vitalsigns`
               );
             }}
             className="btn btn-sm btn-outline-primary offset-md-6 col-md-3"
@@ -815,8 +811,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(HistoryForm);

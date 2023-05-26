@@ -80,13 +80,13 @@ function InPatientList() {
                 );
               } else {
                 // history.push(
-                //   `/me/doctor/visits/new-summary?patient_id=${
+                //   `/me/doctors/visits/new-summary?patient_id=${
                 //     item.patient_id
                 //   }&allocation_id=${item.allocation_id}&visit_id=`,
                 // );
                 history.push(
-                  // `/me/doctor/visits/new-summary/${item.patient_id}?page_type=preview&visit_id=&patient_id=${item.patient_id}&allocation_id=${item.allocation_id}&page_type=preview&section=disabled`,
-                  `/me/doctor/visit-preview/${item.patient_id}?page_type=preview&visit_id=&patient_id=${item.patient_id}&allocation_id=${item.allocation_id}&page_type=preview&section=disabled&patientType=${section}`
+                  // `/me/doctors/visits/new-summary/${item.patient_id}?page_type=preview&visit_id=&patient_id=${item.patient_id}&allocation_id=${item.allocation_id}&page_type=preview&section=disabled`,
+                  `/me/doctors/visit-preview/${item.patient_id}?page_type=preview&visit_id=&patient_id=${item.patient_id}&allocation_id=${item.allocation_id}&page_type=preview&section=disabled&patientType=${section}`
                 );
               }
             }}
@@ -99,7 +99,7 @@ function InPatientList() {
               color="success"
               onClick={() =>
                 history.push(
-                  `/me/doctor/visits/new-summary/${item.patient_id}?section=disabled`,
+                  `/me/doctors/visits/new-summary/${item.patient_id}?section=disabled`,
                 )
               }
             >
@@ -189,7 +189,7 @@ const PreviousVisit = ({ visits, close = (f) => f }) => {
                 size="sm"
                 onClick={(i) =>
                   history.push(
-                    `/me/doctor/visits/new-summary/${it.patient_id}?page_type=preview&visit_id=${it._id}&section=${section}`
+                    `/me/doctors/visits/new-summary/${it.patient_id}?page_type=preview&visit_id=${it._id}&section=${section}`
                   )
                 }
               >

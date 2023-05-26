@@ -82,7 +82,7 @@ function PatientsAssignedToDoc() {
             className="mr-1"
             onClick={() => {
               history.push(
-                `/me/doctor/visit-preview/${item.id}?page_type=preview&visit_id=&patient_id=${item.id}&allocation_id=${item.allocation_id}&page_type=preview&section=disabled&patientType=${section}`
+                `/me/doctors/visit-preview/${item.id}?page_type=preview&visit_id=&patient_id=${item.id}&allocation_id=${item.allocation_id}&page_type=preview&section=disabled&patientType=${section}`
               );
             }}
           >
@@ -96,9 +96,9 @@ function PatientsAssignedToDoc() {
                 type: SET_CURRENT_DOCTOR_CONSULTATION_PATIENT,
                 payload: item,
               });
-              // history.push(`/me/doctor/patients/view/${item.patientId}/diagnoses`)
+              // history.push(`/me/doctors/patients/view/${item.patientId}/diagnoses`)
               history.push(
-                `/me/doctor/visits/new-summary/${item.id}?consultation_type=assignment&assignment_id=${item.id}&section=disabled&patientType=${section}`
+                `/me/doctors/visits/new-summary/${item.id}?consultation_type=assignment&assignment_id=${item.id}&section=disabled&patientType=${section}`
               );
               dispatch({ type: SET_SELECTED_PATIENT, payload: item });
               dispatch({ type: SET_PATIENT_FORM_MODE, payload: "VIEW" });
@@ -169,9 +169,9 @@ function PatientsAssignedToDoc() {
 //           type: SET_CURRENT_DOCTOR_CONSULTATION_PATIENT,
 //           payload: item,
 //         })
-//         // history.push(`/me/doctor/patients/view/${item.patientId}/diagnoses`)
+//         // history.push(`/me/doctors/patients/view/${item.patientId}/diagnoses`)
 //         history.push(
-//           `/me/doctor/visits/new-summary/${item.id}?consultation_type=assignment&assignment_id=${item.id}&section=disabled`,
+//           `/me/doctors/visits/new-summary/${item.id}?consultation_type=assignment&assignment_id=${item.id}&section=disabled`,
 //         )
 //         dispatch({ type: SET_SELECTED_PATIENT, payload: item })
 //         dispatch({ type: SET_PATIENT_FORM_MODE, payload: 'VIEW' })

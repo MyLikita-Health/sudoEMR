@@ -149,7 +149,7 @@ class NewPatient extends React.PureComponent {
           this.resetForm();
           _customNotify("Patient Saved!");
           this.props.history.push(
-            `/me/doctor/patients/view/${patient.patientHospitalId}/diagnoses`
+            `/me/doctors/patients/view/${patient.patientHospitalId}/diagnoses`
           );
         },
         () => this.setState({ submitting: false })
@@ -198,7 +198,7 @@ class NewPatient extends React.PureComponent {
     const { mode } = this.props;
     return (
       <>
-        {this.props.location.pathname === "/me/doctor/patients/new" && (
+        {this.props.location.pathname === "/me/doctors/patients/new" && (
           <BackButton />
         )}
 
@@ -267,7 +267,7 @@ class NewPatient extends React.PureComponent {
             body="All form data will be lost, Exit?"
             isOpen={warningIsOpen}
             toggle={toggleWarningModal}
-            okay={() => this.props.history.push("/me/doctor/patients")}
+            okay={() => this.props.history.push("/me/doctors/patients")}
             // cancel={() => toggleWarningModal()}
           />
         </Scrollbars>
@@ -290,8 +290,5 @@ function mapDispatchToProps(dispatch) {
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(NewPatient);

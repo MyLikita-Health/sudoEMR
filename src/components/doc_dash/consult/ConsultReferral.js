@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { FaPlus } from 'react-icons/fa';
+import React, { Component } from "react";
+import { FaPlus } from "react-icons/fa";
 
-import { Card, Table } from 'reactstrap';
+import { Card, Table } from "reactstrap";
 
 class ConsultReferral extends Component {
   render() {
@@ -11,7 +11,7 @@ class ConsultReferral extends Component {
           <button
             className="btn btn-outline-dark"
             onClick={() => {
-              this.props.history.push('/me/doctor/patients/refer');
+              this.props.history.push("/me/doctors/patients/refer");
             }}
           >
             <FaPlus size={20} className="mr-1" />

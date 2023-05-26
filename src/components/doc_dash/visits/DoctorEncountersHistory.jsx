@@ -73,7 +73,7 @@ export default function DoctorEncountersHistory() {
             color="primary"
             onClick={() =>
               history.push(
-                `/me/doctor/visit-preview/${selected.patient_id}?page_type=preview&visit_id=&section=disabled`
+                `/me/doctors/visit-preview/${selected.patient_id}?page_type=preview&visit_id=&section=disabled`
               )
             }
           >

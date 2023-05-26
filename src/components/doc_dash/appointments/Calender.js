@@ -61,7 +61,7 @@ class Calendar extends React.Component {
       window.confirm("Would you like to add an event to " + arg.dateStr + " ?")
     ) {
       this.props.history.push(
-        `/me/doctor/appointments/new?date=${moment(arg.dateStr).format("LLL")}`
+        `/me/doctors/appointments/new?date=${moment(arg.dateStr).format("LLL")}`
       );
     }
   };

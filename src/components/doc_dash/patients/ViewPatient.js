@@ -110,61 +110,61 @@ function ViewPatient({ match }) {
           <Nav tabs>
             <Tab
               active={
-                location.pathname === `/me/doctor/patients/view/${patientId}`
+                location.pathname === `/me/doctors/patients/view/${patientId}`
               }
               text="General Information"
               icon={<FaUserCog size={22} className="mr-md-1" />}
               onClick={() =>
-                history.push(`/me/doctor/patients/view/${patientId}`)
+                history.push(`/me/doctors/patients/view/${patientId}`)
               }
               isMobile={isMobile}
             />
             {/* <Tab
               active={
                 location.pathname ===
-                `/me/doctor/patients/view/${patientId}/nextofkin`
+                `/me/doctors/patients/view/${patientId}/nextofkin`
               }
               text="Next of Kin"
               icon={<IoIosPeople size={22} className="mr-md-1" />}
               onClick={() =>
-                history.push(`/me/doctor/patients/view/${patientId}/nextofkin`)
+                history.push(`/me/doctors/patients/view/${patientId}/nextofkin`)
               }
               isMobile={isMobile}
             /> */}
             <Tab
               active={
                 location.pathname ===
-                `/me/doctor/patients/view/${patientId}/diagnoses`
+                `/me/doctors/patients/view/${patientId}/diagnoses`
               }
               text="Consultation Records"
               icon={<FaClipboardList size={22} className="mr-md-1" />}
               onClick={() =>
-                history.push(`/me/doctor/patients/view/${patientId}/diagnoses`)
+                history.push(`/me/doctors/patients/view/${patientId}/diagnoses`)
               }
               isMobile={isMobile}
             />
             <Tab
               active={
                 location.pathname ===
-                `/me/doctor/patients/view/${patientId}/notes`
+                `/me/doctors/patients/view/${patientId}/notes`
               }
               text="Notes"
               icon={<FaCommentMedical size={22} className="mr-md-1" />}
               onClick={() =>
-                history.push(`/me/doctor/patients/view/${patientId}/notes`)
+                history.push(`/me/doctors/patients/view/${patientId}/notes`)
               }
               isMobile={isMobile}
             />
             <Tab
               active={
                 location.pathname ===
-                `/me/doctor/patients/view/${patientId}/appointments`
+                `/me/doctors/patients/view/${patientId}/appointments`
               }
               text="Appointments"
               icon={<FaCalendar size={22} className="mr-md-1" />}
               onClick={() =>
                 history.push(
-                  `/me/doctor/patients/view/${patientId}/appointments`
+                  `/me/doctors/patients/view/${patientId}/appointments`
                 )
               }
               isMobile={isMobile}
@@ -173,25 +173,25 @@ function ViewPatient({ match }) {
             {/* <Tab
               active={
                 location.pathname ===
-                `/me/doctor/patients/view/${patientId}/chat`
+                `/me/doctors/patients/view/${patientId}/chat`
               }
               text="Chat"
               icon={<BsChat size={22} className="mr-md-1" />}
               onClick={() =>
-                history.push(`/me/doctor/patients/view/${patientId}/chat`)
+                history.push(`/me/doctors/patients/view/${patientId}/chat`)
               }
               isMobile={isMobile}
             /> */}
             <Tab
               active={
                 location.pathname ===
-                `/me/doctor/patients/view/${patientId}/medications`
+                `/me/doctors/patients/view/${patientId}/medications`
               }
               text="Medications"
               icon={<FaCapsules size={22} className="mr-md-1" />}
               onClick={() =>
                 history.push(
-                  `/me/doctor/patients/view/${patientId}/medications`
+                  `/me/doctors/patients/view/${patientId}/medications`
                 )
               }
               isMobile={isMobile}
@@ -199,36 +199,36 @@ function ViewPatient({ match }) {
             <Tab
               active={
                 location.pathname ===
-                `/me/doctor/patients/view/${patientId}/lab`
+                `/me/doctors/patients/view/${patientId}/lab`
               }
               text="Lab Results"
               icon={<GiTestTubes size={22} className="mr-md-1" />}
               onClick={() =>
-                history.push(`/me/doctor/patients/view/${patientId}/lab`)
+                history.push(`/me/doctors/patients/view/${patientId}/lab`)
               }
               isMobile={isMobile}
             />
             <Tab
               active={
                 location.pathname ===
-                `/me/doctor/patients/view/${patientId}/contact`
+                `/me/doctors/patients/view/${patientId}/contact`
               }
               text={"Contact"}
               icon={<MdCall size={22} className="mr-md-1" />}
               onClick={() =>
-                history.push(`/me/doctor/patients/view/${patientId}/contact`)
+                history.push(`/me/doctors/patients/view/${patientId}/contact`)
               }
               isMobile={isMobile}
             />
             {/* <Tab
               active={
                 location.pathname ===
-                `/me/doctor/patients/view/${patientId}/referral`
+                `/me/doctors/patients/view/${patientId}/referral`
               }
               text="Consult/Referral"
               icon={<RiUserShared2Line size={22} className="mr-md-1" />}
               onClick={() =>
-                history.push(`/me/doctor/patients/view/${patientId}/referral`)
+                history.push(`/me/doctors/patients/view/${patientId}/referral`)
               }
               isMobile={isMobile}
             /> */}
@@ -237,40 +237,40 @@ function ViewPatient({ match }) {
         <CardBody>
           <Scrollbars style={{ height: "70vh" }} autoHide>
             <Switch>
-              <Route exact path="/me/doctor/patients/view/:patientId">
+              <Route exact path="/me/doctors/patients/view/:patientId">
                 <NewPatient patient={selectedPatient} />
               </Route>
-              {/* <Route exact path="/me/doctor/patients/view/:patientId/nextofkin">
+              {/* <Route exact path="/me/doctors/patients/view/:patientId/nextofkin">
                 <NextOfKinInformation patient={selectedPatient} />
               </Route> */}
-              <Route path="/me/doctor/patients/view/:patientId/diagnoses">
+              <Route path="/me/doctors/patients/view/:patientId/diagnoses">
                 <Diagnosis patient={selectedPatient} />
               </Route>
-              <Route exact path="/me/doctor/patients/view/:patientId/notes">
+              <Route exact path="/me/doctors/patients/view/:patientId/notes">
                 <Notes patient={selectedPatient} />
               </Route>
               <Route
                 exact
-                path="/me/doctor/patients/view/:patientId/appointments"
+                path="/me/doctors/patients/view/:patientId/appointments"
               >
                 <AppointmentList patient={selectedPatient} />
               </Route>
-              <Route exact path="/me/doctor/patients/view/:patientId/contact">
+              <Route exact path="/me/doctors/patients/view/:patientId/contact">
                 <Contact patient={selectedPatient} />
               </Route>
-              <Route exact path="/me/doctor/patients/view/:patientId/chat">
+              <Route exact path="/me/doctors/patients/view/:patientId/chat">
                 <ChatContainer patient={selectedPatient} />
               </Route>
-              <Route exact path="/me/doctor/patients/view/:patientId/lab">
+              <Route exact path="/me/doctors/patients/view/:patientId/lab">
                 <LabList patient={selectedPatient} />
               </Route>
               <Route
                 exact
-                path="/me/doctor/patients/view/:patientId/medications"
+                path="/me/doctors/patients/view/:patientId/medications"
               >
                 <Medications />
               </Route>
-              <Route exact path="/me/doctor/patients/view/:patientId/referral">
+              <Route exact path="/me/doctors/patients/view/:patientId/referral">
                 <Referral patient={selectedPatient} />
               </Route>
             </Switch>

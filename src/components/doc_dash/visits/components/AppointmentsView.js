@@ -19,7 +19,7 @@ function AppointmentsView() {
       <Calender
         calendarEvents={appointments}
         onEventClick={(item) => {
-          //   history.push(`/me/doctor/appointments/edit/${item._id}`);
+          //   history.push(`/me/doctors/appointments/edit/${item._id}`);
           setAppointment(item);
         }}
       />

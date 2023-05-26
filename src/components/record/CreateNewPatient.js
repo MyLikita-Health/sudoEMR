@@ -606,7 +606,7 @@ const CreateNewPatient = () => {
         body="All form data will be lost, Exit?"
         isOpen={warningIsOpen}
         toggle={toggleWarningModal}
-        okay={() => history.push("/me/doctor/patients")}
+        okay={() => history.push("/me/doctors/patients")}
         // cancel={() => toggleWarningModal()}
       />
       {/* </Scrollbars> */}

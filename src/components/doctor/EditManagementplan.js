@@ -90,9 +90,7 @@ class EditManagementplan extends Component {
             className="btn btn-success"
             onClick={() =>
               history.push(
-                `/me/doctor/appointments/new/${
-                  this.props.patient.patientHospitalId
-                }/followup`
+                `/me/doctors/appointments/new/${this.props.patient.patientHospitalId}/followup`
               )
             }
           >
@@ -190,17 +188,13 @@ class EditManagementplan extends Component {
             prev={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/diagnosis/provisionaldiagnosis`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/diagnosis/provisionaldiagnosis`
               );
             }}
             next={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/management/prescription`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/management/prescription`
               );
             }}
           />
@@ -219,8 +213,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(EditManagementplan);

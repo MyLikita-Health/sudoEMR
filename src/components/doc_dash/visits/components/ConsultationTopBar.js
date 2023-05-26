@@ -33,7 +33,7 @@ function ConsultationTopBar() {
         }
         onClick={() =>
           history.push(
-            `/me/doctor/visits/new-summary/view?section=assigned-patients`
+            `/me/doctors/visits/new-summary/view?section=assigned-patients`
           )
         }
       >
@@ -44,7 +44,9 @@ function ConsultationTopBar() {
         color={section === "in-patients" ? "warning" : "primary"}
         className="mx-1"
         onClick={() =>
-          history.push(`/me/doctor/visits/new-summary/view?section=in-patients`)
+          history.push(
+            `/me/doctors/visits/new-summary/view?section=in-patients`
+          )
         }
       >
         <span className="font-weight-bold">In Patients</span>
@@ -54,7 +56,7 @@ function ConsultationTopBar() {
         color={section === "out-patients" ? "warning" : "primary"}
         onClick={() =>
           history.push(
-            `/me/doctor/visits/new-summary/view?section=out-patients`
+            `/me/doctors/visits/new-summary/view?section=out-patients`
           )
         }
       >
