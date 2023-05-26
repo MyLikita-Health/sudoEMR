@@ -1,9 +1,9 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Card, CardText, ListGroup, CardTitle } from 'reactstrap'
-import { Scrollbars } from 'react-custom-scrollbars'
+import React from "react";
+import { connect } from "react-redux";
+import { Card, CardText, ListGroup, CardTitle } from "reactstrap";
+import { Scrollbars } from "react-custom-scrollbars";
 // import { LoadingXsm } from '../loading'
-import { MdCheck } from 'react-icons/md'
+import { MdCheck } from "react-icons/md";
 // import { saveDiagnosis } from '../../redux/actions/doctor'
 // import moment from "moment";
 import {
@@ -11,10 +11,10 @@ import {
   _warningNotify,
   checkEmpty,
   getAgeFromDOB,
-} from '../utils/helpers'
-import { useHistory } from 'react-router'
-import LabRequestTable  from './lab-test/LabRequestTable'
-import CustomButton from '../comp/components/Button'
+} from "../utils/helpers";
+import { useHistory } from "react-router";
+import LabRequestTable from "./lab-test/LabRequestTable";
+import CustomButton from "../comp/components/Button";
 // import { saveDiagnosis } from '../../redux/actions/doctor'
 // import { LabRequestTable } from "./NewRadiologyInvestigations";
 // import VideoChat from "../doc_dash/video-chat/VideoChat";
@@ -37,7 +37,7 @@ const PreviewForm = ({
   savingDiagnosis,
   submitDiagnosis,
 }) => {
-  const history = useHistory()
+  const history = useHistory();
   // const sameYear = moment().get("year") === moment(patient.dob).get("year");
   // const sameMonth = moment().get("month") === moment(patient.dob).get("month");
   return (
@@ -128,15 +128,14 @@ const PreviewForm = ({
         onClick={() =>
           submitDiagnosis(
             () => {
-              _customNotify('Visit record saved!')
+              _customNotify("Visit record saved!");
               history.push(
-                `/me/doctor/patients/view/${patient.patientHospitalId}/diagnoses`,
-              )
-              
+                `/me/doctors/patients/view/${patient.patientHospitalId}/diagnoses`
+              );
             },
             () => {
-              _warningNotify('Error saving visit, please try again later')
-            },
+              _warningNotify("Error saving visit, please try again later");
+            }
           )
         }
         color="success"
@@ -148,11 +147,11 @@ const PreviewForm = ({
         <MdCheck size={16} className="ml-1" />
       </CustomButton>
     </Card>
-  )
-}
+  );
+};
 
 export function PresentingComplaintsView({ complaints = [] }) {
-  if (!complaints.length) return null
+  if (!complaints.length) return null;
   return (
     <Card className="p-1 mt-1">
       <CardText tag="h6">Presenting Complaints</CardText>
@@ -166,11 +165,11 @@ export function PresentingComplaintsView({ complaints = [] }) {
         ))}
       </ListGroup>
     </Card>
-  )
+  );
 }
 
 export function HistoryView({ historyOfPComplaints = {} }) {
-  if (checkEmpty(historyOfPComplaints)) return null
+  if (checkEmpty(historyOfPComplaints)) return null;
   return (
     <Card className="p-1 mt-1">
       <CardText tag="h6">History of Presenting Complaints</CardText>
@@ -257,7 +256,7 @@ export function HistoryView({ historyOfPComplaints = {} }) {
         ) : null}
       </ListGroup>
     </Card>
-  )
+  );
 }
 
 export function SystemExamView({ systemExam = {} }) {
@@ -371,11 +370,11 @@ export function SystemExamView({ systemExam = {} }) {
         {systemExam.LLL ? <span>LLL: {systemExam.LLL}</span> : null}
       </ListGroup>
     </Card>
-  )
+  );
 }
 
 export function VitalSignsView({ vitalSigns = {} }) {
-  if (checkEmpty(vitalSigns)) return null
+  if (checkEmpty(vitalSigns)) return null;
   return (
     <Card className="p-1 mt-1">
       <CardText tag="h6">Vital Signs</CardText>
@@ -398,11 +397,11 @@ export function VitalSignsView({ vitalSigns = {} }) {
         ) : null}
       </ListGroup>
     </Card>
-  )
+  );
 }
 
 export function ProblemsView({ problems = [] }) {
-  if (!problems.length) return null
+  if (!problems.length) return null;
   return (
     <Card className="p-1 mt-1">
       <CardText tag="h6">Problems</CardText>
@@ -414,11 +413,11 @@ export function ProblemsView({ problems = [] }) {
         ))}
       </ListGroup>
     </Card>
-  )
+  );
 }
 
 export function ProvisionalDiagnosisView({ provisionalDiagnosis = [] }) {
-  if (!provisionalDiagnosis.length) return null
+  if (!provisionalDiagnosis.length) return null;
   return (
     <Card className="p-1 mt-1">
       <CardText tag="h6">Provisional Diagnosis</CardText>
@@ -430,11 +429,11 @@ export function ProvisionalDiagnosisView({ provisionalDiagnosis = [] }) {
         ))}
       </ListGroup>
     </Card>
-  )
+  );
 }
 
 export function Athropometry({ athropometry = {} }) {
-  if (checkEmpty(athropometry)) return null
+  if (checkEmpty(athropometry)) return null;
   return (
     <Card className="p-1 mt-1">
       <CardText tag="h6">Athropometry</CardText>
@@ -451,11 +450,11 @@ export function Athropometry({ athropometry = {} }) {
         {athropometry.muac ? <span>MUAC: {athropometry.muac}</span> : null}
       </ListGroup>
     </Card>
-  )
+  );
 }
 
 export function ManagementPlan({ managementPlan = {} }) {
-  if (checkEmpty(managementPlan)) return null
+  if (checkEmpty(managementPlan)) return null;
   return (
     <Card className="p-1 mt-1">
       <CardText tag="h6">Management Plan</CardText>
@@ -468,11 +467,11 @@ export function ManagementPlan({ managementPlan = {} }) {
         ) : null}
       </ListGroup>
     </Card>
-  )
+  );
 }
 
 export function PrescriptionsView({ prescriptionRequest = [] }) {
-  if (!prescriptionRequest.length) return null
+  if (!prescriptionRequest.length) return null;
   return (
     <Card className="p-2 mt-1">
       <CardText tag="h6">Prescriptions</CardText>
@@ -486,18 +485,18 @@ export function PrescriptionsView({ prescriptionRequest = [] }) {
             } every ${prescription.frequency} for ${prescription.duration} ${
               prescription.period
             }(s) ${
-              prescription.additionalInfo ? prescription.additionalInfo : ''
+              prescription.additionalInfo ? prescription.additionalInfo : ""
             }`}
             {/* // </li> */}
           </div>
         ))}
       </ListGroup>
     </Card>
-  )
+  );
 }
 
 export function LaboratoryInvestigationView({ labInvestigations = [] }) {
-  if (!labInvestigations.length) return null
+  if (!labInvestigations.length) return null;
   return (
     <Card className="p-1 mt-1">
       <CardText tag="h6">Laboratory Investigations</CardText>
@@ -511,11 +510,14 @@ export function LaboratoryInvestigationView({ labInvestigations = [] }) {
         ))}
       </ListGroup>
     </Card>
-  )
+  );
 }
 
-export function DressingRequestView({ dressingRequest = '', nursingRequest='' }) {
-  if (checkEmpty(dressingRequest)) return null
+export function DressingRequestView({
+  dressingRequest = "",
+  nursingRequest = "",
+}) {
+  if (checkEmpty(dressingRequest)) return null;
   return (
     <Card className="p-1 mt-1">
       <CardText tag="h6">Nursing/Dressing Request</CardText>
@@ -528,7 +530,7 @@ export function DressingRequestView({ dressingRequest = '', nursingRequest='' })
         ) : null}
       </ListGroup>
     </Card>
-  )
+  );
 }
 
 export default connect(
@@ -552,5 +554,5 @@ export default connect(
   (dispatch) => ({
     // submitDiagnosis: (cb, err) => dispatch(saveDiagnosis(cb, err)),
     submitDiagnosis: (cb, err) => dispatch(),
-  }),
-)(PreviewForm)
+  })
+)(PreviewForm);

@@ -3,9 +3,7 @@ import { FaCalendarPlus } from "react-icons/fa";
 import { iconClass } from "./NewAppointment2";
 import { useHistory } from "react-router";
 // import { connect } from 'react-redux';
-import {
-  getPatientAppointments,
-} from "../actions/appointmentsAction";
+import { getPatientAppointments } from "../actions/appointmentsAction";
 import { Card, CardText } from "reactstrap";
 import moment from "moment";
 import { FiChevronRight, FiClock } from "react-icons/fi";
@@ -14,7 +12,7 @@ import { FiChevronRight, FiClock } from "react-icons/fi";
 function AppointmentList({ patient }) {
   const history = useHistory();
   // const { facilityId, id } = useSelector((state) => state.auth.user);
-  const [data, ] = useState([]);
+  const [data] = useState([]);
   // let obj = {
   //   user_id: id,
   //   patientId: patient.patientHospitalId,
@@ -37,7 +35,7 @@ function AppointmentList({ patient }) {
           className={`btn btn-outline-dark ${iconClass}`}
           onClick={() =>
             history.push(
-              `/me/doctor/appointments/new/${patient.patientHospitalId}`
+              `/me/doctors/appointments/new/${patient.patientHospitalId}`
             )
           }
         >
@@ -60,7 +58,7 @@ function AppointmentList({ patient }) {
               cursor: "pointer",
             }}
             onClick={() => {
-              history.push(`/me/doctor/appointments/edit/${item._id}`);
+              history.push(`/me/doctors/appointments/edit/${item._id}`);
               // setAppointment(item);
             }}
           >

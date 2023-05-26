@@ -1,15 +1,15 @@
-import React from 'react';
-import { compose } from 'redux';
-import { withRouter } from 'react-router-dom';
-import { FaDiagnoses, FaPrescription, FaNotesMedical } from 'react-icons/fa';
-import { MdHistory } from 'react-icons/md';
-import { connect } from 'react-redux';
-import { setTab } from '../../../redux/actions/doctor';
+import React from "react";
+import { compose } from "redux";
+import { withRouter } from "react-router-dom";
+import { FaDiagnoses, FaPrescription, FaNotesMedical } from "react-icons/fa";
+import { MdHistory } from "react-icons/md";
+import { connect } from "react-redux";
+import { setTab } from "../../../redux/actions/doctor";
 
 let itemStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'center',
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
 };
 
 const DocNav = ({ setTab, history, location }) => {
@@ -20,13 +20,13 @@ const DocNav = ({ setTab, history, location }) => {
           <div
             style={itemStyle}
             onClick={() => {
-              history.push('/me/doctor/patient/history');
-              setTab('PcomplaintsForm');
+              history.push("/me/doctors/patient/history");
+              setTab("PcomplaintsForm");
             }}
             className={`step ${
-              location.pathname === '/me/doctor/patient/history'
-                ? 'current'
-                : ''
+              location.pathname === "/me/doctors/patient/history"
+                ? "current"
+                : ""
             }`}
           >
             <MdHistory size={22} style={{ marginRight: 5 }} />
@@ -36,13 +36,13 @@ const DocNav = ({ setTab, history, location }) => {
           <div
             style={itemStyle}
             onClick={() => {
-              history.push('/me/doctor/patient/examination');
-              setTab('CreateVitalSigns');
+              history.push("/me/doctors/patient/examination");
+              setTab("CreateVitalSigns");
             }}
             className={`step ${
-              location.pathname === '/me/doctor/patient/examination'
-                ? 'current'
-                : ''
+              location.pathname === "/me/doctors/patient/examination"
+                ? "current"
+                : ""
             }`}
           >
             <FaNotesMedical size={22} style={{ marginRight: 5 }} />
@@ -51,13 +51,13 @@ const DocNav = ({ setTab, history, location }) => {
           <div
             style={itemStyle}
             onClick={() => {
-              history.push('/me/doctor/patient/diagnosis');
-              setTab('NewProblems');
+              history.push("/me/doctors/patient/diagnosis");
+              setTab("NewProblems");
             }}
             className={`step ${
-              location.pathname === '/me/doctor/patient/diagnosis'
-                ? 'current'
-                : ''
+              location.pathname === "/me/doctors/patient/diagnosis"
+                ? "current"
+                : ""
             }`}
           >
             <FaDiagnoses size={22} style={{ marginRight: 5 }} />
@@ -67,13 +67,13 @@ const DocNav = ({ setTab, history, location }) => {
           <div
             style={itemStyle}
             onClick={() => {
-              history.push('/me/doctor/patient/management');
-              setTab('EditManagementplan');
+              history.push("/me/doctors/patient/management");
+              setTab("EditManagementplan");
             }}
             className={`step ${
-              location.pathname === '/me/doctor/patient/management'
-                ? 'current'
-                : ''
+              location.pathname === "/me/doctors/patient/management"
+                ? "current"
+                : ""
             }`}
           >
             <FaPrescription size={22} style={{ marginRight: 5 }} />
@@ -91,10 +91,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default compose(
-  withRouter,
-  connect(
-    null,
-    mapDispatchToProps,
-  ),
-)(DocNav);
+export default compose(withRouter, connect(null, mapDispatchToProps))(DocNav);

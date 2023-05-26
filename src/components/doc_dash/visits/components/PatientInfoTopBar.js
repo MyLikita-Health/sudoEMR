@@ -34,7 +34,7 @@ function PatientInfoTopBar({
             disabled={!sheetIsValid}
             className="mr-2"
             onClick={() =>
-              history.push(`/me/doctor/past-records/${patientInfo.patientId}`)
+              history.push(`/me/doctors/past-records/${patientInfo.patientId}`)
             }
           >
             <FaPagelines className="mr-2" size={22} />
@@ -45,7 +45,7 @@ function PatientInfoTopBar({
             loading={loading}
             onClick={submit}
             disabled={!sheetIsValid}
-            // onClick={() => history.push(`/me/doctor/visits/new/${patientId}`)}
+            // onClick={() => history.push(`/me/doctors/visits/new/${patientId}`)}
           >
             <FaSave className="mr-2" size={22} />
             <span className="font-weight-bold">Submit now</span>

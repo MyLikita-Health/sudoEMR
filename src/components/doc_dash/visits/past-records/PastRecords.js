@@ -88,7 +88,7 @@ function PastRecords() {
         className={`btn btn-default btn-md`}
         onClick={() =>
           history.push(
-            `/me/doctor/visit-preview/${patientId}?page_type=preview&visit_id=&section=disabled`
+            `/me/doctors/visit-preview/${patientId}?page_type=preview&visit_id=&section=disabled`
           )
         }
       >

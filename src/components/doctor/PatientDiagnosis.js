@@ -26,109 +26,109 @@ const TabBody = ({ patient }) => {
     <Switch>
       <Redirect
         exact
-        from="/me/doctor/visits/new/:patientId"
-        to="/me/doctor/visits/new/:patientId/history"
+        from="/me/doctors/visits/new/:patientId"
+        to="/me/doctors/visits/new/:patientId/history"
       />
       <Redirect
         exact
-        from="/me/doctor/visits/new/:patientId/history"
-        to="/me/doctor/visits/new/:patientId/history/presentingcomplaints"
+        from="/me/doctors/visits/new/:patientId/history"
+        to="/me/doctors/visits/new/:patientId/history/presentingcomplaints"
       />
       <Route
-        path="/me/doctor/visits/new/:patientId/history/presentingcomplaints"
+        path="/me/doctors/visits/new/:patientId/history/presentingcomplaints"
         exact
       >
         <PcomplaintsForm patient={patient} />
       </Route>
 
       <Route
-        path="/me/doctor/visits/new/:patientId/history/previousmedicalhistory"
+        path="/me/doctors/visits/new/:patientId/history/previousmedicalhistory"
         exact
       >
         <HistoryForm patient={patient} />
       </Route>
 
-      <Route path="/me/doctor/visits/new/:patientId/history/historyform" exact>
+      <Route path="/me/doctors/visits/new/:patientId/history/historyform" exact>
         <PreviousMedicalHistoryForm patient={patient} />
       </Route>
 
       <Redirect
         exact
-        from="/me/doctor/visits/new/:patientId/examination"
-        to="/me/doctor/visits/new/:patientId/examination/systemexam"
+        from="/me/doctors/visits/new/:patientId/examination"
+        to="/me/doctors/visits/new/:patientId/examination/systemexam"
       />
 
       <Route
-        path="/me/doctor/visits/new/:patientId/examination/systemexam"
+        path="/me/doctors/visits/new/:patientId/examination/systemexam"
         exact
       >
         <SystemExaminationForm patient={patient} />
       </Route>
 
       <Route
-        path="/me/doctor/visits/new/:patientId/examination/vitalsigns"
+        path="/me/doctors/visits/new/:patientId/examination/vitalsigns"
         exact
       >
         <CreateVitalSigns patient={patient} />
       </Route>
       <Redirect
         exact
-        from="/me/doctor/visits/new/:patientId/diagnosis"
-        to="/me/doctor/visits/new/:patientId/diagnosis/problems"
+        from="/me/doctors/visits/new/:patientId/diagnosis"
+        to="/me/doctors/visits/new/:patientId/diagnosis/problems"
       />
-      <Route path="/me/doctor/visits/new/:patientId/diagnosis/problems" exact>
+      <Route path="/me/doctors/visits/new/:patientId/diagnosis/problems" exact>
         <NewProblems patient={patient} />
       </Route>
 
       <Redirect
         exact
-        from="/me/doctor/visits/new/:patientId/management"
-        to="/me/doctor/visits/new/:patientId/management/plan"
+        from="/me/doctors/visits/new/:patientId/management"
+        to="/me/doctors/visits/new/:patientId/management/plan"
       />
 
       <Route
-        path="/me/doctor/visits/new/:patientId/management/radiologyinvestigations"
+        path="/me/doctors/visits/new/:patientId/management/radiologyinvestigations"
         exact
       >
         <NewRadiologyInvestigations patient={patient} />
       </Route>
 
       <Route
-        path="/me/doctor/visits/new/:patientId/diagnosis/provisionaldiagnosis"
+        path="/me/doctors/visits/new/:patientId/diagnosis/provisionaldiagnosis"
         exact
       >
         <NewProvisionalDiagnosis patient={patient} />
       </Route>
 
       <Route
-        path="/me/doctor/visits/new/:patientId/examination/athropometry"
+        path="/me/doctors/visits/new/:patientId/examination/athropometry"
         exact
       >
         <CreateAthropometry patient={patient} />
       </Route>
 
-      <Route path="/me/doctor/visits/new/:patientId/management/plan" exact>
+      <Route path="/me/doctors/visits/new/:patientId/management/plan" exact>
         <EditManagementplan patient={patient} />
       </Route>
 
       <Route
-        path="/me/doctor/visits/new/:patientId/management/prescription"
+        path="/me/doctors/visits/new/:patientId/management/prescription"
         exact
       >
         <EditPrescriptionRequest patient={patient} />
       </Route>
 
       <Route
-        path="/me/doctor/visits/new/:patientId/management/observation"
+        path="/me/doctors/visits/new/:patientId/management/observation"
         exact
       >
         <EditObservationRequest patient={patient} />
       </Route>
 
-      <Route path="/me/doctor/visits/new/:patientId/management/dressing" exact>
+      <Route path="/me/doctors/visits/new/:patientId/management/dressing" exact>
         <EditDressingRequest patient={patient} />
       </Route>
-      <Route path="/me/doctor/visits/new/:patientId/management/view" exact>
+      <Route path="/me/doctors/visits/new/:patientId/management/view" exact>
         <EditView patient={patient} />
       </Route>
     </Switch>

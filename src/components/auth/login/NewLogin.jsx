@@ -36,31 +36,15 @@ class NewLogin extends PureComponent {
       formData: Object.assign({}, prevState.formData, { accountType: value }),
     }))
 
-  loginSuccess = () => {
-    const { accountType } = this.state.formData
+  loginSuccess = (data) => {
+    alert(JSON.stringify(data.user.accessTo[0].toLowerCase()))
     this.setState(
       {
         loading: false,
         formData: { username: '', password: '' },
       },
       () => {
-        console.log(accountType)
-        switch (accountType) {
-          case accountTypes.PATIENT: {
-            this.props.history.push('/user')
-            break
-          }
-          case accountTypes.DOCTOR: {
-            this.props.history.push('/me/doctor')
-            break
-          }
-          case accountTypes.OTHER: {
-            this.props.history.push(`/me/records`)
-            break
-          }
-          default:
-            return null
-        }
+        this.props.history.push(`/me/${data.user.accessTo[0].toLowerCase()}`)
       },
     )
   }

@@ -20,7 +20,7 @@ const DocNav = ({ patient }) => {
           <div
             style={itemStyle}
             onClick={() => {
-              history.push(`/me/doctor/visits/new/${patientId}/history`);
+              history.push(`/me/doctors/visits/new/${patientId}/history`);
             }}
             className={`step ${
               location.pathname.includes("history") ? "current" : ""
@@ -33,7 +33,7 @@ const DocNav = ({ patient }) => {
           <div
             style={itemStyle}
             onClick={() => {
-              history.push(`/me/doctor/visits/new/${patientId}/examination`);
+              history.push(`/me/doctors/visits/new/${patientId}/examination`);
             }}
             className={`step ${
               location.pathname.includes("examination") ? "current" : ""
@@ -45,7 +45,7 @@ const DocNav = ({ patient }) => {
           <div
             style={itemStyle}
             onClick={() => {
-              history.push(`/me/doctor/visits/new/${patientId}/diagnosis`);
+              history.push(`/me/doctors/visits/new/${patientId}/diagnosis`);
             }}
             className={`step ${
               location.pathname.includes("diagnosis") ? "current" : ""
@@ -58,7 +58,7 @@ const DocNav = ({ patient }) => {
           <div
             style={itemStyle}
             onClick={() => {
-              history.push(`/me/doctor/visits/new/${patientId}/management`);
+              history.push(`/me/doctors/visits/new/${patientId}/management`);
             }}
             className={`step ${
               location.pathname.includes("management") ? "current" : ""

@@ -14,17 +14,17 @@ const ExaminationTabs = ({ patientId }) => {
           <TabItem
             title="Vital Signs"
             done={checkEmpty(vitalSigns)}
-            path={`/me/doctor/visits/new/${patientId}/examination/vitalsigns`}
+            path={`/me/doctors/visits/new/${patientId}/examination/vitalsigns`}
           />
           <TabItem
             title="System Examination"
             done={checkEmpty(systemExam)}
-            path={`/me/doctor/visits/new/${patientId}/examination/systemexam`}
+            path={`/me/doctors/visits/new/${patientId}/examination/systemexam`}
           />
           <TabItem
             title="Athropometry"
             done={checkEmpty(athropometry)}
-            path={`/me/doctor/visits/new/${patientId}/examination/athropometry`}
+            path={`/me/doctors/visits/new/${patientId}/examination/athropometry`}
           />
         </div>
       </div>

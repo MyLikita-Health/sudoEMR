@@ -1,32 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { compose } from 'redux';
-import { Jumbotron, Container, ListGroupItem } from 'reactstrap';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import PcomplaintsForm from './PcomplaintsForm';
-import HistoryForm from './HistoryForm';
-import SystemExaminationForm from './SysExaminationEdit';
-import CreateVitalSigns from './CreateVitalSigns';
-import NewProblems from './NewProblems';
-import NewRadiologyInvestigations from './NewRadiologyInvestigations';
-import NewProvisionalDiagnosis from './NewProvisionalDiagnosis';
-import CreateAthropometry from './CreateAthropometry';
-import EditManagementplan from './EditManagementplan';
-import EditPrescriptionRequest from './EditPrescriptionRequest';
-import EditDressingRequest from './EditDressingRequest';
-import EditObservationRequest from './EditObservationRequest';
-import PreviousMedicalHistoryForm from './PreviousMedicalHistoryForm';
-import { FaNotesMedical } from 'react-icons/fa';
-import { setTab } from '../../redux/actions/doctor';
-import DocNav from './components/nav-bar';
-import './components/test.css';
-import './components/test2.css';
+import React, { useState, useEffect } from "react";
+import { compose } from "redux";
+import { Jumbotron, Container, ListGroupItem } from "reactstrap";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import PcomplaintsForm from "./PcomplaintsForm";
+import HistoryForm from "./HistoryForm";
+import SystemExaminationForm from "./SysExaminationEdit";
+import CreateVitalSigns from "./CreateVitalSigns";
+import NewProblems from "./NewProblems";
+import NewRadiologyInvestigations from "./NewRadiologyInvestigations";
+import NewProvisionalDiagnosis from "./NewProvisionalDiagnosis";
+import CreateAthropometry from "./CreateAthropometry";
+import EditManagementplan from "./EditManagementplan";
+import EditPrescriptionRequest from "./EditPrescriptionRequest";
+import EditDressingRequest from "./EditDressingRequest";
+import EditObservationRequest from "./EditObservationRequest";
+import PreviousMedicalHistoryForm from "./PreviousMedicalHistoryForm";
+import { FaNotesMedical } from "react-icons/fa";
+import { setTab } from "../../redux/actions/doctor";
+import DocNav from "./components/nav-bar";
+import "./components/test.css";
+import "./components/test2.css";
 // import ItemsBar from './components/items-bar';
-import EditView from './EditView';
+import EditView from "./EditView";
 
 export function checkEmpty(obj) {
   let val = Object.values(obj);
-  if (!val.join('').includes('0') && val.join('').length > 0) return false;
+  if (!val.join("").includes("0") && val.join("").length > 0) return false;
   else return true;
 }
 
@@ -41,25 +41,25 @@ const HistoryTabs = connect(({ doctor }) => ({
         <div className="motherwrapper">
           <div className="arrow-steps clfix">
             <div
-              onClick={() => setComponentToRender('PcomplaintsForm')}
-              className={`step ${pComplain.length ? 'done' : ''} ${
-                component === 'PcomplaintsForm' ? 'current' : ''
+              onClick={() => setComponentToRender("PcomplaintsForm")}
+              className={`step ${pComplain.length ? "done" : ""} ${
+                component === "PcomplaintsForm" ? "current" : ""
               }`}
             >
               <span> Presenting Complaints</span>
             </div>
             <div
-              onClick={() => setComponentToRender('HistoryForm')}
-              className={`step ${checkEmpty(history) ? '' : 'done'} ${
-                component === 'HistoryForm' ? 'current' : ''
+              onClick={() => setComponentToRender("HistoryForm")}
+              className={`step ${checkEmpty(history) ? "" : "done"} ${
+                component === "HistoryForm" ? "current" : ""
               }`}
             >
               <span>History of Presenting Complaints</span>
             </div>
             <div
-              onClick={() => setComponentToRender('PreviousMedicalHistoryForm')}
-              className={`step ${checkEmpty(medicalHistory) ? '' : 'done'} ${
-                component === 'PreviousMedicalHistoryForm' ? 'current' : ''
+              onClick={() => setComponentToRender("PreviousMedicalHistoryForm")}
+              className={`step ${checkEmpty(medicalHistory) ? "" : "done"} ${
+                component === "PreviousMedicalHistoryForm" ? "current" : ""
               }`}
             >
               <span> Medical History</span>
@@ -79,22 +79,22 @@ const ExaminationTabs = connect(({ doctor }) => ({
     <div className="motherwrapper">
       <div className="arrow-steps clfix">
         <div
-          onClick={() => setComponentToRender('CreateVitalSigns')}
-          className={`step ${checkEmpty(vitalSigns) ? '' : 'done'} ${
-            component === 'CreateVitalSigns' ? 'current' : ''
+          onClick={() => setComponentToRender("CreateVitalSigns")}
+          className={`step ${checkEmpty(vitalSigns) ? "" : "done"} ${
+            component === "CreateVitalSigns" ? "current" : ""
           }`}
         >
-          {' '}
-          <span> Vital Signs </span>{' '}
+          {" "}
+          <span> Vital Signs </span>{" "}
         </div>
         <div
-          onClick={() => setComponentToRender('SystemExaminationForm')}
-          className={`step ${checkEmpty(systemExam) ? '' : 'done'} ${
-            component === 'SystemExaminationForm' ? 'current' : ''
+          onClick={() => setComponentToRender("SystemExaminationForm")}
+          className={`step ${checkEmpty(systemExam) ? "" : "done"} ${
+            component === "SystemExaminationForm" ? "current" : ""
           }`}
         >
-          {' '}
-          <span> System Examination </span>{' '}
+          {" "}
+          <span> System Examination </span>{" "}
         </div>
         {/* <div className={`step ${component === 'HistoryForm' ? 'current' : ''}`}> <span>History of Presenting Complaints</span> </div> */}
         {/* <div className={`step ${component === 'PreviousMedicalHistoryForm' ? 'current' : ''}`}> <span> Medical History</span> </div> */}
@@ -111,22 +111,22 @@ const DiagnosisTabs = connect(({ doctor }) => ({
     <div className="motherwrapper">
       <div className="arrow-steps clfix">
         <div
-          onClick={() => setComponentToRender('NewProblems')}
-          className={`step ${checkEmpty(problems) ? '' : 'done'} ${
-            component === 'NewProblems' ? 'current' : ''
+          onClick={() => setComponentToRender("NewProblems")}
+          className={`step ${checkEmpty(problems) ? "" : "done"} ${
+            component === "NewProblems" ? "current" : ""
           }`}
         >
-          {' '}
-          <span> Problems</span>{' '}
+          {" "}
+          <span> Problems</span>{" "}
         </div>
         <div
-          onClick={() => setComponentToRender('NewProvisionalDiagnosis')}
-          className={`step ${checkEmpty(provisionalDiagnosis) ? '' : 'done'} ${
-            component === 'NewProvisionalDiagnosis' ? 'current' : ''
+          onClick={() => setComponentToRender("NewProvisionalDiagnosis")}
+          className={`step ${checkEmpty(provisionalDiagnosis) ? "" : "done"} ${
+            component === "NewProvisionalDiagnosis" ? "current" : ""
           }`}
         >
-          {' '}
-          <span>Provisional Diagnosis</span>{' '}
+          {" "}
+          <span>Provisional Diagnosis</span>{" "}
         </div>
         {/* <div className={`step ${component === 'PreviousMedicalHistoryForm' ? 'current' : ''}`}> <span> Medical History</span> </div> */}
       </div>
@@ -156,58 +156,58 @@ const ManagementTabs = connect(({ doctor }) => ({
       <div className="motherwrapper">
         <div className="arrow-steps clfix">
           <div
-            onClick={() => setComponentToRender('CreateAthropometry')}
-            className={`step ${checkEmpty(athropometry) ? '' : 'done'} ${
-              component === 'CreateAthropometry' ? 'current' : ''
+            onClick={() => setComponentToRender("CreateAthropometry")}
+            className={`step ${checkEmpty(athropometry) ? "" : "done"} ${
+              component === "CreateAthropometry" ? "current" : ""
             }`}
           >
-            {' '}
-            <span> Athropometry</span>{' '}
+            {" "}
+            <span> Athropometry</span>{" "}
           </div>
           <div
-            onClick={() => setComponentToRender('EditManagementplan')}
-            className={`step ${checkEmpty(managementPlan) ? '' : 'done'} ${
-              component === 'EditManagementplan' ? 'current' : ''
+            onClick={() => setComponentToRender("EditManagementplan")}
+            className={`step ${checkEmpty(managementPlan) ? "" : "done"} ${
+              component === "EditManagementplan" ? "current" : ""
             }`}
           >
-            {' '}
-            <span>Management</span>{' '}
+            {" "}
+            <span>Management</span>{" "}
           </div>
           <div
-            onClick={() => setComponentToRender('EditDressingRequest')}
-            className={`step ${checkEmpty(dressingRequest) ? '' : 'done'} ${
-              component === 'EditDressingRequest' ? 'current' : ''
+            onClick={() => setComponentToRender("EditDressingRequest")}
+            className={`step ${checkEmpty(dressingRequest) ? "" : "done"} ${
+              component === "EditDressingRequest" ? "current" : ""
             }`}
           >
-            {' '}
-            <span> Dressing</span>{' '}
+            {" "}
+            <span> Dressing</span>{" "}
           </div>
           <div
-            onClick={() => setComponentToRender('EditObservationRequest')}
-            className={`step ${observationRequest.length ? 'done' : ''} ${
-              component === 'EditObservationRequest' ? 'current' : ''
+            onClick={() => setComponentToRender("EditObservationRequest")}
+            className={`step ${observationRequest.length ? "done" : ""} ${
+              component === "EditObservationRequest" ? "current" : ""
             }`}
           >
-            {' '}
-            <span> Observations</span>{' '}
+            {" "}
+            <span> Observations</span>{" "}
           </div>
           <div
-            onClick={() => setComponentToRender('EditPrescriptionRequest')}
-            className={`step ${prescriptionRequest.length ? 'done' : ''} ${
-              component === 'EditPrescriptionRequest' ? 'current' : ''
+            onClick={() => setComponentToRender("EditPrescriptionRequest")}
+            className={`step ${prescriptionRequest.length ? "done" : ""} ${
+              component === "EditPrescriptionRequest" ? "current" : ""
             }`}
           >
-            {' '}
-            <span> Prescriptions</span>{' '}
+            {" "}
+            <span> Prescriptions</span>{" "}
           </div>
           <div
-            onClick={() => setComponentToRender('NewRadiologyInvestigations')}
-            className={`step ${labInvestigations.length ? 'done' : ''} ${
-              component === 'NewRadiologyInvestigations' ? 'current' : ''
+            onClick={() => setComponentToRender("NewRadiologyInvestigations")}
+            className={`step ${labInvestigations.length ? "done" : ""} ${
+              component === "NewRadiologyInvestigations" ? "current" : ""
             }`}
           >
-            {' '}
-            <span> Investigations</span>{' '}
+            {" "}
+            <span> Investigations</span>{" "}
           </div>
         </div>
       </div>
@@ -217,7 +217,7 @@ const ManagementTabs = connect(({ doctor }) => ({
 
 const Tabs = ({ path, setComponentToRender, component }) => {
   switch (path) {
-    case '/me/doctor/patient/history':
+    case "/me/doctors/patient/history":
       return (
         <HistoryTabs
           setComponentToRender={setComponentToRender}
@@ -225,7 +225,7 @@ const Tabs = ({ path, setComponentToRender, component }) => {
         />
       );
 
-    case '/me/doctor/patient/examination':
+    case "/me/doctors/patient/examination":
       return (
         <ExaminationTabs
           setComponentToRender={setComponentToRender}
@@ -233,7 +233,7 @@ const Tabs = ({ path, setComponentToRender, component }) => {
         />
       );
 
-    case '/me/doctor/patient/diagnosis':
+    case "/me/doctors/patient/diagnosis":
       return (
         <DiagnosisTabs
           setComponentToRender={setComponentToRender}
@@ -241,7 +241,7 @@ const Tabs = ({ path, setComponentToRender, component }) => {
         />
       );
 
-    case '/me/doctor/patient/management':
+    case "/me/doctors/patient/management":
       return (
         <ManagementTabs
           setComponentToRender={setComponentToRender}
@@ -277,55 +277,55 @@ const Tabs = ({ path, setComponentToRender, component }) => {
 
 const TabBody = ({ component, setComponentToRender }) => {
   switch (component) {
-    case 'PcomplaintsForm':
+    case "PcomplaintsForm":
       return <PcomplaintsForm setComponent={setComponentToRender} />;
-    case 'HistoryForm':
+    case "HistoryForm":
       return <HistoryForm setComponent={setComponentToRender} />;
-    case 'PreviousMedicalHistoryForm':
+    case "PreviousMedicalHistoryForm":
       return <PreviousMedicalHistoryForm setComponent={setComponentToRender} />;
-    case 'SystemExaminationForm':
+    case "SystemExaminationForm":
       return <SystemExaminationForm setComponent={setComponentToRender} />;
-    case 'CreateVitalSigns':
+    case "CreateVitalSigns":
       return <CreateVitalSigns setComponent={setComponentToRender} />;
-    case 'NewProblems':
+    case "NewProblems":
       return <NewProblems setComponent={setComponentToRender} />;
-    case 'NewRadiologyInvestigations':
+    case "NewRadiologyInvestigations":
       return <NewRadiologyInvestigations setComponent={setComponentToRender} />;
-    case 'NewProvisionalDiagnosis':
+    case "NewProvisionalDiagnosis":
       return <NewProvisionalDiagnosis setComponent={setComponentToRender} />;
-    case 'CreateAthropometry':
+    case "CreateAthropometry":
       return <CreateAthropometry setComponent={setComponentToRender} />;
-    case 'EditManagementplan':
+    case "EditManagementplan":
       return <EditManagementplan setComponent={setComponentToRender} />;
-    case 'EditPrescriptionRequest':
+    case "EditPrescriptionRequest":
       return <EditPrescriptionRequest setComponent={setComponentToRender} />;
-    case 'EditObservationRequest':
+    case "EditObservationRequest":
       return <EditObservationRequest setComponent={setComponentToRender} />;
-    case 'EditDressingRequest':
+    case "EditDressingRequest":
       return <EditDressingRequest setComponent={setComponentToRender} />;
-      case 'EditView':
+    case "EditView":
       return <EditView setComponent={setComponentToRender} />;
     default:
       return (
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'row',
+            display: "flex",
+            flexDirection: "row",
             // alignItems: 'center',
-            justifyContent: 'center',
+            justifyContent: "center",
           }}
         >
           <ListGroupItem
             style={{
               height: 150,
               width: 150,
-              cursor: 'pointer',
-              margin: '0 10px',
+              cursor: "pointer",
+              margin: "0 10px",
               borderRadius: 10,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
             }}
             tag="div"
           >
@@ -336,13 +336,13 @@ const TabBody = ({ component, setComponentToRender }) => {
             style={{
               height: 150,
               width: 150,
-              cursor: 'pointer',
+              cursor: "pointer",
               borderRadius: 10,
-              display: 'flex',
-              flexDirection: 'column',
-              margin: '0 10px',
-              alignItems: 'center',
-              justifyContent: 'center',
+              display: "flex",
+              flexDirection: "column",
+              margin: "0 10px",
+              alignItems: "center",
+              justifyContent: "center",
             }}
             tag="div"
           >
@@ -353,13 +353,13 @@ const TabBody = ({ component, setComponentToRender }) => {
             style={{
               height: 150,
               width: 150,
-              cursor: 'pointer',
+              cursor: "pointer",
               borderRadius: 10,
-              display: 'flex',
-              flexDirection: 'column',
-              margin: '0 10px',
-              alignItems: 'center',
-              justifyContent: 'center',
+              display: "flex",
+              flexDirection: "column",
+              margin: "0 10px",
+              alignItems: "center",
+              justifyContent: "center",
             }}
             tag="div"
           >
@@ -372,7 +372,7 @@ const TabBody = ({ component, setComponentToRender }) => {
 };
 
 const DoctorDashboard = ({ location, activeTab, setTab, access }) => {
-  const [component, setComponent] = useState('');
+  const [component, setComponent] = useState("");
   useEffect(() => {
     setComponent(activeTab);
   });
@@ -408,8 +408,5 @@ function mapDispatchToProps(dispatch) {
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(DoctorDashboard);

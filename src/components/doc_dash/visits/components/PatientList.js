@@ -46,7 +46,7 @@ function PatientList() {
                 );
               } else {
                 history.push(
-                  `/me/doctor/visit-preview/${item.id}?page_type=preview&visit_id=&section=disabled&patientType=${section}`
+                  `/me/doctors/visit-preview/${item.id}?page_type=preview&visit_id=&section=disabled&patientType=${section}`
                 );
               }
             }}
@@ -59,7 +59,7 @@ function PatientList() {
               color="success"
               onClick={() =>
                 history.push(
-                  `/me/doctor/visits/new-summary/${item.id}?section=disabled`,
+                  `/me/doctors/visits/new-summary/${item.id}?section=disabled`,
                 )
               }
             >

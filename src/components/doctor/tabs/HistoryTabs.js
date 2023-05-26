@@ -14,13 +14,13 @@ const HistoryTabs = ({ patientId }) => {
           <TabItem
             title="Presenting Complaints"
             done={pComplain.length}
-            path={`/me/doctor/visits/new/${patientId}/history/presentingcomplaints`}
+            path={`/me/doctors/visits/new/${patientId}/history/presentingcomplaints`}
           />
 
           <TabItem
             title="History of Presenting Complaints"
             done={checkEmpty(history)}
-            path={`/me/doctor/visits/new/${patientId}/history/previousmedicalhistory`}
+            path={`/me/doctors/visits/new/${patientId}/history/previousmedicalhistory`}
           />
 
           {/* <button

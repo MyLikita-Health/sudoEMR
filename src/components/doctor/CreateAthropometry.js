@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { Scrollbars } from 'react-custom-scrollbars';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { Scrollbars } from "react-custom-scrollbars";
 import {
   Form,
   FormGroup,
@@ -13,20 +13,20 @@ import {
   InputGroup,
   InputGroupAddon,
   Input,
-} from 'reactstrap';
-import { saveAthropometry } from '../../redux/actions/doctor';
-import SpeechInput from '../comp/speech-to-text/SpeechInput';
-import FooterButtons from './components/FooterButtons';
+} from "reactstrap";
+import { saveAthropometry } from "../../redux/actions/doctor";
+import SpeechInput from "../comp/speech-to-text/SpeechInput";
+import FooterButtons from "./components/FooterButtons";
 
 class CreateAthropometry extends Component {
   constructor(props) {
     super(props);
     this.state = {
       athropometry: {
-        weight: '',
-        headcircumference: '',
-        height: '',
-        muac: '',
+        weight: "",
+        headcircumference: "",
+        height: "",
+        muac: "",
       },
     };
   }
@@ -45,10 +45,10 @@ class CreateAthropometry extends Component {
       muac,
     };
     if (
-      weight === '' &&
-      headcircumference === '' &&
-      height === '' &&
-      muac === ''
+      weight === "" &&
+      headcircumference === "" &&
+      height === "" &&
+      muac === ""
     )
       return;
     this.props.saveAthropometry(formData);
@@ -123,7 +123,7 @@ class CreateAthropometry extends Component {
                     name="headcircumference"
                     value={headcircumference}
                     onInputChange={(text) =>
-                      this.handleSpeechInputChange(text, 'headcircumference')
+                      this.handleSpeechInputChange(text, "headcircumference")
                     }
                   />
                 </div>
@@ -134,7 +134,7 @@ class CreateAthropometry extends Component {
                     name="muac"
                     value={muac}
                     onInputChange={(text) =>
-                      this.handleSpeechInputChange(text, 'muac')
+                      this.handleSpeechInputChange(text, "muac")
                     }
                   />
                 </div>
@@ -169,22 +169,18 @@ class CreateAthropometry extends Component {
             </Form>
           </Scrollbars>
         </CardBody>
-        <CardFooter className='p-0'>
+        <CardFooter className="p-0">
           <FooterButtons
             prev={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/examination/systemexam`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/examination/systemexam`
               );
             }}
             next={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${
-                  this.props.patient.patientHospitalId
-                }/diagnosis/problems`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/diagnosis/problems`
               );
             }}
           />
@@ -205,8 +201,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(CreateAthropometry);

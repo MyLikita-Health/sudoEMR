@@ -22,44 +22,38 @@ const LabList = () => {
   const [loading, setLoading] = useState(false);
   const facilityId = useSelector((state) => state.auth.user.facilityId);
 
-  const getAllLabTests = useCallback(
-    () => {
-      setLoading(true);
-      _fetchApi2(
-        `${apiURL()}/lab/completed-lab-tests/${facilityId}?query_type=select&patient_id=${patientId}`,
-        (data) => {
-          setLoading(false);
-          if (data.results) {
-            setPatientLabs(data.results);
-          }
-        },
-        (err) => {
-          setLoading(false);
-          console.log(err);
+  const getAllLabTests = useCallback(() => {
+    setLoading(true);
+    _fetchApi2(
+      `${apiURL()}/lab/completed-lab-tests/${facilityId}?query_type=select&patient_id=${patientId}`,
+      (data) => {
+        setLoading(false);
+        if (data.results) {
+          setPatientLabs(data.results);
         }
-      );
-      // if (patientId) {
-      //   setLoading(true);
+      },
+      (err) => {
+        setLoading(false);
+        console.log(err);
+      }
+    );
+    // if (patientId) {
+    //   setLoading(true);
 
-      //   dispatch(getPatientLabTests(patientId, () => setLoading(false)));
-      // }
-    },
-    [patientId, facilityId]
-  );
+    //   dispatch(getPatientLabTests(patientId, () => setLoading(false)));
+    // }
+  }, [patientId, facilityId]);
 
-  useEffect(
-    () => {
-      getAllLabTests();
-    },
-    [getAllLabTests]
-  );
+  useEffect(() => {
+    getAllLabTests();
+  }, [getAllLabTests]);
 
   return (
     <div>
       <div className="d-flex justify-content-end mb-1 mt-1">
         <button
           className={`btn btn-outline-dark ${iconClass}`}
-          onClick={() => history.push(`/me/doctor/labs/new/${patientId}`)}
+          onClick={() => history.push(`/me/doctors/labs/new/${patientId}`)}
         >
           <FaPlus size={20} className="mr-1" />
           New Lab Request
@@ -86,15 +80,11 @@ const LabList = () => {
                   onClick={() => {
                     if (item.completed === item.tests) {
                       history.push(
-                        `${DOCTOR_LAB_ROUTE}/view/${item.patient_id}/${
-                          item.booking_no
-                        }`
+                        `${DOCTOR_LAB_ROUTE}/view/${item.patient_id}/${item.booking_no}`
                       );
                     } else {
                       history.push(
-                        `${DOCTOR_LAB_ROUTE}/uncompleted/${item.patient_id}/${
-                          item.booking_no
-                        }`
+                        `${DOCTOR_LAB_ROUTE}/uncompleted/${item.patient_id}/${item.booking_no}`
                       );
                     }
                   }}
@@ -123,7 +113,7 @@ const LabList = () => {
                 cursor: 'pointer',
               }}
               onClick={() => {
-                // history.push(`/me/doctor/visits/view/${item._id}`);
+                // history.push(`/me/doctors/visits/view/${item._id}`);
               }}
             >
               <span>

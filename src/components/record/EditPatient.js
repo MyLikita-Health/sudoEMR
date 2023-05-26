@@ -1,38 +1,38 @@
-import React from 'react';
-import { withRouter } from 'react-router';
-import BasicInformation from '../doc_dash/patients/BasicInfomation';
-import ContactInformation from '../doc_dash/patients/ContactInformation';
-import NextOfKin from '../doc_dash/patients/NextOfKin';
-import BackButton from '../comp/components/BackButton';
-import { iconClass } from '../doc_dash/appointments/NewAppointment2';
-import { BsCheck } from 'react-icons/bs';
-import { FaTimes } from 'react-icons/fa';
-import { WarningModal } from '../comp/components/Modal';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { getPatient, updatePatient } from './actions/patientsActions';
+import React from "react";
+import { withRouter } from "react-router";
+import BasicInformation from "../doc_dash/patients/BasicInfomation";
+import ContactInformation from "../doc_dash/patients/ContactInformation";
+import NextOfKin from "../doc_dash/patients/NextOfKin";
+import BackButton from "../comp/components/BackButton";
+import { iconClass } from "../doc_dash/appointments/NewAppointment2";
+import { BsCheck } from "react-icons/bs";
+import { FaTimes } from "react-icons/fa";
+import { WarningModal } from "../comp/components/Modal";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { getPatient, updatePatient } from "./actions/patientsActions";
 
 class EditPatient extends React.Component {
   state = {
     patient: {
-      _id: '',
-      patientNo: '',
-      patientId: '',
-      patientHospitalId: '',
-      firstname: '',
-      surname: '',
-      gender: '',
-      dob: '',
-      maritalStatus: '',
-      occupation: '',
-      phone: '',
-      email: '',
-      address: '',
-      nextOfKinName: '',
-      nextOfKinRelationship: '',
-      nextOfKinPhone: '',
-      nextOfKinEmail: '',
-      nextOfKinAddress: '',
+      _id: "",
+      patientNo: "",
+      patientId: "",
+      patientHospitalId: "",
+      firstname: "",
+      surname: "",
+      gender: "",
+      dob: "",
+      maritalStatus: "",
+      occupation: "",
+      phone: "",
+      email: "",
+      address: "",
+      nextOfKinName: "",
+      nextOfKinRelationship: "",
+      nextOfKinPhone: "",
+      nextOfKinEmail: "",
+      nextOfKinAddress: "",
     },
 
     warningIsOpen: false,
@@ -119,7 +119,7 @@ class EditPatient extends React.Component {
           <div className="btn-group btn-group mt-2 mb-2">
             <button className="btn btn-outline-primary mr-1" onClick={submit}>
               {submitting ? (
-                'Loading...'
+                "Loading..."
               ) : (
                 <span className={iconClass}>
                   <BsCheck size={20} className="mr-1" /> Update
@@ -139,7 +139,7 @@ class EditPatient extends React.Component {
           body="All form data will be lost, Exit?"
           isOpen={warningIsOpen}
           toggle={toggleWarningModal}
-          okay={() => this.props.history.push('/me/doctor/patients')}
+          okay={() => this.props.history.push("/me/doctors/patients")}
           // cancel={() => toggleWarningModal()}
         />
         {/* </Scrollbars> */}
@@ -156,8 +156,5 @@ function mapDispatchToProps(dispatch) {
 }
 export default compose(
   withRouter,
-  connect(
-    null,
-    mapDispatchToProps,
-  ),
+  connect(null, mapDispatchToProps)
 )(EditPatient);

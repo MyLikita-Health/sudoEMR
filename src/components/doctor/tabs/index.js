@@ -9,19 +9,21 @@ const Tabs = ({ patient }) => {
   const patientId = patient.patientHospitalId;
   const location = useLocation();
   if (
-    location.pathname.includes(`/me/doctor/visits/new/${patientId}/history`)
+    location.pathname.includes(`/me/doctors/visits/new/${patientId}/history`)
   ) {
     return <HistoryTabs patientId={patientId} />;
   } else if (
-    location.pathname.includes(`/me/doctor/visits/new/${patientId}/examination`)
+    location.pathname.includes(
+      `/me/doctors/visits/new/${patientId}/examination`
+    )
   ) {
     return <ExaminationTabs patientId={patientId} />;
   } else if (
-    location.pathname.includes(`/me/doctor/visits/new/${patientId}/diagnosis`)
+    location.pathname.includes(`/me/doctors/visits/new/${patientId}/diagnosis`)
   ) {
     return <DiagnosisTabs patientId={patientId} />;
   } else if (
-    location.pathname.includes(`/me/doctor/visits/new/${patientId}/management`)
+    location.pathname.includes(`/me/doctors/visits/new/${patientId}/management`)
   ) {
     return <ManagementTabs patientId={patientId} />;
   } else {

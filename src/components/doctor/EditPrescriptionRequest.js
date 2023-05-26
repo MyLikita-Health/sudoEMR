@@ -324,13 +324,13 @@ class EditPrescriptionRequest extends Component {
             prev={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${this.props.patient.patientHospitalId}/management/plan`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/management/plan`
               );
             }}
             next={() => {
               this.handleSubmit();
               history.push(
-                `/me/doctor/visits/new/${this.props.patient.patientHospitalId}/management/radiologyinvestigations`
+                `/me/doctors/visits/new/${this.props.patient.patientHospitalId}/management/radiologyinvestigations`
               );
             }}
           />

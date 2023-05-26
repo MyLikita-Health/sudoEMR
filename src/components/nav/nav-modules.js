@@ -6,7 +6,7 @@ import { Nav, NavItem } from "reactstrap";
 // import { MdLocalPharmacy } from "react-icons/md";
 import { GiStethoscope } from "react-icons/gi";
 import { hasAccess } from "../auth";
-import './nav2.css';
+import "./nav2.css";
 
 export const navArr = [
   {
@@ -17,25 +17,15 @@ export const navArr = [
   },
   {
     name: "Doctors",
-    route: "/me/doctor",
+    route: "/me/doctors",
     display_name: "Doctors",
-    icon: (
-      <GiStethoscope
-        size={20}
-        style={{ marginRight: 3 }}
-      />
-    ),
+    icon: <GiStethoscope size={20} style={{ marginRight: 3 }} />,
   },
   {
     name: "Nurse",
     route: "/me/nurse",
     display_name: "Nursing",
-    icon: (
-      <FaUserNurse
-        style={{ marginRight: 3 }}
-        size={20}
-      />
-    ),
+    icon: <FaUserNurse style={{ marginRight: 3 }} size={20} />,
   },
   {
     name: "Admin",
@@ -55,7 +45,11 @@ const NavModules = ({ user, toggle, userAccess }) => {
         user.accessTo
           ? hasAccess(user, [item.name]) && (
               <NavItem onClick={toggle}>
-                <NavLink to={`${item.route}`} activeClassName=' nav-link-active-bg   ' className="nav text-primary" >
+                <NavLink
+                  to={`${item.route}`}
+                  activeClassName=" nav-link-active-bg   "
+                  className="nav text-primary"
+                >
                   {item.icon}
                   {item.display_name}
                 </NavLink>

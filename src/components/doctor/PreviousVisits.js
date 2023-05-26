@@ -1,20 +1,20 @@
-import React from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { Card, CardTitle, Table } from 'reactstrap';
-import { Scrollbars } from 'react-custom-scrollbars';
+import React from "react";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { Card, CardTitle, Table } from "reactstrap";
+import { Scrollbars } from "react-custom-scrollbars";
 // import SearchBar from '../record/SearchBar';
 // import EncounterPreview from './PreviewForm';
-import CloseButton from './components/close-button';
-import Loading from '../loading';
-import moment from 'moment';
-import { setTab, setPatientToSee } from '../../redux/actions/doctor';
+import CloseButton from "./components/close-button";
+import Loading from "../loading";
+import moment from "moment";
+import { setTab, setPatientToSee } from "../../redux/actions/doctor";
 
 function Row({ diagnosis }) {
   return (
-    <tr style={{ cursor: 'pointer' }} key={diagnosis.id} onClick={() => {}}>
-      <td>{moment(diagnosis.date).format('DD-MM-YYYY')}</td>
+    <tr style={{ cursor: "pointer" }} key={diagnosis.id} onClick={() => {}}>
+      <td>{moment(diagnosis.date).format("DD-MM-YYYY")}</td>
       <td>{diagnosis.seen_by}</td>
     </tr>
   );
@@ -25,7 +25,7 @@ class PreviousVisits extends React.PureComponent {
     super(props);
     this.state = {
       prevVisits: [],
-      filterText: '',
+      filterText: "",
     };
   }
 
@@ -41,10 +41,10 @@ class PreviousVisits extends React.PureComponent {
     return (
       <Card>
         <div
-          style={{ display: 'flex', justifyContent: 'flex-end' }}
+          style={{ display: "flex", justifyContent: "flex-end" }}
           onClick={() => {
-            history.push('/me/doctor/');
-            setTab('');
+            history.push("/me/doctors/");
+            setTab("");
             setPatient({});
             toggle();
           }}
@@ -59,12 +59,12 @@ class PreviousVisits extends React.PureComponent {
           value={this.state.value}
           onChange={e => this.setState({ filterText: e.target.value })}
         /> */}
-        <div style={{ height: '80vh' }}>
+        <div style={{ height: "80vh" }}>
           <Scrollbars>
             <div>
               {loading && <Loading />}
               {!loading && pastVisits.length === 0 ? (
-                <p style={{ textAlign: 'center', paddingTop: '2em' }}>
+                <p style={{ textAlign: "center", paddingTop: "2em" }}>
                   <em>This patient does not have any previous visit record</em>
                 </p>
               ) : (
@@ -115,8 +115,5 @@ function mapDispatchToProps(dispatch) {
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(PreviousVisits);

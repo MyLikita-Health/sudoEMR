@@ -210,7 +210,7 @@ function OperationNoteSheet() {
           _customNotify("Data Saved");
           setLoading(false);
           history.push(
-            `/me/doctor/visit-preview/${patientId}?page_type=preview&visit_id=&patient_id=${patientId}&allocation_id=&page_type=preview&section=disabled`
+            `/me/doctors/visit-preview/${patientId}?page_type=preview&visit_id=&patient_id=${patientId}&allocation_id=&page_type=preview&section=disabled`
           );
         },
         (err) => {
