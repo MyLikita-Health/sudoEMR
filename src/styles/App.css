@@ -113,8 +113,11 @@ div label {
   text-align: right;
 } */
 
- /* assign patient to doctor table  */
- /* .assignPatTable{
+
+/* assign patient to doctor table  */
+
+
+/* .assignPatTable{
 margin-left: 50px;
 margin-top: 10px;
  }
@@ -129,7 +132,9 @@ margin-top: 10px;
    border: none;
    border-bottom: 2px solid black;
    border-radius: 4px; */
-   /* width: 685px; 
+
+
+/* width: 685px; 
  }
 /* 
 #btn {
@@ -153,14 +158,16 @@ margin-top: 10px;
    position: absolute;
    left: 75%;
  } */
+
+
 /* 
  .moduleItemsContainer {
   background: #ffffff url("../images//phamarcy.jpg") no-repeat right top;
 } */
+
 
 /* @media screen and (min-width: 1000px) {
   .render-patient-list {
     height: 70vh;
   }
 } */
-
