@@ -103,7 +103,7 @@ export const endpoint = `${apiURL()}/api/pharmacy`;
 export function getDrugList() {
   const facilityId = store.getState().auth.user.facilityId;
   return (dispatch) => {
-    let url = `/${endpoint}/v1/get-drug-list?facilityId=${facilityId}`;
+    let url = `${endpoint}/v1/get-drug-list?facilityId=${facilityId}`;
     _fetchApi2(
       url,
       (res) => {
@@ -121,7 +121,7 @@ export function getDrugList() {
 export function getDrugListCount(filterText) {
   const facilityId = store.getState().auth.user.facilityId;
   return (dispatch) => {
-    let url = `/${endpoint}/v1/get-total-drug-list?facilityId=${facilityId}&filterText=${filterText}`;
+    let url = `${endpoint}/v1/get-total-drug-list?facilityId=${facilityId}&filterText=${filterText}`;
     _fetchApi2(
       url,
       (res) => {
@@ -143,7 +143,7 @@ export function getDrugListSearch(searchValue, from, to, query = "default") {
   const facilityId = store.getState().auth.user.facilityId;
   return (dispatch) => {
     dispatch({ type: PHARM_LOADING, payload: true });
-    let url = `/${endpoint}/v1/get-drug-search?facilityId=${facilityId}&searchValue=${searchValue}&from=${from}&to=${to}&query=${query}`;
+    let url = `${endpoint}/v1/get-drug-search?facilityId=${facilityId}&searchValue=${searchValue}&from=${from}&to=${to}&query=${query}`;
     _fetchApi2(
       url,
       (res) => {

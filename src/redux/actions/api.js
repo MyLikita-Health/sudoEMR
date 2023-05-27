@@ -128,9 +128,9 @@ const _deleteApi = (
   callback = (f) => f,
   err_cb = (f) => f,
 ) => {
-  const { facilityId, username } = store.getState().auth.user
-  data.facilityId = facilityId
-  data.userId = username
+  // const { facilityId, username } = store.getState().auth.user
+  // data.facilityId = facilityId
+  // data.userId = username
 
   fetch(route, {
     method: 'DELETE',

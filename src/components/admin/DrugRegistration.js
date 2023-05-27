@@ -5,7 +5,6 @@ import { CardBody, Col, Row } from "reactstrap";
 
 import { CustomButton, CustomForm, CustomTable } from "../comp/components";
 import CustomModal from "../comp/components/CustomModal";
-import Scrollbar from "../comp/components/Scrollbar";
 import CustomPagination from "../comp/CustomPagination";
 import Loading from "../comp/components/Loading";
 import { _customNotify, _warningNotify, formatNumber } from "../utils/helpers";
@@ -20,6 +19,7 @@ import {
 } from "../../redux/actions/pharmacy";
 import CustomCard from "../comp/components/CustomCard";
 import { apiURL } from "../../redux/actions";
+import Scrollbars from "react-custom-scrollbars";
 export default function DrugRegistrations() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
@@ -34,7 +34,7 @@ export default function DrugRegistrations() {
   const [currentPage, setCurrentPage] = useState(1);
   const drugList = useSelector((state) => state.pharmacy.drugList);
   const [isOpen, setIsOpen] = useState(false);
-  const drugListCount = useSelector((state) => state.pharmacy.drugListCount);
+  const drugListCount = useSelector((state) => state.pharmacy.quantityAlert);
   const _loading = useSelector((state) => state.pharmacy.loading);
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -77,12 +77,6 @@ export default function DrugRegistrations() {
 
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }));
-    if (name === "drug_name" && generics.includes(value)) {
-      _customNotify("Drug name exists");
-    }
-    if (name === "generic_name" && drugs.includes(value)) {
-      _warningNotify("Generic name exists");
-    }
   };
 
   const tbl = [
@@ -179,16 +173,17 @@ export default function DrugRegistrations() {
   const deleteDrug = () => {
     setLoadingDelete(true);
     _deleteApi(
-      `/pharmacy/v1/delete-drug`,
+      `${apiURL()}/api/pharmacy/v1/delete-drug`,
       drugInfo,
       (res) => {
-        if (res.success) {
+        // if (res.success) {
           setLoadingDelete(false);
+          toggle1({});
           _customNotify("drug information deleted successfully");
           dispatch(getDrugList());
           dispatch(getDrugListCount(filterText));
-          toggle1({});
-        }
+         
+        // }
       },
       (err) => {
         console.log(err);
@@ -218,7 +213,6 @@ export default function DrugRegistrations() {
             />
           </Col>
           <Col md={2}>
-            {JSON.stringify(drugListCount)}
             <strong>Total:</strong>
             {formatNumber(drugListCount)}
           </Col>
@@ -226,7 +220,6 @@ export default function DrugRegistrations() {
         <Row>
           {/* <Scrollbar height={"100vh"} className="p-2"> */}
           <Row>
-            {_loading && <Loading size="sm" />}
             <Col>
               <CustomPagination
                 totalRecords={drugListCount}
@@ -239,12 +232,11 @@ export default function DrugRegistrations() {
           </Row>
         </Row>
         <Row>
-          <Scrollbar>
-            <CustomTable
-              fields={tbl}
-              data={drugList}
-            />
-          </Scrollbar>
+          <center> {_loading && <Loading size="sm" />}</center>
+          <Scrollbars className="p-2" style={{ height: "75vh",padding:2 }}>
+            {" "}
+            <CustomTable fields={tbl} data={drugList} />
+          </Scrollbars>
         </Row>
       </CustomCard>
       <CustomModal
@@ -272,6 +264,7 @@ export default function DrugRegistrations() {
             <b>{drugInfo.name}</b>
           </i>{" "}
           from this system?
+
         </h5>
       </CustomModal>
       <CustomModal
