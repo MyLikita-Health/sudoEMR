@@ -12,6 +12,8 @@ function TextInput({
   autoFocus = false,
   _ref = null,
   label = "",
+  message = "",
+  good = false,
 }) {
   return (
     <>
@@ -31,6 +33,16 @@ function TextInput({
             disabled={disabled}
             placeholder={placeholder}
           />
+
+          {good ? (
+            <div className='text-primary'>
+              {message}
+            </div>
+          ) : (
+            <div className='text-warning'>
+              {message}
+            </div>
+          )}
         </>
       ) : (
         <p className="form-control">{value}</p>

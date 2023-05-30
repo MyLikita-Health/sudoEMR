@@ -1,98 +1,98 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 // import BackButton from "../../landing/BackButton";
-import sudoEMR from '../../../images/sudoEMR..png'
+import sudoEMR from "../../../images/sudoEMR..png";
 // import './signUp.css'
 // import CustomButton from '../../comp/components/Button'
-import { Row, Col } from 'reactstrap'
+import { Row, Col } from "reactstrap";
 // import PublicWrapper from '../../../routes/PublicWrapper'
-import { _warningNotify } from '../../utils/helpers'
-import { apiURL } from '../../../redux/actions'
+import { _customNotify, _warningNotify } from "../../utils/helpers";
+import { apiURL } from "../../../redux/actions";
 // import Input from './component/Input'
 // import PasswordInput from './component/PasswordInput'
 // import { Success } from './doctor-reg'
-import { navArr } from '../../nav/nav-modules'
+import { navArr } from "../../nav/nav-modules";
 // import BackButton from '../../BackButton'
-import allModule from '../../admin/moduleData'
-import { checkUsername, checkEmail } from '../registration/api'
-import { TextInput } from '../../comp/components'
-import { Link } from 'react-router-dom'
-import PasswordInput from '../registration/component/PasswordInput'
+import allModule from "../../admin/moduleData";
+import { checkUsername, checkEmail } from "../registration/api";
+import { CustomButton, TextInput } from "../../comp/components";
+import { Link } from "react-router-dom";
+import PasswordInput from "../registration/component/PasswordInput";
 
 class NexRegistration extends Component {
   state = {
-    name: '',
-    email: '',
-    code: '',
-    address: '',
-    firstname: '',
-    lastname: '',
-    phone: '',
-    username: '',
-    password: '',
+    name: "",
+    email: "",
+    code: "",
+    address: "",
+    firstname: "",
+    lastname: "",
+    phone: "",
+    username: "",
+    password: "",
     loading: false,
     check_Email: false,
     check_Username: false,
-    usernameMsg: '',
-    emailMsg: '',
+    usernameMsg: "",
+    emailMsg: "",
     usernameGood: false,
     emailGood: false,
     submitted: false,
-  }
+  };
 
   handleUsernameChange = (value) => {
-    this.setState((prev) => ({ ...prev, username: value }))
-    this.setState({ check_Username: true })
+    this.setState((prev) => ({ ...prev, username: value }));
+    this.setState({ check_Username: true });
     checkUsername(
       value,
       (msg) => {
-        this.setState({ check_Username: false })
-        this.setState({ usernameGood: true })
-        this.setState({ usernameMsg: msg })
+        this.setState({ check_Username: false });
+        this.setState({ usernameGood: true });
+        this.setState({ usernameMsg: msg });
       },
       (err) => {
-        this.setState({ check_Username: false })
-        this.setState({ usernameGood: false })
-        this.setState({ usernameMsg: err })
-      },
-    )
-  }
+        this.setState({ check_Username: false });
+        this.setState({ usernameGood: false });
+        this.setState({ usernameMsg: err });
+      }
+    );
+  };
 
   handleEmailChange = (value) => {
-    this.setState((prev) => ({ ...prev, email: value }))
-    this.setState({ check_Email: true })
+    this.setState((prev) => ({ ...prev, email: value }));
+    this.setState({ check_Email: true });
     checkEmail(
       value,
       (msg) => {
-        this.setState({ check_Email: false })
-        this.setState({ emailGood: true })
-        this.setState({ emailMsg: msg })
+        this.setState({ check_Email: false });
+        this.setState({ emailGood: true });
+        this.setState({ emailMsg: msg });
       },
       (err) => {
-        this.setState({ check_Email: false })
-        this.setState({ emailGood: false })
-        this.setState({ emailMsg: err })
-      },
-    )
-  }
+        this.setState({ check_Email: false });
+        this.setState({ emailGood: false });
+        this.setState({ emailMsg: err });
+      }
+    );
+  };
 
   onInputChange = (name, value) =>
-    this.setState((prev) => ({ ...prev, [name]: value }))
+    this.setState((prev) => ({ ...prev, [name]: value }));
 
   resetForm = () => {
     this.setState({
-      name: '',
-      email: '',
-      code: '',
-      address: '',
-      firstname: '',
-      lastname: '',
-      phone: '',
-      username: '',
-      password: '',
-    })
-  }
+      name: "",
+      email: "",
+      code: "",
+      address: "",
+      firstname: "",
+      lastname: "",
+      phone: "",
+      username: "",
+      password: "",
+    });
+  };
   handleSubmit = () => {
-    this.setState({ loading: true })
+    this.setState((prev) => ({ ...prev, loading: true }));
 
     const hospitalObj = {
       name: this.state.name,
@@ -100,7 +100,7 @@ class NexRegistration extends Component {
       address: this.state.address,
       type: this.props.type,
       admin: this.state.username,
-    }
+    };
 
     const userObj = {
       firstname: this.state.firstname,
@@ -109,68 +109,76 @@ class NexRegistration extends Component {
       username: this.state.username,
       password: this.state.password,
       accessTo: this.state.facilityAccess,
-    }
+      phone: this.state.phone,
+    };
     if (
-      this.state.username === '' ||
-      this.state.password === '' ||
-      this.state.name === '' ||
-      this.state.address === '' ||
-      this.state.firstname === '' ||
-      this.state.lastname === ''
+      this.state.username === "" ||
+      this.state.password === "" ||
+      this.state.name === "" ||
+      this.state.address === "" ||
+      this.state.firstname === "" ||
+      this.state.lastname === ""
     ) {
-      return _warningNotify('Form is invalid, please complete the form')
+      return _warningNotify("Form is invalid, please complete the form");
     }
 
-    let facilityAccess = ''
-    if (this.props.type === 'Hospital') {
-      facilityAccess = navArr.map((item) => item.name).join(',')
-    } else if (this.props.type === 'Pharmacy') {
-      facilityAccess = 'Admin,Pharmacy,Account'
-    } else if (this.props.type === 'Laboratory') {
-      facilityAccess = 'Admin,Lab,Account'
-    } else {
-      facilityAccess = ''
-    }
+    let facilityAccess = allModule.map((item) => item.name).join(",");
 
     fetch(`${apiURL()}/hospitals/create`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...hospitalObj,
         accessTo: facilityAccess,
       }),
     })
       .then((response) => response.json())
-      .then(({ hospital }) => {
-        fetch(`${apiURL()}/auth/sign-up`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            ...userObj,
-            accessTo: facilityAccess,
-            facilityId: hospital.id,
-            role: 'Admin',
-            privilege: 4,
-            functionality: allModule
-              .flatMap((module) => module.type)
-              .filter((value, index, self) => {
-                return self.indexOf(value) === index
-              })
-              .join(','),
-          }),
-        })
-          .then((response) => response.json())
-          .then(() => {
-            this.resetForm()
-            this.setState({ loading: false, submitted: true })
+      .then(({ hospital, success }) => {
+        console.log({ hospital, success });
+        if (success) {
+          console.log(hospital);
+          fetch(`${apiURL()}/auth/sign-up`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              ...userObj,
+              accessTo: facilityAccess,
+              facilityId: hospital.id,
+              role: "Admin",
+              privilege: 4,
+              functionality: allModule
+                .flatMap((module) => module.type)
+                .filter((value, index, self) => {
+                  return self.indexOf(value) === index;
+                })
+                .join(","),
+            }),
           })
-          .catch(() => _warningNotify('An error occurred'))
+            .then((response) => response.json())
+            .then((res) => {
+              if (res.success) {
+                console.log("hospital");
+                console.log(res);
+                _customNotify("Facility Successfully Created");
+                this.setState((prev) => ({ ...prev, loading: false }));
+                this.resetForm();
+                this.setState({ loading: false, submitted: true });
+              } else {
+                this.setState((prev) => ({ ...prev, loading: false }));
+                _warningNotify("An error occurred");
+              }
+            })
+            .catch(() => _warningNotify("An error occurred"));
+        } else {
+          this.setState((prev) => ({ ...prev, loading: false }));
+          _warningNotify("An error occurred");
+        }
       })
       .catch((err) => {
-        this.setState({ loading: false })
-        _warningNotify('An error occured')
-      })
-  }
+        this.setState({ loading: false });
+        _warningNotify("An error occured");
+      });
+  };
 
   render() {
     return (
@@ -223,7 +231,7 @@ class NexRegistration extends Component {
                     </Col>
                     <Col md={6}>
                       <p className="already_have_account">
-                        Already have an account?{' '}
+                        Already have an account?{" "}
                         <span className="login_text">
                           <Link to="/auth">Login to your account</Link>
                         </span>
@@ -241,7 +249,7 @@ class NexRegistration extends Component {
                           name="name"
                           value={this.state.name}
                           onChange={(e) =>
-                            this.onInputChange('name', e.target.value)
+                            this.onInputChange("name", e.target.value)
                           }
                           required
                         />
@@ -249,7 +257,7 @@ class NexRegistration extends Component {
                     </Col>
                     <Col md={6}>
                       <label className="input_label mt-2">
-                        Prefix (Hospital File Format){' '}
+                        Prefix (Hospital File Format){" "}
                         <span className="star">*</span>
                       </label>
                       <div>
@@ -257,12 +265,12 @@ class NexRegistration extends Component {
                           name="code"
                           value={this.state.code}
                           onChange={(e) =>
-                            this.onInputChange('code', e.target.value)
+                            this.onInputChange("code", e.target.value)
                           }
                           required
                         />
                       </div>
-                    </Col>{' '}
+                    </Col>{" "}
                     <Col md={6}>
                       <label className="input_label mt-2">
                         Hospital Address <span className="star">*</span>
@@ -272,16 +280,13 @@ class NexRegistration extends Component {
                           name="address"
                           value={this.state.address}
                           onChange={(e) =>
-                            this.onInputChange('address', e.target.value)
+                            this.onInputChange("address", e.target.value)
                           }
                           required
                         />
                       </div>
                     </Col>
                   </Row>
-
-                  {/* ////////////////////////////////////////////////////////////////// */}
-
                   <h5 className="auth_heading mt-5">User Information</h5>
                   <Row>
                     <Col md={6}>
@@ -293,7 +298,7 @@ class NexRegistration extends Component {
                           name="firstname"
                           value={this.state.firstname}
                           onChange={(e) =>
-                            this.onInputChange('firstname', e.target.value)
+                            this.onInputChange("firstname", e.target.value)
                           }
                           required
                         />
@@ -308,12 +313,12 @@ class NexRegistration extends Component {
                           name="lastname"
                           value={this.state.lastname}
                           onChange={(e) =>
-                            this.onInputChange('lastname', e.target.value)
+                            this.onInputChange("lastname", e.target.value)
                           }
                           required
                         />
                       </div>
-                    </Col>{' '}
+                    </Col>{" "}
                     <Col md={6}>
                       <label className="input_label mt-2">
                         Email <span className="star">*</span>
@@ -342,7 +347,7 @@ class NexRegistration extends Component {
                           name="phone"
                           value={this.state.phone}
                           onChange={(e) =>
-                            this.onInputChange('phone', e.target.value)
+                            this.onInputChange("phone", e.target.value)
                           }
                         />
                       </div>
@@ -364,7 +369,7 @@ class NexRegistration extends Component {
                           message={this.state.usernameMsg}
                         />
                       </div>
-                    </Col>{' '}
+                    </Col>{" "}
                     <Col md={6}>
                       <label className="input_label mt-2">
                         Password <span className="star">*</span>
@@ -374,7 +379,7 @@ class NexRegistration extends Component {
                           name="password"
                           value={this.state.password}
                           onChange={(e) =>
-                            this.onInputChange('password', e.target.value)
+                            this.onInputChange("password", e.target.value)
                           }
                           required
                         />
@@ -392,19 +397,23 @@ class NexRegistration extends Component {
                           id="defaultCheck1"
                         />
                         <label class="form-check-label" for="defaultCheck1">
-                          I have read and agree to the terms of{' '}
+                          I have read and agree to the terms of{" "}
                           <span className="login_text">sudoEMR</span>
                         </label>
                       </div>
                     </Col>
                     <Col md={5}>
                       <div>
-                        <button
+                        <CustomButton
                           className="app_primary_button auth_button_1 pl-5 pr-5"
                           onClick={this.handleSubmit}
+                          loading={this.state.loading}
+                          disabled={
+                            !this.state.usernameGood || !this.state.emailGood
+                          }
                         >
                           Register
-                        </button>
+                        </CustomButton>
                       </div>
                     </Col>
                   </Row>
@@ -415,8 +424,8 @@ class NexRegistration extends Component {
           </Row>
         </div>
       </>
-    )
+    );
   }
 }
 
-export default NexRegistration
+export default NexRegistration;
