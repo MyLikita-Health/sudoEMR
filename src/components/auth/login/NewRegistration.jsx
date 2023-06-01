@@ -1,17 +1,8 @@
 import React, { Component } from "react";
-// import BackButton from "../../landing/BackButton";
 import sudoEMR from "../../../images/sudoEMR..png";
-// import './signUp.css'
-// import CustomButton from '../../comp/components/Button'
 import { Row, Col } from "reactstrap";
-// import PublicWrapper from '../../../routes/PublicWrapper'
 import { _customNotify, _warningNotify } from "../../utils/helpers";
 import { apiURL } from "../../../redux/actions";
-// import Input from './component/Input'
-// import PasswordInput from './component/PasswordInput'
-// import { Success } from './doctor-reg'
-import { navArr } from "../../nav/nav-modules";
-// import BackButton from '../../BackButton'
 import allModule from "../../admin/moduleData";
 import { checkUsername, checkEmail } from "../registration/api";
 import { CustomButton, TextInput } from "../../comp/components";
@@ -98,8 +89,9 @@ class NexRegistration extends Component {
       name: this.state.name,
       code: this.state.code,
       address: this.state.address,
-      type: this.props.type,
+      type: "Hospital",
       admin: this.state.username,
+      
     };
 
     const userObj = {
@@ -110,6 +102,7 @@ class NexRegistration extends Component {
       password: this.state.password,
       accessTo: this.state.facilityAccess,
       phone: this.state.phone,
+      status:'approved'
     };
     if (
       this.state.username === "" ||

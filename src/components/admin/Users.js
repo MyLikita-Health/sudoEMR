@@ -220,7 +220,7 @@ const TableRow = ({
           {firstname} {lastname}
         </td>
         <td>{username}</td>
-        <td>{role}</td>
+        <td>{role?role:'user'}</td>
         <td>{user.status}</td>
         <td>
           <FormGroup>

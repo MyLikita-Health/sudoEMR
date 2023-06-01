@@ -37,7 +37,6 @@ class NewUser extends PureComponent {
     functionalities: [],
     department: "",
     error: "",
-    labDepartments: [],
     checkingUsername: false,
     usernameGood: false,
     usernameMsg: "",
@@ -67,22 +66,9 @@ class NewUser extends PureComponent {
     );
   };
 
-  getLabDepartments = () => {
-    _fetchApi2(
-      `${apiURL()}/department?query_type=get&facilityId=${
-        this.props.user.facilityId
-      }`,
-      (data) => {
-        if (data.success) {
-          this.setState({ labDepartments: data.results });
-        }
-      },
-      (err) => console.log(err)
-    );
-  };
+ 
   componentDidMount() {
     this.props.getRoles();
-    this.getLabDepartments();
   }
 
   handleChange = ({ target }) => {
@@ -142,6 +128,7 @@ class NewUser extends PureComponent {
         accessTo: accessTo.join(","),
         functionality: functionalities.join(","),
         department: department,
+        privilege:2,
         facilityId,
       };
       let callback = () => {
@@ -302,29 +289,6 @@ class NewUser extends PureComponent {
                     </>
                   ) : null}
                 </div>
-                {facility.type === "diagnosticCenter" && (
-                  <div className="col-md-6 col-lg-6 mt-2">
-                    <Label>Department</Label>
-                    {/* <Input type="select" className="form-control">
-                    <option>Microbiology</option>
-                    <option>Radiology</option>
-                    <option>Chemical Pathology</option>
-                    <option>Hamotology</option>
-                  </Input> */}
-                    {/*{JSON.stringify(this.state.labDepartments)}*/}
-                    <SelectInput
-                      container="px-0 mx-0"
-                      name="department"
-                      value={department}
-                      options={this.state.labDepartments.map(
-                        (i) => i.dept_name
-                      )}
-                      onChange={(e) =>
-                        this.setState({ department: e.target.value })
-                      }
-                    />
-                  </div>
-                )}
               </FormGroup>
               <FormGroup >
                 <div className="">
