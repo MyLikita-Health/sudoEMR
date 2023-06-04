@@ -36,7 +36,7 @@ const CreateNewPatient = () => {
   const existingPatientId = match.params.id;
   const isEdit = existingPatientId ? true : false;
   const history = useHistory();
-  const facilityId = useSelector((state) => state.facility.info.facility_id);
+  const facilityId = useSelector((state) => state.facility.info.id);
   const patients_photo = useSelector((state) => state.records.patients_photo);
   const [patient, setPatient] = useState({
     accountType: "Single",
@@ -442,6 +442,7 @@ const CreateNewPatient = () => {
     <>
       <BackButton />
       {/* <Scrollbars style={{ height: "90vh" }} autoHide> */}
+      {/* {JSON.stringify(patient)} */}
       <BasicInformation
         existingPatientId={existingPatientId}
         customHeader={() => {
