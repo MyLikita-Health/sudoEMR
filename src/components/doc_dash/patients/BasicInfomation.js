@@ -84,7 +84,7 @@ function BasicInformation({
               />
             </div>
           )}
-          {/* {JSON.stringify(existingPatientId)} */}
+          {/* {JSON.stringify(accounts)} */}
           {existingPatientId
             ? null
             : patient.registrationType === "Existing" && (

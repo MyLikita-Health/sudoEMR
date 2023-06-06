@@ -137,7 +137,7 @@ class NexRegistration extends Component {
               ...userObj,
               accessTo: facilityAccess,
               facilityId: hospital.id,
-              role: "Admin",
+              role: "admin",
               privilege: 4,
               functionality: allModule
                 .flatMap((module) => module.type)

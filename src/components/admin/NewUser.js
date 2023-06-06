@@ -123,7 +123,7 @@ class NewUser extends PureComponent {
         username,
         email,
         password,
-        role,
+        role:role.toLowerCase(),
         speciality,
         accessTo: accessTo.join(","),
         functionality: functionalities.join(","),
@@ -183,7 +183,6 @@ class NewUser extends PureComponent {
         accessTo,
         error,
         functionalities,
-        department,
       },
       props: { creatingUser, facility },
     } = this;
