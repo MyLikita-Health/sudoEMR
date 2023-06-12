@@ -93,6 +93,7 @@ export default function DoctorEncountersHistory() {
         Count: {data && data.length}
       </span>
       <Scrollbars style={{ height: "40vh" }}>
+        
         <div style={{ height: "40vh" }} className="m-0 p-0">
           <Table bordered striped size="sm">
             <thead>

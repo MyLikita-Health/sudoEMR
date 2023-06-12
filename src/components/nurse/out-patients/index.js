@@ -36,6 +36,9 @@ function OutPatient() {
       `${apiURL()}/prescriptions/patient-prescribed?query_type=out-patient-list&facilityId=${facilityId}`,
       (data) => {
         if (data && data.results) {
+          console.log("data");
+          console.log(data);
+          console.log("data");
           let grouped = formatPrescriptionList(data.results);
           setList(grouped);
         }
