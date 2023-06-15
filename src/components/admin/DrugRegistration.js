@@ -174,7 +174,7 @@ export default function DrugRegistrations() {
     setLoadingDelete(true);
     _deleteApi(
       `${apiURL()}/api/pharmacy/v1/delete-drug`,
-      drugInfo,
+      {id:drugInfo.id},
       (res) => {
         // if (res.success) {
           setLoadingDelete(false);
