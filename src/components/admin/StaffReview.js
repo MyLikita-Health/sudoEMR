@@ -68,7 +68,7 @@ export default function StaffReview() {
     _fetchApi(
       `${apiURL()}/users/getById/${id}`,
       (data) => {
-        // console.log(data);
+        console.log(data);
         if (data.results.length) {
           let acc = data.results[0].accessTo.split(",");
           let fuc = data.results[0].functionality.split(",");
@@ -309,7 +309,7 @@ export default function StaffReview() {
               <div className="">
                 <div className="m-4">
                   {facility.type === "Hospital" ? (
-                    <div className="row">
+                    <div className="row"> 
                       {allModule.map((item) => (
                         <div className="col-md-3">
                           <CheckBoxNormal
