@@ -53,7 +53,7 @@ export default function StaffReview() {
   const getDepartments = useCallback(() => {
     _fetchApi2(
       `${apiURL()}/department?query_type=get&facilityId=${
-        facility.info.facility_id
+        facility.info.id
       }`,
       (data) => {
         if (data.success) {
@@ -62,7 +62,7 @@ export default function StaffReview() {
       },
       (err) => console.log(err)
     );
-  }, [facility.info.facility_id]);
+  }, [facility.info.id]);
 
   const handleFetch = () => {
     _fetchApi(
@@ -170,9 +170,7 @@ export default function StaffReview() {
         {/* <Button color="danger" className="px-3 float-right" onClick={handleDelete}>Delete User</Button> */}
         <CardBody>
           <Form>
-            {/* {JSON.stringify(location.pathname)}   */}
-            {/* {JSON.stringify(id)}
-            {JSON.stringify(test)} */}
+            {JSON.stringify(facility)}  
 
             <FormGroup row>
               <Col sm={6}>
@@ -308,7 +306,6 @@ export default function StaffReview() {
               <h6>Access (User's Privilege)</h6>
               <div className="">
                 <div className="m-4">
-                  {facility.type === "Hospital" ? (
                     <div className="row"> 
                       {allModule.map((item) => (
                         <div className="col-md-3">
@@ -334,7 +331,6 @@ export default function StaffReview() {
                         </div>
                       ))}
                     </div>
-                  ) : null}
                 </div>
               </div>
             </div>
